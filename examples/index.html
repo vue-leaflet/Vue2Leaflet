@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue-Leaflet-Demo</title>
+  <link href="../node_modules/leaflet/dist/leaflet.css" rel="stylesheet">
+  <style>
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  body, html, {
+    height:100%;
+  }
+  #app {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  #top_div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 50%;
+}
+
+#bottom_div {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="top_div">
+
+      <button name="button" v-on:click="addMarker">Add !</button>
+      <ul v-for="(item, index) in markers">
+        {{"Marker " + (index + 1)}}
+        <input v-model="item.position.lat" type="number">
+        <input v-model="item.position.lng" type="number">
+        <input v-model="item.draggable" type="checkbox">
+        <input v-model="item.visible" type="checkbox">
+        <input v-on:click="removeMarker(index)" type="button" value='X'>
+      </ul>
+    </div>
+    <div id="bottom_div">
+      <v-map :zoom="zoom" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom">
+        <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
+        <v-marker v-for="item in markers" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
+        v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)"></v-marker>
+      </v-map>
+    </div>
+  </div>
+  <script src="https://rawgit.com/vuejs/vue/next/dist/vue.js"></script>
+  <script src="../dist/vue2-leaflet.js"></script>
+  <script>
+    Vue.component('v-map', Vue2Leaflet.Map);
+    Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
+    Vue.component('v-marker', Vue2Leaflet.Marker);
+
+    new Vue({
+      el: '#app',
+      data: {
+          zoom:13,
+          center:[51.505, -0.09],
+          minZoom:5,
+          maxZoom:20,
+          opacity:0.6,
+          url:'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token={token}',
+          attribution:'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+          token: 'pk.eyJ1IjoibWJvdWNoYXVkIiwiYSI6ImNpZWs0MmIxcTAwNzd0a204bjFka3ZiYXAifQ.glawT_9laPOt5sU57ajgGw',
+          markers:[
+            { position : {lat:51.505, lng:-0.09}, draggable: true, visible: true},
+            { position : {lat:51.8905, lng:-0.09}, draggable: true, visible: false},
+            { position : {lat:51.005, lng:-0.09}, draggable: true, visible: true},
+            { position : {lat:50.7605, lng:-0.09}, draggable: true, visible: false }
+          ]
+      }
+      ,
+      methods: {
+        alert(item) {
+          alert('this is ' + item.position);
+        },
+        addMarker: function(event) {
+          var newMarker = { position: {lat:50.5505, lng:-0.09}, draggable: true, visible: true};
+          this.markers.push(newMarker);
+        },
+        removeMarker: function(index) {
+          this.markers.splice(index, 1);
+        },
+        markerMoved: function(event, item) {
+          Vue.set(item, 'position', event.latlng);
+        }
+
+      }
+    });
+
+    </script>
+</body>
+
+</html>

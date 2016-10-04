@@ -1,0 +1,41 @@
+{
+  "name": "Vue2Leaflet",
+  "description": "Vue2 leaflet library",
+  "author": "Mickael Bouchaud <mickael.bouchaud@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "webpack-dev-server --inline",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "babel-runtime": "^5.8.0",
+    "vue": "^2.0.0-rc.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-runtime": "^6.0.0",
+    "cross-env": "^2.0.1",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb-base": "^7.0.0",
+    "eslint-friendly-formatter": "^2.0.5",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-html": "^1.3.0",
+    "eslint-plugin-import": "^1.8.1",
+    "file-loader": "^0.9.0",
+    "lodash": "^4.16.2",
+    "node-sass": "^3.9.3",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "vue-html-loader": "~1.x",
+    "vue-loader": "^9.4.2",
+    "vue-style-loader": "^1.0.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
