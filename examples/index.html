@@ -41,7 +41,8 @@
 <body>
   <div id="app">
     <div id="top_div">
-
+      <input v-model="zoom" type="number">
+      <br />
       <button name="button" v-on:click="addMarker">Add !</button>
       <ul v-for="(item, index) in markers">
         {{"Marker " + (index + 1)}}
@@ -53,10 +54,11 @@
       </ul>
     </div>
     <div id="bottom_div">
-      <v-map :zoom="zoom" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom">
+      <v-map :zoom="zoom" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
         <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
         <v-marker v-for="item in markers" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
         v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)"></v-marker>
+        <v-poly v-for="item in polylines" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
       </v-map>
     </div>
   </div>
@@ -66,13 +68,14 @@
     Vue.component('v-map', Vue2Leaflet.Map);
     Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
     Vue.component('v-marker', Vue2Leaflet.Marker);
+    Vue.component('v-poly', Vue2Leaflet.Polyline);
 
     new Vue({
       el: '#app',
       data: {
           zoom:13,
           center:[51.505, -0.09],
-          minZoom:5,
+          minZoom:1,
           maxZoom:20,
           opacity:0.6,
           url:'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token={token}',
@@ -83,12 +86,19 @@
             { position : {lat:51.8905, lng:-0.09}, draggable: true, visible: false},
             { position : {lat:51.005, lng:-0.09}, draggable: true, visible: true},
             { position : {lat:50.7605, lng:-0.09}, draggable: true, visible: false }
+          ],
+          polylines: [
+            { points : [{lat: 37.772, lng: -122.214},
+                        {lat: 21.291, lng: -157.821},
+                        {lat: -18.142, lng: -181.569},
+                        {lat: -27.467, lng: -206.973}], visible: true },
+            { points : [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]], visible: true },
           ]
       }
       ,
       methods: {
         alert(item) {
-          alert('this is ' + item.position);
+          alert('this is ' + JSON.stringify(item));
         },
         addMarker: function(event) {
           var newMarker = { position: {lat:50.5505, lng:-0.09}, draggable: true, visible: true};
@@ -99,6 +109,9 @@
         },
         markerMoved: function(event, item) {
           Vue.set(item, 'position', event.latlng);
+        },
+        zoomChanged: function(event) {
+          this.zoom = event.zoom;
         }
 
       }

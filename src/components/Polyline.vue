@@ -13,10 +13,6 @@ const events = [
   'mouseover',
   'mouseout',
   'contextmenu',
-  'dragstart',
-  'drag',
-  'dragend',
-  'move',
   'add',
   'remove',
   'popupopen',
@@ -26,25 +22,28 @@ const events = [
 ];
 
 const props = {
-  draggable: {
-    type: Boolean,
-    custom: true,
-    default: false,
+  latLngs: {
+    type: Array,
+    default: []
+  },
+  style: {
+    type: Object,
   },
   visible: {
     type: Boolean,
     custom: true,
     default: true,
   },
-  latLng: {
-    type: Object,
+  color: {
+    type: String,
+    default: 'red'
   }
 };
 
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.marker(this.latLng, { draggable: this.draggable});
+    this.mapObject = L.polyline(this.latLngs, { color: this.color });
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
@@ -61,9 +60,6 @@ export default {
         this.mapObject.addTo(parent);
       }
     },
-    setDraggable(newVal, oldVal) {
-      newVal ? this.mapObject.dragging.enable() :this.mapObject.dragging.disable();
-    },
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
       if (newVal) {
@@ -72,6 +68,9 @@ export default {
         this.parent.removeLayer(this.mapObject);
       }
     },
+    addLatLng(value) {
+      this.mapObject.addLatLng(value);
+    }
   }
 };
 </script>
