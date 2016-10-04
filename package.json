@@ -1,8 +1,8 @@
 {
   "name": "Vue2Leaflet",
+  "version": "0.0.1",
   "description": "Vue2 leaflet library",
   "author": "Mickael Bouchaud <mickael.bouchaud@gmail.com>",
-  "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
