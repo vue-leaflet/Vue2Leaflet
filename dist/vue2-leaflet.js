@@ -17194,11 +17194,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = {
 	  props: props,
 	  mounted: function mounted() {
-	    _leaflet2.default.Icon.Default.imagePath = 'http://api.tiles.mapbox.com/mapbox.js/v1.0.0beta0.0/images';
-	    new _leaflet2.default.Icon.Default({
-	      iconUrl: _leaflet2.default.Icon.Default.imagePath + "/marker-icon-green.png",
-	      iconRetinaUrl: _leaflet2.default.Icon.Default.imagePath + "/marker-icon-green-2x.png"
-	    });
 	    this.mapObject = _leaflet2.default.map('map', {
 	      center: this.center,
 	      zoom: this.zoom,
@@ -17338,7 +17333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = {
 	  props: props,
 	  mounted: function mounted() {
-	    this.mapObject = L.polyline(this.latLngs, { color: this.color });
+	    this.mapObject = L.polyline(this.latLngs, { color: this.color, noClip: true });
 	    (0, _eventsBinder2.default)(this, this.mapObject, events);
 	    (0, _propsBinder2.default)(this, this.mapObject, props);
 	    if (this.$parent._isMounted) {
