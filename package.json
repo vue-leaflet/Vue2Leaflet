@@ -10,6 +10,7 @@
   "main": "dist/vue2-leaflet.js",
   "dependencies": {
     "babel-runtime": "^5.8.0",
+    "leaflet": "^1.0.1",
     "vue": "^2.0.0-rc.8"
   },
   "devDependencies": {
