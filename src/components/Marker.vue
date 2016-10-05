@@ -44,7 +44,7 @@ const props = {
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.marker(this.latLng, { draggable: this.draggable});
+    this.mapObject = L.marker(this.latLng, { draggable: this.draggable });
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
