@@ -1,6 +1,6 @@
 {
   "name": "vue2-leaflet",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Vue2 leaflet library",
   "author": "Mickael Bouchaud <mickael.bouchaud@gmail.com>",
   "scripts": {
