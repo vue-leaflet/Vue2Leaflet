@@ -17210,7 +17210,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  methods: {
 	    setCenter: function setCenter(newVal, oldVal) {
-	      console.log(newVal);
 	      this.mapObject.setView(newVal, this.zoom);
 	    }
 	  }

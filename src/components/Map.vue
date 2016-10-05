@@ -91,7 +91,6 @@ export default {
   },
   methods: {
     setCenter(newVal, oldVal) {
-      console.log(newVal);
       this.mapObject.setView(newVal, this.zoom);
     }
   },

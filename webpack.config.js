@@ -33,7 +33,6 @@ module.exports = {
         test: /\.html$/,
         loader: 'vue-html'
       },
-      { test: /\.(png|jpg|svg)$/, loader: 'url-loader?limit=100000' }
     ]
   },
   babel: {
