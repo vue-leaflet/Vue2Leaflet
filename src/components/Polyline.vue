@@ -43,7 +43,7 @@ const props = {
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.polyline(this.latLngs, { color: this.color });
+    this.mapObject = L.polyline(this.latLngs, { color: this.color, noClip: true });
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
