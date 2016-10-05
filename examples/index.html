@@ -141,9 +141,9 @@
           minZoom:1,
           maxZoom:20,
           opacity:0.6,
-          url:'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token={token}',
-          attribution:'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-          token: 'pk.eyJ1IjoibWJvdWNoYXVkIiwiYSI6ImNpZWs0MmIxcTAwNzd0a204bjFka3ZiYXAifQ.glawT_9laPOt5sU57ajgGw',
+          url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+          attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+          token: 'your token if using mapbox',
           markers:[
             { position : {lat:51.505, lng:-0.09}, draggable: true, visible: true},
             { position : {lat:51.8905, lng:-0.09}, draggable: true, visible: false},

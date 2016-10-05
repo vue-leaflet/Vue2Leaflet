@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     deferredMountedTo(parent) {
-      console.log("deferredMountedTo");
       var that = this.mapObject;
       this.parent = parent;
       _.forEach(this.$children, (child) => {
