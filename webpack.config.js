@@ -14,6 +14,7 @@ module.exports = {
     root: path.join(__dirname, 'node_modules'),
   },
   module: {
+    noParse: /es6-promise\.js$/,
     loaders: [
       {
         test: /\.vue$/,
@@ -32,15 +33,12 @@ module.exports = {
         test: /\.html$/,
         loader: 'vue-html'
       },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: '[name].[ext]?[hash]'
-        }
-      }
+      { test: /\.(png|jpg|svg)$/, loader: 'url-loader?limit=100000' }
     ]
+  },
+  babel: {
+    presets: ['es2015', 'react', 'stage-2'],
+    plugins: ['transform-runtime']
   },
   devServer: {
     historyApiFallback: true,
