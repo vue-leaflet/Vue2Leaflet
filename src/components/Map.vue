@@ -77,6 +77,10 @@ export default {
   props: props,
   mounted() {
     L.Icon.Default.imagePath = 'http://api.tiles.mapbox.com/mapbox.js/v1.0.0beta0.0/images';
+    new L.Icon.Default({
+      iconUrl: L.Icon.Default.imagePath + "/marker-icon-green.png",
+      iconRetinaUrl: L.Icon.Default.imagePath + "/marker-icon-green-2x.png"
+    });
     this.mapObject = L.map('map', {
       center:this.center,
       zoom:this.zoom,
