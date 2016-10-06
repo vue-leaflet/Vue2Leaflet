@@ -1,6 +1,6 @@
 {
   "name": "vue2-leaflet",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Vue2 leaflet library",
   "author": "Mickael Bouchaud",
   "license": "MIT",
@@ -20,7 +20,8 @@
     "es6-promise": "^3.0.2"
   },
   "keywords": [
-    "vue", "leaflet"
+    "vue",
+    "leaflet"
   ],
   "devDependencies": {
     "babel-core": "^6.0.0",
