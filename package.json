@@ -11,7 +11,7 @@
   "main": "dist/vue2-leaflet.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KoRiGaN/Vue2Leaflet"
+    "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
   },
   "dependencies": {
     "babel-runtime": "^5.8.0",
