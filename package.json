@@ -8,6 +8,10 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "main": "dist/vue2-leaflet.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:KoRiGaN/Vue2Leaflet.git"
+  },
   "dependencies": {
     "babel-runtime": "^5.8.0",
     "leaflet": "^1.0.1",
