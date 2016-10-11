@@ -76,7 +76,7 @@ const props = {
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.map('map', {
+    this.mapObject = L.map(this.$el, {
       center:this.center,
       zoom:this.zoom,
       minZoom:this.minZoom,

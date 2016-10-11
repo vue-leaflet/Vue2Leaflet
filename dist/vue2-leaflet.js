@@ -17194,7 +17194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = {
 	  props: props,
 	  mounted: function mounted() {
-	    this.mapObject = _leaflet2.default.map('map', {
+	    this.mapObject = _leaflet2.default.map(this.$el, {
 	      center: this.center,
 	      zoom: this.zoom,
 	      minZoom: this.minZoom,
@@ -30578,7 +30578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	__vue_exports__ = __webpack_require__(6)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(18)
+	var __vue_template__ = __webpack_require__(19)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -30632,7 +30632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	__vue_exports__ = __webpack_require__(8)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(19)
+	var __vue_template__ = __webpack_require__(18)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
