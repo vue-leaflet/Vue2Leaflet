@@ -17192,6 +17192,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  maxZoom: {
 	    type: Number,
 	    default: undefined
+	  },
+	  paddingBottomRight: {
+	    custom: true,
+	    default: null
+	  },
+	  paddingTopLeft: {
+	    custom: true,
+	    default: null
+	  },
+	  padding: {
+	    custom: true,
+	    default: null
 	  }
 	};
 	
@@ -17217,7 +17229,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.mapObject.setView(newVal, this.zoom);
 	    },
 	    setBounds: function setBounds(newVal, oldVal) {
-	      this.mapObject.fitBounds(newVal);
+	      var options = {};
+	      if (this.padding) {
+	        options.padding = this.padding;
+	      } else {
+	        if (this.paddingBottomRight) {
+	          options.paddingBottomRight = this.paddingBottomRight;
+	        }
+	        if (this.paddingTopLeft) {
+	          options.paddingTopLeft = this.paddingTopLeft;
+	        }
+	      }
+	      console.log(options);
+	      this.mapObject.fitBounds(newVal, options);
+	    },
+	    setPaddingBottomRight: function setPaddingBottomRight(newVal, oldVal) {
+	      this.paddingBottomRight = newVal;
+	    },
+	    setPaddingTopLeft: function setPaddingTopLeft(newVal, oldVal) {
+	      this.paddingTopLeft = newVal;
+	    },
+	    setPadding: function setPadding(newVal, oldVal) {
+	      this.padding = newVal;
 	    }
 	  }
 	};

@@ -75,6 +75,18 @@ const props = {
     type: Number,
     default: undefined,
   },
+  paddingBottomRight: {
+    custom: true,
+    default: null,
+  },
+  paddingTopLeft: {
+    custom: true,
+    default: null
+  },
+  padding: {
+    custom: true,
+    default: null
+  }
 };
 
 export default {
@@ -98,8 +110,29 @@ export default {
       this.mapObject.setView(newVal, this.zoom);
     },
     setBounds(newVal, oldVal) {
-      this.mapObject.fitBounds(newVal);
-    }
+      var options = {};
+      if (this.padding) {
+        options.padding = this.padding;
+      } else {
+        if (this.paddingBottomRight) {
+          options.paddingBottomRight = this.paddingBottomRight;
+        }
+        if (this.paddingTopLeft) {
+          options.paddingTopLeft = this.paddingTopLeft;
+        }
+      }
+      console.log(options);
+      this.mapObject.fitBounds(newVal, options);
+    },
+    setPaddingBottomRight(newVal, oldVal) {
+      this.paddingBottomRight = newVal;
+    },
+    setPaddingTopLeft(newVal, oldVal) {
+      this.paddingTopLeft = newVal;
+    },
+    setPadding(newVal, oldVal) {
+      this.padding = newVal;
+    },
   },
 }
 </script>
