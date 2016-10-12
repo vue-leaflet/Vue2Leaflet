@@ -17177,6 +17177,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    custom: true,
 	    default: undefined
 	  },
+	  bounds: {
+	    custom: true,
+	    default: undefined
+	  },
 	  zoom: {
 	    type: Number,
 	    default: undefined
@@ -17211,6 +17215,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  methods: {
 	    setCenter: function setCenter(newVal, oldVal) {
 	      this.mapObject.setView(newVal, this.zoom);
+	    },
+	    setBounds: function setBounds(newVal, oldVal) {
+	      this.mapObject.fitBounds(newVal);
 	    }
 	  }
 	};

@@ -59,6 +59,10 @@ const props = {
     custom: true,
     default: undefined,
   },
+  bounds: {
+    custom: true,
+    default: undefined,
+  },
   zoom: {
     type: Number,
     default: undefined,
@@ -92,6 +96,9 @@ export default {
   methods: {
     setCenter(newVal, oldVal) {
       this.mapObject.setView(newVal, this.zoom);
+    },
+    setBounds(newVal, oldVal) {
+      this.mapObject.fitBounds(newVal);
     }
   },
 }

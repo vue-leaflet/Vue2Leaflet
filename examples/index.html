@@ -44,6 +44,7 @@
       <input v-model="zoom" type="number">
       <br />
       <button name="button" v-on:click="addMarker">Add !</button>
+      <button name="button" v-on:click="fitPolyline">Fit Polyline !</button>
       <ul v-for="(item, index) in markers">
         {{"Marker " + (index + 1)}}
         <input v-model="item.position.lat" type="number">
@@ -62,7 +63,7 @@
       </ul>
     </div>
     <div id="bottom_div">
-      <v-map :zoom="zoom" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
+      <v-map :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
         <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
         <v-marker v-for="item in markers" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
         v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)"></v-marker>
@@ -76,7 +77,7 @@
       </v-map>
     </div>
   </div>
-  <script src="https://rawgit.com/vuejs/vue/next/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue@2.0.2/dist/vue.js"></script>
   <script src="../dist/vue2-leaflet.js"></script>
   <script>
   var markers1 = [{ position: { lng:-1.219482, lat:47.413220}, visible: true, draggable: true},
@@ -159,7 +160,8 @@
           ],
           stuff: [
             { markers: markers1, polyline: { points : poly1, visible: true}, visible: true, markersVisible: true},
-          ]
+          ],
+          bounds: L.latLngBounds()
       }
       ,
       methods: {
@@ -178,8 +180,11 @@
         },
         zoomChanged: function(event) {
           this.zoom = event.zoom;
+        },
+        fitPolyline: function() {
+          var bounds = L.latLngBounds(markers1.map((o) => o.position));
+          this.bounds = bounds;
         }
-
       }
     });
 
