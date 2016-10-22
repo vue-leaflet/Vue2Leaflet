@@ -17240,7 +17240,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	          options.paddingTopLeft = this.paddingTopLeft;
 	        }
 	      }
-	      console.log(options);
 	      this.mapObject.fitBounds(newVal, options);
 	    },
 	    setPaddingBottomRight: function setPaddingBottomRight(newVal, oldVal) {
