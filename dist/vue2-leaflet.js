@@ -56,11 +56,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	
-	exports.Map = __webpack_require__(13);
-	exports.TileLayer = __webpack_require__(16);
-	exports.Marker = __webpack_require__(14);
-	exports.Polyline = __webpack_require__(15);
-	exports.LayerGroup = __webpack_require__(12);
+	exports.Map = __webpack_require__(17);
+	exports.TileLayer = __webpack_require__(21);
+	exports.Marker = __webpack_require__(18);
+	exports.Polyline = __webpack_require__(19);
+	exports.LayerGroup = __webpack_require__(16);
+	exports.IconDefault = __webpack_require__(15);
+	exports.Tooltip = __webpack_require__(22);
+	exports.Popup = __webpack_require__(20);
 
 /***/ },
 /* 1 */
@@ -17077,10 +17080,52 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(25)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(34)(module)))
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _propsBinder = __webpack_require__(1);
+	
+	var _propsBinder2 = _interopRequireDefault(_propsBinder);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var props = {
+	  imagePath: {
+	    type: String,
+	    custom: true,
+	    default: ""
+	  }
+	};
+	
+	exports.default = {
+	  props: props,
+	  mounted: function mounted() {
+	    L.Icon.Default.imagePath = this.imagePath;
+	    (0, _propsBinder2.default)(this, this.mapObject, props);
+	    if (this.$parent._isMounted) {
+	      this.deferredMountedTo(this.$parent.mapObject);
+	    }
+	  },
+	
+	  methods: {
+	    deferredMountedTo: function deferredMountedTo(parent) {},
+	    setImagePath: function setImagePath(newVal, oldVal) {
+	      L.Icon.Default.imagePath = newVal;
+	    }
+	  }
+	};
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17139,7 +17184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17152,11 +17197,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _vue = __webpack_require__(24);
+	var _vue = __webpack_require__(33);
 	
 	var _vue2 = _interopRequireDefault(_vue);
 	
-	var _leaflet = __webpack_require__(11);
+	var _leaflet = __webpack_require__(14);
 	
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 	
@@ -17255,7 +17300,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17289,13 +17334,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  latLng: {
 	    type: Object
+	  },
+	  title: {
+	    type: String,
+	    custom: true,
+	    default: ''
 	  }
 	};
 	
 	exports.default = {
 	  props: props,
 	  mounted: function mounted() {
-	    this.mapObject = L.marker(this.latLng, { draggable: this.draggable });
+	    this.mapObject = L.marker(this.latLng, { draggable: this.draggable, title: this.title });
 	    (0, _eventsBinder2.default)(this, this.mapObject, events);
 	    (0, _propsBinder2.default)(this, this.mapObject, props);
 	    if (this.$parent._isMounted) {
@@ -17309,6 +17359,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  methods: {
 	    deferredMountedTo: function deferredMountedTo(parent) {
 	      this.parent = parent;
+	      var that = this.mapObject;
+	      _.forEach(this.$children, function (child) {
+	        child.deferredMountedTo(that);
+	      });
 	      if (this.visible) {
 	        this.mapObject.addTo(parent);
 	      }
@@ -17328,7 +17382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17404,7 +17458,67 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 8 */
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _eventsBinder = __webpack_require__(2);
+	
+	var _eventsBinder2 = _interopRequireDefault(_eventsBinder);
+	
+	var _propsBinder = __webpack_require__(1);
+	
+	var _propsBinder2 = _interopRequireDefault(_propsBinder);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var events = ['add', 'remove', 'popupopen', 'popupclose', 'tooltipopen', 'tooltipclose'];
+	
+	var props = {
+	  content: {
+	    custom: true,
+	    default: ''
+	  }
+	};
+	
+	exports.default = {
+	  props: props,
+	  mounted: function mounted() {
+	    this.mapObject = L.popup();
+	    (0, _eventsBinder2.default)(this, this.mapObject, events);
+	    (0, _propsBinder2.default)(this, this.mapObject, props);
+	    if (this.$parent._isMounted) {
+	      this.deferredMountedTo(this.$parent.mapObject);
+	    }
+	  },
+	  beforeDestroy: function beforeDestroy() {
+	    this.setVisible(false);
+	  },
+	
+	  methods: {
+	    deferredMountedTo: function deferredMountedTo(parent) {
+	      this.parent = parent;
+	      parent.bindPopup(this.content);
+	    },
+	    setContent: function setContent(newVal, oldVal) {
+	      if (newVal) {
+	        this.parent.bindPopup(this.content);
+	      } else {
+	        if (this.parent.getTooltip) {
+	          this.parent.unbindPopup();
+	        }
+	      }
+	    }
+	  }
+	};
+
+/***/ },
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -17432,10 +17546,72 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(10)();
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _eventsBinder = __webpack_require__(2);
+	
+	var _eventsBinder2 = _interopRequireDefault(_eventsBinder);
+	
+	var _propsBinder = __webpack_require__(1);
+	
+	var _propsBinder2 = _interopRequireDefault(_propsBinder);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var events = ['add', 'remove', 'popupopen', 'popupclose', 'tooltipopen', 'tooltipclose'];
+	
+	var props = {
+	  content: {
+	    type: String,
+	    custom: true,
+	    default: ''
+	  }
+	};
+	
+	exports.default = {
+	  props: props,
+	  mounted: function mounted() {
+	    this.mapObject = L.tooltip();
+	    this.mapObject.setTooltipContent(this.content);
+	    (0, _eventsBinder2.default)(this, this.mapObject, events);
+	    (0, _propsBinder2.default)(this, this.mapObject, props);
+	    if (this.$parent._isMounted) {
+	      this.deferredMountedTo(this.$parent.mapObject);
+	    }
+	  },
+	  beforeDestroy: function beforeDestroy() {
+	    this.setVisible(false);
+	  },
+	
+	  methods: {
+	    deferredMountedTo: function deferredMountedTo(parent) {
+	      this.parent = parent;
+	      parent.bindTooltip(this.content);
+	    },
+	    setContent: function setContent(newVal, oldVal) {
+	      if (newVal) {
+	        this.parent.bindTooltip(this.content);
+	      } else {
+	        if (this.parent.getTooltip) {
+	          this.parent.unbindTooltip();
+	        }
+	      }
+	    }
+	  }
+	};
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(13)();
 	// imports
 	
 	
@@ -17446,7 +17622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 10 */
+/* 13 */
 /***/ function(module, exports) {
 
 	/*
@@ -17502,7 +17678,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 11 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -30551,7 +30727,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=leaflet-src.map
 
 /***/ },
-/* 12 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
@@ -30560,91 +30736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	__vue_exports__ = __webpack_require__(4)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(21)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	
-	/* styles */
-	__webpack_require__(23)
-	
-	/* script */
-	__vue_exports__ = __webpack_require__(5)
-	
-	/* template */
-	var __vue_template__ = __webpack_require__(17)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	
-	/* script */
-	__vue_exports__ = __webpack_require__(6)
-	
-	/* template */
-	var __vue_template__ = __webpack_require__(19)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	
-	/* script */
-	__vue_exports__ = __webpack_require__(7)
-	
-	/* template */
-	var __vue_template__ = __webpack_require__(20)
+	var __vue_template__ = __webpack_require__(28)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -30668,10 +30760,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var __vue_exports__, __vue_options__
 	
 	/* script */
-	__vue_exports__ = __webpack_require__(8)
+	__vue_exports__ = __webpack_require__(5)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(18)
+	var __vue_template__ = __webpack_require__(27)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -30690,6 +30782,171 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	
+	/* styles */
+	__webpack_require__(32)
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(6)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(23)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(7)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(25)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(8)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(26)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(9)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(30)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(10)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(24)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(11)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(29)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){with(this) {
@@ -30707,7 +30964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}}]}
 
 /***/ },
-/* 18 */
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){with(this) {
@@ -30715,23 +30972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}},staticRenderFns: []}
 
 /***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	module.exports={render:function (){with(this) {
-	  return _h("div")
-	}},staticRenderFns: []}
-
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	module.exports={render:function (){with(this) {
-	  return _h("div")
-	}},staticRenderFns: []}
-
-/***/ },
-/* 21 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){with(this) {
@@ -30739,7 +30980,49 @@ return /******/ (function(modules) { // webpackBootstrap
 	}},staticRenderFns: []}
 
 /***/ },
-/* 22 */
+/* 26 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){with(this) {
+	  return _h('div', [_t("default")])
+	}},staticRenderFns: []}
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){with(this) {
+	  return _h('div', [_t("default")])
+	}},staticRenderFns: []}
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){with(this) {
+	  return _m(0)
+	}},staticRenderFns: [function (){with(this) {
+	  return _h('div')
+	}}]}
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){with(this) {
+	  return _h("div")
+	}},staticRenderFns: []}
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){with(this) {
+	  return _h("div")
+	}},staticRenderFns: []}
+
+/***/ },
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -30961,16 +31244,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 23 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(9);
+	var content = __webpack_require__(12);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(22)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30987,7 +31270,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 24 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36497,7 +36780,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Vue;
 
 /***/ },
-/* 25 */
+/* 34 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {

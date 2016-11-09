@@ -49,6 +49,7 @@
         {{"Marker " + (index + 1)}}
         <input v-model="item.position.lat" type="number">
         <input v-model="item.position.lng" type="number">
+        <input v-model="item.tooltip" type="text">
         <input v-model="item.draggable" type="checkbox">
         <input v-model="item.visible" type="checkbox">
         <input v-on:click="removeMarker(index)" type="button" value='X'>
@@ -66,11 +67,15 @@
       <v-map :padding="[200, 200]" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
         <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
         <v-marker v-for="item in markers" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-        v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)"></v-marker>
+        v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)">
+          <v-popup :content="item.tooltip"></v-popup>
+          <v-tooltip :content="item.tooltip"></v-tooltip>
+        </v-marker>
         <v-poly v-for="item in polylines" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
         <v-group v-for="item in stuff" :visible="item.visible">
           <v-group :visible="item.markersVisible">
-            <v-marker v-for="marker in item.markers" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)"></v-marker>
+            <v-marker v-for="marker in item.markers" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)">
+            </v-marker>
           </v-group>
           <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" v-on:l-click="alert(item.polyline)"></v-poly>
         </v-group>
@@ -133,6 +138,8 @@
     Vue.component('v-marker', Vue2Leaflet.Marker);
     Vue.component('v-poly', Vue2Leaflet.Polyline);
     Vue.component('v-group', Vue2Leaflet.LayerGroup);
+    Vue.component('v-tooltip', Vue2Leaflet.Tooltip);
+    Vue.component('v-popup', Vue2Leaflet.Popup);
 
     new Vue({
       el: '#app',
@@ -146,10 +153,10 @@
           attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
           token: 'your token if using mapbox',
           markers:[
-            { position : {lat:51.505, lng:-0.09}, draggable: true, visible: true},
-            { position : {lat:51.8905, lng:-0.09}, draggable: true, visible: false},
-            { position : {lat:51.005, lng:-0.09}, draggable: true, visible: true},
-            { position : {lat:50.7605, lng:-0.09}, draggable: true, visible: false }
+            { position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true},
+            { position : {lat:51.8905, lng:-0.09}, tooltip: "tooltip for marker2", draggable: true, visible: false},
+            { position : {lat:51.005, lng:-0.09}, tooltip: "tooltip for marker3", draggable: true, visible: true},
+            { position : {lat:50.7605, lng:-0.09}, tooltip: "tooltip for marker4", draggable: true, visible: false }
           ],
           polylines: [
             { points : [{lat: 37.772, lng: -122.214},

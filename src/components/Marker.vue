@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -38,13 +41,18 @@ const props = {
   },
   latLng: {
     type: Object,
-  }
+  },
+  title: {
+    type: String,
+    custom: true,
+    default: '',
+  },
 };
 
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.marker(this.latLng, { draggable: this.draggable });
+    this.mapObject = L.marker(this.latLng, { draggable: this.draggable, title: this.title });
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
@@ -57,6 +65,10 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.parent = parent;
+      var that = this.mapObject;
+      _.forEach(this.$children, (child) => {
+        child.deferredMountedTo(that);
+      });
       if (this.visible) {
         this.mapObject.addTo(parent);
       }
