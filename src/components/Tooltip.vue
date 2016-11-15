@@ -40,7 +40,9 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.parent = parent;
-      parent.bindTooltip(this.content);
+      if (this.content) {
+        this.parent.bindTooltip(this.content);
+      }
     },
     setContent(newVal, oldVal) {
       if (newVal) {

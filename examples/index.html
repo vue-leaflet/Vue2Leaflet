@@ -67,7 +67,7 @@
       <v-map :padding="[200, 200]" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
         <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
         <v-marker v-for="item in markers" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-        v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)">
+        v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)" :icon="item.icon">
           <v-popup :content="item.tooltip"></v-popup>
           <v-tooltip :content="item.tooltip"></v-tooltip>
         </v-marker>
@@ -133,6 +133,13 @@
       { lng:-0.812988, lat:47.724545},
       { lng:-1.054688, lat:47.680183},
       { lng:-1.219482, lat:47.413220}];
+
+
+    var customIcon = L.icon({
+      iconUrl: 'images/layers.png',
+      shadowUrl: ''
+    });
+
     Vue.component('v-map', Vue2Leaflet.Map);
     Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
     Vue.component('v-marker', Vue2Leaflet.Marker);
@@ -153,10 +160,10 @@
           attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
           token: 'your token if using mapbox',
           markers:[
-            { position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true},
-            { position : {lat:51.8905, lng:-0.09}, tooltip: "tooltip for marker2", draggable: true, visible: false},
-            { position : {lat:51.005, lng:-0.09}, tooltip: "tooltip for marker3", draggable: true, visible: true},
-            { position : {lat:50.7605, lng:-0.09}, tooltip: "tooltip for marker4", draggable: true, visible: false }
+            { position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: customIcon },
+            { position : {lat:51.8905, lng:-0.09}, tooltip: "tooltip for marker2", draggable: true, visible: false, icon: "" },
+            { position : {lat:51.005, lng:-0.09}, tooltip: "tooltip for marker3", draggable: true, visible: true, icon: "" },
+            { position : {lat:50.7605, lng:-0.09}, tooltip: "tooltip for marker4", draggable: true, visible: false, icon: "" }
           ],
           polylines: [
             { points : [{lat: 37.772, lng: -122.214},

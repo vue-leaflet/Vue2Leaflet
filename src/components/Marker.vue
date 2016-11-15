@@ -47,12 +47,21 @@ const props = {
     custom: true,
     default: '',
   },
+  icon: {
+    custom: false,
+    default: '',
+  },
 };
 
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.marker(this.latLng, { draggable: this.draggable, title: this.title });
+    const options = {};
+    if (this.icon) {
+      options.icon = this.icon;
+    }
+    options.draggable = this.draggable;
+    this.mapObject = L.marker(this.latLng, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
