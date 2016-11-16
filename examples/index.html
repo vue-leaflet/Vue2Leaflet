@@ -84,6 +84,7 @@
   </div>
   <script src="https://unpkg.com/vue@2.0.2/dist/vue.js"></script>
   <script src="../dist/vue2-leaflet.js"></script>
+  <script src="js/Leaflet.Icon.Glyph.js"></script>
   <script>
   var markers1 = [{ position: { lng:-1.219482, lat:47.413220}, visible: true, draggable: true},
   { position: { lng:-1.571045, lat:47.457809}},
@@ -160,7 +161,10 @@
           attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
           token: 'your token if using mapbox',
           markers:[
-            { position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: customIcon },
+            { position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: L.icon.glyph({
+        prefix: '',
+        glyph: 'A'
+    }) },
             { position : {lat:51.8905, lng:-0.09}, tooltip: "tooltip for marker2", draggable: true, visible: false, icon: "" },
             { position : {lat:51.005, lng:-0.09}, tooltip: "tooltip for marker3", draggable: true, visible: true, icon: "" },
             { position : {lat:50.7605, lng:-0.09}, tooltip: "tooltip for marker4", draggable: true, visible: false, icon: "" }
