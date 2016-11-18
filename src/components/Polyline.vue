@@ -39,6 +39,7 @@ const props = {
   },
   color: {
     type: String,
+    custom: true,
     default: 'red'
   }
 };
@@ -69,6 +70,12 @@ export default {
         this.mapObject.addTo(this.parent);
       } else {
         this.parent.removeLayer(this.mapObject);
+      }
+    },
+    setColor(newVal, oldVal) {
+      if (newVal == oldVal) return;
+      if (newVal) {
+        this.mapObject.setStyle({ color: newVal });
       }
     },
     addLatLng(value) {
