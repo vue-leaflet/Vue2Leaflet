@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: './src/main.js',
@@ -10,6 +11,7 @@ module.exports = {
     library: ["Vue2Leaflet"],
     libraryTarget: "umd"
   },
+  externals: [nodeExternals()],
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),
   },
