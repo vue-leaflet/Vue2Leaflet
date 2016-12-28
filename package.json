@@ -47,8 +47,9 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "vue-html-loader": "~1.x",
-    "vue-loader": "^9.4.2",
+    "vue-loader": "^10.0.2",
     "vue-style-loader": "^1.0.0",
+    "vue-template-compiler": "^2.1.8",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.15.1",
     "webpack-node-externals": "^1.5.4"
