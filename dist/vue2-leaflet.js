@@ -389,14 +389,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  latLng: {
 	    type: Object
 	  },
-	  title: {
-	    type: String,
-	    custom: true,
-	    default: ''
-	  },
 	  icon: {
 	    custom: false,
-	    default: ''
+	    default: function _default() {
+	      return new L.Icon.Default();
+	    }
 	  }
 	};
 	
@@ -431,14 +428,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    },
 	    setDraggable: function setDraggable(newVal, oldVal) {
-	      newVal ? this.mapObject.dragging.enable() : this.mapObject.dragging.disable();
+	      if (this.mapObject.dragging) {
+	        newVal ? this.mapObject.dragging.enable() : this.mapObject.dragging.disable();
+	      }
 	    },
 	    setVisible: function setVisible(newVal, oldVal) {
 	      if (newVal == oldVal) return;
-	      if (newVal) {
-	        this.mapObject.addTo(this.parent);
-	      } else {
-	        this.parent.removeLayer(this.mapObject);
+	      if (this.mapObject) {
+	        if (newVal) {
+	          this.mapObject.addTo(this.parent);
+	        } else {
+	          this.parent.removeLayer(this.mapObject);
+	        }
 	      }
 	    }
 	  }
@@ -567,7 +568,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    this.setVisible(false);
+	    if (this.parent.getPopup()) {
+	      this.parent.unbindPopup();
+	    }
 	  },
 	
 	  methods: {
@@ -579,7 +582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (newVal) {
 	        this.parent.bindPopup(this.content);
 	      } else {
-	        if (this.parent.getTooltip) {
+	        if (this.parent.getPopup()) {
 	          this.parent.unbindPopup();
 	        }
 	      }
@@ -657,7 +660,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    this.setVisible(false);
+	    if (this.parent.getTooltip()) {
+	      this.parent.unbindTooltip();
+	    }
 	  },
 	
 	  methods: {
@@ -671,7 +676,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (newVal) {
 	        this.parent.bindTooltip(this.content);
 	      } else {
-	        if (this.parent.getTooltip) {
+	        if (this.parent.getTooltip()) {
 	          this.parent.unbindTooltip();
 	        }
 	      }

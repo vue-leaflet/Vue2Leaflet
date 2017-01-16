@@ -42,14 +42,9 @@ const props = {
   latLng: {
     type: Object,
   },
-  title: {
-    type: String,
-    custom: true,
-    default: '',
-  },
   icon: {
     custom: false,
-    default: '',
+    default: function() { return new L.Icon.Default(); }
   },
 };
 
@@ -83,14 +78,18 @@ export default {
       }
     },
     setDraggable(newVal, oldVal) {
-      newVal ? this.mapObject.dragging.enable() :this.mapObject.dragging.disable();
+      if (this.mapObject.dragging) {
+        newVal ? this.mapObject.dragging.enable() : this.mapObject.dragging.disable();
+      }
     },
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
-      if (newVal) {
-        this.mapObject.addTo(this.parent);
-      } else {
-        this.parent.removeLayer(this.mapObject);
+      if (this.mapObject) {
+        if (newVal) {
+          this.mapObject.addTo(this.parent);
+        } else {
+          this.parent.removeLayer(this.mapObject);
+        }
       }
     },
   }

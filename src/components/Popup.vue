@@ -19,7 +19,7 @@ const props = {
   content: {
     custom: true,
     default: '',
-  },
+  }
 };
 
 export default {
@@ -33,7 +33,9 @@ export default {
     }
   },
   beforeDestroy() {
-    this.setVisible(false);
+    if (this.parent.getPopup()) {
+      this.parent.unbindPopup();
+    }
   },
   methods: {
     deferredMountedTo(parent) {
@@ -44,11 +46,11 @@ export default {
       if (newVal) {
         this.parent.bindPopup(this.content);
       } else {
-        if (this.parent.getTooltip) {
+        if (this.parent.getPopup()) {
           this.parent.unbindPopup();
         }
       }
-    }
+    },
   }
 };
 </script>

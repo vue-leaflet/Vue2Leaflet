@@ -20,7 +20,7 @@ const props = {
     type: String,
     custom: true,
     default: '',
-  },
+  }
 };
 
 export default {
@@ -35,7 +35,9 @@ export default {
     }
   },
   beforeDestroy() {
-    this.setVisible(false);
+    if (this.parent.getTooltip()) {
+      this.parent.unbindTooltip();
+    }
   },
   methods: {
     deferredMountedTo(parent) {
@@ -48,7 +50,7 @@ export default {
       if (newVal) {
         this.parent.bindTooltip(this.content);
       } else {
-        if (this.parent.getTooltip) {
+        if (this.parent.getTooltip()) {
           this.parent.unbindTooltip();
         }
       }
