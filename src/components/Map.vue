@@ -104,6 +104,9 @@ export default {
     _.forEach(this.$children, (child) => {
       child.deferredMountedTo(that);
     });
+    if (this.bounds != undefined) {
+      this.setBounds(this.bounds);
+    }
   },
   methods: {
     setCenter(newVal, oldVal) {

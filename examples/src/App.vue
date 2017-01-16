@@ -11,6 +11,9 @@
         <a href="#" @click="currentView='custom-path'">Custom path</a>
       </li>
       <li>
+        <a href="#" @click="currentView='set-bounds'">Set bounds</a>
+      </li>
+      <li>
         <a href="#" @click="currentView='example'">Some examples</a>
       </li>
     </div>
@@ -27,6 +30,7 @@ import Simple from './components/Simple'
 import Example from './components/Example'
 import MultiMap from './components/MultiMap'
 import CustomPath from './components/CustomPath'
+import SetBounds from './components/SetBounds'
 
 Vue.component('v-map', Vue2Leaflet.Map);
 Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
@@ -43,7 +47,8 @@ export default {
     Simple,
     Example,
     MultiMap,
-    CustomPath
+    CustomPath,
+    SetBounds
   },
   data () {
     return {

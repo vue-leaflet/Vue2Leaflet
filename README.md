@@ -21,7 +21,7 @@ npm run dev
 If you make changes to the library you should run 'npm run build' again in the root folder.
 The dev server should detect modification and reload the demo
 ## How to display a map
-Register Map and TielLayer components from Vue2Leaflet
+Register Map and TileLayer components from Vue2Leaflet
 
 ``` javascript
 Vue.component('v-map', Vue2Leaflet.Map);

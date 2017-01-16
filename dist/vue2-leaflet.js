@@ -321,6 +321,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _lodash2.default.forEach(this.$children, function (child) {
 	      child.deferredMountedTo(that);
 	    });
+	    if (this.bounds != undefined) {
+	      this.setBounds(this.bounds);
+	    }
 	  },
 	
 	  methods: {
