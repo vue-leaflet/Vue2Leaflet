@@ -104,15 +104,17 @@ export default {
     _.forEach(this.$children, (child) => {
       child.deferredMountedTo(that);
     });
-    if (this.bounds != undefined) {
-      this.setBounds(this.bounds);
-    }
+    this.setBounds(this.bounds);
   },
   methods: {
     setCenter(newVal, oldVal) {
       this.mapObject.setView(newVal, this.zoom);
     },
     setBounds(newVal, oldVal) {
+      if (!(newVal && newVal.isValid())) {
+        return;
+      }
+
       var options = {};
       if (this.padding) {
         options.padding = this.padding;
