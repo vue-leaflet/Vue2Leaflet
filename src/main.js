@@ -6,3 +6,4 @@ exports.LayerGroup = require("./components/LayerGroup.vue");
 exports.IconDefault = require("./components/IconDefault.vue");
 exports.Tooltip = require("./components/Tooltip.vue");
 exports.Popup = require("./components/Popup.vue");
+exports.LCircle = require("./components/LCircle.vue");

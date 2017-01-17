@@ -16,6 +16,9 @@
       <li>
         <a href="#" @click="currentView='example'">Some examples</a>
       </li>
+      <li>
+        <a href="#" @click="currentView='circle-test'">Circle</a>
+      </li>
     </div>
     <div class="container">
       <component :is="currentView"></component>
@@ -31,6 +34,7 @@ import Example from './components/Example'
 import MultiMap from './components/MultiMap'
 import CustomPath from './components/CustomPath'
 import SetBounds from './components/SetBounds'
+import CircleTest from './components/CircleTest'
 
 Vue.component('v-map', Vue2Leaflet.Map);
 Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
@@ -40,6 +44,7 @@ Vue.component('v-group', Vue2Leaflet.LayerGroup);
 Vue.component('v-tooltip', Vue2Leaflet.Tooltip);
 Vue.component('v-popup', Vue2Leaflet.Popup);
 Vue.component('v-icondefault', Vue2Leaflet.IconDefault);
+Vue.component('v-circle', Vue2Leaflet.LCircle);
 
 export default {
   name: 'app',
@@ -48,7 +53,8 @@ export default {
     Example,
     MultiMap,
     CustomPath,
-    SetBounds
+    SetBounds,
+    CircleTest
   },
   data () {
     return {

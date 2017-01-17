@@ -7,7 +7,7 @@
 		exports["Vue2Leaflet"] = factory(require("lodash"), require("leaflet"), require("vue"));
 	else
 		root["Vue2Leaflet"] = factory(root["lodash"], root["leaflet"], root["vue"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_32__, __WEBPACK_EXTERNAL_MODULE_33__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_35__, __WEBPACK_EXTERNAL_MODULE_36__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -56,14 +56,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	
-	exports.Map = __webpack_require__(16);
-	exports.TileLayer = __webpack_require__(20);
-	exports.Marker = __webpack_require__(17);
-	exports.Polyline = __webpack_require__(18);
-	exports.LayerGroup = __webpack_require__(15);
-	exports.IconDefault = __webpack_require__(14);
-	exports.Tooltip = __webpack_require__(21);
-	exports.Popup = __webpack_require__(19);
+	exports.Map = __webpack_require__(18);
+	exports.TileLayer = __webpack_require__(22);
+	exports.Marker = __webpack_require__(19);
+	exports.Polyline = __webpack_require__(20);
+	exports.LayerGroup = __webpack_require__(17);
+	exports.IconDefault = __webpack_require__(15);
+	exports.Tooltip = __webpack_require__(23);
+	exports.Popup = __webpack_require__(21);
+	exports.LCircle = __webpack_require__(16);
 
 /***/ },
 /* 1 */
@@ -188,6 +189,220 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
+	var _eventsBinder = __webpack_require__(2);
+	
+	var _eventsBinder2 = _interopRequireDefault(_eventsBinder);
+	
+	var _propsBinder = __webpack_require__(1);
+	
+	var _propsBinder2 = _interopRequireDefault(_propsBinder);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var events = ['click', 'dblclick', 'mousedown', 'mouseover', 'mouseout', 'contextmenu', 'add', 'remove', 'popupopen', 'popupclose', 'tooltipopen', 'tooltipclose'];
+	
+	var props = {
+	  latLng: {
+	    type: Object
+	  },
+	  radius: {
+	    type: Number
+	  },
+	  style: {
+	    type: Object
+	  },
+	  visible: {
+	    type: Boolean,
+	    custom: true,
+	    default: true
+	  },
+	  color: {
+	    type: String,
+	    custom: true,
+	    default: '#3388ff'
+	  },
+	  weight: {
+	    type: Number,
+	    custom: true,
+	    default: 3
+	  },
+	  opacity: {
+	    type: Number,
+	    custom: true,
+	    default: 1.0
+	  },
+	  lineCap: {
+	    type: String,
+	    custom: true,
+	    default: 'round'
+	  },
+	  lineJoin: {
+	    type: String,
+	    custom: true,
+	    default: 'round'
+	  },
+	  dashArray: {
+	    type: String,
+	    custom: true,
+	    default: null
+	  },
+	  dashOffset: {
+	    type: String,
+	    custom: true,
+	    default: null
+	  },
+	  fill: {
+	    type: Boolean,
+	    custom: true,
+	    default: true
+	  },
+	  fillColor: {
+	    type: String,
+	    custom: true,
+	    default: '#3388ff'
+	  },
+	  fillOpacity: {
+	    type: Number,
+	    custom: true,
+	    default: 0.2
+	  },
+	  fillRule: {
+	    type: String,
+	    custom: true,
+	    default: 'evenodd'
+	  },
+	  className: {
+	    type: String,
+	    custom: true,
+	    default: null
+	  }
+	
+	};
+	
+	exports.default = {
+	  props: props,
+	  mounted: function mounted() {
+	    var options = {};
+	    if (this.color) {
+	      options.color = this.color;
+	    }
+	    if (this.radius) {
+	      options.radius = this.radius;
+	    }
+	    this.mapObject = L.circle(this.latLng, options);
+	    (0, _eventsBinder2.default)(this, this.mapObject, events);
+	    (0, _propsBinder2.default)(this, this.mapObject, props);
+	    if (this.$parent._isMounted) {
+	      this.deferredMountedTo(this.$parent.mapObject);
+	    }
+	  },
+	  beforeDestroy: function beforeDestroy() {
+	    this.setVisible(false);
+	  },
+	
+	  methods: {
+	    deferredMountedTo: function deferredMountedTo(parent) {
+	      this.parent = parent;
+	      if (this.visible) {
+	        this.mapObject.addTo(parent);
+	      }
+	    },
+	    setVisible: function setVisible(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.addTo(this.parent);
+	      } else {
+	        this.parent.removeLayer(this.mapObject);
+	      }
+	    },
+	    setColor: function setColor(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ color: newVal });
+	      }
+	    },
+	    setWeight: function setWeight(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ weight: newVal });
+	      }
+	    },
+	    setOpacity: function setOpacity(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ opacity: newVal });
+	      }
+	    },
+	    setLineCap: function setLineCap(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ lineCap: newVal });
+	      }
+	    },
+	    setLineJoin: function setLineJoin(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ lineJoin: newVal });
+	      }
+	    },
+	    setDashArray: function setDashArray(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ dashArray: newVal });
+	      }
+	    },
+	    setDashOffset: function setDashOffset(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ dashOffset: newVal });
+	      }
+	    },
+	    setFill: function setFill(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ fill: newVal });
+	      }
+	    },
+	    setFillColor: function setFillColor(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ fillColor: newVal });
+	      }
+	    },
+	    setFillOpacity: function setFillOpacity(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ fillOpacity: newVal });
+	      }
+	    },
+	    setFillRule: function setFillRule(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ fillRule: newVal });
+	      }
+	    },
+	    setClassName: function setClassName(newVal, oldVal) {
+	      if (newVal == oldVal) return;
+	      if (newVal) {
+	        this.mapObject.setStyle({ className: newVal });
+	      }
+	    },
+	    addLatLng: function addLatLng(value) {
+	      this.mapObject.addLatLng(value);
+	    }
+	  }
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _propsBinder = __webpack_require__(1);
 	
 	var _propsBinder2 = _interopRequireDefault(_propsBinder);
@@ -238,7 +453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -251,11 +466,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _vue = __webpack_require__(33);
+	var _vue = __webpack_require__(36);
 	
 	var _vue2 = _interopRequireDefault(_vue);
 	
-	var _leaflet = __webpack_require__(32);
+	var _leaflet = __webpack_require__(35);
 	
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 	
@@ -357,7 +572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -449,7 +664,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -532,7 +747,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -594,7 +809,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -622,7 +837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -688,10 +903,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(13)();
+	exports = module.exports = __webpack_require__(14)();
 	// imports
 	
 	
@@ -702,7 +917,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/*
@@ -758,7 +973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
@@ -768,36 +983,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	__vue_exports__ = __webpack_require__(4)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(29)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	var __vue_styles__ = {}
-	
-	/* script */
-	__vue_exports__ = __webpack_require__(5)
-	
-	/* template */
-	var __vue_template__ = __webpack_require__(28)
+	var __vue_template__ = __webpack_require__(32)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -822,14 +1008,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 	
-	/* styles */
-	__webpack_require__(31)
-	
 	/* script */
-	__vue_exports__ = __webpack_require__(6)
+	__vue_exports__ = __webpack_require__(5)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(24)
+	var __vue_template__ = __webpack_require__(27)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -855,10 +1038,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var __vue_styles__ = {}
 	
 	/* script */
-	__vue_exports__ = __webpack_require__(7)
+	__vue_exports__ = __webpack_require__(6)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(22)
+	var __vue_template__ = __webpack_require__(31)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -883,11 +1066,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 	
+	/* styles */
+	__webpack_require__(34)
+	
 	/* script */
-	__vue_exports__ = __webpack_require__(8)
+	__vue_exports__ = __webpack_require__(7)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(27)
+	var __vue_template__ = __webpack_require__(26)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -913,10 +1099,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var __vue_styles__ = {}
 	
 	/* script */
-	__vue_exports__ = __webpack_require__(9)
+	__vue_exports__ = __webpack_require__(8)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(25)
+	var __vue_template__ = __webpack_require__(24)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -942,10 +1128,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var __vue_styles__ = {}
 	
 	/* script */
-	__vue_exports__ = __webpack_require__(10)
+	__vue_exports__ = __webpack_require__(9)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(23)
+	var __vue_template__ = __webpack_require__(30)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -971,10 +1157,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var __vue_styles__ = {}
 	
 	/* script */
-	__vue_exports__ = __webpack_require__(11)
+	__vue_exports__ = __webpack_require__(10)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(26)
+	var __vue_template__ = __webpack_require__(28)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -994,6 +1180,64 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(11)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(25)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(12)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(29)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1001,7 +1245,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	},staticRenderFns: []}
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1009,7 +1253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	},staticRenderFns: []}
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1027,22 +1271,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}]}
 
 /***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c("div")
-	},staticRenderFns: []}
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c("div")
-	},staticRenderFns: []}
-
-/***/ },
 /* 27 */
 /***/ function(module, exports) {
 
@@ -1055,7 +1283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_vm._t("default")], 2)
+	  return _c("div")
 	},staticRenderFns: []}
 
 /***/ },
@@ -1063,11 +1291,35 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div')
+	  return _c("div")
 	},staticRenderFns: []}
 
 /***/ },
 /* 30 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', [_vm._t("default")], 2)
+	},staticRenderFns: []}
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', [_vm._t("default")], 2)
+	},staticRenderFns: []}
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div')
+	},staticRenderFns: []}
+
+/***/ },
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1289,16 +1541,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 31 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(12);
+	var content = __webpack_require__(13);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(30)(content, {});
+	var update = __webpack_require__(33)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1315,13 +1567,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 32 */
+/* 35 */
 /***/ function(module, exports) {
 
 	module.exports = require("leaflet");
 
 /***/ },
-/* 33 */
+/* 36 */
 /***/ function(module, exports) {
 
 	module.exports = require("vue");
