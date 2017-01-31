@@ -38,6 +38,10 @@ Add the map to your template
 zoom, center, and url are properties or options of corresponding leaflet object.
 See leaflet documentation for more informations <http://leafletjs.com/reference-1.0.0.html>
 
+Make sure the leaflet.css is included, either via a HTML link tag or in your component style via something like
+``` css
+@import "~leaflet/dist/leaflet.css";
+```
 If you need to set a custom icon path for leaflet you can directly set Leaflet option like this:
 ``` javascript
 L.Icon.Default.imagePath = "/examples/images/";
