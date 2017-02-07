@@ -544,11 +544,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.mapObject.setView(newVal, this.zoom);
 	    },
 	    setBounds: function setBounds(newVal, oldVal) {
-	      var options = {};
-	
 	      if (!(newVal && newVal.isValid())) {
 	        return;
 	      }
+	
+	      var options = {};
 	      if (this.padding) {
 	        options.padding = this.padding;
 	      } else {
@@ -559,10 +559,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          options.paddingTopLeft = this.paddingTopLeft;
 	        }
 	      }
-	      console.log(newVal);
-	      console.log(options);
 	      this.mapObject.fitBounds(newVal, options);
-	      console.log("C");
 	    },
 	    setPaddingBottomRight: function setPaddingBottomRight(newVal, oldVal) {
 	      this.paddingBottomRight = newVal;
