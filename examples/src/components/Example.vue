@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue2Leaflet from 'vue2-leaflet';
 import Glyph from 'leaflet.icon.glyph';
 
 var markers1 = [
@@ -108,6 +108,15 @@ var customIcon = L.icon({
 
 export default {
   name: 'example',
+  components: {
+    'v-map': Vue2Leaflet.Map,
+    'v-tilelayer' :Vue2Leaflet.TileLayer,
+    'v-marker': Vue2Leaflet.Marker,
+    'v-poly': Vue2Leaflet.Polyline,
+    'v-group': Vue2Leaflet.LayerGroup,
+    'v-tooltip': Vue2Leaflet.Tooltip,
+    'v-popup': Vue2Leaflet.Popup
+  },
   data () {
     return {
       zoom:13,

@@ -17,10 +17,15 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue2Leaflet from 'vue2-leaflet';
 
 export default {
   name: 'CircleTest',
+  components: {
+    'v-map': Vue2Leaflet.Map,
+    'v-tilelayer' :Vue2Leaflet.TileLayer,
+    'v-circle': Vue2Leaflet.LCircle
+  },
   data () {
     return {
       zoom:13,

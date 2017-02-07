@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue2Leaflet from 'vue2-leaflet';
 
 var markers1 = [
   { position: { lng:-1.219482, lat:47.413220}, visible: true, draggable: true},
@@ -89,6 +89,13 @@ var poly1 = [
 
 export default {
   name: 'multi_map',
+  components: {
+    'v-map': Vue2Leaflet.Map,
+    'v-tilelayer' :Vue2Leaflet.TileLayer,
+    'v-marker': Vue2Leaflet.Marker,
+    'v-poly': Vue2Leaflet.Polyline,
+    'v-group': Vue2Leaflet.LayerGroup
+  },
   data () {
     return {
       zoom: 13,

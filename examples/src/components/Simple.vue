@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="top_div">
-      <h2>Simple map</h2>
+      <h2>Simple</h2>
         Marker is placed at {{ marker.lat }}, {{ marker.lng }}
       </br>
     </div>
@@ -15,10 +15,15 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue2Leaflet from 'vue2-leaflet';
 
 export default {
   name: 'example',
+  components: {
+    'v-map': Vue2Leaflet.Map,
+    'v-tilelayer' :Vue2Leaflet.TileLayer,
+    'v-marker': Vue2Leaflet.Marker
+  },
   data () {
     return {
       zoom:13,

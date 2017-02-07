@@ -15,12 +15,18 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue2Leaflet from 'vue2-leaflet';
+
 var corner1 = L.latLng(40.712, -74.227);
 var corner2 = L.latLng(40.774, -74.125);
 
 export default {
   name: 'set-bounds',
+  components: {
+    'v-map': Vue2Leaflet.Map,
+    'v-tilelayer' :Vue2Leaflet.TileLayer,
+    'v-marker': Vue2Leaflet.Marker
+  },
   data () {
     return {
       zoom:13,

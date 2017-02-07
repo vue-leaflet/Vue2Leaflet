@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <div id="side">
       <li>
         <a href="#" @click="currentView='simple'">Simple map</a>
@@ -27,24 +27,13 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import Vue2Leaflet from 'vue2-leaflet';
+
 import Simple from './components/Simple'
 import Example from './components/Example'
 import MultiMap from './components/MultiMap'
 import CustomPath from './components/CustomPath'
 import SetBounds from './components/SetBounds'
 import CircleTest from './components/CircleTest'
-
-Vue.component('v-map', Vue2Leaflet.Map);
-Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
-Vue.component('v-marker', Vue2Leaflet.Marker);
-Vue.component('v-poly', Vue2Leaflet.Polyline);
-Vue.component('v-group', Vue2Leaflet.LayerGroup);
-Vue.component('v-tooltip', Vue2Leaflet.Tooltip);
-Vue.component('v-popup', Vue2Leaflet.Popup);
-Vue.component('v-icondefault', Vue2Leaflet.IconDefault);
-Vue.component('v-circle', Vue2Leaflet.LCircle);
 
 export default {
   name: 'app',
@@ -73,9 +62,6 @@ export default {
 }
 @import "../../node_modules/leaflet/dist/leaflet.css";
 
-#app {
-}
-
 #side {
   float:left;
   width:200px;
@@ -86,6 +72,7 @@ export default {
 }
 #top_div {
   position: absolute;
+  overflow-x: auto;
   top: 0;
   right: 0;
   left: 200px;
