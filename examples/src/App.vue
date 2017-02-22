@@ -20,7 +20,7 @@
         <a href="#" @click="currentView='circle-test'">Circle</a>
       </li>
       <li>
-        <a href="#" @click="currentView='geo-j-s-o-n'">GeoJSON</a>
+        <a href="#" @click="currentView='geo-json'">GeoJSON</a>
       </li>
     </div>
     <div class="container">
@@ -48,7 +48,7 @@ export default {
     CustomPath,
     SetBounds,
     CircleTest,
-    GeoJSON
+    'geo-json': GeoJSON
   },
   data () {
     return {

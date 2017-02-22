@@ -201,6 +201,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	exports.default = {
+	  name: 'geo-json',
 	  props: ['geojson', 'options'],
 	  mounted: function mounted() {
 	    this.$geoJSON = L.geoJSON(this.geojson, this.options);
