@@ -19,6 +19,9 @@
       <li>
         <a href="#" @click="currentView='circle-test'">Circle</a>
       </li>
+      <li>
+        <a href="#" @click="currentView='geo-j-s-o-n'">GeoJSON</a>
+      </li>
     </div>
     <div class="container">
       <component :is="currentView"></component>
@@ -34,6 +37,7 @@ import MultiMap from './components/MultiMap'
 import CustomPath from './components/CustomPath'
 import SetBounds from './components/SetBounds'
 import CircleTest from './components/CircleTest'
+import GeoJSON from './components/GeoJSON'
 
 export default {
   name: 'app',
@@ -43,7 +47,8 @@ export default {
     MultiMap,
     CustomPath,
     SetBounds,
-    CircleTest
+    CircleTest,
+    GeoJSON
   },
   data () {
     return {
