@@ -86,6 +86,10 @@ const props = {
   padding: {
     custom: true,
     default: null
+  },
+  worldCopyJump: {
+    type: Boolean,
+    default: false
   }
 };
 
@@ -97,6 +101,7 @@ export default {
       zoom:this.zoom,
       minZoom:this.minZoom,
       maxZoom:this.maxZoom,
+      worldCopyJump:this.worldCopyJump
     });
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
