@@ -51,7 +51,7 @@ const events = [
   'locationfound',
   'locationerror',
   'popupopen',
-  'popupclose',
+  'popupclose'
 ];
 
 const props = {
@@ -105,6 +105,9 @@ export default {
       child.deferredMountedTo(that);
     });
     this.setBounds(this.bounds);
+    this.mapObject.whenReady(function() {
+      this.$emit('l-ready')
+    }, this);
   },
   methods: {
     setCenter(newVal, oldVal) {
