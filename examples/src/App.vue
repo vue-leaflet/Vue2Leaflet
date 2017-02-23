@@ -19,6 +19,9 @@
       <li>
         <a href="#" @click="currentView='circle-test'">Circle</a>
       </li>
+      <li>
+        <a href="#" @click="currentView='world-copy-jump'">Jump on World Copy</a>
+      </li>
     </div>
     <div class="container">
       <component :is="currentView"></component>
@@ -34,6 +37,7 @@ import MultiMap from './components/MultiMap'
 import CustomPath from './components/CustomPath'
 import SetBounds from './components/SetBounds'
 import CircleTest from './components/CircleTest'
+import WorldCopyJump from './components/WorldCopyJump'
 
 export default {
   name: 'app',
@@ -43,7 +47,8 @@ export default {
     MultiMap,
     CustomPath,
     SetBounds,
-    CircleTest
+    CircleTest,
+    WorldCopyJump
   },
   data () {
     return {
