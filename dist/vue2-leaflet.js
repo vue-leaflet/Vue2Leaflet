@@ -215,6 +215,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    addGeoJSONData: function addGeoJSONData(geojsonData) {
 	      this.$geoJSON.addData(geojsonData);
+	    },
+	    getGeoJSONData: function getGeoJSONData() {
+	      return this.$geoJSON.toGeoJSON();
+	    },
+	    getBounds: function getBounds() {
+	      return this.$geoJSON.getBounds();
 	    }
 	  }
 	};

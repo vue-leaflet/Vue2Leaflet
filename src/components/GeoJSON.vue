@@ -17,6 +17,12 @@ export default {
     },
     addGeoJSONData(geojsonData) {
       this.$geoJSON.addData(geojsonData);
+    },
+    getGeoJSONData() {
+      return this.$geoJSON.toGeoJSON();
+    },
+    getBounds() {
+      return this.$geoJSON.getBounds();
     }
   }
 };
