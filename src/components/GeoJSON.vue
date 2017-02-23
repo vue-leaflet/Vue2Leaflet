@@ -14,6 +14,9 @@ export default {
       _.forEach(this.$children, (child) => {
         child.deferredMountedTo(that);
       });
+    },
+    addData(geojsonData) {
+      this.$geoJSON.addData(geojsonData);
     }
   }
 };
