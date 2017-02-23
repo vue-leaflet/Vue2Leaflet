@@ -600,6 +600,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  padding: {
 	    custom: true,
 	    default: null
+	  },
+	  worldCopyJump: {
+	    type: Boolean,
+	    default: false
 	  }
 	};
 	
@@ -610,7 +614,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      center: this.center,
 	      zoom: this.zoom,
 	      minZoom: this.minZoom,
-	      maxZoom: this.maxZoom
+	      maxZoom: this.maxZoom,
+	      worldCopyJump: this.worldCopyJump
 	    });
 	    (0, _eventsBinder2.default)(this, this.mapObject, events);
 	    (0, _propsBinder2.default)(this, this.mapObject, props);
@@ -619,6 +624,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      child.deferredMountedTo(that);
 	    });
 	    this.setBounds(this.bounds);
+	    this.mapObject.whenReady(function () {
+	      this.$emit('l-ready');
+	    }, this);
 	  },
 	
 	  methods: {

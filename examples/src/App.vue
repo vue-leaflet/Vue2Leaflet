@@ -20,6 +20,9 @@
         <a href="#" @click="currentView='circle-test'">Circle</a>
       </li>
       <li>
+        <a href="#" @click="currentView='world-copy-jump'">Jump on World Copy</a>
+      </li>
+      <li>
         <a href="#" @click="currentView='geo-json'">GeoJSON</a>
       </li>
     </div>
@@ -37,6 +40,7 @@ import MultiMap from './components/MultiMap'
 import CustomPath from './components/CustomPath'
 import SetBounds from './components/SetBounds'
 import CircleTest from './components/CircleTest'
+import WorldCopyJump from './components/WorldCopyJump'
 import GeoJSON from './components/GeoJSON'
 
 export default {
@@ -48,6 +52,7 @@ export default {
     CustomPath,
     SetBounds,
     CircleTest,
+    WorldCopyJump,
     'geo-json': GeoJSON
   },
   data () {
