@@ -15,7 +15,7 @@ export default {
         child.deferredMountedTo(that);
       });
     },
-    addData(geojsonData) {
+    addGeoJSONData(geojsonData) {
       this.$geoJSON.addData(geojsonData);
     }
   }

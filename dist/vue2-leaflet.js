@@ -213,7 +213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        child.deferredMountedTo(that);
 	      });
 	    },
-	    addData: function addData(geojsonData) {
+	    addGeoJSONData: function addGeoJSONData(geojsonData) {
 	      this.$geoJSON.addData(geojsonData);
 	    }
 	  }
