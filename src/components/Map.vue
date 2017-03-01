@@ -51,7 +51,7 @@ const events = [
   'locationfound',
   'locationerror',
   'popupopen',
-  'popupclose',
+  'popupclose'
 ];
 
 const props = {
@@ -86,6 +86,10 @@ const props = {
   padding: {
     custom: true,
     default: null
+  },
+  worldCopyJump: {
+    type: Boolean,
+    default: false
   }
 };
 
@@ -97,6 +101,7 @@ export default {
       zoom:this.zoom,
       minZoom:this.minZoom,
       maxZoom:this.maxZoom,
+      worldCopyJump:this.worldCopyJump
     });
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
@@ -105,6 +110,9 @@ export default {
       child.deferredMountedTo(that);
     });
     this.setBounds(this.bounds);
+    this.mapObject.whenReady(function() {
+      this.$emit('l-ready')
+    }, this);
   },
   methods: {
     setCenter(newVal, oldVal) {
