@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("lodash"), require("leaflet"), require("vue"));
+		module.exports = factory(require("leaflet"), require("lodash"), require("babel-runtime/core-js/get-iterator"), require("vue"));
 	else if(typeof define === 'function' && define.amd)
-		define(["lodash", "leaflet", "vue"], factory);
+		define(["leaflet", "lodash", "babel-runtime/core-js/get-iterator", "vue"], factory);
 	else if(typeof exports === 'object')
-		exports["Vue2Leaflet"] = factory(require("lodash"), require("leaflet"), require("vue"));
+		exports["Vue2Leaflet"] = factory(require("leaflet"), require("lodash"), require("babel-runtime/core-js/get-iterator"), require("vue"));
 	else
-		root["Vue2Leaflet"] = factory(root["lodash"], root["leaflet"], root["vue"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_40__, __WEBPACK_EXTERNAL_MODULE_41__) {
+		root["Vue2Leaflet"] = factory(root["leaflet"], root["lodash"], root["babel-runtime/core-js/get-iterator"], root["vue"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_47__, __WEBPACK_EXTERNAL_MODULE_48__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -56,16 +56,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	
-	exports.Map = __webpack_require__(21);
-	exports.TileLayer = __webpack_require__(25);
-	exports.Marker = __webpack_require__(22);
-	exports.Polyline = __webpack_require__(23);
-	exports.LayerGroup = __webpack_require__(20);
-	exports.GeoJSON = __webpack_require__(17);
-	exports.IconDefault = __webpack_require__(18);
-	exports.Tooltip = __webpack_require__(26);
-	exports.Popup = __webpack_require__(24);
-	exports.LCircle = __webpack_require__(19);
+	exports.Map = __webpack_require__(24);
+	exports.TileLayer = __webpack_require__(28);
+	exports.Marker = __webpack_require__(25);
+	exports.Polyline = __webpack_require__(26);
+	exports.LayerGroup = __webpack_require__(23);
+	exports.GeoJSON = __webpack_require__(20);
+	exports.IconDefault = __webpack_require__(21);
+	exports.Tooltip = __webpack_require__(29);
+	exports.Popup = __webpack_require__(27);
+	exports.LCircle = __webpack_require__(22);
+	exports.WMSTileLayer = __webpack_require__(30);
+	exports.WMSTileLayers = __webpack_require__(31);
 
 /***/ },
 /* 1 */
@@ -130,7 +132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _lodash = __webpack_require__(4);
+	var _lodash = __webpack_require__(5);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -170,7 +172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _lodash = __webpack_require__(4);
+	var _lodash = __webpack_require__(5);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -189,10 +191,16 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 4 */
 /***/ function(module, exports) {
 
-	module.exports = require("lodash");
+	module.exports = require("leaflet");
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+	module.exports = require("lodash");
+
+/***/ },
+/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -226,7 +234,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -268,7 +276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -482,7 +490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -541,7 +549,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -550,15 +558,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _lodash = __webpack_require__(4);
+	var _lodash = __webpack_require__(5);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _vue = __webpack_require__(41);
+	var _vue = __webpack_require__(48);
 	
 	var _vue2 = _interopRequireDefault(_vue);
 	
-	var _leaflet = __webpack_require__(40);
+	var _leaflet = __webpack_require__(4);
 	
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 	
@@ -670,7 +678,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -762,7 +770,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -845,7 +853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -907,7 +915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -935,7 +943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1001,10 +1009,106 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _leaflet = __webpack_require__(4);
+	
+	var _leaflet2 = _interopRequireDefault(_leaflet);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  props: ['baseurl', 'format', 'transparent', 'ids', 'crs'],
+	  mounted: function mounted() {
+	    this.$tileLayer = _leaflet2.default.tileLayer.wms(this.baseurl, {
+	      format: this.format,
+	      transparent: this.transparent,
+	      layers: this.ids,
+	      crs: this.crs
+	    });
+	  },
+	
+	  methods: {
+	    deferredMountedTo: function deferredMountedTo(parent) {
+	      this.$tileLayer.addTo(parent);
+	    }
+	  }
+	};
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _getIterator2 = __webpack_require__(47);
+	
+	var _getIterator3 = _interopRequireDefault(_getIterator2);
+	
+	var _leaflet = __webpack_require__(4);
+	
+	var _leaflet2 = _interopRequireDefault(_leaflet);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  props: ['baseurl', 'format', 'transparent', 'layers', 'crs'],
+	  mounted: function mounted() {
+	    this.$basemaps = {};
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
+	
+	    try {
+	      for (var _iterator = (0, _getIterator3.default)(this.layers), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        var layer = _step.value;
+	
+	        this.$basemaps[layer.name] = _leaflet2.default.tileLayer.wms(this.baseurl, {
+	          format: this.format,
+	          transparent: this.transparent,
+	          layers: layer.id,
+	          crs: this.crs
+	        });
+	      }
+	    } catch (err) {
+	      _didIteratorError = true;
+	      _iteratorError = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion && _iterator.return) {
+	          _iterator.return();
+	        }
+	      } finally {
+	        if (_didIteratorError) {
+	          throw _iteratorError;
+	        }
+	      }
+	    }
+	  },
+	
+	  methods: {
+	    deferredMountedTo: function deferredMountedTo(parent) {
+	      _leaflet2.default.control.layers(this.$basemaps).addTo(parent);
+	    }
+	  }
+	};
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(19)();
 	// imports
 	
 	
@@ -1015,7 +1119,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
+/* 19 */
 /***/ function(module, exports) {
 
 	/*
@@ -1071,68 +1175,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Component = __webpack_require__(1)(
-	  /* script */
-	  __webpack_require__(5),
-	  /* template */
-	  __webpack_require__(28),
-	  /* scopeId */
-	  null,
-	  /* cssModules */
-	  null
-	)
-	
-	module.exports = Component.exports
-
-
-/***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Component = __webpack_require__(1)(
 	  /* script */
 	  __webpack_require__(6),
 	  /* template */
-	  __webpack_require__(27),
-	  /* scopeId */
-	  null,
-	  /* cssModules */
-	  null
-	)
-	
-	module.exports = Component.exports
-
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Component = __webpack_require__(1)(
-	  /* script */
-	  __webpack_require__(7),
-	  /* template */
-	  __webpack_require__(34),
-	  /* scopeId */
-	  null,
-	  /* cssModules */
-	  null
-	)
-	
-	module.exports = Component.exports
-
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Component = __webpack_require__(1)(
-	  /* script */
-	  __webpack_require__(8),
-	  /* template */
-	  __webpack_require__(33),
+	  __webpack_require__(35),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1146,15 +1196,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	/* styles */
-	__webpack_require__(37)
-	
 	var Component = __webpack_require__(1)(
 	  /* script */
-	  __webpack_require__(9),
+	  __webpack_require__(7),
 	  /* template */
-	  __webpack_require__(29),
+	  __webpack_require__(40),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1170,9 +1216,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(1)(
 	  /* script */
-	  __webpack_require__(10),
+	  __webpack_require__(8),
 	  /* template */
-	  __webpack_require__(32),
+	  __webpack_require__(37),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1188,9 +1234,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(1)(
 	  /* script */
-	  __webpack_require__(11),
+	  __webpack_require__(9),
 	  /* template */
-	  __webpack_require__(36),
+	  __webpack_require__(32),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1204,11 +1250,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
+	
+	/* styles */
+	__webpack_require__(44)
+	
 	var Component = __webpack_require__(1)(
 	  /* script */
-	  __webpack_require__(12),
+	  __webpack_require__(10),
 	  /* template */
-	  __webpack_require__(35),
+	  __webpack_require__(36),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1224,9 +1274,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(1)(
 	  /* script */
-	  __webpack_require__(13),
+	  __webpack_require__(11),
 	  /* template */
-	  __webpack_require__(30),
+	  __webpack_require__(33),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1242,9 +1292,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(1)(
 	  /* script */
-	  __webpack_require__(14),
+	  __webpack_require__(12),
 	  /* template */
-	  __webpack_require__(31),
+	  __webpack_require__(43),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1256,53 +1306,93 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 27 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div')
-	},staticRenderFns: []}
+	var Component = __webpack_require__(1)(
+	  /* script */
+	  __webpack_require__(13),
+	  /* template */
+	  __webpack_require__(42),
+	  /* scopeId */
+	  null,
+	  /* cssModules */
+	  null
+	)
+	
+	module.exports = Component.exports
+
 
 /***/ },
 /* 28 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c("div")
-	},staticRenderFns: []}
+	var Component = __webpack_require__(1)(
+	  /* script */
+	  __webpack_require__(14),
+	  /* template */
+	  __webpack_require__(39),
+	  /* scopeId */
+	  null,
+	  /* cssModules */
+	  null
+	)
+	
+	module.exports = Component.exports
+
 
 /***/ },
 /* 29 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
-	    staticClass: "map-container"
-	  }, [_vm._m(0), _vm._v(" "), _c('div', [_vm._t("default")], 2)])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
-	    staticClass: "map-container"
-	  }, [_c('div', {
-	    attrs: {
-	      "id": "map"
-	    }
-	  })])
-	}]}
+	var Component = __webpack_require__(1)(
+	  /* script */
+	  __webpack_require__(15),
+	  /* template */
+	  __webpack_require__(34),
+	  /* scopeId */
+	  null,
+	  /* cssModules */
+	  null
+	)
+	
+	module.exports = Component.exports
+
 
 /***/ },
 /* 30 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c("div")
-	},staticRenderFns: []}
+	var Component = __webpack_require__(1)(
+	  /* script */
+	  __webpack_require__(16),
+	  /* template */
+	  __webpack_require__(38),
+	  /* scopeId */
+	  null,
+	  /* cssModules */
+	  null
+	)
+	
+	module.exports = Component.exports
+
 
 /***/ },
 /* 31 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c("div")
-	},staticRenderFns: []}
+	var Component = __webpack_require__(1)(
+	  /* script */
+	  __webpack_require__(17),
+	  /* template */
+	  __webpack_require__(41),
+	  /* scopeId */
+	  null,
+	  /* cssModules */
+	  null
+	)
+	
+	module.exports = Component.exports
+
 
 /***/ },
 /* 32 */
@@ -1325,7 +1415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_vm._t("default")], 2)
+	  return _c("div")
 	},staticRenderFns: []}
 
 /***/ },
@@ -1341,27 +1431,93 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: "map-container"
+	  }, [_vm._m(0), _vm._v(" "), _c('div', [_vm._t("default")], 2)])
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: "map-container"
+	  }, [_c('div', {
+	    attrs: {
+	      "id": "map"
+	    }
+	  })])
+	}]}
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', [_vm._t("default")], 2)
 	},staticRenderFns: []}
 
 /***/ },
-/* 37 */
+/* 38 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c("div")
+	},staticRenderFns: []}
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c("div")
+	},staticRenderFns: []}
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div')
+	},staticRenderFns: []}
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c("div")
+	},staticRenderFns: []}
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c("div")
+	},staticRenderFns: []}
+
+/***/ },
+/* 43 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', [_vm._t("default")], 2)
+	},staticRenderFns: []}
+
+/***/ },
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(15);
+	var content = __webpack_require__(18);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	if(content.locals) module.exports = content.locals;
 	// add the styles to the DOM
-	var update = __webpack_require__(38)("27cb3c18", content, true);
+	var update = __webpack_require__(45)("c1b0e3fa", content, true);
 	// Hot Module Replacement
 	if(false) {
 	 // When the styles change, update the <style> tags
 	 if(!content.locals) {
-	   module.hot.accept("!!../../node_modules/css-loader/index.js?minimize!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-22963f5a!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Map.vue", function() {
-	     var newContent = require("!!../../node_modules/css-loader/index.js?minimize!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-22963f5a!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Map.vue");
+	   module.hot.accept("!!../../node_modules/css-loader/index.js?minimize!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-63022b53!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Map.vue", function() {
+	     var newContent = require("!!../../node_modules/css-loader/index.js?minimize!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-63022b53!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Map.vue");
 	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 	     update(newContent);
 	   });
@@ -1371,7 +1527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 38 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1390,7 +1546,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  ) }
 	}
 	
-	var listToStyles = __webpack_require__(39)
+	var listToStyles = __webpack_require__(46)
 	
 	/*
 	type StyleObject = {
@@ -1607,7 +1763,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 39 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/**
@@ -1640,13 +1796,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 40 */
+/* 47 */
 /***/ function(module, exports) {
 
-	module.exports = require("leaflet");
+	module.exports = require("babel-runtime/core-js/get-iterator");
 
 /***/ },
-/* 41 */
+/* 48 */
 /***/ function(module, exports) {
 
 	module.exports = require("vue");
