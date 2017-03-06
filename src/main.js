@@ -8,3 +8,5 @@ exports.IconDefault = require("./components/IconDefault.vue");
 exports.Tooltip = require("./components/Tooltip.vue");
 exports.Popup = require("./components/Popup.vue");
 exports.LCircle = require("./components/LCircle.vue");
+exports.WMSTileLayer = require("./components/WMSTileLayer.vue");
+exports.WMSTileLayers = require("./components/WMSTileLayers.vue");
