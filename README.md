@@ -2,6 +2,24 @@
 
 > Vue2 component that helps with leaflet interaction
 
+## Implemented Components
+
+-   [x] Map
+-   [x] Marker
+-   [x] Popup
+-   [x] Tooltip
+-   [x] TileLayer
+-   [ ] TileLayer.WMS
+-   [ ] ImageOverlay
+-   [x] Polyline
+-   [ ] Polygon
+-   [ ] Rectangle
+-   [x] Circle
+-   [ ] CircleMarker
+-   [x] LayerGroup
+-   [ ] FeatureGroup
+-   [x] GeoJSON
+
 ## Build Setup
 
 ``` bash
@@ -58,3 +76,20 @@ npm run dev
 Go to <http://localhost:8080/examples/simple.html> to see a simple example displaying a marker
 
 Go to <http://localhost:8080/examples/multi_map.html> to see two map with binding to the same data source
+
+## Authors
+
+Mickaël Bouchaud
+
+Inspired by many map wrapper (google and leaflet) for many framework (React, Angular and Vue 1.0)
+
+## Contributors
+
+Thanks goes to these wonderful people:
+
+*   [@zuck](https://github.com/zuck)
+*   [@zuck](https://github.com/SiggyF)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

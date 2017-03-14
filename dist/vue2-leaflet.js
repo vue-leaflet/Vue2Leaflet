@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("lodash"), require("leaflet"), require("vue"));
+		module.exports = factory(require("babel-runtime/core-js/object/keys"), require("leaflet"), require("vue"));
 	else if(typeof define === 'function' && define.amd)
-		define(["lodash", "leaflet", "vue"], factory);
+		define(["babel-runtime/core-js/object/keys", "leaflet", "vue"], factory);
 	else if(typeof exports === 'object')
-		exports["Vue2Leaflet"] = factory(require("lodash"), require("leaflet"), require("vue"));
+		exports["Vue2Leaflet"] = factory(require("babel-runtime/core-js/object/keys"), require("leaflet"), require("vue"));
 	else
-		root["Vue2Leaflet"] = factory(root["lodash"], root["leaflet"], root["vue"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_40__, __WEBPACK_EXTERNAL_MODULE_41__) {
+		root["Vue2Leaflet"] = factory(root["babel-runtime/core-js/object/keys"], root["leaflet"], root["vue"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_39__, __WEBPACK_EXTERNAL_MODULE_40__, __WEBPACK_EXTERNAL_MODULE_41__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -56,16 +56,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	
-	exports.Map = __webpack_require__(21);
-	exports.TileLayer = __webpack_require__(25);
-	exports.Marker = __webpack_require__(22);
-	exports.Polyline = __webpack_require__(23);
-	exports.LayerGroup = __webpack_require__(20);
-	exports.GeoJSON = __webpack_require__(17);
-	exports.IconDefault = __webpack_require__(18);
-	exports.Tooltip = __webpack_require__(26);
-	exports.Popup = __webpack_require__(24);
-	exports.LCircle = __webpack_require__(19);
+	exports.Map = __webpack_require__(20);
+	exports.TileLayer = __webpack_require__(24);
+	exports.Marker = __webpack_require__(21);
+	exports.Polyline = __webpack_require__(22);
+	exports.LayerGroup = __webpack_require__(19);
+	exports.GeoJSON = __webpack_require__(16);
+	exports.IconDefault = __webpack_require__(17);
+	exports.Tooltip = __webpack_require__(25);
+	exports.Popup = __webpack_require__(23);
+	exports.LCircle = __webpack_require__(18);
 
 /***/ },
 /* 1 */
@@ -130,9 +130,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _lodash = __webpack_require__(4);
+	var _keys = __webpack_require__(39);
 	
-	var _lodash2 = _interopRequireDefault(_lodash);
+	var _keys2 = _interopRequireDefault(_keys);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -141,28 +141,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	exports.default = function (vueElement, leafletElement, props, options) {
-	  _lodash2.default.forEach(props, function (_ref, attribute) {
-	    var twoWay = _ref.twoWay,
-	        type = _ref.type,
-	        custom = _ref.custom,
-	        eventName = _ref.eventName;
+	  var keys = (0, _keys2.default)(props);
 	
-	    var setMethodName = 'set' + capitalizeFirstLetter(attribute);
-	    vueElement.$watch(attribute, function (newVal, oldVal) {
-	      if (custom) {
+	  var _loop = function _loop() {
+	    var key = keys[i];
+	    var setMethodName = 'set' + capitalizeFirstLetter(key);
+	    var deepValue = props[key].type === Object;
+	    if (props[key].custom) {
+	      vueElement.$watch(key, function (newVal, oldVal) {
 	        vueElement[setMethodName](newVal, oldVal);
-	      } else {
+	      }, {
+	        deep: deepValue
+	      });
+	    } else {
+	      vueElement.$watch(key, function (newVal, oldVal) {
 	        leafletElement[setMethodName](newVal);
-	      }
-	    }, {
-	      deep: type === Object
-	    });
-	  });
+	      }, {
+	        deep: deepValue
+	      });
+	    }
+	  };
+	
+	  for (var i = 0; i < keys.length; i++) {
+	    _loop();
+	  }
 	};
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -170,29 +177,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _lodash = __webpack_require__(4);
-	
-	var _lodash2 = _interopRequireDefault(_lodash);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
 	exports.default = function (vueElement, leaflet, events) {
-	  _lodash2.default.forEach(events, function (eventName) {
-	    var exposedName = 'l-' + eventName;
+	  var _loop = function _loop() {
+	    var exposedName = 'l-' + events[i];
+	    var eventName = events[i];
 	    leaflet.on(eventName, function (ev) {
 	      vueElement.$emit(exposedName, ev);
 	    });
-	  });
+	  };
+	
+	  for (var i = 0; i < events.length; i++) {
+	    _loop();
+	  }
 	};
 
 /***/ },
 /* 4 */
-/***/ function(module, exports) {
-
-	module.exports = require("lodash");
-
-/***/ },
-/* 5 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -209,9 +209,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  methods: {
 	    deferredMountedTo: function deferredMountedTo(parent) {
 	      this.$geoJSON.addTo(parent);
-	      _.forEach(this.$children, function (child) {
-	        child.deferredMountedTo(that);
-	      });
+	      var that = this.mapObject;
+	      for (var i = 0; i < this.$children.length; i++) {
+	        this.$children[i].deferredMountedTo(that);
+	      }
 	    },
 	    addGeoJSONData: function addGeoJSONData(geojsonData) {
 	      this.$geoJSON.addData(geojsonData);
@@ -226,7 +227,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -268,7 +269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -482,7 +483,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -521,10 +522,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  methods: {
 	    deferredMountedTo: function deferredMountedTo(parent) {
 	      var that = this.mapObject;
+	      for (var i = 0; i < this.$children.length; i++) {
+	        this.$children[i].deferredMountedTo(that);
+	      }
 	      this.parent = parent;
-	      _.forEach(this.$children, function (child) {
-	        child.deferredMountedTo(that);
-	      });
 	      if (this.visible) {
 	        this.mapObject.addTo(parent);
 	      }
@@ -541,7 +542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -549,10 +550,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	var _lodash = __webpack_require__(4);
-	
-	var _lodash2 = _interopRequireDefault(_lodash);
 	
 	var _vue = __webpack_require__(41);
 	
@@ -625,10 +622,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    (0, _eventsBinder2.default)(this, this.mapObject, events);
 	    (0, _propsBinder2.default)(this, this.mapObject, props);
-	    var that = this.mapObject;
-	    _lodash2.default.forEach(this.$children, function (child) {
-	      child.deferredMountedTo(that);
-	    });
+	    for (var i = 0; i < this.$children.length; i++) {
+	      this.$children[i].deferredMountedTo(this.mapObject);
+	    }
 	    this.setBounds(this.bounds);
 	    this.mapObject.whenReady(function () {
 	      this.$emit('l-ready');
@@ -655,6 +651,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	          options.paddingTopLeft = this.paddingTopLeft;
 	        }
 	      }
+	      if (this.maxZoom != null) {
+	        options.maxZoom = this.maxZoom;
+	      }
 	      this.mapObject.fitBounds(newVal, options);
 	    },
 	    setPaddingBottomRight: function setPaddingBottomRight(newVal, oldVal) {
@@ -670,7 +669,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -736,9 +735,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    deferredMountedTo: function deferredMountedTo(parent) {
 	      this.parent = parent;
 	      var that = this.mapObject;
-	      _.forEach(this.$children, function (child) {
-	        child.deferredMountedTo(that);
-	      });
+	      for (var i = 0; i < this.$children.length; i++) {
+	        this.$children[i].deferredMountedTo(that);
+	      }
 	      if (this.visible) {
 	        this.mapObject.addTo(parent);
 	      }
@@ -762,7 +761,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -845,7 +844,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -907,7 +906,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -927,15 +926,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  methods: {
 	    deferredMountedTo: function deferredMountedTo(parent) {
 	      this.$tileLayer.addTo(parent);
-	      _.forEach(this.$children, function (child) {
-	        child.deferredMountedTo(that);
-	      });
+	      var that = this.mapObject;
+	      for (var i = 0; i < this.$children.length; i++) {
+	        this.$children[i].deferredMountedTo(that);
+	      }
 	    }
 	  }
 	};
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1001,10 +1001,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 	
 	
@@ -1015,7 +1015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports) {
 
 	/*
@@ -1071,6 +1071,24 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Component = __webpack_require__(1)(
+	  /* script */
+	  __webpack_require__(4),
+	  /* template */
+	  __webpack_require__(35),
+	  /* scopeId */
+	  null,
+	  /* cssModules */
+	  null
+	)
+	
+	module.exports = Component.exports
+
+
+/***/ },
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -1078,7 +1096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(5),
 	  /* template */
-	  __webpack_require__(28),
+	  __webpack_require__(26),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1096,7 +1114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(6),
 	  /* template */
-	  __webpack_require__(27),
+	  __webpack_require__(30),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1114,7 +1132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(7),
 	  /* template */
-	  __webpack_require__(34),
+	  __webpack_require__(31),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1128,11 +1146,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
+	
+	/* styles */
+	__webpack_require__(36)
+	
 	var Component = __webpack_require__(1)(
 	  /* script */
 	  __webpack_require__(8),
 	  /* template */
-	  __webpack_require__(33),
+	  __webpack_require__(28),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1146,10 +1168,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	/* styles */
-	__webpack_require__(37)
-	
 	var Component = __webpack_require__(1)(
 	  /* script */
 	  __webpack_require__(9),
@@ -1172,7 +1190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(10),
 	  /* template */
-	  __webpack_require__(32),
+	  __webpack_require__(27),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1190,7 +1208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(11),
 	  /* template */
-	  __webpack_require__(36),
+	  __webpack_require__(33),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1208,7 +1226,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(12),
 	  /* template */
-	  __webpack_require__(35),
+	  __webpack_require__(34),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1226,7 +1244,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(13),
 	  /* template */
-	  __webpack_require__(30),
+	  __webpack_require__(32),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1238,24 +1256,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Component = __webpack_require__(1)(
-	  /* script */
-	  __webpack_require__(14),
-	  /* template */
-	  __webpack_require__(31),
-	  /* scopeId */
-	  null,
-	  /* cssModules */
-	  null
-	)
-	
-	module.exports = Component.exports
-
-
-/***/ },
-/* 27 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1263,15 +1263,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	},staticRenderFns: []}
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c("div")
+	  return _c('div', [_vm._t("default")], 2)
 	},staticRenderFns: []}
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1289,11 +1289,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	}]}
 
 /***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', [_vm._t("default")], 2)
+	},staticRenderFns: []}
+
+/***/ },
 /* 30 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c("div")
+	  return _c('div', [_vm._t("default")], 2)
 	},staticRenderFns: []}
 
 /***/ },
@@ -1301,7 +1309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c("div")
+	  return _c('div', [_vm._t("default")], 2)
 	},staticRenderFns: []}
 
 /***/ },
@@ -1309,7 +1317,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_vm._t("default")], 2)
+	  return _c("div")
 	},staticRenderFns: []}
 
 /***/ },
@@ -1317,7 +1325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_vm._t("default")], 2)
+	  return _c("div")
 	},staticRenderFns: []}
 
 /***/ },
@@ -1325,7 +1333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_vm._t("default")], 2)
+	  return _c("div")
 	},staticRenderFns: []}
 
 /***/ },
@@ -1338,30 +1346,22 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 36 */
-/***/ function(module, exports) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_vm._t("default")], 2)
-	},staticRenderFns: []}
-
-/***/ },
-/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(15);
+	var content = __webpack_require__(14);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	if(content.locals) module.exports = content.locals;
 	// add the styles to the DOM
-	var update = __webpack_require__(38)("27cb3c18", content, true);
+	var update = __webpack_require__(37)("12f9e1fa", content, true);
 	// Hot Module Replacement
 	if(false) {
 	 // When the styles change, update the <style> tags
 	 if(!content.locals) {
-	   module.hot.accept("!!../../node_modules/css-loader/index.js?minimize!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-22963f5a!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Map.vue", function() {
-	     var newContent = require("!!../../node_modules/css-loader/index.js?minimize!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-22963f5a!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Map.vue");
+	   module.hot.accept("!!../../node_modules/css-loader/index.js?minimize!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-32da8ba1!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Map.vue", function() {
+	     var newContent = require("!!../../node_modules/css-loader/index.js?minimize!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-32da8ba1!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Map.vue");
 	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 	     update(newContent);
 	   });
@@ -1371,7 +1371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 38 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1390,7 +1390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  ) }
 	}
 	
-	var listToStyles = __webpack_require__(39)
+	var listToStyles = __webpack_require__(38)
 	
 	/*
 	type StyleObject = {
@@ -1607,7 +1607,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 39 */
+/* 38 */
 /***/ function(module, exports) {
 
 	/**
@@ -1638,6 +1638,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return styles
 	}
 
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	module.exports = require("babel-runtime/core-js/object/keys");
 
 /***/ },
 /* 40 */

@@ -11,9 +11,10 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.$geoJSON.addTo(parent);
-      _.forEach(this.$children, (child) => {
-        child.deferredMountedTo(that);
-      });
+      var that = this.mapObject;
+      for (var i = 0; i < this.$children.length; i++) {
+        this.$children[i].deferredMountedTo(that);
+      }
     },
     addGeoJSONData(geojsonData) {
       this.$geoJSON.addData(geojsonData);

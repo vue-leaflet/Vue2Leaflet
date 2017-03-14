@@ -1,10 +1,9 @@
-import _ from 'lodash';
-
 export default (vueElement, leaflet, events) => {
-  _.forEach(events, (eventName) => {
-    const exposedName = 'l-' + eventName;
+  for (var i = 0; i < events.length; i++) {
+    const exposedName = 'l-' + events[i];
+    const eventName = events[i];
     leaflet.on(eventName, (ev) => {
       vueElement.$emit(exposedName, ev);
     });
-  });
+  }
 }

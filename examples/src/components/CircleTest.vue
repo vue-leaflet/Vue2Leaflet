@@ -2,9 +2,9 @@
   <div>
     <div id="top_div">
       <h2>Circle</h2>
-        Circle is centered at {{ circleCenter.lat }}, {{ circleCenter.lng }} with a radius of {{ circleRadius }}
+        Circle is centered at {{ circleCenter.lat }}, {{ circleCenter.lng }} with a radius of {{ circleRadius }} meters
       </br>
-      <input v-model="circleRadius" type="number">
+      <input v-model.number="circleRadius" type="number">
       <br />
     </div>
     <div id="bottom_div">

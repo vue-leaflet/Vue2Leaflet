@@ -2,27 +2,50 @@
   <div>
     <div id="top_div">
       <h2>Some examples</h2>
-      <input v-model="zoom" type="number">
-      <br />
-      <button name="button" v-on:click="addMarker">Add !</button>
-      <button name="button" v-on:click="fitPolyline">Fit Polyline !</button>
-      <ul v-for="(item, index) in markers">
-        {{"Marker " + (index + 1)}}
-        <input v-model="item.position.lat" type="number">
-        <input v-model="item.position.lng" type="number">
-        <input v-model="item.tooltip" type="text">
-        <input v-model="item.draggable" type="checkbox">
-        <input v-model="item.visible" type="checkbox">
-        <input v-on:click="removeMarker(index)" type="button" value='X'>
-      </ul>
-      <ul v-for="(item, index) in stuff">
-        {{"Layer " + (index + 1)}} visible
-        <input v-model="item.visible" type="checkbox">
-        Markers visible
-        <input v-model="item.markersVisible" type="checkbox">
-        Polyline
-        <input v-model="item.polyline.visible" type="checkbox">
-      </ul>
+      Zoom Level :
+      <input v-model.number="zoom" type="number">
+      <button name="button" v-on:click="fitPolyline">Fit map to polyline</button>
+      <hr/>
+      <h3>List of Markers</h3>
+      <button name="button" v-on:click="addMarker">Add a marker</button></br>
+      <table>
+        <tr>
+          <th>Marker</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Tooltip</th>
+          <th>Is Draggable ?</th>
+          <th>Is Visible ?</th>
+          <th>Remove</th>
+        </tr>
+
+        <tr v-for="(item, index) in markers">
+          <td>{{"Marker " + (index + 1)}}</td>
+          <td><input v-model="item.position.lat" type="number"></td>
+          <td><input v-model="item.position.lng" type="number"></td>
+          <td><input v-model="item.tooltip" type="text"></td>
+          <td style="text-align: center"><input v-model="item.draggable" type="checkbox"></td>
+          <td style="text-align: center"><input v-model="item.visible" type="checkbox"></td>
+          <td style="text-align: center"><input v-on:click="removeMarker(index)" type="button" value='X'></td>
+        </tr>
+      </table>
+      <hr/>
+      <table>
+        <tr>
+          <th>Layer</th>
+          <th>Is Visible ?</th>
+          <th>Are Markers visible ?</th>
+          <th>Is Polyline visible ?</th>
+        </tr>
+
+        <tr v-for="(item, index) in stuff">
+          <td>{{"Layer " + (index + 1)}}</td>
+          <td style="text-align: center"><input v-model="item.visible" type="checkbox"></td>
+          <td style="text-align: center"><input v-model="item.markersVisible" type="checkbox"></td>
+          <td style="text-align: center"><input v-model="item.polyline.visible" type="checkbox"></td>
+        </tr>
+      </table>
+      <hr/>
     </div>
     <div id="bottom_div">
       <v-map :padding="[200, 200]" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
@@ -46,6 +69,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import Vue2Leaflet from 'vue2-leaflet';
 import Glyph from 'leaflet.icon.glyph';
 

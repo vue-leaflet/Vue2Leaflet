@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import _ from 'lodash';
 import Vue from 'vue'
 import L from 'leaflet';
 import eventsBinder from '../utils/eventsBinder.js';
@@ -105,10 +104,9 @@ export default {
     });
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
-    var that = this.mapObject;
-    _.forEach(this.$children, (child) => {
-      child.deferredMountedTo(that);
-    });
+    for (var i = 0; i < this.$children.length; i++) {
+      this.$children[i].deferredMountedTo(this.mapObject);
+    }
     this.setBounds(this.bounds);
     this.mapObject.whenReady(function() {
       this.$emit('l-ready')
@@ -133,6 +131,9 @@ export default {
         if (this.paddingTopLeft) {
           options.paddingTopLeft = this.paddingTopLeft;
         }
+      }
+      if (this.maxZoom != null) {
+        options.maxZoom = this.maxZoom;
       }
       this.mapObject.fitBounds(newVal, options);
     },

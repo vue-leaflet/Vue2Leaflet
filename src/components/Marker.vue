@@ -59,7 +59,7 @@ export default {
     this.mapObject = L.marker(this.latLng, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
-    if (this.$parent._isMounted)  {
+    if (this.$parent._isMounted) {
       this.deferredMountedTo(this.$parent.mapObject);
     }
   },
@@ -70,9 +70,9 @@ export default {
     deferredMountedTo(parent) {
       this.parent = parent;
       var that = this.mapObject;
-      _.forEach(this.$children, (child) => {
-        child.deferredMountedTo(that);
-      });
+      for (var i = 0; i < this.$children.length; i++) {
+        this.$children[i].deferredMountedTo(that);
+      }
       if (this.visible) {
         this.mapObject.addTo(parent);
       }
