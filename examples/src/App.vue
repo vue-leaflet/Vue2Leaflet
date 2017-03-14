@@ -25,6 +25,9 @@
       <li>
         <a href="#" @click="currentView='geo-json'">GeoJSON</a>
       </li>
+      <li>
+        <a href="#" @click="currentView='wms-layers'">WMS Tile Layers</a>
+      </li>
     </div>
     <div class="container">
       <component :is="currentView"></component>
@@ -42,6 +45,7 @@ import SetBounds from './components/SetBounds'
 import CircleTest from './components/CircleTest'
 import WorldCopyJump from './components/WorldCopyJump'
 import GeoJSON from './components/GeoJSON'
+import WMSLayers from './components/WMSLayers'
 
 export default {
   name: 'app',
@@ -53,7 +57,8 @@ export default {
     SetBounds,
     CircleTest,
     WorldCopyJump,
-    'geo-json': GeoJSON
+    'geo-json': GeoJSON,
+    'wms-layers': WMSLayers
   },
   data () {
     return {

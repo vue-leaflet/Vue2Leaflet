@@ -132,9 +132,9 @@ export default {
           options.paddingTopLeft = this.paddingTopLeft;
         }
       }
-      if (this.maxZoom != null) {
-        options.maxZoom = this.maxZoom;
-      }
+      // if (this.maxZoom != null) {
+      //   options.maxZoom = this.maxZoom;
+      // }
       this.mapObject.fitBounds(newVal, options);
     },
     setPaddingBottomRight(newVal, oldVal) {

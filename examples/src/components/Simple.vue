@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="top_div">
-      <h2>Simple</h2>
+      <h2>Simple map</h2>
         Marker is placed at {{ marker.lat }}, {{ marker.lng }}
       </br>
     </div>

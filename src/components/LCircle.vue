@@ -208,9 +208,6 @@ export default {
       if (newVal) {
         this.mapObject.setStyle({ className: newVal });
       }
-    },
-    addLatLng(value) {
-      this.mapObject.addLatLng(value);
     }
   }
 };

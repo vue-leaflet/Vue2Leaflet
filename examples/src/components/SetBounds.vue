@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="top_div">
-      <h2>Test Bounds</h2>
+      <h2>Set Bounds</h2>
         Marker is placed at {{ marker.lat }}, {{ marker.lng }}
       </br>
     </div>
