@@ -9,7 +9,7 @@
 -   [x] Popup
 -   [x] Tooltip
 -   [x] TileLayer
--   [ ] TileLayer.WMS
+-   [x] TileLayer.WMS
 -   [ ] ImageOverlay
 -   [x] Polyline
 -   [ ] Polygon
