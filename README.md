@@ -1,5 +1,4 @@
-# Vue2Leaflet
-
+# Vue2Leaflet ![alt text](https://travis-ci.org/KoRiGaN/Vue2Leaflet.svg?branch=master "Travis-ci")
 > Vue2 component that helps with leaflet interaction
 
 ## Implemented Components

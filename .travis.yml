@@ -1,3 +1,15 @@
+sudo:
+  false
+
+language:
+  node_js
+
+node_js:
+  - 6
+
+script:
+  - npm run build
+
 deploy:
   provider: npm
   email: mickael.bouchaud@gmail.com
