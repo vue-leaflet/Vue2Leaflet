@@ -88,7 +88,8 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
 Thanks goes to these wonderful people:
 
 *   [@zuck](https://github.com/zuck)
-*   [@zuck](https://github.com/SiggyF)
+*   [@SiggyF](https://github.com/SiggyF)
+*   [@nikos](https://github.com/nikos)
 
 ## License
 

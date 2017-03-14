@@ -7,7 +7,7 @@
       <b>Top</b> map has <i>worldCopyJump</i> disabled, while <b>bottom</b> map has this feature enabled.
       <br/>
       When enabled, the marker is repeated on each "copy" of the world. Scroll both to left or right to see it in action.
-      <v-map :zoom="zoom" :center="center" :minZoom="5" :worldCopyJump="false">
+      <v-map style="height: 80%" :zoom="zoom" :center="center" :minZoom="5" :worldCopyJump="false">
         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
         <v-marker :lat-lng="marker"></v-marker>
       </v-map>
