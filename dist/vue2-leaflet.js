@@ -656,9 +656,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          options.paddingTopLeft = this.paddingTopLeft;
 	        }
 	      }
-	      if (this.maxZoom != null) {
-	        options.maxZoom = this.maxZoom;
-	      }
+	
 	      this.mapObject.fitBounds(newVal, options);
 	    },
 	    setPaddingBottomRight: function setPaddingBottomRight(newVal, oldVal) {
