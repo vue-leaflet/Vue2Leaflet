@@ -1,4 +1,11 @@
-# Vue2Leaflet ![alt text](https://travis-ci.org/KoRiGaN/Vue2Leaflet.svg?branch=master "Travis-ci")
+# Vue2Leaflet
+
+<a href="https://travis-ci.org/KoRiGaN/Vue2Leaflet"><img src="https://travis-ci.org/KoRiGaN/Vue2Leaflet.svg?branch=master" alt="Downloads"></a>
+<a href="https://www.npmjs.com/package/vue2-leaflet"><img src="https://img.shields.io/npm/dt/vue2-leaflet.svg" alt="Downloads"></a>
+<a href="https://www.npmjs.com/package/vue2-leaflet"><img src="https://img.shields.io/npm/v/vue2-leaflet.svg" alt="Version"></a>
+<a href="https://www.npmjs.com/package/vue2-leaflet"><img src="https://img.shields.io/npm/l/vue2-leaflet.svg" alt="License"></a>
+
+
 > Vue2 component that helps with leaflet interaction
 
 ## Implemented Components
