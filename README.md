@@ -8,7 +8,52 @@
 
 > Vue2 component that helps with leaflet interaction
 
-## Implemented Components
+
+## How to display a map with a marker
+
+Register Map and TileLayer components from Vue2Leaflet
+``` javascript
+Vue.component('v-map', Vue2Leaflet.Map);
+Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
+Vue.component('v-marker', Vue2Leaflet.Marker);
+```
+
+Add the map to your page
+``` html
+<div id="app" style="height: 100%">
+  <v-map :zoom=13 :center="[47.413220, -1.219482]">
+    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
+    <v-marker :lat-lng="[47.413220, -1.219482]"></v-marker>
+  </v-map>
+</div>
+```
+
+``` javascript
+new Vue({ el: '#app'});
+```
+
+Make sure the leaflet.css is included, either via a HTML link tag or in your vue component style
+
+``` css
+@import "~leaflet/dist/leaflet.css";
+```
+Here is the result
+
+![Image of Map](https://korigan.github.com/Vue2Leaflet/images/example_map.png)
+
+## [Live Demo here](https://korigan.github.io/Vue2Leaflet/)
+
+More live demos will come soon
+
+### If you want to try it here is a [JS Fiddle Hello Map of the World](https://jsfiddle.net/Boumi/k04zpLx9/)
+
+## How to install
+
+``` bash
+$ npm install vue
+```
+
+## List of currently implemented components
 
 -   [x] Map
 -   [x] Marker
@@ -29,6 +74,7 @@
 ## Build Setup
 
 ``` bash
+Once you have cloned this repo :
 # install dependencies
 npm install
 
@@ -37,37 +83,7 @@ npm run build
 
 ```
 
-## How to display a map
-Register Map and TileLayer components from Vue2Leaflet
-
-``` javascript
-Vue.component('v-map', Vue2Leaflet.Map);
-Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
-```
-v-map and v-tilelayer are names you can choose that must match the tag your are using in your template.
-
-Add the map to your template
-``` html
-<v-map :zoom=13 :center="[47.413220, -1.219482]">
-	<v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-</v-map>
-```
-zoom, center, and url are properties or options of corresponding leaflet object.
-See leaflet documentation for more informations <http://leafletjs.com/reference-1.0.0.html>
-
-Make sure the leaflet.css is included, either via a HTML link tag or in your component style via something like
-``` css
-@import "~leaflet/dist/leaflet.css";
-```
-If you need to set a custom icon path for leaflet you can directly set Leaflet option like this:
-``` javascript
-L.Icon.Default.imagePath = "/examples/images/";
-```
-or add a IconDefault element in your map like this (see custom_path.html for a complete example):
-``` html
-<v-icondefault :image-path="path"></v-icondefault>
-```
-## Run demo
+## Run demo locally
 ``` bash
 # Run demo at localhost:8080
 npm link

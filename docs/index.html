@@ -1,7 +1,7 @@
 <html>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 <body>
-  <div id="app" style="height: 95%">
+  <div id="app" style="height: 100%">
     <v-map :zoom="zoom" :center="center">
       <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
       <v-marker :lat-lng="marker"></v-marker>
