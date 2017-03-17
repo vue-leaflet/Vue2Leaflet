@@ -1,11 +1,7 @@
 <template>
-  <div class="map-container">
-    <div class="map-container">
-      <div id="map"></div>
-    </div>
-    <div>
-      <slot></slot>
-    </div>
+  <div>
+    <div id="map"></div>
+    <slot></slot>
   </div>
 </template>
 
