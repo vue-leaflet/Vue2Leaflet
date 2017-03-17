@@ -17,7 +17,7 @@
         <a href="#" @click="currentView='example'">Some examples</a>
       </li>
       <li>
-        <a href="#" @click="currentView='circle-test'">Circle</a>
+        <a href="#" @click="currentView='geometry-test'">Geometry</a>
       </li>
       <li>
         <a href="#" @click="currentView='world-copy-jump'">Jump on World Copy</a>
@@ -42,7 +42,7 @@ import Example from './components/Example'
 import MultiMap from './components/MultiMap'
 import CustomPath from './components/CustomPath'
 import SetBounds from './components/SetBounds'
-import CircleTest from './components/CircleTest'
+import GeometryTest from './components/GeometryTest'
 import WorldCopyJump from './components/WorldCopyJump'
 import GeoJSON from './components/GeoJSON'
 import WMSLayers from './components/WMSLayers'
@@ -55,7 +55,7 @@ export default {
     MultiMap,
     CustomPath,
     SetBounds,
-    CircleTest,
+    GeometryTest,
     WorldCopyJump,
     'geo-json': GeoJSON,
     'wms-layers': WMSLayers
@@ -68,7 +68,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style>
 .leaflet-fake-icon-image-2x {
   background-image: url(../../node_modules/leaflet/dist/images/marker-icon-2x.png);
 }

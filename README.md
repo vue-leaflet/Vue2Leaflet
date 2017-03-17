@@ -11,8 +11,8 @@
 -   [x] TileLayer.WMS
 -   [ ] ImageOverlay
 -   [x] Polyline
--   [ ] Polygon
--   [ ] Rectangle
+-   [x] Polygon
+-   [x] Rectangle
 -   [x] Circle
 -   [ ] CircleMarker
 -   [x] LayerGroup

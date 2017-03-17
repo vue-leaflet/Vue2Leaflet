@@ -4,12 +4,12 @@
       <h2>Two maps</h2>
       <v-map style="height: 90%":zoom="zoom" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
         <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
-        <v-marker v-for="item in markers" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
+        <v-marker v-for="item in markers"  :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
         v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)"></v-marker>
-        <v-poly v-for="item in polylines" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
-        <v-group v-for="item in stuff" :visible="item.visible">
+        <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
+        <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
           <v-group :visible="item.markersVisible">
-            <v-marker v-for="marker in item.markers" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)"></v-marker>
+            <v-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)"></v-marker>
           </v-group>
           <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" v-on:l-click="alert(item.polyline)"></v-poly>
         </v-group>
@@ -18,12 +18,12 @@
     <div id="bottom_div">
       <v-map :zoom="zoom" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
         <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
-        <v-marker v-for="item in markers" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
+        <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
         v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)"></v-marker>
-        <v-poly v-for="item in polylines" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
-        <v-group v-for="item in stuff" :visible="item.visible">
+        <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
+        <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
           <v-group :visible="item.markersVisible">
-            <v-marker v-for="marker in item.markers" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)"></v-marker>
+            <v-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)"></v-marker>
           </v-group>
           <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" v-on:l-click="alert(item.polyline)"></v-poly>
         </v-group>
@@ -108,17 +108,17 @@ export default {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       token: 'your token if using mapbox',
       markers: [
-        { position : {lat:51.505, lng:-0.09}, draggable: true, visible: true},
-        { position : {lat:51.8905, lng:-0.09}, draggable: true, visible: false},
-        { position : {lat:51.005, lng:-0.09}, draggable: true, visible: true},
-        { position : {lat:50.7605, lng:-0.09}, draggable: true, visible: false }
+        { id:"1", position : {lat:51.505, lng:-0.09}, draggable: true, visible: true},
+        { id:"2", position : {lat:51.8905, lng:-0.09}, draggable: true, visible: false},
+        { id:"3", position : {lat:51.005, lng:-0.09}, draggable: true, visible: true},
+        { id:"4", position : {lat:50.7605, lng:-0.09}, draggable: true, visible: false }
       ],
       polylines: [
-        { points : [{lat: 37.772, lng: -122.214},
+        { id:"1", points : [{lat: 37.772, lng: -122.214},
                     {lat: 21.291, lng: -157.821},
                     {lat: -18.142, lng: -181.569},
                     {lat: -27.467, lng: -206.973}], visible: true },
-        { points : [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]], visible: true },
+        { id:"2", points : [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]], visible: true },
       ],
       stuff: [
         { markers: markers1, polyline: { points : poly1, visible: true}, visible: true, markersVisible: true},

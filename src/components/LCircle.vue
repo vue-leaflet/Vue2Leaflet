@@ -37,7 +37,12 @@ const props = {
   visible: {
     type: Boolean,
     custom: true,
-    default: true,
+    default: true
+  },
+  stroke: {
+    type: Boolean,
+    custom: true,
+    default: true
   },
   color: {
     type: String,
@@ -135,6 +140,12 @@ export default {
         this.mapObject.addTo(this.parent);
       } else {
         this.parent.removeLayer(this.mapObject);
+      }
+    },
+    setStroke(newVal, oldVal) {
+      if (newVal == oldVal) return;
+      if (newVal) {
+        this.mapObject.setStyle({ stroke: newVal });
       }
     },
     setColor(newVal, oldVal) {

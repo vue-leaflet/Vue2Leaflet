@@ -1,12 +1,10 @@
 <template>
   <div>
-    <div id="top_div">
-      <h2>Set Bounds</h2>
+    <div id="top_div" style="height: 100%">
+      <h2>Set bounds</h2>
         Marker is placed at {{ marker.lat }}, {{ marker.lng }}
       </br>
-    </div>
-    <div id="bottom_div">
-      <v-map :zoom="zoom" :center="center" :bounds="bounds">
+      <v-map :zoom="zoom" style="height: 90%" :center="center" :bounds="bounds">
         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
         <v-marker :lat-lng="marker"></v-marker>
       </v-map>

@@ -50,15 +50,15 @@
     <div id="bottom_div">
       <v-map :padding="[200, 200]" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
         <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
-        <v-marker v-for="item in markers" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
+        <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
         v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)" :icon="item.icon">
           <v-popup :content="item.tooltip"></v-popup>
           <v-tooltip :content="item.tooltip"></v-tooltip>
         </v-marker>
-        <v-poly v-for="item in polylines" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
-        <v-group v-for="item in stuff" :visible="item.visible">
+        <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
+        <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
           <v-group :visible="item.markersVisible">
-            <v-marker v-for="marker in item.markers" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)">
+            <v-marker v-for="marker in item.markers" :key="marker.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)">
             </v-marker>
           </v-group>
           <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" v-on:l-click="alert(item.polyline)"></v-poly>
@@ -152,23 +152,23 @@ export default {
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       token: 'your token if using mapbox',
       markers:[
-        { position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: L.icon.glyph({
+        { id: "1", position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: L.icon.glyph({
           prefix: '',
           glyph: 'A'})
         },
-        { position : {lat:51.8905, lng:-0.09}, tooltip: "tooltip for marker2", draggable: true, visible: false },
-        { position : {lat:51.005, lng:-0.09}, tooltip: "tooltip for marker3", draggable: true, visible: true },
-        { position : {lat:50.7605, lng:-0.09}, tooltip: "tooltip for marker4", draggable: true, visible: false }
+        { id: "2", position : {lat:51.8905, lng:-0.09}, tooltip: "tooltip for marker2", draggable: true, visible: false },
+        { id: "3", position : {lat:51.005, lng:-0.09}, tooltip: "tooltip for marker3", draggable: true, visible: true },
+        { id: "4", position : {lat:50.7605, lng:-0.09}, tooltip: "tooltip for marker4", draggable: true, visible: false }
       ],
       polylines: [
-        { points : [{lat: 37.772, lng: -122.214},
+        { id: "1", points : [{lat: 37.772, lng: -122.214},
                     {lat: 21.291, lng: -157.821},
                     {lat: -18.142, lng: -181.569},
                     {lat: -27.467, lng: -206.973}], visible: true },
-        { points : [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]], visible: true },
+        { id: "2", points : [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]], visible: true },
       ],
       stuff: [
-        { markers: markers1, polyline: { points : poly1, visible: true}, visible: true, markersVisible: true},
+        { id: "1", markers: markers1, polyline: { points : poly1, visible: true}, visible: true, markersVisible: true},
       ],
       bounds: L.latLngBounds()
     }

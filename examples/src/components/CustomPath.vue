@@ -1,13 +1,11 @@
 <template>
   <div>
-    <div id="top_div">
+    <div id="top_div" style="height: 100%">
       <h2>Custom path</h2>
         Marker is placed at {{ marker.lat }}, {{ marker.lng }}
         <br>
         Marker icon are retrived from {{ path }} custom path
-    </div>
-    <div id="bottom_div">
-      <v-map :zoom="zoom" :center="center">
+      <v-map style="height: 90%" :zoom="zoom" :center="center">
         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
         <v-marker :lat-lng="marker"></v-marker>
         <v-icondefault :image-path="path"></v-icondefault>
