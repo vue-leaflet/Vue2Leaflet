@@ -74,24 +74,23 @@ $ npm install vue
 ## Build Setup
 
 ``` bash
-Once you have cloned this repo :
-# install dependencies
-npm install
+# Once you have cloned this repo, install dependencies
+$ npm install
 
 # build for development and production with minification
-npm run build
+$ npm run build
 
 ```
 
 ## Run demo locally
 ``` bash
 # Run demo at localhost:8080
-npm link
-cd examples
-npm link vue2-leaflet
-npm install
+$ npm link
+$ cd examples
+$ npm link vue2-leaflet
+$ npm install
 # serve with hot reload at localhost:8080
-npm run dev
+$ npm run dev
 ```
 Go to <http://localhost:8080/> to see a some examples
 
