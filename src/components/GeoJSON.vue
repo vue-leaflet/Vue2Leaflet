@@ -11,6 +11,15 @@ export default {
       this.deferredMountedTo(this.$parent.$geoJSON);
     }
   },
+  watch: {
+    geojson: {
+      handler(newVal) {
+        this.$geoJSON.clearLayers()
+        this.addGeoJSONData(newVal);
+      },
+      deep: true,
+    },
+  },
   methods: {
     deferredMountedTo(parent) {
       this.$geoJSON.addTo(parent);
