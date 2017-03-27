@@ -1,12 +1,12 @@
-<template>
-</template>
+<template></template>
 
 <script>
 
 export default {
-  props: ['geojson','options'],
+  props: ['geojson', 'options'],
   mounted() {
     this.$geoJSON = L.geoJSON(this.geojson, this.options);
+
     if (this.$parent._isMounted) {
       this.deferredMountedTo(this.$parent.$geoJSON);
     }
@@ -27,9 +27,8 @@ export default {
     deferredMountedTo(parent) {
       this.parent = parent;
       this.$geoJSON.addTo(parent);
-      var that = this.mapObject;
       for (var i = 0; i < this.$children.length; i++) {
-        this.$children[i].deferredMountedTo(that);
+        this.$children[i].deferredMountedTo(parent);
       }
     },
     addGeoJSONData(geojsonData) {
