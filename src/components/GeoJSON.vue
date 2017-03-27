@@ -7,6 +7,9 @@ export default {
   props: ['geojson','options'],
   mounted() {
     this.$geoJSON = L.geoJSON(this.geojson, this.options);
+    if (this.$parent._isMounted) {
+      this.deferredMountedTo(this.$parent.$geoJSON);
+    }
   },
   methods: {
     deferredMountedTo(parent) {
