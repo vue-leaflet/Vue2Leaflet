@@ -22,6 +22,7 @@ export default {
   },
   methods: {
     deferredMountedTo(parent) {
+      this.parent = parent;
       this.$geoJSON.addTo(parent);
       var that = this.mapObject;
       for (var i = 0; i < this.$children.length; i++) {
@@ -36,7 +37,15 @@ export default {
     },
     getBounds() {
       return this.$geoJSON.getBounds();
-    }
+    },
+    setVisible(newVal, oldVal) {
+      if (newVal === oldVal) return;
+      if (newVal) {
+        this.$geoJSON.addTo(this.parent);
+      } else {
+        this.parent.removeLayer(this.$geoJSON);
+      }
+    },
   }
 };
 </script>
