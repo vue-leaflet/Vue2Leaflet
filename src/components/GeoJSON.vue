@@ -11,6 +11,9 @@ export default {
       this.deferredMountedTo(this.$parent.$geoJSON);
     }
   },
+  beforeDestroy() {
+    this.setVisible(false);
+  },
   watch: {
     geojson: {
       handler(newVal) {
