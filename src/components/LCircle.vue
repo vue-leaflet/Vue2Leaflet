@@ -144,9 +144,7 @@ export default {
     },
     setStroke(newVal, oldVal) {
       if (newVal == oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ stroke: newVal });
-      }
+      this.mapObject.setStyle({ stroke: newVal });
     },
     setColor(newVal, oldVal) {
       if (newVal == oldVal) return;
@@ -192,9 +190,7 @@ export default {
     },
     setFill(newVal, oldVal) {
       if (newVal == oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ fill: newVal });
-      }
+      this.mapObject.setStyle({ fill: newVal });
     },
     setFillColor(newVal, oldVal) {
       if (newVal == oldVal) return;

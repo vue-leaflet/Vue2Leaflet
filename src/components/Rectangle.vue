@@ -37,16 +37,6 @@ const props = {
     custom: true,
     default: true
   },
-  smoothFactor: {
-    type: Number,
-    custom: true,
-    default: 1.0
-  },
-  noClip: {
-    type: Boolean,
-    custom: true,
-    default: false
-  },
   stroke: {
     type: Boolean,
     custom: true,
@@ -148,9 +138,7 @@ export default {
     },
     setStroke(newVal, oldVal) {
       if (newVal == oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ stroke: newVal });
-      }
+      this.mapObject.setStyle({ stroke: newVal });
     },
     setColor(newVal, oldVal) {
       if (newVal == oldVal) return;
@@ -196,9 +184,7 @@ export default {
     },
     setFill(newVal, oldVal) {
       if (newVal == oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ fill: newVal });
-      }
+      this.mapObject.setStyle({ fill: newVal });
     },
     setFillColor(newVal, oldVal) {
       if (newVal == oldVal) return;

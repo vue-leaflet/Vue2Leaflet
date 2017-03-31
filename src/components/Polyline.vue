@@ -146,11 +146,21 @@ export default {
         this.parent.removeLayer(this.mapObject);
       }
     },
-    setStroke(newVal, oldVal) {
+    setSmoothFactor(newVal, oldVal) {
       if (newVal == oldVal) return;
       if (newVal) {
-        this.mapObject.setStyle({ stroke: newVal });
+        this.mapObject.setStyle({ smoothFactor: newVal });
       }
+    },
+    setNoClip(newVal, oldVal) {
+      if (newVal == oldVal) return;
+      if (newVal) {
+        this.mapObject.setStyle({ noClip: newVal });
+      }
+    },
+    setStroke(newVal, oldVal) {
+      if (newVal == oldVal) return;
+      this.mapObject.setStyle({ stroke: newVal });
     },
     setColor(newVal, oldVal) {
       if (newVal == oldVal) return;
@@ -196,9 +206,7 @@ export default {
     },
     setFill(newVal, oldVal) {
       if (newVal == oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ fill: newVal });
-      }
+      this.mapObject.setStyle({ fill: newVal });
     },
     setFillColor(newVal, oldVal) {
       if (newVal == oldVal) return;

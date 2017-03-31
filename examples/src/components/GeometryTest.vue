@@ -33,7 +33,7 @@ export default {
     return {
       zoom: 11,
       center:[47.313220, -1.319482],
-      circle: {
+      circle: {
         center: L.latLng(47.413220, -1.0482),
         radius: 4500
       },
