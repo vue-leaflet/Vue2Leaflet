@@ -84,19 +84,29 @@ const props = {
   worldCopyJump: {
     type: Boolean,
     default: false
-  }
+  },
+  crs: {
+    custom: true,
+    default: () => L.CRS.EPSG3857,
+  },
 };
 
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.map(this.$el, {
-      center:this.center,
-      zoom:this.zoom,
-      minZoom:this.minZoom,
-      maxZoom:this.maxZoom,
-      worldCopyJump:this.worldCopyJump
-    });
+    let options = {
+      minZoom: this.minZoom,
+      maxZoom: this.maxZoom,
+      worldCopyJump: this.worldCopyJump,
+      crs: this.crs,
+    };
+    if (this.center != null) {
+      options.center = this.center;
+    }
+    if (this.zoom != null) {
+      options.zoom = this.zoom;
+    }
+    this.mapObject = L.map(this.$el, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     for (var i = 0; i < this.$children.length; i++) {
@@ -127,9 +137,6 @@ export default {
           options.paddingTopLeft = this.paddingTopLeft;
         }
       }
-      // if (this.maxZoom != null) {
-      //   options.maxZoom = this.maxZoom;
-      // }
       this.mapObject.fitBounds(newVal, options);
     },
     setPaddingBottomRight(newVal, oldVal) {
@@ -141,6 +148,12 @@ export default {
     setPadding(newVal, oldVal) {
       this.padding = newVal;
     },
+    setCrs(newVal, oldVal) {
+      console.log('Changing CRS is not yet supported by Leaflet');
+    },
+    fitBounds(bounds) {
+      this.mapObject.fitBounds(bounds);
+    }
   },
 }
 </script>

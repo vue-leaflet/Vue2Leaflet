@@ -31,6 +31,9 @@
       <li>
         <a href="#" @click="currentView='wms-layers'">WMS Tile Layers</a>
       </li>
+      <li>
+        <a href="#" @click="currentView='crs'">CRS and Image Overlay</a>
+      </li>
     </div>
     <div class="container">
       <component :is="currentView"></component>
@@ -50,6 +53,7 @@ import PopupOnGeometryTest from './components/PopupOnGeometryTest';
 import WorldCopyJump from './components/WorldCopyJump';
 import GeoJSON from './components/GeoJSON';
 import WMSLayers from './components/WMSLayers';
+import CRSAndImageOverlay from './components/CRSAndImageOverlay';
 
 export default {
   name: 'app',
@@ -63,7 +67,8 @@ export default {
     PopupOnGeometryTest,
     WorldCopyJump,
     'geo-json': GeoJSON,
-    'wms-layers': WMSLayers
+    'wms-layers': WMSLayers,
+    'crs': CRSAndImageOverlay,
   },
   data () {
     return {

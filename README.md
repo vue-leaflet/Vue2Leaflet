@@ -61,7 +61,7 @@ $ npm install vue
 -   [x] Tooltip
 -   [x] TileLayer
 -   [x] TileLayer.WMS
--   [ ] ImageOverlay
+-   [x] ImageOverlay
 -   [x] Polyline
 -   [x] Polygon
 -   [x] Rectangle
