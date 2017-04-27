@@ -3,14 +3,14 @@
 <body>
   <div id="app" style="height: 100%">
     <v-map :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-marker :lat-lng="marker"></v-marker>
+      <v-tilelayer :url="url" :attribution="attribution" />
+      <v-marker :lat-lng="marker" />
     </v-map>
   </div>
 </body>
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js" ></script>
-<script src="https://unpkg.com/vue2-leaflet@0.0.37/dist/vue2-leaflet.js" ></script>
+<script src="https://unpkg.com/vue2-leaflet@0.0.45/dist/vue2-leaflet.js" ></script>
 <script>
 
 Vue.component('v-map', Vue2Leaflet.Map);
@@ -31,4 +31,4 @@ var app = new Vue({
 });
 
 </script>
-<html>
+</html>
