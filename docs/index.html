@@ -3,8 +3,8 @@
 <body>
   <div id="app" style="height: 100%">
     <v-map :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution" />
-      <v-marker :lat-lng="marker" />
+      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
+      <v-marker :lat-lng="marker"></v-marker>
     </v-map>
   </div>
 </body>
@@ -22,13 +22,13 @@ var app = new Vue({
   data () {
       return {
         zoom:13,
-        center:[47.413220, -1.219482],
+        center:[47.218938, -1.553772],
         url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
         attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-        marker: L.latLng(47.413220, -1.219482),
+        marker: L.latLng(47.218938, -1.553772),
       }
     }
 });
 
 </script>
-</html>
+<html>
