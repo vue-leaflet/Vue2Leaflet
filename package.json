@@ -7,9 +7,9 @@
   "scripts": {
     "build": "cd scripts && ./build.sh"
   },
-  "main": "dist/vue2-leaflet.js",
-  "module": "dist/vue2-leaflet.js",
-  "unpkg": "dist/vue2-leaflet.js",
+  "main": "dist/vue2-leaflet.min.js",
+  "module": "dist/vue2-leaflet.min.js",
+  "unpkg": "dist/vue2-leaflet.min.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
