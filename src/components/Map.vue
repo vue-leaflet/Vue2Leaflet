@@ -1,5 +1,5 @@
 <template>
-  <div id="vue2leaflet-map">
+  <div class="vue2leaflet-map">
     <slot></slot>
   </div>
 </template>
@@ -146,7 +146,7 @@ export default {
 </script>
 
 <style type="text/css">
-  #vue2leaflet-map {
+  .vue2leaflet-map {
     height: 100%;
     width: 100%;
   }
