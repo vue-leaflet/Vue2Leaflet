@@ -120,7 +120,7 @@ export default {
     this.mapObject = L.circle(this.latLng, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
-    if (this.$parent._isMounted)  {
+    if (this.$parent._isMounted) {
       this.deferredMountedTo(this.$parent.mapObject);
     }
   },

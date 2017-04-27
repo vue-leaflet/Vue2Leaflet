@@ -44,7 +44,7 @@ const props = {
   },
   icon: {
     custom: false,
-    default: function() { return new L.Icon.Default(); }
+    default: () => new L.Icon.Default(),
   },
 };
 
