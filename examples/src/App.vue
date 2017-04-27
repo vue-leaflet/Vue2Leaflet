@@ -20,6 +20,9 @@
         <a href="#" @click="currentView='geometry-test'">Geometry</a>
       </li>
       <li>
+        <a href="#" @click="currentView='popup-on-geometry-test'">Popup on Geometry</a>
+      </li>
+      <li>
         <a href="#" @click="currentView='world-copy-jump'">Jump on World Copy</a>
       </li>
       <li>
@@ -37,15 +40,16 @@
 
 <script>
 
-import Simple from './components/Simple'
-import Example from './components/Example'
-import MultiMap from './components/MultiMap'
-import CustomPath from './components/CustomPath'
-import SetBounds from './components/SetBounds'
-import GeometryTest from './components/GeometryTest'
-import WorldCopyJump from './components/WorldCopyJump'
-import GeoJSON from './components/GeoJSON'
-import WMSLayers from './components/WMSLayers'
+import Simple from './components/Simple';
+import Example from './components/Example';
+import MultiMap from './components/MultiMap';
+import CustomPath from './components/CustomPath';
+import SetBounds from './components/SetBounds';
+import GeometryTest from './components/GeometryTest';
+import PopupOnGeometryTest from './components/PopupOnGeometryTest';
+import WorldCopyJump from './components/WorldCopyJump';
+import GeoJSON from './components/GeoJSON';
+import WMSLayers from './components/WMSLayers';
 
 export default {
   name: 'app',
@@ -56,6 +60,7 @@ export default {
     CustomPath,
     SetBounds,
     GeometryTest,
+    PopupOnGeometryTest,
     WorldCopyJump,
     'geo-json': GeoJSON,
     'wms-layers': WMSLayers

@@ -1,13 +1,12 @@
 {
-  "name": "vue2-leaflet",
-  "version": "0.0.34",
-  "description": "Vue2 leaflet library",
+  "name": "vue2-leaflet-test",
+  "version": "0.0.1",
+  "description": "Vue2 leaflet test",
   "author": "Mickael Bouchaud",
   "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js"
   },
-  "main": "dist/vue2-leaflet.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
@@ -17,10 +16,6 @@
     "leaflet.icon.glyph": "^0.2.0",
     "vue": "^2.1.0"
   },
-  "keywords": [
-    "vue",
-    "leaflet"
-  ],
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.0.0",

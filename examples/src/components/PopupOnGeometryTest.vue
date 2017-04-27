@@ -4,10 +4,18 @@
       <h2>Geometry</h2>
       <v-map style="height: 100%" :zoom="zoom" :center="center">
         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-        <v-circle :lat-lng="circle.center" :radius="circle.radius"></v-circle>
-        <v-rectangle :bounds="rectangle.bounds" :color="rectangle.color"></v-rectangle>
-        <v-polygon :lat-lngs="polygon.latlngs" :color="polygon.color"></v-polygon>
-        <v-polyline :lat-lngs="polyline.latlngs" :color="polyline.color"></v-polyline>
+        <v-circle :lat-lng="circle.center" :radius="circle.radius">
+          <v-popup content="Circle"></v-popup>
+        </v-circle>
+        <v-rectangle :bounds="rectangle.bounds" :color="rectangle.color">
+          <v-popup content="Rectangle"></v-popup>
+        </v-rectangle>
+        <v-polygon :lat-lngs="polygon.latlngs" :color="polygon.color">
+          <v-popup content="Polygon"></v-popup>
+        </v-polygon>
+        <v-polyline :lat-lngs="polyline.latlngs" :color="polyline.color">
+          <v-popup content="Polyline"></v-popup>
+        </v-polyline>
       </v-map>
     </div>
     <div>
@@ -20,7 +28,7 @@
 import Vue2Leaflet from 'vue2-leaflet';
 
 export default {
-  name: 'GeometryTest',
+  name: 'PopupGeometryTest',
   components: {
     'v-map': Vue2Leaflet.Map,
     'v-tilelayer' :Vue2Leaflet.TileLayer,
@@ -28,6 +36,7 @@ export default {
     'v-rectangle': Vue2Leaflet.Rectangle,
     'v-polygon': Vue2Leaflet.Polygon,
     'v-polyline': Vue2Leaflet.Polyline,
+    'v-popup': Vue2Leaflet.Popup,
   },
   data () {
     return {
