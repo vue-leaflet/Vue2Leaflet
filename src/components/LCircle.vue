@@ -31,8 +31,9 @@ const props = {
   radius: {
     type: Number,
   },
-  style: {
+  lStyle: {
     type: Object,
+    custom: true,
   },
   visible: {
     type: Boolean,
@@ -117,6 +118,11 @@ export default {
     if (this.radius) {
       options.radius = this.radius;
     }
+    if (this.lStyle) {
+      for (var style in this.lStyle) {
+        options[style] = this.lStyle[style];
+      }
+    }
     this.mapObject = L.circle(this.latLng, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
@@ -144,6 +150,10 @@ export default {
       } else {
         this.parent.removeLayer(this.mapObject);
       }
+    },
+    setLStyle(newVal, oldVal) {
+      if (newVal == oldVal) return;
+      this.mapObject.setStyle(newVal);
     },
     setStroke(newVal, oldVal) {
       if (newVal == oldVal) return;

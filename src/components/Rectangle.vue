@@ -29,8 +29,9 @@ const props = {
     type: Array,
     default: () => []
   },
-  style: {
+  lStyle: {
     type: Object,
+    custom: true,
   },
   visible: {
     type: Boolean,
@@ -111,6 +112,11 @@ export default {
     if (this.color) {
       options.color = this.color;
     }
+    if (this.lStyle) {
+      for (var s in this.lStyle) {
+        options[s] = this.lStyle[s];
+      }
+    }
     this.mapObject = L.rectangle(this.bounds, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
@@ -138,6 +144,10 @@ export default {
       } else {
         this.parent.removeLayer(this.mapObject);
       }
+    },
+    setLStyle(newVal, oldVal) {
+      if (newVal == oldVal) return;
+      this.mapObject.setStyle(newVal);
     },
     setStroke(newVal, oldVal) {
       if (newVal == oldVal) return;
