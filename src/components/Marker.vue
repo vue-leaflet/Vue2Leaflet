@@ -40,7 +40,7 @@ const props = {
     default: true,
   },
   latLng: {
-    type: Object,
+    type: [Object, Array],
   },
   icon: {
     custom: false,

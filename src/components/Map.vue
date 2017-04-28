@@ -50,6 +50,7 @@ const events = [
 
 const props = {
   center: {
+    type: [Object, Array],
     custom: true,
     default: undefined,
   },

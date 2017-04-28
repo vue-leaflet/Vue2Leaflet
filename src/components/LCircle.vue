@@ -26,7 +26,7 @@ const events = [
 
 const props = {
   latLng: {
-    type: Object,
+    type: [Object, Array],
   },
   radius: {
     type: Number,
