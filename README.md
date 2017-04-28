@@ -110,6 +110,7 @@ Thanks goes to these wonderful people:
 *   [@SiggyF](https://github.com/SiggyF)
 *   [@nikos](https://github.com/nikos)
 *   [@Ralf8686](https://github.com/Ralf8686)
+*   [@antixrist]https://github.com/antixrist
 
 ## License
 
