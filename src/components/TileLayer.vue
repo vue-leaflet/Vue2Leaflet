@@ -4,12 +4,21 @@
 <script>
 
 export default {
-    props: ['url','attribution', 'token'],
+    props: {
+      url: String,
+      attribution: String,
+      token: String,
+      params: {
+        type: Object,
+        default: function() {
+          return {};
+        }
+      }
+    },
     mounted() {
-      this.$tileLayer = L.tileLayer(this.url, {
-        attribution: this.attribution,
-        token: this.token
-      });
+      if (this.attribution) this.params['attribution'] = this.attribution;
+      if (this.token) this.params['token'] = this.token;
+      this.$tileLayer = L.tileLayer(this.url, this.params);
     },
     methods: {
       deferredMountedTo(parent) {
