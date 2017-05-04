@@ -11,6 +11,9 @@
         <a href="#" @click="currentView='custom-path'">Custom path</a>
       </li>
       <li>
+        <a href="#" @click="currentView='custom-url-params'">Custom Url Params</a>
+      </li>
+      <li>
         <a href="#" @click="currentView='set-bounds'">Set bounds</a>
       </li>
       <li>
@@ -47,6 +50,7 @@ import Simple from './components/Simple';
 import Example from './components/Example';
 import MultiMap from './components/MultiMap';
 import CustomPath from './components/CustomPath';
+import CustomUrlParams from './components/CustomUrlParams';
 import SetBounds from './components/SetBounds';
 import GeometryTest from './components/GeometryTest';
 import PopupOnGeometryTest from './components/PopupOnGeometryTest';
@@ -62,6 +66,7 @@ export default {
     Example,
     MultiMap,
     CustomPath,
+    CustomUrlParams,
     SetBounds,
     GeometryTest,
     PopupOnGeometryTest,
