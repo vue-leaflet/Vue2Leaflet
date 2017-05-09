@@ -120,7 +120,36 @@ export default {
   },
   methods: {
     setCenter(newVal, oldVal) {
-      this.mapObject.setView(newVal, this.zoom);
+      if (newVal == null) {
+        return;
+      }
+
+      let wasUndefined = false;
+      let oldLat = 0;
+      let oldLng = 0;
+      if (oldVal == null) {
+        wasUndefined = true;
+      } else if (Array.isArray(oldVal)) {
+        oldLat = oldVal[0];
+        oldLng = oldVal[1];
+      } else {
+        oldLat = oldVal.lat;
+        oldLng = oldVal.lng;
+      }
+
+      let newLat = 0;
+      let newLng = 0;
+      if (Array.isArray(newVal)) {
+        newLat = newVal[0];
+        newLng = newVal[1];
+      } else {
+        newLat = newVal.lat;
+        newLng = newVal.lng;
+      }
+      let centerChanged = wasUndefined || (newLat != oldLat) || (newLng != oldLng);
+      if (centerChanged) {
+        this.mapObject.setView(newVal, this.zoom);
+      }
     },
     setBounds(newVal, oldVal) {
       if (!(newVal && newVal.isValid())) {
