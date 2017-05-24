@@ -26,8 +26,8 @@
 
         <tr v-for="(item, index) in markers">
           <td>{{"Marker " + (index + 1)}}</td>
-          <td><input v-model="item.position.lat" type="number"></td>
-          <td><input v-model="item.position.lng" type="number"></td>
+          <td><input v-model.number="item.position.lat" type="number"></td>
+          <td><input v-model.number="item.position.lng" type="number"></td>
           <td><input v-model="item.tooltip" type="text"></td>
           <td style="text-align: center"><input v-model="item.draggable" type="checkbox"></td>
           <td style="text-align: center"><input v-model="item.visible" type="checkbox"></td>

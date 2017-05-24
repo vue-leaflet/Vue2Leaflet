@@ -40,7 +40,7 @@ const props = {
     default: true,
   },
   latLng: {
-    type: [Object, Array],
+    type: [Object, Array]
   },
   icon: {
     custom: false,
@@ -95,7 +95,7 @@ export default {
           this.parent.removeLayer(this.mapObject);
         }
       }
-    },
+    }
   }
 };
 </script>
