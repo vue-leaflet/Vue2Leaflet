@@ -5,6 +5,11 @@
       Zoom Level :
       <input v-model.number="zoom" type="number">
       <button name="button" v-on:click="fitPolyline">Fit map to polyline</button>
+      <br>
+      Tile Provider:
+      <select v-model="tileProvider">
+        <option v-for="provider in tileProviders" :value="provider">{{provider.name}}</option>
+      </select>
       <hr/>
       <h3>List of Markers</h3>
       <button name="button" v-on:click="addMarker">Add a marker</button></br>
@@ -48,8 +53,8 @@
       <hr/>
     </div>
     <div id="bottom_div">
-      <v-map :padding="[200, 200]" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoom="zoomChanged">
-        <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
+      <v-map :padding="[200, 200]" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
+        <v-tilelayer :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"></v-tilelayer>
         <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
         v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)" :icon="item.icon">
           <v-popup :content="item.tooltip"></v-popup>
@@ -130,6 +135,19 @@ var customIcon = L.icon({
   shadowUrl: ''
 });
 
+const tileProviders = [
+  {
+    name: 'OpenStreetMap',
+    attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  },
+  {
+    name: 'OpenTopoMap',
+    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+  },
+];
+
 export default {
   name: 'example',
   components: {
@@ -148,9 +166,9 @@ export default {
       minZoom:1,
       maxZoom:20,
       opacity:0.6,
-      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       token: 'your token if using mapbox',
+      tileProviders: tileProviders,
+      tileProvider: tileProviders[0],
       markers:[
         { id: "1", position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: L.icon.glyph({
           prefix: '',
