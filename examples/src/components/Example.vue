@@ -48,7 +48,7 @@
       <hr/>
     </div>
     <div id="bottom_div">
-      <v-map :padding="[200, 200]" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
+      <v-map :padding="[200, 200]" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoom="zoomChanged">
         <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
         <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
         v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)" :icon="item.icon">
@@ -188,7 +188,7 @@ export default {
       Vue.set(item, 'position', event.latlng);
     },
     zoomChanged: function(event) {
-      this.zoom = event.zoom;
+      this.zoom = event.target.getZoom();
     },
     fitPolyline: function() {
       var bounds = L.latLngBounds(markers1.map((o) => o.position));

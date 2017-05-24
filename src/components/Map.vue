@@ -31,6 +31,7 @@ const events = [
   'dragstart',
   'drag',
   'dragend',
+  'zoom',
   'zoomstart',
   'zoomend',
   'zoomanim',
