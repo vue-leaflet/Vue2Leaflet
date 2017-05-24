@@ -91,17 +91,22 @@ const props = {
     custom: true,
     default: () => L.CRS.EPSG3857,
   },
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
 };
 
 export default {
   props: props,
   mounted() {
-    let options = {
+    const options = this.options;
+    Object.assign(options, {
       minZoom: this.minZoom,
       maxZoom: this.maxZoom,
       worldCopyJump: this.worldCopyJump,
       crs: this.crs,
-    };
+    });
     if (this.center != null) {
       options.center = this.center;
     }

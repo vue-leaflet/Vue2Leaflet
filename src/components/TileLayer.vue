@@ -40,11 +40,11 @@ export default {
           this.$children[i].deferredMountedTo(that);
         }
       },
-      setAttribution (val, old) {
+      setAttribution(val, old) {
         this.attributionControl.removeAttribution(old);
         this.attributionControl.addAttribution(val);
       },
-      setToken (val) {
+      setToken(val) {
         this.params.token = val;
       }
     }
