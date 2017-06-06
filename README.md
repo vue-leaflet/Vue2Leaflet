@@ -50,7 +50,7 @@ More live demos will come soon
 ## How to install
 
 ``` bash
-$ npm install vue
+$ npm install vue2-leaflet --save
 ```
 
 ## List of currently implemented components
