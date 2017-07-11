@@ -37,6 +37,9 @@
       <li>
         <a href="#" @click="currentView='crs'">CRS and Image Overlay</a>
       </li>
+      <li>
+        <a href="#" @click="currentView='beautify-marker'">Beautify marker</a>
+      </li>
     </div>
     <div class="container">
       <component :is="currentView"></component>
@@ -58,6 +61,7 @@ import WorldCopyJump from './components/WorldCopyJump';
 import GeoJSON from './components/GeoJSON';
 import WMSLayers from './components/WMSLayers';
 import CRSAndImageOverlay from './components/CRSAndImageOverlay';
+import BeautifyMarker from './components/BeautifyMarker';
 
 export default {
   name: 'app',
@@ -74,6 +78,7 @@ export default {
     'geo-json': GeoJSON,
     'wms-layers': WMSLayers,
     'crs': CRSAndImageOverlay,
+    BeautifyMarker,
   },
   data () {
     return {

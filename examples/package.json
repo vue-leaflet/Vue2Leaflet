@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "font-awesome": "^4.7.0",
     "leaflet": "^1.0.2",
+    "leaflet.beautifymarker": "^1.1.1",
     "leaflet.icon.glyph": "^0.2.0",
     "vue": "^2.1.0"
   },
