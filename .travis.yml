@@ -1,20 +1,14 @@
-sudo:
-  false
-
-language:
-  node_js
-
+sudo: false
+language: node_js
 node_js:
-  - 6
-
+- 6
 script:
-  - npm run build
-
+- npm run build
 deploy:
   provider: npm
-  email: mickael.bouchaud@gmail.com
+  email: s.j.robinson1@lancaster.ac.uk
   api_key:
-    secure: AcplfZOpVeCf65qq2ANEHi0iRMbOrToPLqkfHuyBC8ckRFOdSKzyouoJdTPyDM2zYdQ8AsQn/MOxn9Tt+1voGLyqaKQ6Rex2L2x+VwKaqqbjTApUKf96py2xd4w2pDiGJdmi908MTgfYSDP5K34LirJudTt8P/IXg1O3JB5Cgrv/XRWCulcSrZGCjG61ipv4HV4AdAcZ5OjZOECNxHxnQOojA7ZO0/bWYS2Jvl2ZUTgz+xtprusbZjJ49HkiGr79QbF9PLIlRH0Yq3Sm9AJCBimM8KiCF9hm9KujVC0UjSUA2nHozpZpdRJ9RJNtm9GF3ntRTniSnzZBFpbsahHlquDlmIGzbZGaof0iP603Oj63J8Qmp8UuY9HRGvIzrrmNfW8Z8T1K3+/M84ZCpj6zrAD3yptM/fXGN43v/N2rzUrS+U5I9d71drz84hdfvK1MdK//VBVulNH1bvGWsjJ4ktsRi7M7tHpb+qW/ehxFU5/LeebN3TViBXWWEsUhDO+ul1EdJWkDYRpY2XAYoegysx1hnyoeK5cYIM7wOS+b4RXGRSSCTcISWqsgFqYGeHcnvs6nBXf4okVd1PpWId+jsdPl+XEhv5QvAVTpaAEi11qSIqpZymTFawu81zb6CuaTQNmdwZe6pNTYpp2Sf0YsODP/twg8YV+selVVGBxPPGY=
+    secure: WcZJJVklG/k2sqxJdcJGzydAqBHCEqKW9nMyCAljFkbseLvDjIk85tqGR6hfJdH1sPIH3Ya+dnk/EEWqq+0VssxkSikGiuuInq2pA8gHDg1s8cleWRTWN94XYGDKEzLuOmPBf4qzIlTX6RVRPzlYw/AOxjYF9bbaAudtK1dyWEhAUllyxLUpgW/4TAlONMxTGgbwYAXIdcbMIG+pRAlTEFY6LFvaCjaawtfgwQ6V6KsYTjZ5QX+a2heHEhnbwbpBAHulBz1/OA+RDy19fvNiVSKO3g8MktBA8lXy9BC3whMrpFBoOKeRWJ9ysHiBOOtoZEUfVge61v66ddQ7BUZt2otURpfTFGL5Vb15lR1yBgPd7uqLHPuqt5scM87uD+NUkkaXGxLdch2SZZvNL4amaAYto5baDdliLeJDbwbO/83rRmf/La+G+7K0wz0YOpfkv3aid5EGBbYSrQ2ltKUi2SGZ/OLGXbNeZrkqhAp2HCw3IXh0P07XW17yBnUra1GQYc/uvbFmTaEr5j9OeZZjtS8//+/k6DlpNVh1cZyzb4AGVT/0j1Sd2U7cP3VpGmxJA0pZm/Rlct+/EtEGTDDf+Uw9j1mmzIYaZ7poq+wofjKtaTO3MrBA/W1NCCYjGO4MCOg5Plx4fn4yOFKkSZX7mhHPUloQQ8vQC03Unv6u63g=
   on:
     tags: true
-    repo: KoRiGaN/Vue2Leaflet
+    repo: lulibrary/Vue2Leaflet

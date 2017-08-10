@@ -34,5 +34,8 @@
     "vue-template-compiler": "^2.2.3",
     "webpack": "^2.2.0",
     "webpack-node-externals": "^1.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
