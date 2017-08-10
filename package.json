@@ -1,8 +1,8 @@
 {
-  "name": "vue2-leaflet",
-  "version": "0.0.51",
+  "name": "@lulibrary/vue2-leaflet",
+  "version": "0.1.0",
   "description": "Vue2 leaflet library",
-  "author": "Mickael Bouchaud",
+  "contributors": ["Mickael Bouchaud", "Stephen Robinson", "Lancaster University Library"],
   "license": "MIT",
   "scripts": {
     "build": "cd scripts && ./build.sh"
@@ -12,11 +12,11 @@
   "unpkg": "dist/vue2-leaflet.min.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
+    "url": "git://github.com/lulibrary/Vue2Leaflet.git"
   },
   "dependencies": {
-    "leaflet": "^1.0.1",
-    "vue": "^2.0.0-rc.8"
+    "leaflet": "^1.2.0",
+    "vue": "^2.3.3"
   },
   "keywords": [
     "vue",
@@ -34,5 +34,8 @@
     "vue-template-compiler": "^2.2.3",
     "webpack": "^2.2.0",
     "webpack-node-externals": "^1.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
