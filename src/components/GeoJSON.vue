@@ -8,7 +8,7 @@ export default {
     this.$geoJSON = L.geoJSON(this.geojson, this.options);
 
     if (this.$parent._isMounted) {
-      this.deferredMountedTo(this.$parent.$mapObject);
+      this.deferredMountedTo(this.$parent.mapObject);
     }
   },
   beforeDestroy() {
