@@ -2,12 +2,13 @@
   <div>
     <div id="top_div" style="height: 100%">
       <h2>GeoJSON</h2>
-        Marker is placed at {{ marker.lat }}, {{ marker.lng }}
+      <p>Marker is placed at {{ marker.lat }}, {{ marker.lng }}</p>
+      <label for="checkbox">visibility</label>
+      <input type="checkbox" id="checkbox" v-model="show">
       </br>
       <v-map style="height: 90%" :zoom="zoom" :center="center">
         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-        <v-geojson-layer :geojson="geojson" :options="options"></v-geojson-layer>
-        <v-geojson-layer :geojson="geojson" :options="options"></v-geojson-layer>
+        <v-geojson-layer v-if="show" :geojson="geojson" :options="options"></v-geojson-layer>
         <v-marker :lat-lng="marker"></v-marker>
       </v-map>
     </div>
@@ -28,6 +29,7 @@ export default {
   },
   data () {
     return {
+      show: true,
       zoom:6,
       center:[48, -1.219482],
       geojson: null,
