@@ -111,6 +111,7 @@ Thanks goes to these wonderful people:
 *   [@nikos](https://github.com/nikos)
 *   [@Ralf8686](https://github.com/Ralf8686)
 *   [@antixrist](https://github.com/antixrist)
+*   [@jteppinette](https://github.com/jteppinette)
 
 ## License
 
