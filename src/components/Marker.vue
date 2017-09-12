@@ -50,6 +50,10 @@ const props = {
     type: Object,
     default: () => ({}),
   },
+  markerFactory: {
+    type: Function,
+    default: L.marker,
+  }
 };
 
 export default {
@@ -61,7 +65,7 @@ export default {
     }
 
     options.draggable = this.draggable;
-    this.mapObject = L.marker(this.latLng, options);
+    this.mapObject = this.markerFactory(this.latLng, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted) {
