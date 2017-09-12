@@ -81,7 +81,45 @@ $ npm install
 $ npm run build
 
 ```
+## Leaflet Plugins
+This repo is a wrapper for Leafet and VueJs. I want to keep it as simple as possible so I don't want to add any plugin support into this repo.
 
+Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would recommand to look at the awesome work made by the community in the list below.
+
+#### Vue2Leafet plugins:
+*  [MarkerCluster](https://github.com/jperelli/vue2-leaflet-markercluster)
+*  [TrackSymbol](https://github.com/ais-one/vue2-leaflet-tracksymbol)
+
+If you have created a plugin and want it to be listed here, let me know :-).
+
+## FAQ
+#### How can I access the Leaflet map object ?
+First add a ref to the map
+``` html
+<div id="app" style="height: 100%">
+  <v-map ref="map" :zoom=13 :center="[47.413220, -1.219482]">
+    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
+  </v-map>
+</div>
+```
+Then in you javascript you can use mapObject which is Leaflet map instance :
+``` javascript
+this.$refs.map.mapObject;
+```
+This also work for any other component (Marker, Polyline, etc...)
+
+#### How can I bind events of Vue2Leaflet components ?
+All event binding can be done to event called l-[leaflet_event], where [leaflet_event] is the name of the event from leaflet documentation.
+
+For example if you want to bind to leaflet marker move event, you can bind to Vue2Leaflet.Marker l-move event.
+```
+<div id="app" style="height: 100%">
+  <v-map :zoom=13 :center="[47.413220, -1.219482]">
+    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
+    <v-marker :lat-lng="[47.413220, -1.219482]" :l-move="doSomething"></v-marker>
+  </v-map>
+</div>
+```
 ## Run demo locally
 ``` bash
 # Run demo at localhost:8080
