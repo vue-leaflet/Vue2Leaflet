@@ -15,7 +15,7 @@
     "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
   },
   "dependencies": {
-    "leaflet": "^1.0.1",
+    "leaflet": "^1.2.0",
     "vue": "^2.0.0-rc.8"
   },
   "keywords": [

@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "leaflet": "^1.0.2",
+    "leaflet": "^1.2.0",
     "leaflet.icon.glyph": "^0.2.0",
     "vue": "^2.1.0"
   },
