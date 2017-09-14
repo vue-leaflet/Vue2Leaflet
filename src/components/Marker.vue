@@ -46,6 +46,10 @@ const props = {
     custom: false,
     default: () => new L.Icon.Default(),
   },
+  zIndexOffset: {
+    type: Number,
+    custom: false,
+  },
   options: {
     type: Object,
     default: () => ({}),
