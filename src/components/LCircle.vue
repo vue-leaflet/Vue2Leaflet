@@ -123,6 +123,13 @@ export default {
         options[style] = this.lStyle[style];
       }
     }
+    const otherPropertytoInitialize = ["smoothFactor", "noClip", "stroke", "color", "weight", "opacity", "lineCap", "lineJoin", "dashArray", "dashOffset", "fill", "fillColor", "fillOpacity", "fillRule", "className" ];
+    for (var i = 0; i < otherPropertytoInitialize.length; i++) {
+      const propName = otherPropertytoInitialize[i];
+      if(this[propName]) {
+        options[propName] = this[propName];
+      }
+    }
     this.mapObject = L.circle(this.latLng, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
