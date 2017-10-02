@@ -150,6 +150,10 @@ Thanks goes to these wonderful people:
 *   [@Ralf8686](https://github.com/Ralf8686)
 *   [@antixrist](https://github.com/antixrist)
 *   [@jteppinette](https://github.com/jteppinette)
+*   [@rootman](https://github.com/rootman)
+*   [@strixy](https://github.com/strixy)
+*   [@EyMaddis](https://github.com/EyMaddis)
+*   [@schlunsen](https://github.com/schlunsen)
 
 ## License
 
