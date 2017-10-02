@@ -91,7 +91,7 @@ const props = {
   fill: {
     type: Boolean,
     custom: true,
-    default: true
+    default: false
   },
   fillColor: {
     type: String,
