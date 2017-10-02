@@ -4,7 +4,7 @@
 <script>
 
 import propsBinder from '../utils/propsBinder.js';
-import propsBinder from '../utils/eventsBinder.js';
+import eventsBinder from '../utils/eventsBinder.js';
 
 const events = [
   'loading',
