@@ -5,14 +5,11 @@
 export default {
   props: ['geojson', 'options'],
   mounted() {
-    this.$geoJSON = L.geoJSON(this.geojson, this.options);
+    this.mapObject = L.geoJSON(this.geojson, this.options);
 
     if (this.$parent._isMounted) {
       this.deferredMountedTo(this.$parent.mapObject);
     }
-  },
-  beforeDestroy() {
-    this.setVisible(false);
   },
   watch: {
     geojson: {
@@ -50,7 +47,9 @@ export default {
     },
   },
   beforeDestroy() {
-    this.$parent.mapObject.removeLayer(this.mapObject);
+    if (this.parent) {
+      this.parent.removeLayer(this.mapObject);
+    }
   }
 };
 </script>
