@@ -20,6 +20,9 @@ const props = {
     type: String,
     custom: true,
     default: '',
+  },
+  options: {
+    type: Object
   }
 };
 
@@ -43,12 +46,12 @@ export default {
     deferredMountedTo(parent) {
       this.parent = parent;
       if (this.content) {
-        this.parent.bindTooltip(this.content);
+        this.parent.bindTooltip(this.content, this.options);
       }
     },
     setContent(newVal, oldVal) {
       if (newVal) {
-        this.parent.bindTooltip(this.content);
+        this.parent.bindTooltip(this.content, this.options);
       } else {
         if (this.parent.getTooltip()) {
           this.parent.unbindTooltip();
