@@ -49,35 +49,38 @@ const props = {
 };
 
 export default {
-    props: props,
-    mounted() {
-      const otherPropertytoInitialize = [ "attribution", "token", "opacity", "zIndex" ];
-      for (var i = 0; i < otherPropertytoInitialize.length; i++) {
-        const propName = otherPropertytoInitialize[i];
-        if(this[propName]) {
-          options[propName] = this[propName];
-        }
-      }
-      this.mapObject = L.tileLayer(this.url, this.options);
-      eventsBinder(this, this.mapObject, events);
-      propsBinder(this, this.mapObject, props);
-    },
-    methods: {
-      deferredMountedTo(parent) {
-        this.mapObject.addTo(parent);
-        this.attributionControl = parent.attributionControl;
-        var that = this.mapObject;
-        for (var i = 0; i < this.$children.length; i++) {
-          this.$children[i].deferredMountedTo(that);
-        }
-      },
-      setAttribution(val, old) {
-        this.attributionControl.removeAttribution(old);
-        this.attributionControl.addAttribution(val);
-      },
-      setToken(val) {
-        this.options.token = val;
+  props: props,
+  mounted() {
+    const otherPropertytoInitialize = [ "attribution", "token", "opacity", "zIndex" ];
+    for (var i = 0; i < otherPropertytoInitialize.length; i++) {
+      const propName = otherPropertytoInitialize[i];
+      if(this[propName]) {
+        options[propName] = this[propName];
       }
     }
+    this.mapObject = L.tileLayer(this.url, this.options);
+    eventsBinder(this, this.mapObject, events);
+    propsBinder(this, this.mapObject, props);
+  },
+  methods: {
+    deferredMountedTo(parent) {
+      this.mapObject.addTo(parent);
+      this.attributionControl = parent.attributionControl;
+      var that = this.mapObject;
+      for (var i = 0; i < this.$children.length; i++) {
+        this.$children[i].deferredMountedTo(that);
+      }
+    },
+    setAttribution(val, old) {
+      this.attributionControl.removeAttribution(old);
+      this.attributionControl.addAttribution(val);
+    },
+    setToken(val) {
+      this.options.token = val;
+    }
+  },
+  beforeDestroy() {
+    this.$parent.mapObject.removeLayer(this.mapObject);
+  }
 };
 </script>

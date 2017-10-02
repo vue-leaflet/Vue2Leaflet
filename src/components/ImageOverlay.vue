@@ -68,6 +68,9 @@ export default {
     getBounds() {
       return this.mapObject.getBounds();
     },
+  },
+  beforeDestroy() {
+    this.$parent.mapObject.removeLayer(this.mapObject);
   }
 };
 </script>

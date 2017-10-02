@@ -17,7 +17,7 @@ export default {
   watch: {
     geojson: {
       handler(newVal) {
-        this.$geoJSON.clearLayers()
+        this.mapObject.clearLayers()
         this.addGeoJSONData(newVal);
       },
       deep: true,
@@ -26,28 +26,31 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.parent = parent;
-      this.$geoJSON.addTo(parent);
+      this.mapObject.addTo(parent);
       for (var i = 0; i < this.$children.length; i++) {
         this.$children[i].deferredMountedTo(parent);
       }
     },
     addGeoJSONData(geojsonData) {
-      this.$geoJSON.addData(geojsonData);
+      this.mapObject.addData(geojsonData);
     },
     getGeoJSONData() {
-      return this.$geoJSON.toGeoJSON();
+      return this.mapObject.toGeoJSON();
     },
     getBounds() {
-      return this.$geoJSON.getBounds();
+      return this.mapObject.getBounds();
     },
     setVisible(newVal, oldVal) {
       if (newVal === oldVal) return;
       if (newVal) {
-        this.$geoJSON.addTo(this.parent);
+        this.mapObject.addTo(this.parent);
       } else {
-        this.parent.removeLayer(this.$geoJSON);
+        this.parent.removeLayer(this.mapObject);
       }
     },
+  },
+  beforeDestroy() {
+    this.$parent.mapObject.removeLayer(this.mapObject);
   }
 };
 </script>
