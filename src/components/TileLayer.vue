@@ -31,7 +31,16 @@ const props = {
     type: String,
     custom: true
   },
-  params: {
+  opacity: {
+    type: Number,
+    custom: false,
+    default: 1.0
+  },
+  zIndex: {
+    type: Number,
+    default: 1
+  },
+  options: {
     type: Object,
     default: function() {
       return {};
@@ -42,9 +51,14 @@ const props = {
 export default {
     props: props,
     mounted() {
-      if (this.attribution) this.params['attribution'] = this.attribution;
-      if (this.token) this.params['token'] = this.token;
-      this.mapObject = L.tileLayer(this.url, this.params);
+      const otherPropertytoInitialize = [ "attribution", "token", "opacity", "zIndex" ];
+      for (var i = 0; i < otherPropertytoInitialize.length; i++) {
+        const propName = otherPropertytoInitialize[i];
+        if(this[propName]) {
+          options[propName] = this[propName];
+        }
+      }
+      this.mapObject = L.tileLayer(this.url, this.options);
       eventsBinder(this, this.mapObject, events);
       propsBinder(this, this.mapObject, props);
     },
@@ -62,7 +76,7 @@ export default {
         this.attributionControl.addAttribution(val);
       },
       setToken(val) {
-        this.params.token = val;
+        this.options.token = val;
       }
     }
 };
