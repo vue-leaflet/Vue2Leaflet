@@ -51,6 +51,7 @@ const props = {
 export default {
   props: props,
   mounted() {
+    const options = {};
     const otherPropertytoInitialize = [ "attribution", "token", "opacity", "zIndex" ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
