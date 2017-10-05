@@ -1,5 +1,7 @@
 # Vue2Leaflet
 
+[![Join the chat at https://gitter.im/Vue2Leaflet/Lobby](https://badges.gitter.im/Vue2Leaflet/Lobby.svg)](https://gitter.im/Vue2Leaflet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 <a href="https://travis-ci.org/KoRiGaN/Vue2Leaflet"><img src="https://travis-ci.org/KoRiGaN/Vue2Leaflet.svg?branch=master" alt="Downloads"></a>
 <a href="https://www.npmjs.com/package/vue2-leaflet"><img src="https://img.shields.io/npm/dt/vue2-leaflet.svg" alt="Downloads"></a>
 <a href="https://www.npmjs.com/package/vue2-leaflet"><img src="https://img.shields.io/npm/v/vue2-leaflet.svg" alt="Version"></a>
