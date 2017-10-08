@@ -52,7 +52,11 @@ export default {
       parent.bindPopup(this.mapObject);
     },
     setContent(newVal, oldVal) {
-      this.mapObject.setContent(newVal)
+      if (typeof newVal == 'string') {
+        this.$el.innerHTML = newVal
+      } else {
+        this.mapObject.setContent(newVal)
+      }
     },
   }
 };
