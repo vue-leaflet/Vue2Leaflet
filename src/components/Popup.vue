@@ -22,13 +22,17 @@ const props = {
   content: {
     custom: true,
     default: '',
-  }
+  },
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
 };
 
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.popup();
+    this.mapObject = L.popup(this.options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
@@ -43,13 +47,12 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.parent = parent;
-      if (this.content) {
-        this.setContent(this.content);
-      }
-      parent.bindPopup(this.$el);
+      this.setContent(this.content || this.$el);
+      // bind on mapObject so the options for the popup can be kept
+      parent.bindPopup(this.mapObject);
     },
     setContent(newVal, oldVal) {
-      this.$el.innerHTML = newVal;
+      this.mapObject.setContent(newVal)
     },
   }
 };
