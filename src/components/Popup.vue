@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -40,16 +43,13 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.parent = parent;
-      parent.bindPopup(this.content);
+      if (this.content) {
+        this.setContent(this.content);
+      }
+      parent.bindPopup(this.$el);
     },
     setContent(newVal, oldVal) {
-      if (newVal) {
-        this.parent.bindPopup(this.content);
-      } else {
-        if (this.parent.getPopup()) {
-          this.parent.unbindPopup();
-        }
-      }
+      this.$el.innerHTML = newVal;
     },
   }
 };
