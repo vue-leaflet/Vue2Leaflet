@@ -116,7 +116,7 @@ For example if you want to bind to leaflet marker move event, you can bind to Vu
 <div id="app" style="height: 100%">
   <v-map :zoom=13 :center="[47.413220, -1.219482]">
     <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-    <v-marker :lat-lng="[47.413220, -1.219482]" :l-move="doSomething"></v-marker>
+    <v-marker :lat-lng="[47.413220, -1.219482]" @l-move="doSomething"></v-marker>
   </v-map>
 </div>
 ```
