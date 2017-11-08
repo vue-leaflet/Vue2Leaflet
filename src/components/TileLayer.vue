@@ -27,6 +27,11 @@ const props = {
     type: String,
     custom: true
   },
+  detectRetina: {
+    type: Boolean,
+    custom: false,
+    default: false
+  },
   token: {
     type: String,
     custom: true
@@ -51,15 +56,15 @@ const props = {
 export default {
   props: props,
   mounted() {
-    const options = {};
-    const otherPropertytoInitialize = [ "attribution", "token", "opacity", "zIndex" ];
+    const options = this.options;
+    const otherPropertytoInitialize = [ "attribution", "token", "detectRetina", "opacity", "zIndex" ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
       if(this[propName]) {
         options[propName] = this[propName];
       }
     }
-    this.mapObject = L.tileLayer(this.url, this.options);
+    this.mapObject = L.tileLayer(this.url, options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
   },
