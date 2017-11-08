@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -19,13 +22,17 @@ const props = {
   content: {
     custom: true,
     default: '',
-  }
+  },
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
 };
 
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.popup();
+    this.mapObject = L.popup(this.options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
@@ -40,15 +47,15 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.parent = parent;
-      parent.bindPopup(this.content);
+      this.setContent(this.content || this.$el);
+      // bind on mapObject so the options for the popup can be kept
+      parent.bindPopup(this.mapObject);
     },
     setContent(newVal, oldVal) {
-      if (newVal) {
-        this.parent.bindPopup(this.content);
+      if (typeof newVal == 'string') {
+        this.$el.innerHTML = newVal
       } else {
-        if (this.parent.getPopup()) {
-          this.parent.unbindPopup();
-        }
+        this.mapObject.setContent(newVal)
       }
     },
   }
