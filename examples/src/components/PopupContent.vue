@@ -8,6 +8,11 @@
 
 export default {
   name: 'PopupContent',
-  props: ['data'],
+  props: {
+    data: {
+      type: Object,
+      default: () => ({ type: '', color: '#ffffff'}),
+    },
+  }
 }
 </script>

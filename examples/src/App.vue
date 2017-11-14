@@ -35,6 +35,9 @@
         <a href="#" @click="currentView='geo-json'">GeoJSON</a>
       </li>
       <li>
+        <a href="#" @click="currentView='geo-json2'">GeoJSON 2</a>
+      </li>
+      <li>
         <a href="#" @click="currentView='wms-layers'">WMS Tile Layers</a>
       </li>
       <li>
@@ -51,6 +54,7 @@ import CustomPath from './components/CustomPath';
 import CustomUrlParams from './components/CustomUrlParams';
 import Example from './components/Example';
 import GeoJSON from './components/GeoJSON';
+import GeoJSON2 from './components/GeoJSON2';
 import GeometryTest from './components/GeometryTest';
 import MarkerPopupExample from './components/MarkerPopupExample';
 import MultiMap from './components/MultiMap';
@@ -74,6 +78,7 @@ export default {
     Simple,
     WorldCopyJump,
     'geo-json': GeoJSON,
+    'geo-json2': GeoJSON2,
     'wms-layers': WMSLayers,
     'crs': CRSAndImageOverlay,
   },
