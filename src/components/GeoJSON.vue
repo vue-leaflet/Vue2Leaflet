@@ -25,7 +25,9 @@ export default {
       this.parent = parent;
       this.mapObject.addTo(parent);
       for (var i = 0; i < this.$children.length; i++) {
-        this.$children[i].deferredMountedTo(parent);
+        if (typeof this.$children[i].deferredMountedTo === "function") {
+          this.$children[i].deferredMountedTo(parent);
+        }
       }
     },
     addGeoJSONData(geojsonData) {

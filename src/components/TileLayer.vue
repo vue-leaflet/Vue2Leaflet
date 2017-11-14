@@ -72,9 +72,10 @@ export default {
     deferredMountedTo(parent) {
       this.mapObject.addTo(parent);
       this.attributionControl = parent.attributionControl;
-      var that = this.mapObject;
       for (var i = 0; i < this.$children.length; i++) {
-        this.$children[i].deferredMountedTo(that);
+        if (typeof this.$children[i].deferredMountedTo === "function") {
+          this.$children[i].deferredMountedTo(this.mapObject);
+        }
       }
     },
     setAttribution(val, old) {

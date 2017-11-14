@@ -117,7 +117,11 @@ export default {
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     for (var i = 0; i < this.$children.length; i++) {
-      this.$children[i].deferredMountedTo(this.mapObject);
+      if (typeof this.$children[i].deferredMountedTo === "function") {
+        this.$children[i].deferredMountedTo(this.mapObject);
+      } else if (typeof this.$children[i].$children[0].deferredMountedTo === "function") {
+        this.$children[i].$children[0].deferredMountedTo(this.mapObject);
+      }
     }
     this.setBounds(this.bounds);
     this.mapObject.whenReady(function() {

@@ -80,7 +80,9 @@ export default {
     deferredMountedTo(parent) {
       this.parent = parent;
       for (var i = 0; i < this.$children.length; i++) {
-        this.$children[i].deferredMountedTo(this.mapObject);
+        if (typeof this.$children[i].deferredMountedTo === "function") {
+          this.$children[i].deferredMountedTo(this.mapObject);
+        }
       }
       if (this.visible) {
         this.mapObject.addTo(parent);

@@ -29,9 +29,10 @@ export default {
   },
   methods: {
     deferredMountedTo(parent) {
-      var that = this.mapObject;
       for (var i = 0; i < this.$children.length; i++) {
-        this.$children[i].deferredMountedTo(that);
+        if (typeof this.$children[i].deferredMountedTo === "function") {
+          this.$children[i].deferredMountedTo(this.mapObject);
+        }
       }
       this.parent = parent;
       if (this.visible) {
