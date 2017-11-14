@@ -20,7 +20,6 @@ const events = [
 
 const props = {
   content: {
-    custom: true,
     default: '',
   },
   options: {
@@ -47,17 +46,9 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.parent = parent;
-      this.setContent(this.content || this.$el);
-      // bind on mapObject so the options for the popup can be kept
+      this.mapObject.setContent(this.content || this.$el);
       parent.bindPopup(this.mapObject);
-    },
-    setContent(newVal, oldVal) {
-      if (typeof newVal == 'string') {
-        this.$el.innerHTML = newVal
-      } else {
-        this.mapObject.setContent(newVal)
-      }
-    },
+    }
   }
 };
 </script>

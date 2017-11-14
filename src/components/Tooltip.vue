@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -17,20 +20,18 @@ const events = [
 
 const props = {
   content: {
-    type: String,
-    custom: true,
     default: '',
   },
   options: {
-    type: Object
+    type: Object,
+    default: () => ({}),
   }
 };
 
 export default {
   props: props,
   mounted() {
-    this.mapObject = L.tooltip();
-    this.mapObject.setTooltipContent(this.content);
+    this.mapObject = L.tooltip(this.options);
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
@@ -45,18 +46,8 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       this.parent = parent;
-      if (this.content) {
-        this.parent.bindTooltip(this.content, this.options);
-      }
-    },
-    setContent(newVal, oldVal) {
-      if (newVal) {
-        this.parent.bindTooltip(this.content, this.options);
-      } else {
-        if (this.parent.getTooltip()) {
-          this.parent.unbindTooltip();
-        }
-      }
+      this.mapObject.setContent(this.content || this.$el);
+      parent.bindTooltip(this.mapObject);
     },
   }
 };
