@@ -1,31 +1,35 @@
 <template>
   <div>
-    <div id="top_div" style="height: 100%">
-      <h2>Geometry</h2>
-      <v-map style="height: 100%" :zoom="zoom" :center="center">
-        <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-        <v-circle :lat-lng="circle.center" :radius="circle.radius">
-          <v-popup content="Circle"></v-popup>
-        </v-circle>
-        <v-rectangle :bounds="rectangle.bounds" :color="rectangle.color">
-          <v-popup content="Rectangle"></v-popup>
-        </v-rectangle>
-        <v-polygon :lat-lngs="polygon.latlngs" :color="polygon.color">
-          <v-popup content="Polygon"></v-popup>
-        </v-polygon>
-        <v-polyline :lat-lngs="polyline.latlngs" :color="polyline.color">
-          <v-popup content="Polyline"></v-popup>
-        </v-polyline>
-      </v-map>
+    <div style="height: 10%; overflow: auto;">
+      <h3>Geometry with popups</h3>
     </div>
-    <div>
-
-    </div>
+    <v-map style="height: 90%" :zoom="zoom" :center="center">
+      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
+      <v-circle :lat-lng="circle.center" :radius="circle.radius">
+        <v-popup content="Circle"></v-popup>
+      </v-circle>
+      <v-rectangle :bounds="rectangle.bounds" :color="rectangle.color">
+        <v-popup content="Rectangle"></v-popup>
+      </v-rectangle>
+      <v-polygon :lat-lngs="polygon.latlngs" :color="polygon.color">
+        <v-popup content="Polygon"></v-popup>
+      </v-polygon>
+      <v-polyline :lat-lngs="polyline.latlngs" :color="polyline.color">
+        <v-popup>
+          <popup-content :data="polyline" />
+        </v-popup>
+        <v-tooltip>
+          <tooltip-content :data="polyline" />
+        </v-tooltip>
+      </v-polyline>
+    </v-map>
   </div>
 </template>
 
 <script>
 import Vue2Leaflet from 'vue2-leaflet';
+import PopupContent from './PopupContent';
+import TooltipContent from './TooltipContent';
 
 export default {
   name: 'PopupGeometryTest',
@@ -37,6 +41,9 @@ export default {
     'v-polygon': Vue2Leaflet.Polygon,
     'v-polyline': Vue2Leaflet.Polyline,
     'v-popup': Vue2Leaflet.Popup,
+    'v-tooltip': Vue2Leaflet.Tooltip,
+    'tooltip-content': TooltipContent,
+    'popup-content': PopupContent,
   },
   data () {
     return {
@@ -55,6 +62,7 @@ export default {
         color: "#ff00ff"
       },
       polyline: {
+        type: "polyline",
         latlngs: [[47.334852, -1.509485], [47.342596, -1.328731], [47.241487, -1.190568], [47.234787, -1.358337]],
         color: "green"
       },

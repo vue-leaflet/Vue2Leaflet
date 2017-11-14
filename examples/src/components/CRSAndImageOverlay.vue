@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div id="top_div" style="height: 100%">
-      <h2>CRS and Image Overlay</h2>
-      <v-map ref="map" style="height: 400px; width: 600px;" :minZoom="minZoom" :crs="crs">
-        <v-image-overlay :url="url" :bounds="bounds"></v-image-overlay>
-        <v-marker v-for="star in stars" :lat-lng="star" :key="star.name">
-          <v-popup :content="star.name"></v-popup>
-        </v-marker>
-        <v-polyline :lat-lngs="travel"></v-polyline>
-      </v-map>
+    <div style="height: 10%; overflow: auto;">
+      <h3>CRS and Image Overlay</h3>
     </div>
+    <v-map ref="map" style="height: 400px; width: 600px;" :minZoom="minZoom" :crs="crs">
+      <v-image-overlay :url="url" :bounds="bounds"></v-image-overlay>
+      <v-marker v-for="star in stars" :lat-lng="star" :key="star.name">
+        <v-popup :content="star.name"></v-popup>
+      </v-marker>
+      <v-polyline :lat-lngs="travel"></v-polyline>
+    </v-map>
   </div>
 </template>
 

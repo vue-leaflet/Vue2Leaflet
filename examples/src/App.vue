@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div id="side">
+    <ul id="side">
       <li>
         <a href="#" @click="currentView='simple'">Simple map</a>
+      </li>
+      <li>
+        <a href="#" @click="currentView='marker-popup-example'">Custom Component</a>
       </li>
       <li>
         <a href="#" @click="currentView='multi-map'">Two maps</a>
@@ -37,39 +40,38 @@
       <li>
         <a href="#" @click="currentView='crs'">CRS and Image Overlay</a>
       </li>
-    </div>
-    <div class="container">
-      <component :is="currentView"></component>
-    </div>
+    </ul>
+    <component id="full_div" :is="currentView"></component>
   </div>
 </template>
 
 <script>
-
-import Simple from './components/Simple';
-import Example from './components/Example';
-import MultiMap from './components/MultiMap';
+import CRSAndImageOverlay from './components/CRSAndImageOverlay';
 import CustomPath from './components/CustomPath';
 import CustomUrlParams from './components/CustomUrlParams';
-import SetBounds from './components/SetBounds';
-import GeometryTest from './components/GeometryTest';
-import PopupOnGeometryTest from './components/PopupOnGeometryTest';
-import WorldCopyJump from './components/WorldCopyJump';
+import Example from './components/Example';
 import GeoJSON from './components/GeoJSON';
+import GeometryTest from './components/GeometryTest';
+import MarkerPopupExample from './components/MarkerPopupExample';
+import MultiMap from './components/MultiMap';
+import PopupOnGeometryTest from './components/PopupOnGeometryTest';
+import SetBounds from './components/SetBounds';
+import Simple from './components/Simple';
 import WMSLayers from './components/WMSLayers';
-import CRSAndImageOverlay from './components/CRSAndImageOverlay';
+import WorldCopyJump from './components/WorldCopyJump';
 
 export default {
   name: 'app',
   components: {
-    Simple,
-    Example,
-    MultiMap,
     CustomPath,
     CustomUrlParams,
-    SetBounds,
+    Example,
     GeometryTest,
+    MarkerPopupExample,
+    MultiMap,
     PopupOnGeometryTest,
+    SetBounds,
+    Simple,
     WorldCopyJump,
     'geo-json': GeoJSON,
     'wms-layers': WMSLayers,
@@ -92,28 +94,59 @@ export default {
 }
 @import "../../node_modules/leaflet/dist/leaflet.css";
 
-#side {
-  float:left;
-  width:200px;
+body {
+  margin: 0px;
+  font-family: Helvetica, Verdana, sans-serif;
 }
 
-#container {
-  margin: 0 0 0 200px;
+#side {
+  float:left;
+  width:208px;
 }
-#top_div {
+
+#full_div {
   position: absolute;
   overflow-x: auto;
   top: 0;
   right: 0;
-  left: 200px;
-  bottom: 50%;
+  left: 208px;
+  bottom: 0;
+  padding-left: 8px;
+  border-left: 1px solid #ccc;
 }
 
-#bottom_div {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 200px;
-  bottom: 0;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+li {
+  font: 200 15px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border: none;
+}
+
+li a {
+  font-size: 15px;
+  padding-left: 8px;
+  text-decoration: none;
+  color: #000;
+  display: block;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+li a:hover {
+  font-size: 20px;
+  background: #f6f6f6;
 }
 </style>

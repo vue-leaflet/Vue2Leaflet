@@ -1,39 +1,38 @@
 <template>
   <div>
-    <div id="top_div">
-      <h2>WMS Layers</h2>
-      <h3>With Layer selector</h3>
+    <div style="height: 15%; overflow: auto;">
+      <h3>WMS Layers with Layer selector</h3>
       <p>
         <b>NOTE:</b> Use layer symbol on the top right to select which layer you want to
         display.
         More information about WMS (Web Map Service) can be found on the
         <a href="http://leafletjs.com/examples/wms/wms.html">leaflet.js WMS example page</a>.
       </p>
-      <v-map style="height: 78%" :zoom="zoom" :center="center">
-        <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-        <wms-tilelayers v-for="layer in wms_layers"
-                        :key="layer.url"
-                        :baseurl="layer.url"
-                        :format="layer.format"
-                        :transparent="layer.transparent"
-                        :layers="layer.layers"
-                        :crs="layer.crs">
-        </wms-tilelayers>
-      </v-map>
     </div>
-    <div id="bottom_div">
+    <v-map style="height: 35%" :zoom="zoom" :center="center">
+      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
+      <wms-tilelayers v-for="layer in wms_layers"
+                      :key="layer.url"
+                      :baseurl="layer.url"
+                      :format="layer.format"
+                      :transparent="layer.transparent"
+                      :layers="layer.layers"
+                      :crs="layer.crs">
+      </wms-tilelayers>
+    </v-map>
+    <div style="height: 10%; overflow: auto;">
       <h3>Mulitple Layers displayed together</h3>
-      <v-map style="height: 90%" :zoom="zoom" :center="center">
-         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-         <wms-tilelayer :key="wms_layers[0].url"
-                       :baseurl="wms_layers[0].url"
-                       :format="wms_layers[0].format"
-                       :transparent="wms_layers[0].transparent"
-                       ids="abfall_recycling_6_recyhof"
-                       :crs="wms_layers[0].crs">
-        </wms-tilelayer>
-      </v-map>
     </div>
+    <v-map style="height: 40%" :zoom="zoom" :center="center">
+       <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
+       <wms-tilelayer :key="wms_layers[0].url"
+                     :baseurl="wms_layers[0].url"
+                     :format="wms_layers[0].format"
+                     :transparent="wms_layers[0].transparent"
+                     ids="abfall_recycling_6_recyhof"
+                     :crs="wms_layers[0].crs">
+      </wms-tilelayer>
+    </v-map>
   </div>
 </template>
 

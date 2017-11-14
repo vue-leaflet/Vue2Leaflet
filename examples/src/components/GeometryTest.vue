@@ -1,18 +1,15 @@
 <template>
   <div>
-    <div id="top_div" style="height: 100%">
-      <h2>Geometry</h2>
-      <v-map style="height: 100%" :zoom="zoom" :center="center">
-        <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-        <v-circle :lat-lng="circle.center" :radius="circle.radius"></v-circle>
-        <v-rectangle :bounds="rectangle.bounds" :l-style="rectangle.style"></v-rectangle>
-        <v-polygon :lat-lngs="polygon.latlngs" :color="polygon.color"></v-polygon>
-        <v-polyline :lat-lngs="polyline.latlngs" :color="polyline.color"></v-polyline>
-      </v-map>
+    <div style="height: 10%; overflow: auto;">
+      <h3>Geometry</h3>
     </div>
-    <div>
-
-    </div>
+    <v-map style="height: 90%" :zoom="zoom" :center="center">
+      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
+      <v-circle :lat-lng="circle.center" :radius="circle.radius"></v-circle>
+      <v-rectangle :bounds="rectangle.bounds" :l-style="rectangle.style"></v-rectangle>
+      <v-polygon :lat-lngs="polygon.latlngs" :color="polygon.color"></v-polygon>
+      <v-polyline :lat-lngs="polyline.latlngs" :color="polyline.color"></v-polyline>
+    </v-map>
   </div>
 </template>
 

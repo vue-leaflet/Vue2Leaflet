@@ -1,17 +1,16 @@
 <template>
   <div>
-    <div id="top_div" style="height: 100%">
-      <h2>GeoJSON</h2>
-      <p>Marker is placed at {{ marker.lat }}, {{ marker.lng }}</p>
-      <label for="checkbox">visibility</label>
+    <div style="height: 10%; overflow: auto;">
+      <h3>GeoJSON</h3>
+      <label for="checkbox">GeoJSON Visibility</label>
       <input type="checkbox" id="checkbox" v-model="show">
       </br>
-      <v-map style="height: 90%" :zoom="zoom" :center="center">
-        <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-        <v-geojson-layer v-if="show" :geojson="geojson" :options="options"></v-geojson-layer>
-        <v-marker :lat-lng="marker"></v-marker>
-      </v-map>
     </div>
+    <v-map style="height: 90%" :zoom="zoom" :center="center">
+      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
+      <v-geojson-layer v-if="show" :geojson="geojson" :options="options"></v-geojson-layer>
+      <v-marker :lat-lng="marker"></v-marker>
+    </v-map>
   </div>
 </template>
 
