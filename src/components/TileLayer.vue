@@ -52,7 +52,7 @@ const props = {
     }
   },
   tileLayerClass: {
-  	type: Object,
+  	type: Function,
 	default: L.tileLayer
   }
 };
