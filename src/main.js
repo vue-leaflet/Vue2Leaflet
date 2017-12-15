@@ -1,6 +1,7 @@
 exports.GeoJSON = require('./components/GeoJSON').default;
 exports.IconDefault = require('./components/IconDefault').default;
 exports.LayerGroup = require('./components/LayerGroup').default;
+exports.LayerControl = require('./components/LayerControl').default;
 exports.LCircle = require('./components/LCircle').default;
 exports.Map = require('./components/Map').default;
 exports.Marker = require('./components/Marker').default;
