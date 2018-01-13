@@ -5,7 +5,7 @@
         Marker is placed at {{ marker.lat }}, {{ marker.lng }}, bounds are {{ bounds}}
       </br>
     </div>
-    <v-map :zoom="zoom" style="height: 90%" :center="center" :bounds="bounds">
+    <v-map :zoom="zoom" style="height: 90%" :center="center" :bounds="bounds" :max-bounds="bounds">
       <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
       <v-marker :lat-lng="marker"></v-marker>
     </v-map>
