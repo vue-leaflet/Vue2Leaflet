@@ -129,12 +129,12 @@ For example if you want to bind to leaflet marker move event, you can bind to Vu
 # Run demo at localhost:8080
 $ npm link
 $ cd examples
-$ npm link vue2-leaflet
 $ npm install
+$ npm link vue2-leaflet
 # serve with hot reload at localhost:8080
 $ npm run dev
 ```
-Go to <http://localhost:8080/> to see a some examples
+Go to <http://localhost:8080/> to see running examples
 
 NOTE: If you make changes to the library you should run 'npm run build' again in the root folder.
 The dev server should detect modification and reload the demo
