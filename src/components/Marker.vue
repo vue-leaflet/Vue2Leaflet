@@ -51,7 +51,6 @@ const props = {
     custom: false,
   },
   options: {
-    custom: true,
     type: Object,
     default: () => ({}),
   },
@@ -92,9 +91,6 @@ export default {
       if (this.mapObject.dragging) {
         newVal ? this.mapObject.dragging.enable() : this.mapObject.dragging.disable();
       }
-    },
-    setOptions(newVal) {
-      Object.assign(this.options, newVal);
     },
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
