@@ -165,12 +165,16 @@ export default {
       }
     },
     setBounds(newVal, oldVal) {
-      this.setMaxBounds(this.maxBounds);
-
-      if (!(newVal && newVal.isValid())) {
+      if (!newVal) {
         return;
       }
-
+      if (newVal instanceof L.LatLngBounds) {
+        if (!newVal.isValid()) {
+          return;
+        }
+      } else if (!Array.isArray(newVal)) {
+        return;
+      }
       var options = {};
       if (this.padding) {
         options.padding = this.padding;

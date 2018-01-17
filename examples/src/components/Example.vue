@@ -170,23 +170,23 @@ export default {
       tileProviders: tileProviders,
       tileProvider: tileProviders[0],
       markers:[
-        { id: "1", position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: L.icon.glyph({
+        { id: "m1", position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: L.icon.glyph({
           prefix: '',
           glyph: 'A'})
         },
-        { id: "2", position : {lat:51.8905, lng:-0.09}, tooltip: "tooltip for marker2", draggable: true, visible: false },
-        { id: "3", position : {lat:51.005, lng:-0.09}, tooltip: "tooltip for marker3", draggable: true, visible: true },
-        { id: "4", position : {lat:50.7605, lng:-0.09}, tooltip: "tooltip for marker4", draggable: true, visible: false }
+        { id: "m2", position : {lat:51.8905, lng:-0.09}, tooltip: "tooltip for marker2", draggable: true, visible: false },
+        { id: "m3", position : {lat:51.005, lng:-0.09}, tooltip: "tooltip for marker3", draggable: true, visible: true },
+        { id: "m4", position : {lat:50.7605, lng:-0.09}, tooltip: "tooltip for marker4", draggable: true, visible: false }
       ],
       polylines: [
-        { id: "1", points : [{lat: 37.772, lng: -122.214},
+        { id: "p1", points : [{lat: 37.772, lng: -122.214},
                     {lat: 21.291, lng: -157.821},
                     {lat: -18.142, lng: -181.569},
                     {lat: -27.467, lng: -206.973}], visible: true },
-        { id: "2", points : [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]], visible: true },
+        { id: "p2", points : [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]], visible: true },
       ],
       stuff: [
-        { id: "1", markers: markers1, polyline: { points : poly1, visible: true}, visible: true, markersVisible: true},
+        { id: "s1", markers: markers1, polyline: { points : poly1, visible: true}, visible: true, markersVisible: true},
       ],
       bounds: L.latLngBounds()
     }
