@@ -93,6 +93,8 @@ Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would
 #### Vue2Leafet plugins:
 *  [MarkerCluster](https://github.com/jperelli/vue2-leaflet-markercluster)
 *  [TrackSymbol](https://github.com/ais-one/vue2-leaflet-tracksymbol)
+*  [Choropleth](https://github.com/voluntadpear/vue-choropleth)
+*  [VectorGrid](https://github.com/tesselo/vue2-leaflet-vectorgrid)
 
 If you have created a plugin and want it to be listed here, let me know :-).
 
