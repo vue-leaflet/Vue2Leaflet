@@ -22,6 +22,9 @@ const props = {
   content: {
     default: '',
   },
+  latLng: {
+    type: [Object, Array]
+  },
   options: {
     type: Object,
     default: () => ({}),
@@ -32,6 +35,9 @@ export default {
   props: props,
   mounted() {
     this.mapObject = L.popup(this.options);
+    if (this.latLng !== undefined) {
+      this.mapObject.setLatLng(this.latLng);
+    }
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted)  {
@@ -39,7 +45,7 @@ export default {
     }
   },
   beforeDestroy() {
-    if (this.parent.getPopup()) {
+    if (this.parent.getPopup && this.parent.getPopup()) {
       this.parent.unbindPopup();
     }
   },
@@ -47,7 +53,9 @@ export default {
     deferredMountedTo(parent) {
       this.parent = parent;
       this.mapObject.setContent(this.content || this.$el);
-      parent.bindPopup(this.mapObject);
+      if (parent.bindPopup) {
+        parent.bindPopup(this.mapObject);
+      }
     }
   }
 };
