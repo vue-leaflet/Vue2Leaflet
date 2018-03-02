@@ -58,6 +58,9 @@ const props = {
     custom: true,
     default: undefined,
   },
+  maxBounds: {
+    default: undefined,
+  },
   zoom: {
     type: Number,
     default: undefined,
@@ -103,6 +106,7 @@ export default {
     Object.assign(options, {
       minZoom: this.minZoom,
       maxZoom: this.maxZoom,
+      maxBounds: this.maxBounds,
       worldCopyJump: this.worldCopyJump,
       crs: this.crs,
     });
