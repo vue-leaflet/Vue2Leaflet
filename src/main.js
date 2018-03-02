@@ -1,5 +1,7 @@
+exports.CircleMarker = require('./components/CircleMarker').default;
 exports.GeoJSON = require('./components/GeoJSON').default;
 exports.IconDefault = require('./components/IconDefault').default;
+exports.ImageOverlay = require('./components/ImageOverlay').default;
 exports.LayerGroup = require('./components/LayerGroup').default;
 exports.LCircle = require('./components/LCircle').default;
 exports.Map = require('./components/Map').default;
@@ -12,4 +14,3 @@ exports.TileLayer = require('./components/TileLayer').default;
 exports.Tooltip = require('./components/Tooltip').default;
 exports.WMSTileLayer = require('./components/WMSTileLayer').default;
 exports.WMSTileLayers = require('./components/WMSTileLayers').default;
-exports.ImageOverlay = require('./components/ImageOverlay').default;

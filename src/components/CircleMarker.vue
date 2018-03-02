@@ -29,6 +29,7 @@ const props = {
   },
   radius: {
     type: Number,
+    default: 10
   },
   lStyle: {
     type: Object,

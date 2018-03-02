@@ -70,7 +70,7 @@ $ npm install vue2-leaflet --save
 -   [x] Polygon
 -   [x] Rectangle
 -   [x] Circle
--   [ ] CircleMarker
+-   [x] CircleMarker
 -   [x] LayerGroup
 -   [ ] FeatureGroup
 -   [x] GeoJSON
