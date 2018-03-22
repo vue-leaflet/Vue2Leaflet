@@ -66,6 +66,15 @@ export default {
 
     options.draggable = this.draggable;
     this.mapObject = L.marker(this.latLng, options);
+    this.mapObject.on('move', (ev) => {
+      if (Array.isArray(this.latLng)) {
+        this.latLng[0] = ev.latlng.lat;
+        this.latLng[1] = ev.latlng.lng;
+      } else {
+        this.latLng.lat = ev.latlng.lat;
+        this.latLng.lng = ev.latlng.lng;
+      }
+    });
     eventsBinder(this, this.mapObject, events);
     propsBinder(this, this.mapObject, props);
     if (this.$parent._isMounted) {

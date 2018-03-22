@@ -5,9 +5,11 @@
     </div>
     <div style="height: 45%; overflow: auto;">
       Zoom Level :
-      <input v-model.number="zoom" type="number">
-      <button name="button" v-on:click="fitPolyline">Fit map to polyline</button>
-      <br>
+      <input v-model.number.sync="zoom" type="number"><br>
+      Center : <span> {{ center }} </span><br>
+      Bounds : <span> {{ bounds }} </span><br>
+      <button name="button" v-on:click="fitPolyline">Fit map to polyline</button><br><br>
+
       Tile Provider:
       <select v-model="tileProvider">
         <option v-for="provider in tileProviders" :value="provider">{{provider.name}}</option>
@@ -54,10 +56,10 @@
       </table>
       <hr/>
     </div>
-    <v-map style="height: 45%" :zoom="zoom" :bounds="bounds" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
+    <v-map style="height: 45%" :zoom.sync="zoom" :center="center" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
       <v-tilelayer :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"></v-tilelayer>
       <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-      v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)" :icon="item.icon">
+      v-on:l-click="alert(item)" :icon="item.icon">
         <v-popup :content="item.tooltip"></v-popup>
         <v-tooltip :content="item.tooltip"></v-tooltip>
       </v-marker>
@@ -162,7 +164,7 @@ export default {
   data () {
     return {
       zoom:13,
-      center:[51.505, -0.09],
+      center: [51.505, -0.09],
       minZoom:1,
       maxZoom:20,
       opacity:0.6,
@@ -188,7 +190,7 @@ export default {
       stuff: [
         { id: "s1", markers: markers1, polyline: { points : poly1, visible: true}, visible: true, markersVisible: true},
       ],
-      bounds: L.latLngBounds()
+      bounds: L.latLngBounds( { "lat": 51.476483373501964, "lng": -0.14668464136775586 }, { "lat": 51.52948330894063, "lng": -0.019140238291583955 })
     }
   },
   methods: {
@@ -202,16 +204,10 @@ export default {
     removeMarker: function(index) {
       this.markers.splice(index, 1);
     },
-    markerMoved: function(event, item) {
-      Vue.set(item, 'position', event.latlng);
-    },
-    zoomChanged: function(event) {
-      this.zoom = event.target.getZoom();
-    },
     fitPolyline: function() {
       var bounds = L.latLngBounds(markers1.map((o) => o.position));
       this.bounds = bounds;
-    }
+    },
   }
 }
 </script>

@@ -3,10 +3,10 @@
     <div style="height: 10%; overflow: auto;">
       <h3>Two maps</h3>
     </div>
-    <v-map style="height: 45%" :zoom="zoom" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
+    <v-map style="height: 45%" :zoom.sync="zoom" :center="center" :options="option1" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
       <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
       <v-marker v-for="item in markers"  :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-      v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)"></v-marker>
+      v-on:l-click="alert(item)"></v-marker>
       <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
       <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
         <v-group :visible="item.markersVisible">
@@ -15,10 +15,10 @@
         <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" v-on:l-click="alert(item.polyline)"></v-poly>
       </v-group>
     </v-map>
-    <v-map style="height: 45%" :zoom="zoom" :center="center" :min-zoom="minZoom" :max-zoom="maxZoom" v-on:l-zoomanim="zoomChanged">
+    <v-map style="height: 45%" :zoom.sync="zoom" :center="center" :options="option2" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
       <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
       <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-      v-on:l-click="alert(item)" v-on:l-move="markerMoved($event, item)"></v-marker>
+      v-on:l-click="alert(item)"></v-marker>
       <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
       <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
         <v-group :visible="item.markersVisible">
@@ -85,7 +85,8 @@ var poly1 = [
   { lng:-1.054688, lat:47.680183},
   { lng:-1.219482, lat:47.413220}
 ];
-
+var corner1 = L.latLng(40.712, -74.227);
+var corner2 = L.latLng(40.774, -74.125);
 export default {
   name: 'multi_map',
   components: {
@@ -98,10 +99,13 @@ export default {
   data () {
     return {
       zoom: 13,
-      center: [51.505, -0.09],
+      center: { lat: 51.505, lng: -0.09 },
+      bounds: L.latLngBounds(corner1, corner2),
       minZoom: 1,
       maxZoom: 20,
       opacity: 0.6,
+      option1: { name: '1'},
+      option2: { name: '2'},
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       token: 'your token if using mapbox',
@@ -127,20 +131,6 @@ export default {
     alert(item) {
       alert('this is ' + JSON.stringify(item));
     },
-    addMarker: function(event) {
-      var newMarker = { position: {lat:50.5505, lng:-0.09}, draggable: true, visible: true};
-      this.markers.push(newMarker);
-    },
-    removeMarker: function(index) {
-      this.markers.splice(index, 1);
-    },
-    markerMoved: function(event, item) {
-      Vue.set(item, 'position', event.latlng);
-    },
-    zoomChanged: function(event) {
-      this.zoom = event.zoom;
-    }
-
   }
 }
 </script>

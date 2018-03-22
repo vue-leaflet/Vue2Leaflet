@@ -5,7 +5,7 @@
         Marker is placed at {{ marker.lat }}, {{ marker.lng }}, bounds are {{ bounds}}
       </br>
     </div>
-    <v-map :zoom="zoom" style="height: 90%" :center="center" :bounds="bounds" :max-bounds="bounds">
+    <v-map :zoom="zoom" style="height: 90%" :center="center" :bounds="bounds" :max-bounds="maxBounds">
       <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
       <v-marker :lat-lng="marker"></v-marker>
     </v-map>
@@ -15,8 +15,8 @@
 <script>
 import Vue2Leaflet from 'vue2-leaflet';
 
-var corner1 = L.latLng(40.712, -74.227);
-var corner2 = L.latLng(40.774, -74.125);
+var corner1 = L.latLng();
+var corner2 = L.latLng();
 
 export default {
   name: 'set-bounds',
@@ -28,8 +28,9 @@ export default {
   data () {
     return {
       zoom:13,
-      center:[47.413220, -1.219482],
-      bounds: L.latLngBounds(corner1, corner2),
+      center:[0, 0],
+      bounds: L.latLngBounds([[40.70081290280357, -74.26963806152345], [40.82991732677597, -74.08716201782228]]),
+      maxBounds: L.latLngBounds([[40.70081290280357, -74.26963806152345], [40.82991732677597, -74.08716201782228]]),
       url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       marker: L.latLng(47.413220, -1.219482),
