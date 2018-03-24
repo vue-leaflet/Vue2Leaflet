@@ -1,6 +1,5 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import eventsBinder from '../utils/eventsBinder.js';
 
 const props = {
   url: String,
@@ -50,7 +49,7 @@ export default {
       }
     }
     this.mapObject = this.tileLayerClass(this.url, options);
-    eventsBinder(this.mapObject, this.$listeners);
+    L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.mapObject.addTo(this.$parent.mapObject);
   },

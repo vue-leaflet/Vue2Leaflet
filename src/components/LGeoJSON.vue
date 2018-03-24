@@ -1,6 +1,5 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import eventsBinder from '../utils/eventsBinder.js';
 
 const props = {
   geojson: {
@@ -23,7 +22,7 @@ export default {
   props: props,
   mounted() {
     this.mapObject = L.geoJSON(this.geojson, this.options);
-    eventsBinder(this.mapObject, this.$listeners);
+    L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     if (this.visible) {
       this.mapObject.addTo(this.$parent.mapObject);

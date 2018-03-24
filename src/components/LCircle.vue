@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
 import findParentMapObject from '../utils/findParentMapObject.js';
 
@@ -125,7 +124,7 @@ export default {
       }
     }
     this.mapObject = L.circle(this.latLng, options);
-    eventsBinder(this.mapObject, this.$listeners);
+    L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.ready = true;
     this.parentMapObject = findParentMapObject(this.$parent);

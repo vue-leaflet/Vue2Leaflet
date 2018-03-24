@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
 import findParentMapObject from '../utils/findParentMapObject.js';
 
@@ -28,7 +27,7 @@ export default {
   },
   mounted() {
     this.mapObject = L.tooltip(this.options);
-    eventsBinder(this.mapObject, this.$listeners);
+    L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.mapObject.setContent(this.content || this.$el);
     this.parentMapObject = findParentMapObject(this.$parent);

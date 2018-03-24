@@ -1,5 +1,4 @@
 <script>
-import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
 
 const props = {
@@ -36,7 +35,7 @@ export default {
       crossOrigin: this.crossOrigin,
     };
     this.mapObject = L.imageOverlay(this.url, this.bounds, options);
-    eventsBinder(this.mapObject, this.$listeners);
+    L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.mapObject.addTo(this.$parent.mapObject);
   },

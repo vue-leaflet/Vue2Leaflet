@@ -6,7 +6,6 @@
 
 <script>
 import L from 'leaflet';
-import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
 
 const props = {
@@ -134,7 +133,7 @@ export default {
         this.$emit('update:bounds', bounds);
       }
     });
-    eventsBinder(this.mapObject, this.$listeners);
+    L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
   },
   methods: {

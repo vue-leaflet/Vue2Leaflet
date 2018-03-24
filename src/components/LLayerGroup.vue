@@ -6,7 +6,6 @@
 
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import eventsBinder from '../utils/eventsBinder.js';
 import findParentMapObject from '../utils/findParentMapObject.js';
 
 const props = {
@@ -28,7 +27,7 @@ export default {
   mounted() {
     this.mapObject = L.layerGroup();
     propsBinder(this, this.mapObject, props);
-    eventsBinder(this.mapObject, this.$listeners);
+    L.DomEvent.on(this.mapObject, this.$listeners);
     this.ready = true;
     this.parentMapObject = findParentMapObject(this.$parent);
     if (this.visible) {
