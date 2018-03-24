@@ -67,6 +67,7 @@
       <l-tile-layer :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"></l-tile-layer>
       <l-control-zoom :position="zoomPosition" />
       <l-control-attribution :position="attributionPosition" :prefix="attributionPrefix" />
+      <l-control-scale :imperial="imperial" />
       <l-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
       @click="alert(item)" :icon="item.icon">
         <l-popup :content="item.tooltip"></l-popup>
@@ -86,7 +87,7 @@
 
 <script>
 import Vue from 'vue';
-import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup, LControlZoom, LControlAttribution } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup, LControlZoom, LControlAttribution, LControlScale } from 'vue2-leaflet';
 import Glyph from 'leaflet.icon.glyph';
 
 var markers1 = [
@@ -170,7 +171,8 @@ export default {
     LTooltip,
     LPopup,
     LControlZoom,
-    LControlAttribution
+    LControlAttribution,
+    LControlScale
   },
   data () {
     return {
@@ -184,6 +186,7 @@ export default {
       zoomPosition: 'topleft',
       attributionPosition: 'bottomright',
       attributionPrefix: 'Vue2Leaflet',
+      imperial: false,
       Positions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
       tileProviders: tileProviders,
       tileProvider: tileProviders[0],
