@@ -49,8 +49,10 @@ config.resolveLoader = {
   modules: config.resolve.modules
 };
 
+config.mode = 'production';
+
 config.module = {
-  loaders: [
+  rules: [
     {
       test: /\.vue$/,
       loader: 'vue-loader'
@@ -68,23 +70,7 @@ if (process.env.NODE_ENV === 'production') {
   config.output.filename = "vue2-leaflet.min.js"
   config.devtool = '#source-map';
 
-  // Pass build environment inside bundle
-  // This will strip comments in Vue code & hort-circuits all Vue.js warning code
-  config.plugins.push(new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-  }));
 
-  // The UglifyJsPlugin will no longer put loaders into minimize mode, and the debug option has been deprecated.
-  config.plugins.push(new webpack.LoaderOptionsPlugin({
-    minimize: true,
-    debug: false
-  }));
-
-  // Minify with dead-code elimination
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    compress: {warnings: false},
-    sourceMap: true
-  }));
 } else {
   config.devtool = '#eval-source-map';
 }
