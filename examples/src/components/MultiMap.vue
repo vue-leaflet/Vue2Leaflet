@@ -6,25 +6,25 @@
     <v-map style="height: 45%" :zoom.sync="zoom" :center="center" :options="option1" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
       <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
       <v-marker v-for="item in markers"  :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-      v-on:l-click="alert(item)"></v-marker>
-      <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
+      @click="alert(item)"></v-marker>
+      <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></v-poly>
       <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
         <v-group :visible="item.markersVisible">
-          <v-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)"></v-marker>
+          <v-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)"></v-marker>
         </v-group>
-        <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" v-on:l-click="alert(item.polyline)"></v-poly>
+        <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></v-poly>
       </v-group>
     </v-map>
     <v-map style="height: 45%" :zoom.sync="zoom" :center="center" :options="option2" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
       <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
       <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-      v-on:l-click="alert(item)"></v-marker>
-      <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" v-on:l-click="alert(item)"></v-poly>
+      @click="alert(item)"></v-marker>
+      <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></v-poly>
       <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
         <v-group :visible="item.markersVisible">
-          <v-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" v-on:l-click="alert(marker)"></v-marker>
+          <v-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)"></v-marker>
         </v-group>
-        <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" v-on:l-click="alert(item.polyline)"></v-poly>
+        <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></v-poly>
       </v-group>
     </v-map>
   </div>
