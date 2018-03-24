@@ -31,12 +31,6 @@ export default {
     propsBinder(this, this.mapObject, props);
     this.mapObject.addTo(this.$parent.mapObject);
   },
-  methods: {
-    setAttribution(newVal, oldVal) {
-      this.mapObject.removeAttribution(oldVal);
-      this.mapObject.addAttribution(newVal)
-    }
-  },
   beforeDestroy() {
     this.mapObject.remove();
   },
