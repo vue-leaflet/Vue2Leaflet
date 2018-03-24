@@ -17,4 +17,3 @@ exports.LRectangle = require('./components/LRectangle').default;
 exports.LTileLayer = require('./components/LTileLayer').default;
 exports.LTooltip = require('./components/LTooltip').default;
 exports.LWMSTileLayer = require('./components/LWMSTileLayer').default;
-exports.LWMSTileLayers = require('./components/LWMSTileLayers').default;
