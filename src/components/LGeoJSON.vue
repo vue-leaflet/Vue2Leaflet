@@ -19,6 +19,7 @@ const props = {
 }
 
 export default {
+  name: 'LGeoJson',
   props: props,
   mounted() {
     this.mapObject = L.geoJSON(this.geojson, this.options);

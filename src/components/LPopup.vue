@@ -22,6 +22,7 @@ const props = {
 };
 
 export default {
+  name: 'LPopup',
   props: props,
   data() {
     return {

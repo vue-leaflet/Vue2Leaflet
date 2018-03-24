@@ -17,6 +17,7 @@ const props = {
 };
 
 export default {
+  name: 'LControlAttribution',
   props: props,
   mounted() {
     const options = this.options;

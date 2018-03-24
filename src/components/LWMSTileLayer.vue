@@ -47,6 +47,7 @@ const props = {
   },
 };
 export default {
+  name: 'LWMSTileLayer',
   props: props,
   mounted () {
     const options = this.options;

@@ -19,6 +19,7 @@ const props = {
 };
 
 export default {
+  name: 'LTooltip',
   props: props,
   data() {
     return {

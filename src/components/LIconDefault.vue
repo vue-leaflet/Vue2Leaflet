@@ -10,6 +10,7 @@ const props = {
 };
 
 export default {
+  name: 'LIconDefault',
   props: props,
   mounted() {
     L.Icon.Default.imagePath = this.imagePath;

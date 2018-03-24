@@ -37,6 +37,7 @@ const props = {
 };
 
 export default {
+  name: 'LMarker',
   props: props,
   data() {
     return {

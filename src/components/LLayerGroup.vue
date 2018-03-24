@@ -17,6 +17,7 @@ const props = {
 };
 
 export default {
+  name: 'LLayerGroup',
   props: props,
   data() {
     return {

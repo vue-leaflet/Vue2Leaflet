@@ -92,6 +92,7 @@ const props = {
   },
 };
 export default {
+  name: 'LCircleMarker',
   props: props,
   data() {
     return {

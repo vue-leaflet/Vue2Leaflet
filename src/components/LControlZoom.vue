@@ -29,6 +29,7 @@ const props = {
 };
 
 export default {
+  name: 'LControlZoom',
   props: props,
   mounted() {
     const options = this.options;

@@ -93,6 +93,7 @@ const props = {
 };
 
 export default {
+  name: 'LCircle',
   props: props,
   data() {
     return {

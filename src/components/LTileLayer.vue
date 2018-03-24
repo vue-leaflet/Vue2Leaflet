@@ -38,6 +38,7 @@ const props = {
 };
 
 export default {
+  name: 'LTileLayer',
   props: props,
   mounted() {
     const options = this.options;

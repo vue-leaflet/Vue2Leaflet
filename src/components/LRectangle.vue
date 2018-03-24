@@ -90,6 +90,7 @@ const props = {
 };
 
 export default {
+  name: 'LRectangle',
   props: props,
   data() {
     return {

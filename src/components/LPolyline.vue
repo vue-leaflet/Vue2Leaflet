@@ -100,6 +100,7 @@ const props = {
 };
 
 export default {
+  name: 'LPolyline',
   props: props,
   data() {
     return {

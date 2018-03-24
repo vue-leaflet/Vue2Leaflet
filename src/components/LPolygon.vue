@@ -100,6 +100,7 @@ const props = {
 };
 
 export default {
+  name: 'LPolygon',
   props: props,
   data() {
     return {

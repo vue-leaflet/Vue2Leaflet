@@ -26,6 +26,7 @@ const props = {
 };
 
 export default {
+  name: 'LImageOverlay',
   props: props,
   mounted() {
     let options = {

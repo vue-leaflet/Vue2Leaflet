@@ -65,6 +65,7 @@ const props = {
 };
 
 export default {
+  name: 'LMap',
   props: props,
   data() {
     return {
