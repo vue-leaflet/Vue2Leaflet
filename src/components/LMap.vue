@@ -54,6 +54,10 @@ const props = {
     custom: true,
     default: () => L.CRS.EPSG3857,
   },
+  maxBoundsViscosity: {
+    type: Number,
+    default: 1
+  },
   options: {
     type: Object,
     default: () => ({}),
@@ -76,6 +80,7 @@ export default {
       minZoom: this.minZoom,
       maxZoom: this.maxZoom,
       maxBounds: this.maxBounds,
+      maxBoundsViscosity: this.maxBoundsViscosity,
       worldCopyJump: this.worldCopyJump,
       crs: this.crs,
     });
