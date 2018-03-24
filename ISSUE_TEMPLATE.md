@@ -4,7 +4,7 @@ If you are asking a question rather than filing a bug, try one of these instead:
 -->
 <!-- Instructions For Filing a Bug: https://github.com/KoRiGaN/Vue2Leaflet/blob/master/CONTRIBUTING.md#filing-bugs -->
 ### Description
-<!-- Example: Error thrown when calling `deferredMountedTo` on Vue2Leaflet component -->
+<!-- Example: Error thrown when calling `addTo` on Vue2Leaflet component -->
 
 #### Live Demo
 <!-- Fork this JSFiddler, or provide your own URL -->

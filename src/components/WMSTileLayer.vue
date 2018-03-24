@@ -1,10 +1,6 @@
-<template>
-</template>
-
 <script>
-  import L from 'leaflet'
-
   export default {
+    name: 'v-wmstilelayer',
     // Expects ids as one or more WMS layer IDs (comma-separated)
     props: ['baseurl', 'format', 'transparent', 'ids', 'crs'],
     mounted () {
@@ -13,12 +9,11 @@
         transparent: this.transparent,
         layers: this.ids,
         crs: this.crs
-      })
+      });
+      this.$tileLayer.addTo(this.$parent.mapObject);
     },
-    methods: {
-      deferredMountedTo (parent) {
-        this.$tileLayer.addTo(parent);
-      }
+    render() {
+      return null;
     }
   }
 </script>

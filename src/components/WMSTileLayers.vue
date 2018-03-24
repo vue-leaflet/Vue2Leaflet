@@ -1,10 +1,6 @@
-<template>
-</template>
-
 <script>
-  import L from 'leaflet';
-
   export default {
+    name: 'v-wmstilelayers',
     // Expects layers as array of objects with id and name properties
     props: ['baseurl', 'format', 'transparent', 'layers', 'crs'],
     mounted () {
@@ -17,12 +13,10 @@
           crs: this.crs
         })
       }
+      L.control.layers(this.$basemaps).addTo(this.$parent.mapObject);
     },
-    methods: {
-      deferredMountedTo (parent) {
-        // Add layer control (by default top right, to allow switching between layers)
-        L.control.layers(this.$basemaps).addTo(parent);
-      }
+    render() {
+      return null;
     }
   }
 </script>

@@ -1,22 +1,13 @@
 <template>
   <div>
-    <slot></slot>
+    <slot v-if="ready"></slot>
   </div>
 </template>
 
 <script>
-
 import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
-
-const events = [
-  'add',
-  'remove',
-  'popupopen',
-  'popupclose',
-  'tooltipopen',
-  'tooltipclose'
-];
+import findParentMapObject from '../utils/findParentMapObject.js';
 
 const props = {
   content: {
@@ -32,31 +23,30 @@ const props = {
 };
 
 export default {
+  name: 'v-popup',
   props: props,
+  data() {
+    return {
+      ready: false,
+      parentMapObject: undefined
+    }
+  },
   mounted() {
     this.mapObject = L.popup(this.options);
     if (this.latLng !== undefined) {
       this.mapObject.setLatLng(this.latLng);
     }
-    eventsBinder(this, this.mapObject, events);
+    this.mapObject.setContent(this.content || this.$el);
+    eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    if (this.$parent._isMounted)  {
-      this.deferredMountedTo(this.$parent.mapObject);
-    }
+    this.ready = true;
+    this.parentMapObject = findParentMapObject(this.$parent);
+    this.parentMapObject.bindPopup(this.mapObject);
   },
   beforeDestroy() {
-    if (this.parent.getPopup && this.parent.getPopup()) {
-      this.parent.unbindPopup();
+    if (this.parentMapObject.getPopup && this.parentMapObject.getPopup()) {
+      this.parentMapObject.unbindPopup();
     }
   },
-  methods: {
-    deferredMountedTo(parent) {
-      this.parent = parent;
-      this.mapObject.setContent(this.content || this.$el);
-      if (parent.bindPopup) {
-        parent.bindPopup(this.mapObject);
-      }
-    }
-  }
 };
 </script>

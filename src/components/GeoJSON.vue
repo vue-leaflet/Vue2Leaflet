@@ -1,38 +1,39 @@
-<template>
-</template>
-
 <script>
+import propsBinder from '../utils/propsBinder.js';
+import eventsBinder from '../utils/eventsBinder.js';
+
+const props = {
+  geojson: {
+    type: [Object, Array],
+    custom: true,
+    default: () => ({}),
+  },
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
+  visible: {
+    type: Boolean,
+    custom: true,
+    default: true,
+  }
+}
 
 export default {
-  props: ['geojson', 'options'],
+  name: 'v-geojson',
+  props: props,
   mounted() {
     this.mapObject = L.geoJSON(this.geojson, this.options);
-
-    if (this.$parent._isMounted) {
-      this.deferredMountedTo(this.$parent.mapObject);
+    eventsBinder(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, props);
+    if (this.visible) {
+      this.mapObject.addTo(this.$parent.mapObject);
     }
   },
-  watch: {
-    geojson: {
-      handler(newVal) {
-        this.mapObject.clearLayers()
-        this.addGeoJSONData(newVal);
-      },
-      deep: true,
-    },
-  },
   methods: {
-    deferredMountedTo(parent) {
-      this.parent = parent;
-      this.mapObject.addTo(parent);
-      for (var i = 0; i < this.$children.length; i++) {
-        if (typeof this.$children[i].deferredMountedTo === "function") {
-          this.$children[i].deferredMountedTo(parent);
-        }
-      }
-    },
-    addGeoJSONData(geojsonData) {
-      this.mapObject.addData(geojsonData);
+    setGeojson(newVal) {
+      this.mapObject.clearLayers();
+      this.mapObject.addData(newVal);
     },
     getGeoJSONData() {
       return this.mapObject.toGeoJSON();
@@ -43,16 +44,17 @@ export default {
     setVisible(newVal, oldVal) {
       if (newVal === oldVal) return;
       if (newVal) {
-        this.mapObject.addTo(this.parent);
+        this.mapObject.addTo(this.$parent.mapObject);
       } else {
-        this.parent.removeLayer(this.mapObject);
+        this.$parent.mapObject.removeLayer(this.mapObject);
       }
     },
   },
   beforeDestroy() {
-    if (this.parent) {
-      this.parent.removeLayer(this.mapObject);
-    }
+    this.$parent.mapObject.removeLayer(this.mapObject);
+  },
+  render() {
+    return null;
   }
 };
 </script>

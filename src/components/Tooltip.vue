@@ -5,18 +5,9 @@
 </template>
 
 <script>
-
 import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
-
-const events = [
-  'add',
-  'remove',
-  'popupopen',
-  'popupclose',
-  'tooltipopen',
-  'tooltipclose'
-];
+import findParentMapObject from '../utils/findParentMapObject.js';
 
 const props = {
   content: {
@@ -29,26 +20,25 @@ const props = {
 };
 
 export default {
+  name: 'v-tooltip',
   props: props,
+  data() {
+    return {
+      parentMapObject: undefined
+    }
+  },
   mounted() {
     this.mapObject = L.tooltip(this.options);
-    eventsBinder(this, this.mapObject, events);
+    eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    if (this.$parent._isMounted)  {
-      this.deferredMountedTo(this.$parent.mapObject);
-    }
+    this.mapObject.setContent(this.content || this.$el);
+    this.parentMapObject = findParentMapObject(this.$parent);
+    this.parentMapObject.bindTooltip(this.mapObject);
   },
   beforeDestroy() {
-    if (this.parent.getTooltip()) {
-      this.parent.unbindTooltip();
+    if (this.parentMapObject.getTooltip()) {
+      this.parentMapObject.unbindTooltip();
     }
   },
-  methods: {
-    deferredMountedTo(parent) {
-      this.parent = parent;
-      this.mapObject.setContent(this.content || this.$el);
-      parent.bindTooltip(this.mapObject);
-    },
-  }
 };
 </script>

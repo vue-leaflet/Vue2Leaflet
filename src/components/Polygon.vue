@@ -1,28 +1,13 @@
 <template>
   <div style="display: none;">
-    <slot></slot>
+    <slot v-if="ready"></slot>
   </div>
 </template>
 
 <script>
-
 import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
-
-const events = [
-  'click',
-  'dblclick',
-  'mousedown',
-  'mouseover',
-  'mouseout',
-  'contextmenu',
-  'add',
-  'remove',
-  'popupopen',
-  'popupclose',
-  'tooltipopen',
-  'tooltipclose'
-];
+import findParentMapObject from '../utils/findParentMapObject.js';
 
 const props = {
   latLngs: {
@@ -116,7 +101,14 @@ const props = {
 };
 
 export default {
+  name: 'v-polygon',
   props: props,
+  data() {
+    return {
+      ready: false,
+      parentMapObject: undefined
+    }
+  },
   mounted() {
     const options = {};
     if (this.color) {
@@ -138,33 +130,24 @@ export default {
       }
     }
     this.mapObject = L.polygon(this.latLngs, options);
-    eventsBinder(this, this.mapObject, events);
+    this.ready = true;
+    this.parentMapObject = findParentMapObject(this.$parent);
+    eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    if (this.$parent._isMounted)  {
-      this.deferredMountedTo(this.$parent.mapObject);
+    if (this.visible) {
+      this.mapObject.addTo(this.parentMapObject);
     }
   },
   beforeDestroy() {
-    this.setVisible(false);
+    this.parentMapObject.removeLayer(this.mapObject);
   },
   methods: {
-    deferredMountedTo(parent) {
-      this.parent = parent;
-      for (var i = 0; i < this.$children.length; i++) {
-        if (typeof this.$children[i].deferredMountedTo === "function") {
-          this.$children[i].deferredMountedTo(this.mapObject);
-        }
-      }
-      if (this.visible) {
-        this.mapObject.addTo(parent);
-      }
-    },
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
       if (newVal) {
-        this.mapObject.addTo(this.parent);
+        this.mapObject.addTo(parentMapObject);
       } else {
-        this.parent.removeLayer(this.mapObject);
+        this.parentMapObject.removeLayer(this.mapObject);
       }
     },
     setLStyle(newVal, oldVal) {

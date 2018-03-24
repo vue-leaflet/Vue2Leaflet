@@ -1,25 +1,6 @@
-<template>
-</template>
-
 <script>
-
 import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
-
-const events = [
-  'click',
-  'dblclick',
-  'mousedown',
-  'mouseover',
-  'mouseout',
-  'contextmenu',
-  'add',
-  'remove',
-  'popupopen',
-  'popupclose',
-  'tooltipopen',
-  'tooltipclose'
-];
 
 const props = {
   url: {
@@ -46,6 +27,7 @@ const props = {
 };
 
 export default {
+  name: 'v-imageoverlay',
   props: props,
   mounted() {
     let options = {
@@ -55,22 +37,20 @@ export default {
       crossOrigin: this.crossOrigin,
     };
     this.mapObject = L.imageOverlay(this.url, this.bounds, options);
-    eventsBinder(this, this.mapObject, events);
+    eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    if (this.$parent._isMounted) {
-      this.deferredMountedTo(this.$parent.mapObject);
-    }
+    this.mapObject.addTo(this.$parent.mapObject);
   },
   methods: {
-    deferredMountedTo(parent) {
-      this.mapObject.addTo(parent);
-    },
     getBounds() {
       return this.mapObject.getBounds();
     },
   },
   beforeDestroy() {
     this.$parent.mapObject.removeLayer(this.mapObject);
+  },
+  render() {
+    return null;
   }
 };
 </script>

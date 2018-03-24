@@ -1,28 +1,14 @@
 <template>
   <div style="display: none;">
-    <slot></slot>
+    <slot v-if="ready"></slot>
   </div>
 </template>
 
 <script>
-
 import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
+import findParentMapObject from '../utils/findParentMapObject.js';
 
-const events = [
-  'click',
-  'dblclick',
-  'mousedown',
-  'mouseover',
-  'mouseout',
-  'contextmenu',
-  'add',
-  'remove',
-  'popupopen',
-  'popupclose',
-  'tooltipopen',
-  'tooltipclose'
-];
 const props = {
   latLng: {
     type: [Object, Array],
@@ -107,7 +93,14 @@ const props = {
   },
 };
 export default {
+  name: 'v-circlemarker',
   props: props,
+  data() {
+    return {
+      ready: false,
+      parentMapObject: undefined
+    }
+  },
   mounted() {
     const options = {};
     if (this.color) {
@@ -133,33 +126,23 @@ export default {
     }
 
     this.mapObject = L.circleMarker(this.latLng, options);
-    eventsBinder(this, this.mapObject, events);
+    eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    if (this.$parent._isMounted) {
-      this.deferredMountedTo(this.$parent.mapObject);
+    this.ready = true;
+    if (this.visible) {
+      this.mapObject.addTo(this.$parent.mapObject);
     }
   },
   beforeDestroy() {
-    this.setVisible(false);
+    this.$parent.mapObject.removeLayer(this.mapObject);
   },
   methods: {
-    deferredMountedTo(parent) {
-      this.parent = parent;
-      for (var i = 0; i < this.$children.length; i++) {
-        if (typeof this.$children[i].deferredMountedTo === "function") {
-          this.$children[i].deferredMountedTo(this.mapObject);
-        }
-      }
-      if (this.visible) {
-        this.mapObject.addTo(parent);
-      }
-    },
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
       if (newVal) {
-        this.mapObject.addTo(this.parent);
+        this.mapObject.addTo(this.$parent.mapObject);
       } else {
-        this.parent.removeLayer(this.mapObject);
+        this.$parent.mapObject.removeLayer(this.mapObject);
       }
     },
     setLStyle(newVal, oldVal) {

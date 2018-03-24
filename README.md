@@ -115,14 +115,14 @@ this.$refs.map.mapObject;
 This also work for any other component (Marker, Polyline, etc...)
 
 #### How can I bind events of Vue2Leaflet components ?
-All event binding can be done to event called l-[leaflet_event], where [leaflet_event] is the name of the event from leaflet documentation.
+All event binding can be done to event with the same as in leaflet documentation.
 
-For example if you want to bind to leaflet marker move event, you can bind to Vue2Leaflet.Marker l-move event.
+For example if you want to listen to Vue2Leaflet.Marker move event.
 ```
 <div id="app" style="height: 100%">
   <v-map :zoom=13 :center="[47.413220, -1.219482]">
     <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-    <v-marker :lat-lng="[47.413220, -1.219482]" @l-move="doSomething"></v-marker>
+    <v-marker :lat-lng="[47.413220, -1.219482]" @move="doSomething"></v-marker>
   </v-map>
 </div>
 ```

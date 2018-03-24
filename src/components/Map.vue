@@ -1,6 +1,6 @@
 <template>
   <div class="vue2leaflet-map">
-    <slot></slot>
+    <slot v-if="ready"></slot>
   </div>
 </template>
 
@@ -8,45 +8,6 @@
 import L from 'leaflet';
 import eventsBinder from '../utils/eventsBinder.js';
 import propsBinder from '../utils/propsBinder.js';
-
-const events = [
-  'click',
-  'dblclick',
-  'mousedown',
-  'mouseup',
-  'mouseover',
-  'mouseout',
-  'mousemove',
-  'contextmenu',
-  'focus',
-  'blur',
-  'preclick',
-  'load',
-  'unload',
-  'viewreset',
-  'movestart',
-  'move',
-  'moveend',
-  'dragstart',
-  'drag',
-  'dragend',
-  'zoom',
-  'zoomstart',
-  'zoomend',
-  'zoomanim',
-  'zoomlevelschange',
-  'resize',
-  'autopanstart',
-  'layeradd',
-  'layerremove',
-  'baselayerchange',
-  'overlayadd',
-  'overlayremove',
-  'locationfound',
-  'locationerror',
-  'popupopen',
-  'popupclose'
-];
 
 const props = {
   center: {
@@ -101,15 +62,17 @@ const props = {
 };
 
 export default {
+  name: 'v-map',
   props: props,
-  data () {
+  data() {
     return {
+      ready: false,
       movingRequest: 0,
       lastSetCenter: undefined,
       lastSetBounds: undefined
     }
   },
-  mounted () {
+  mounted() {
     const options = this.options;
     Object.assign(options, {
       minZoom: this.minZoom,
@@ -126,9 +89,7 @@ export default {
     }
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
-    this.mapObject.whenReady(function() {
-      this.$emit('l-ready')
-    }, this);
+    this.ready = true;
     this.mapObject.on('moveend', () => {
       if (this.movingRequest != 0) {
         this.movingRequest -= 1;
@@ -174,15 +135,8 @@ export default {
         this.$emit('update:bounds', bounds);
       }
     });
-    eventsBinder(this, this.mapObject, events);
+    eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    for (var i = 0; i < this.$children.length; i++) {
-      if (typeof this.$children[i].deferredMountedTo === "function") {
-        this.$children[i].deferredMountedTo(this.mapObject);
-      } else if (typeof this.$children[i].$children[0].deferredMountedTo === "function") {
-        this.$children[i].$children[0].deferredMountedTo(this.mapObject);
-      }
-    }
   },
   methods: {
     setZoom(newVal , oldVal) {

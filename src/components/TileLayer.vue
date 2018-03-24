@@ -1,25 +1,6 @@
-<template>
-</template>
-
 <script>
-
 import propsBinder from '../utils/propsBinder.js';
 import eventsBinder from '../utils/eventsBinder.js';
-
-const events = [
-  'loading',
-  'tileunload',
-  'tileloadstart',
-  'tileerror',
-  'tileload',
-  'load',
-  'add',
-  'remove',
-  'popupopen',
-  'popupclose',
-  'tooltipopen',
-  'tooltipclose'
-];
 
 const props = {
   url: String,
@@ -52,12 +33,13 @@ const props = {
     }
   },
   tileLayerClass: {
-  	type: Function,
-	default: L.tileLayer
+    type: Function,
+    default: L.tileLayer
   }
 };
 
 export default {
+  name: 'v-tilelayer',
   props: props,
   mounted() {
     const options = this.options;
@@ -69,22 +51,14 @@ export default {
       }
     }
     this.mapObject = this.tileLayerClass(this.url, options);
-    eventsBinder(this, this.mapObject, events);
+    eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
+    this.mapObject.addTo(this.$parent.mapObject);
   },
   methods: {
-    deferredMountedTo(parent) {
-      this.mapObject.addTo(parent);
-      this.attributionControl = parent.attributionControl;
-      for (var i = 0; i < this.$children.length; i++) {
-        if (typeof this.$children[i].deferredMountedTo === "function") {
-          this.$children[i].deferredMountedTo(this.mapObject);
-        }
-      }
-    },
     setAttribution(val, old) {
-      this.attributionControl.removeAttribution(old);
-      this.attributionControl.addAttribution(val);
+      let attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
     },
     setToken(val) {
       this.options.token = val;
@@ -92,6 +66,9 @@ export default {
   },
   beforeDestroy() {
     this.$parent.mapObject.removeLayer(this.mapObject);
+  },
+  render() {
+    return null;
   }
 };
 </script>
