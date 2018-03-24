@@ -56,7 +56,7 @@ const props = {
   },
   maxBoundsViscosity: {
     type: Number,
-    default: 1
+    default: 0
   },
   options: {
     type: Object,
