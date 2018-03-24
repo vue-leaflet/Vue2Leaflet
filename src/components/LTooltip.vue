@@ -20,7 +20,6 @@ const props = {
 };
 
 export default {
-  name: 'v-tooltip',
   props: props,
   data() {
     return {

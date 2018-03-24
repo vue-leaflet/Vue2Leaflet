@@ -10,9 +10,12 @@ import propsBinder from '../utils/propsBinder.js';
 import findParentMapObject from '../utils/findParentMapObject.js';
 
 const props = {
-  latLngs: {
-    type: Array,
-    default: () => []
+  latLng: {
+    type: [Object, Array],
+  },
+  radius: {
+    type: Number,
+    default: 10
   },
   lStyle: {
     type: Object,
@@ -22,16 +25,6 @@ const props = {
     type: Boolean,
     custom: true,
     default: true
-  },
-  smoothFactor: {
-    type: Number,
-    custom: true,
-    default: 1.0
-  },
-  noClip: {
-    type: Boolean,
-    custom: true,
-    default: false
   },
   stroke: {
     type: Boolean,
@@ -76,7 +69,7 @@ const props = {
   fill: {
     type: Boolean,
     custom: true,
-    default: false
+    default: true
   },
   fillColor: {
     type: String,
@@ -99,9 +92,7 @@ const props = {
     default: null
   },
 };
-
 export default {
-  name: 'v-polyline',
   props: props,
   data() {
     return {
@@ -114,6 +105,9 @@ export default {
     if (this.color) {
       options.color = this.color;
     }
+    if (this.radius) {
+      options.radius = this.radius;
+    }
     if (this.lStyle) {
       for (var style in this.lStyle) {
         options[style] = this.lStyle[style];
@@ -121,50 +115,38 @@ export default {
     }
     const otherPropertytoInitialize = ["smoothFactor", "noClip", "stroke", "color", "weight",
       "opacity", "lineCap", "lineJoin", "dashArray", "dashOffset", "fill", "fillColor",
-      "fillOpacity", "fillRule", "className"
-    ];
+      "fillOpacity", "fillRule", "className" ];
+
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
       if(this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
-    this.mapObject = L.polyline(this.latLngs, options);
-    this.ready = true;
-    this.parentMapObject = findParentMapObject(this.$parent);
+
+    this.mapObject = L.circleMarker(this.latLng, options);
     eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
+    this.ready = true;
     if (this.visible) {
-      this.mapObject.addTo(this.parentMapObject);
+      this.mapObject.addTo(this.$parent.mapObject);
     }
   },
   beforeDestroy() {
-    this.setVisible(false);
+    this.$parent.mapObject.removeLayer(this.mapObject);
   },
   methods: {
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
       if (newVal) {
-        this.mapObject.addTo(this.parentMapObject);
+        this.mapObject.addTo(this.$parent.mapObject);
       } else {
-        this.parentMapObject.removeLayer(this.mapObject);
+        this.$parent.mapObject.removeLayer(this.mapObject);
       }
     },
     setLStyle(newVal, oldVal) {
       if (newVal == oldVal) return;
       this.mapObject.setStyle(newVal);
-    },
-    setSmoothFactor(newVal, oldVal) {
-      if (newVal == oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ smoothFactor: newVal });
-      }
-    },
-    setNoClip(newVal, oldVal) {
-      if (newVal == oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ noClip: newVal });
-      }
     },
     setStroke(newVal, oldVal) {
       if (newVal == oldVal) return;
@@ -239,9 +221,6 @@ export default {
       if (newVal) {
         this.mapObject.setStyle({ className: newVal });
       }
-    },
-    addLatLng(value) {
-      this.mapObject.addLatLng(value);
     }
   }
 };

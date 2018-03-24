@@ -62,7 +62,6 @@ const props = {
 };
 
 export default {
-  name: 'v-map',
   props: props,
   data() {
     return {

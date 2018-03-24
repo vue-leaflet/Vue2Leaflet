@@ -20,7 +20,6 @@ const props = {
 }
 
 export default {
-  name: 'v-geojson',
   props: props,
   mounted() {
     this.mapObject = L.geoJSON(this.geojson, this.options);

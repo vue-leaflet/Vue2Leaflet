@@ -18,7 +18,6 @@ const props = {
 };
 
 export default {
-  name: 'v-layergroup',
   props: props,
   data() {
     return {

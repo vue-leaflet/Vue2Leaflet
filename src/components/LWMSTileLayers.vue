@@ -1,6 +1,5 @@
 <script>
   export default {
-    name: 'v-wmstilelayers',
     // Expects layers as array of objects with id and name properties
     props: ['baseurl', 'format', 'transparent', 'layers', 'crs'],
     mounted () {

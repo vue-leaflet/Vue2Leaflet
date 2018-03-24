@@ -23,7 +23,6 @@ const props = {
 };
 
 export default {
-  name: 'v-popup',
   props: props,
   data() {
     return {

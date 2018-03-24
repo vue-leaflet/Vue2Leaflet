@@ -94,7 +94,6 @@ const props = {
 };
 
 export default {
-  name: 'v-circle',
   props: props,
   data() {
     return {

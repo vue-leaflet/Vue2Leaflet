@@ -3,28 +3,18 @@ import propsBinder from '../utils/propsBinder.js';
 import eventsBinder from '../utils/eventsBinder.js';
 
 const props = {
-  url: String,
-  attribution: {
+  baseUrl: String,
+  layers: {
     type: String,
-    custom: true
+    default: ''
   },
-  detectRetina: {
-    type: Boolean,
-    custom: false,
-    default: false
-  },
-  token: {
+  styles: {
     type: String,
-    custom: true
+    default: ''
   },
-  opacity: {
-    type: Number,
-    custom: false,
-    default: 1.0
-  },
-  zIndex: {
-    type: Number,
-    default: 1
+  format: {
+    type: String,
+    default: 'image/jpeg'
   },
   options: {
     type: Object,
@@ -32,37 +22,37 @@ const props = {
       return {};
     }
   },
-  tileLayerClass: {
-    type: Function,
-    default: L.tileLayer
+  transparent: {
+    type: Boolean,
+    custom: false,
+  },
+  version: {
+    type: String,
+    default: '1.1.1'
+  },
+  crs: {
+    default: null,
+  },
+  upperCase: {
+    type: Boolean,
+    default: false
   }
 };
-
 export default {
-  name: 'v-tilelayer',
   props: props,
-  mounted() {
+  mounted () {
     const options = this.options;
-    const otherPropertytoInitialize = [ "attribution", "token", "detectRetina", "opacity", "zIndex" ];
+    const otherPropertytoInitialize = [ 'layers', 'styles', 'format', 'transparent', 'version', 'crs', 'upperCase' ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
       if(this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
-    this.mapObject = this.tileLayerClass(this.url, options);
+    this.mapObject = L.tileLayer.wms(this.baseUrl, options);
     eventsBinder(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.mapObject.addTo(this.$parent.mapObject);
-  },
-  methods: {
-    setAttribution(val, old) {
-      let attributionControl = this.$parent.mapObject.attributionControl;
-      attributionControl.removeAttribution(old).addAttribution(val);
-    },
-    setToken(val) {
-      this.options.token = val;
-    }
   },
   beforeDestroy() {
     this.$parent.mapObject.removeLayer(this.mapObject);
@@ -70,5 +60,5 @@ export default {
   render() {
     return null;
   }
-};
+}
 </script>

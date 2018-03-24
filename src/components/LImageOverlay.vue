@@ -27,7 +27,6 @@ const props = {
 };
 
 export default {
-  name: 'v-imageoverlay',
   props: props,
   mounted() {
     let options = {

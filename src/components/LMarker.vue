@@ -38,7 +38,6 @@ const props = {
 };
 
 export default {
-  name: 'v-marker',
   props: props,
   data() {
     return {

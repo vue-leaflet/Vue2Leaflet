@@ -101,7 +101,6 @@ const props = {
 };
 
 export default {
-  name: 'v-polygon',
   props: props,
   data() {
     return {

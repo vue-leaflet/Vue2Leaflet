@@ -10,7 +10,6 @@ const props = {
 };
 
 export default {
-  name: 'v-icondefault',
   props: props,
   mounted() {
     L.Icon.Default.imagePath = this.imagePath;

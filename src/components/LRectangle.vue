@@ -91,7 +91,6 @@ const props = {
 };
 
 export default {
-  name: 'v-rectangle',
   props: props,
   data() {
     return {
