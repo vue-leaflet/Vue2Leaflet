@@ -35,13 +35,22 @@ const props = {
   upperCase: {
     type: Boolean,
     default: false
-  }
+  },
+  opacity: {
+    type: Number,
+    custom: false,
+    default: 1.0
+  },
+  zIndex: {
+    type: Number,
+    default: 1
+  },
 };
 export default {
   props: props,
   mounted () {
     const options = this.options;
-    const otherPropertytoInitialize = [ 'layers', 'styles', 'format', 'transparent', 'version', 'crs', 'upperCase' ];
+    const otherPropertytoInitialize = [ 'layers', 'styles', 'format', 'transparent', 'version', 'crs', 'upperCase', 'zIndex', 'oppacity' ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
       if(this[propName] !== undefined) {
