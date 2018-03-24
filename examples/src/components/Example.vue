@@ -9,14 +9,17 @@
       Center : <span> {{ center }} </span><br>
       Bounds : <span> {{ bounds }} </span><br>
       <button name="button" @click="fitPolyline">Fit map to polyline</button><br><br>
-
       Tile Provider:
       <select v-model="tileProvider">
         <option v-for="provider in tileProviders" :value="provider">{{provider.name}}</option>
       </select>
       Zoom position:
       <select v-model="zoomPosition">
-        <option v-for="position in zoomPositions" :value="position">{{position}}</option>
+        <option v-for="position in Positions" :value="position">{{position}}</option>
+      </select>
+      Attribution position:
+      <select v-model="attributionPosition">
+        <option v-for="position in Positions" :value="position">{{position}}</option>
       </select>
       <hr/>
       <h3>List of Markers</h3>
@@ -63,6 +66,7 @@
     <l-map style="height: 45%" :zoom.sync="zoom" :options="mapOptions" :center="center" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
       <l-tile-layer :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"></l-tile-layer>
       <l-control-zoom :position="zoomPosition" />
+      <l-control-attribution :position="attributionPosition" :prefix="attributionPrefix" />
       <l-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
       @click="alert(item)" :icon="item.icon">
         <l-popup :content="item.tooltip"></l-popup>
@@ -82,7 +86,7 @@
 
 <script>
 import Vue from 'vue';
-import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup, LControlZoom } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup, LControlZoom, LControlAttribution } from 'vue2-leaflet';
 import Glyph from 'leaflet.icon.glyph';
 
 var markers1 = [
@@ -165,7 +169,8 @@ export default {
     LLayerGroup,
     LTooltip,
     LPopup,
-    LControlZoom
+    LControlZoom,
+    LControlAttribution
   },
   data () {
     return {
@@ -177,8 +182,9 @@ export default {
       minZoom:1,
       maxZoom:20,
       zoomPosition: 'topleft',
-      zoomPositions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
-
+      attributionPosition: 'bottomright',
+      attributionPrefix: 'Vue2Leaflet',
+      Positions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
       tileProviders: tileProviders,
       tileProvider: tileProviders[0],
       markers:[
