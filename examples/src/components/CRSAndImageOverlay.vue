@@ -3,27 +3,27 @@
     <div style="height: 10%; overflow: auto;">
       <h3>CRS and Image Overlay</h3>
     </div>
-    <v-map ref="map" style="height: 400px; width: 600px;" :minZoom="minZoom" :crs="crs">
-      <v-image-overlay :url="url" :bounds="bounds"></v-image-overlay>
-      <v-marker v-for="star in stars" :lat-lng="star" :key="star.name">
-        <v-popup :content="star.name"></v-popup>
-      </v-marker>
-      <v-polyline :lat-lngs="travel"></v-polyline>
-    </v-map>
+    <l-map ref="map" style="height: 400px; width: 600px;" :minZoom="minZoom" :crs="crs">
+      <l-image-overlay :url="url" :bounds="bounds"></l-image-overlay>
+      <l-marker v-for="star in stars" :lat-lng="star" :key="star.name">
+        <l-popup :content="star.name"></l-popup>
+      </l-marker>
+      <l-polyline :lat-lngs="travel"></l-polyline>
+    </l-map>
   </div>
 </template>
 
 <script>
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LImageOverlay, LMarker, LPopup, LPolyline } from 'vue2-leaflet';
 
 export default {
   name: 'example',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-image-overlay': Vue2Leaflet.ImageOverlay,
-    'v-marker': Vue2Leaflet.Marker,
-    'v-popup': Vue2Leaflet.Popup,
-    'v-polyline': Vue2Leaflet.Polyline,
+    LMap,
+    LImageOverlay,
+    LMarker,
+    LPopup,
+    LPolyline,
   },
   data () {
     return {

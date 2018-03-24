@@ -3,36 +3,35 @@
     <div style="height: 10%; overflow: auto;">
       <h3>Two maps</h3>
     </div>
-    <v-map style="height: 45%" :zoom.sync="zoom" :center="center" :options="option1" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
-      <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
-      <v-marker v-for="item in markers"  :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-      @click="alert(item)"></v-marker>
-      <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></v-poly>
-      <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
-        <v-group :visible="item.markersVisible">
-          <v-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)"></v-marker>
-        </v-group>
-        <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></v-poly>
-      </v-group>
-    </v-map>
-    <v-map style="height: 45%" :zoom.sync="zoom" :center="center" :options="option2" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
-      <v-tilelayer :url="url" :attribution="attribution" :token="token"></v-tilelayer>
-      <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-      @click="alert(item)"></v-marker>
-      <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></v-poly>
-      <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
-        <v-group :visible="item.markersVisible">
-          <v-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)"></v-marker>
-        </v-group>
-        <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></v-poly>
-      </v-group>
-    </v-map>
+    <l-map style="height: 45%" :zoom.sync="zoom" :center="center" :options="option1" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
+      <l-tile-layer :url="url" :attribution="attribution" :token="token"></l-tile-layer>
+      <l-marker v-for="item in markers"  :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
+      @click="alert(item)"></l-marker>
+      <l-polyline v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></l-polyline>
+      <l-layer-group v-for="item in stuff" :key="item.id" :visible="item.visible">
+        <l-layer-group :visible="item.markersVisible">
+          <l-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)"></l-marker>
+        </l-layer-group>
+        <l-polyline :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></l-polyline>
+      </l-layer-group>
+    </l-map>
+    <l-map style="height: 45%" :zoom.sync="zoom" :center="center" :options="option2" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
+      <l-tile-layer :url="url" :attribution="attribution" :token="token"></l-tile-layer>
+      <l-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
+      @click="alert(item)"></l-marker>
+      <l-polyline v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></l-polyline>
+      <l-layer-group v-for="item in stuff" :key="item.id" :visible="item.visible">
+        <l-layer-group :visible="item.markersVisible">
+          <l-marker v-for="marker in item.markers" :key="item.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)"></l-marker>
+        </l-layer-group>
+        <l-polyline :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></l-polyline>
+      </l-layer-group>
+    </l-map>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup } from 'vue2-leaflet';
 
 var markers1 = [
   { position: { lng:-1.219482, lat:47.413220}, visible: true, draggable: true},
@@ -90,11 +89,11 @@ var corner2 = L.latLng(40.774, -74.125);
 export default {
   name: 'multi_map',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer' :Vue2Leaflet.TileLayer,
-    'v-marker': Vue2Leaflet.Marker,
-    'v-poly': Vue2Leaflet.Polyline,
-    'v-group': Vue2Leaflet.LayerGroup
+    LMap,
+    LTileLayer,
+    LMarker,
+    LPolyline,
+    LLayerGroup
   },
   data () {
     return {

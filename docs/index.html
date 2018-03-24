@@ -2,20 +2,20 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 <body>
   <div id="app" style="height: 100%">
-    <v-map :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-marker :lat-lng="marker"></v-marker>
-    </v-map>
+    <l-map :zoom="zoom" :center="center">
+      <l-tilelayer :url="url" :attribution="attribution"></l-tilelayer>
+      <l-marker :lat-lng="marker"></l-marker>
+    </l-map>
   </div>
 </body>
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js" ></script>
-<script src="https://unpkg.com/vue2-leaflet@0.0.45/dist/vue2-leaflet.js" ></script>
+<script src="https://unpkg.com/vue2-leaflet@0.1.0/dist/vue2-leaflet.js" ></script>
 <script>
 
-Vue.component('v-map', Vue2Leaflet.Map);
-Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
-Vue.component('v-marker', Vue2Leaflet.Marker);
+Vue.component(Vue2Leaflet.LMap);
+Vue.component(Vue2Leaflet.LTileLayer);
+Vue.component(Vue2Leaflet.LMarker);
 
 var app = new Vue({
   el: '#app',

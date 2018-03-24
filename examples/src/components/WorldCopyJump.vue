@@ -8,26 +8,26 @@
       <br/>
       When enabled, the marker is repeated on each "copy" of the world. Scroll both to left or right to see it in action.
     </div>
-    <v-map style="height: 42%" :zoom="zoom" :center="center" :minZoom="5" :worldCopyJump="false">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-marker :lat-lng="marker"></v-marker>
-    </v-map>
-    <v-map style="height: 43%" :zoom="zoom" :center="center" :minZoom="5" :worldCopyJump="true">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-marker :lat-lng="marker"></v-marker>
-    </v-map>
+    <l-map style="height: 42%" :zoom="zoom" :center="center" :minZoom="5" :worldCopyJump="false">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-marker :lat-lng="marker"></l-marker>
+    </l-map>
+    <l-map style="height: 43%" :zoom="zoom" :center="center" :minZoom="5" :worldCopyJump="true">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-marker :lat-lng="marker"></l-marker>
+    </l-map>
   </div>
 </template>
 
 <script>
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 export default {
   name: 'example',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer' :Vue2Leaflet.TileLayer,
-    'v-marker': Vue2Leaflet.Marker
+    LMap,
+    LTileLayer,
+    LMarker
   },
   data () {
     return {

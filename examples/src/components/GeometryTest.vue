@@ -3,28 +3,28 @@
     <div style="height: 10%; overflow: auto;">
       <h3>Geometry</h3>
     </div>
-    <v-map style="height: 90%" :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-circle :lat-lng="circle.center" :radius="circle.radius"></v-circle>
-      <v-rectangle :bounds="rectangle.bounds" :l-style="rectangle.style"></v-rectangle>
-      <v-polygon :lat-lngs="polygon.latlngs" :color="polygon.color"></v-polygon>
-      <v-polyline :lat-lngs="polyline.latlngs" :color="polyline.color"></v-polyline>
-    </v-map>
+    <l-map style="height: 90%" :zoom="zoom" :center="center">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-circle :lat-lng="circle.center" :radius="circle.radius"></l-circle>
+      <l-rectangle :bounds="rectangle.bounds" :l-style="rectangle.style"></l-rectangle>
+      <l-polygon :lat-lngs="polygon.latlngs" :color="polygon.color"></l-polygon>
+      <l-polyline :lat-lngs="polyline.latlngs" :color="polyline.color"></l-polyline>
+    </l-map>
   </div>
 </template>
 
 <script>
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LCircle, LRectangle, LPolygon, LPolyline } from 'vue2-leaflet';
 
 export default {
   name: 'GeometryTest',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer' :Vue2Leaflet.TileLayer,
-    'v-circle': Vue2Leaflet.LCircle,
-    'v-rectangle': Vue2Leaflet.Rectangle,
-    'v-polygon': Vue2Leaflet.Polygon,
-    'v-polyline': Vue2Leaflet.Polyline,
+    LMap,
+    LTileLayer,
+    LCircle,
+    LRectangle,
+    LPolygon,
+    LPolyline,
   },
   data () {
     return {

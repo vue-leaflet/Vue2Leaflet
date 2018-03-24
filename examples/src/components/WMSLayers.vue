@@ -9,67 +9,30 @@
         <a href="http://leafletjs.com/examples/wms/wms.html">leaflet.js WMS example page</a>.
       </p>
     </div>
-    <v-map style="height: 35%" :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <wms-tilelayers v-for="layer in wms_layers"
-                      :key="layer.url"
-                      :baseurl="layer.url"
-                      :format="layer.format"
-                      :transparent="layer.transparent"
-                      :layers="layer.layers"
-                      :crs="layer.crs">
-      </wms-tilelayers>
-    </v-map>
-    <div style="height: 10%; overflow: auto;">
-      <h3>Mulitple Layers displayed together</h3>
-    </div>
-    <v-map style="height: 40%" :zoom="zoom" :center="center">
-       <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-       <wms-tilelayer :key="wms_layers[0].url"
-                     :baseurl="wms_layers[0].url"
-                     :format="wms_layers[0].format"
-                     :transparent="wms_layers[0].transparent"
-                     ids="abfall_recycling_6_recyhof"
-                     :crs="wms_layers[0].crs">
-      </wms-tilelayer>
-    </v-map>
+    <l-map style="height: 80%" :zoom="zoom" :center="center">
+      <l-wms-tile-layer :baseUrl="baseUrl" :layers="layers" />
+    </l-map>
   </div>
 </template>
 
 <script>
-  import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LWMSTileLayer } from 'vue2-leaflet';
 
-  export default {
-    name: 'wms-layers',
-    components: {
-      'v-map': Vue2Leaflet.Map,
-      'v-tilelayer': Vue2Leaflet.TileLayer,
-      'wms-tilelayer': Vue2Leaflet.WMSTileLayer,
-      'wms-tilelayers': Vue2Leaflet.WMSTileLayers
-    },
-    data () {
-      return {
-        zoom: 12,
-        center: [53.551086, 9.993682],
-        url: 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-        wms_layers: [
-          {
-            'url': 'http://geodienste.hamburg.de/HH_WMS_abfall_recycling?',
-            'format': 'image/png',
-            'transparent': true,
-            'layers': [
-              {'id': 'abfall_recycling_1_elektro', 'name': 'Elektro'},
-              {'id': 'abfall_recycling_2_textil', 'name': 'Textil'},
-              {'id': 'abfall_recycling_3_lvp', 'name': 'LVP'},
-              {'id': 'abfall_recycling_4_glas', 'name': 'Glas'},
-              {'id': 'abfall_recycling_5_papier', 'name': 'Papier'},
-              {'id': 'abfall_recycling_6_recyhof', 'name': 'Recycling Hof'}
-            ],
-            'crs': L.CRS.EPSG4326
-          }
-        ]
-      }
+export default {
+  name: 'wms-layers',
+  components: {
+    LMap,
+    LTileLayer,
+    'l-wms-tile-layer': LWMSTileLayer
+  },
+  data () {
+    return {
+      zoom: 4,
+      center: [49, 12],
+      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      baseUrl: 'https://demo.boundlessgeo.com/geoserver/ows?',
+      layers : 'ne:ne_10m_admin_0_boundary_lines_land,ne:ne_10m_admin_0_countries',
     }
   }
+}
 </script>

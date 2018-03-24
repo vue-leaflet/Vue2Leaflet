@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div style="height: 10%; overflow: auto;">
+    <div>
       <h3>Some examples</h3>
     </div>
-    <div style="height: 45%; overflow: auto;">
+    <div style="height: 47%; overflow: auto;">
       Zoom Level :
       <input v-model.number.sync="zoom" type="number"><br>
       Center : <span> {{ center }} </span><br>
@@ -56,28 +56,28 @@
       </table>
       <hr/>
     </div>
-    <v-map style="height: 45%" :zoom.sync="zoom" :center="center" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
-      <v-tilelayer :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"></v-tilelayer>
-      <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
+    <l-map style="height: 45%" :zoom.sync="zoom" :center="center" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
+      <l-tile-layer :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"></l-tile-layer>
+      <l-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
       @click="alert(item)" :icon="item.icon">
-        <v-popup :content="item.tooltip"></v-popup>
-        <v-tooltip :content="item.tooltip"></v-tooltip>
-      </v-marker>
-      <v-poly v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></v-poly>
-      <v-group v-for="item in stuff" :key="item.id" :visible="item.visible">
-        <v-group :visible="item.markersVisible">
-          <v-marker v-for="marker in item.markers" :key="marker.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)">
-          </v-marker>
-        </v-group>
-        <v-poly :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></v-poly>
-      </v-group>
-    </v-map>
+        <l-popup :content="item.tooltip"></l-popup>
+        <l-tooltip :content="item.tooltip"></l-tooltip>
+      </l-marker>
+      <l-polyline v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></l-polyline>
+      <l-layer-group v-for="item in stuff" :key="item.id" :visible="item.visible">
+        <l-layer-group :visible="item.markersVisible">
+          <l-marker v-for="marker in item.markers" :key="marker.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)">
+          </l-marker>
+        </l-layer-group>
+        <l-polyline :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></l-polyline>
+      </l-layer-group>
+    </l-map>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup } from 'vue2-leaflet';
 import Glyph from 'leaflet.icon.glyph';
 
 var markers1 = [
@@ -153,13 +153,13 @@ const tileProviders = [
 export default {
   name: 'example',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer' :Vue2Leaflet.TileLayer,
-    'v-marker': Vue2Leaflet.Marker,
-    'v-poly': Vue2Leaflet.Polyline,
-    'v-group': Vue2Leaflet.LayerGroup,
-    'v-tooltip': Vue2Leaflet.Tooltip,
-    'v-popup': Vue2Leaflet.Popup
+    LMap,
+    LTileLayer,
+    LMarker,
+    LPolyline,
+    LLayerGroup,
+    LTooltip,
+    LPopup
   },
   data () {
     return {

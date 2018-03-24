@@ -5,15 +5,15 @@
         Marker is placed at {{ marker.lat }}, {{ marker.lng }}, bounds are {{ bounds}}
       </br>
     </div>
-    <v-map :zoom="zoom" style="height: 90%" :center="center" :bounds="bounds" :max-bounds="maxBounds">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-marker :lat-lng="marker"></v-marker>
-    </v-map>
+    <l-map :zoom="zoom" style="height: 90%" :center="center" :bounds="bounds" :max-bounds="maxBounds">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-marker :lat-lng="marker"></l-marker>
+    </l-map>
   </div>
 </template>
 
 <script>
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 var corner1 = L.latLng();
 var corner2 = L.latLng();
@@ -21,9 +21,9 @@ var corner2 = L.latLng();
 export default {
   name: 'set-bounds',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer' :Vue2Leaflet.TileLayer,
-    'v-marker': Vue2Leaflet.Marker
+    LMap,
+    LTileLayer,
+    LMarker
   },
   data () {
     return {

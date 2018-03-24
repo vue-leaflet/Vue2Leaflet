@@ -3,47 +3,47 @@
     <div style="height: 10%; overflow: auto;">
       <h3>Geometry with popups</h3>
     </div>
-    <v-map style="height: 90%" :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-circle :lat-lng="circle.center" :radius="circle.radius">
-        <v-popup content="Circle"></v-popup>
-      </v-circle>
-      <v-rectangle :bounds="rectangle.bounds" :color="rectangle.color">
-        <v-popup content="Rectangle"></v-popup>
-      </v-rectangle>
-      <v-polygon :lat-lngs="polygon.latlngs" :color="polygon.color">
-        <v-popup content="Polygon"></v-popup>
-      </v-polygon>
-      <v-polyline :lat-lngs="polyline.latlngs" :color="polyline.color">
-        <v-popup>
+    <l-map style="height: 90%" :zoom="zoom" :center="center">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-circle :lat-lng="circle.center" :radius="circle.radius">
+        <l-popup content="Circle"></l-popup>
+      </l-circle>
+      <l-rectangle :bounds="rectangle.bounds" :color="rectangle.color">
+        <l-popup content="Rectangle"></l-popup>
+      </l-rectangle>
+      <l-polygon :lat-lngs="polygon.latlngs" :color="polygon.color">
+        <l-popup content="Polygon"></l-popup>
+      </l-polygon>
+      <l-polyline :lat-lngs="polyline.latlngs" :color="polyline.color">
+        <l-popup>
           <popup-content :data="polyline" />
-        </v-popup>
-        <v-tooltip>
+        </l-popup>
+        <l-tooltip>
           <tooltip-content :data="polyline" />
-        </v-tooltip>
-      </v-polyline>
-    </v-map>
+        </l-tooltip>
+      </l-polyline>
+    </l-map>
   </div>
 </template>
 
 <script>
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LCircle, LRectangle, LPolygon, LPolyline, LPopup, LTooltip } from 'vue2-leaflet';
 import PopupContent from './PopupContent';
 import TooltipContent from './TooltipContent';
 
 export default {
   name: 'PopupGeometryTest',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer' :Vue2Leaflet.TileLayer,
-    'v-circle': Vue2Leaflet.LCircle,
-    'v-rectangle': Vue2Leaflet.Rectangle,
-    'v-polygon': Vue2Leaflet.Polygon,
-    'v-polyline': Vue2Leaflet.Polyline,
-    'v-popup': Vue2Leaflet.Popup,
-    'v-tooltip': Vue2Leaflet.Tooltip,
-    'tooltip-content': TooltipContent,
-    'popup-content': PopupContent,
+    LMap,
+    LTileLayer,
+    LCircle,
+    LRectangle,
+    LPolygon,
+    LPolyline,
+    LPopup,
+    LTooltip,
+    TooltipContent,
+    PopupContent,
   },
   data () {
     return {

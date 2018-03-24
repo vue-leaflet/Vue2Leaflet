@@ -3,19 +3,19 @@
     <div style="height: 10%; overflow: auto;">
       <h3>GeoJSON example as this <a href="http://leafletjs.com/examples/geojson/">example</a></h3>
     </div>
-    <v-map style="height: 90%" :zoom="zoom" :center="center">
-        <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-        <v-geo-json :geojson="bus.geojson" :options="bus.options"></v-geo-json>
-        <v-geo-json :geojson="bicycleAndCampus.geojson" :options="bicycleAndCampus.options"></v-geo-json>
-        <v-geo-json :geojson="coors.geojson" :options="coors.options"></v-geo-json>
-      </v-map>
+    <l-map style="height: 90%" :zoom="zoom" :center="center">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-geo-json :geojson="bus.geojson" :options="bus.options"></l-geo-json>
+      <l-geo-json :geojson="bicycleAndCampus.geojson" :options="bicycleAndCampus.options"></l-geo-json>
+      <l-geo-json :geojson="coors.geojson" :options="coors.options"></l-geo-json>
+    </l-map>
       <div id='bla'></div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet';
 import PopupContent from './PopupContent';
 
 import { default as data } from '../assets/geojson/sample-geojson.js';
@@ -36,9 +36,9 @@ function onEachFeature(feature, layer) {
 export default {
   name: 'example',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer': Vue2Leaflet.TileLayer,
-    'v-geo-json': Vue2Leaflet.GeoJSON,
+    LMap,
+    LTileLayer,
+    LGeoJson,
   },
   data () {
     return {

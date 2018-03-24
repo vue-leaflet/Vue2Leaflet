@@ -6,25 +6,25 @@
       <input type="checkbox" id="checkbox" v-model="show">
       </br>
     </div>
-    <v-map style="height: 90%" :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-geojson-layer v-if="show" :geojson="geojson" :options="options"></v-geojson-layer>
-      <v-marker :lat-lng="marker"></v-marker>
-    </v-map>
+    <l-map style="height: 90%" :zoom="zoom" :center="center">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-geo-json v-if="show" :geojson="geojson" :options="options"></l-geo-json>
+      <l-marker :lat-lng="marker"></l-marker>
+    </l-map>
   </div>
 </template>
 
 <script>
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LGeoJson, LMarker } from 'vue2-leaflet';
 import axios from 'axios';
 
 export default {
   name: 'example',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer' :Vue2Leaflet.TileLayer,
-    'v-geojson-layer' :Vue2Leaflet.GeoJSON,
-    'v-marker': Vue2Leaflet.Marker
+    LMap,
+    LTileLayer,
+    LGeoJson,
+    LMarker
   },
   data () {
     return {

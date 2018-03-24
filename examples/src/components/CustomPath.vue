@@ -4,24 +4,24 @@
       <h3>Custom path</h3>
         Marker icon are retrived from {{ path }} custom path
     </div>
-    <v-map style="height: 90%" :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-marker :lat-lng="marker"></v-marker>
-      <v-icondefault :image-path="path"></v-icondefault>
-    </v-map>
+    <l-map style="height: 90%" :zoom="zoom" :center="center">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-marker :lat-lng="marker"></l-marker>
+      <l-icon-default :image-path="path"></l-icon-default>
+    </l-map>
   </div>
 </template>
 
 <script>
-import Vue2Leaflet from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LIconDefault } from 'vue2-leaflet';
 
 export default {
   name: 'custom_path',
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-tilelayer' :Vue2Leaflet.TileLayer,
-    'v-marker': Vue2Leaflet.Marker,
-    'v-icondefault': Vue2Leaflet.IconDefault
+    LMap,
+    LTileLayer,
+    LMarker,
+    LIconDefault,
   },
   data () {
     return {
