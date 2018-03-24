@@ -14,6 +14,10 @@
       <select v-model="tileProvider">
         <option v-for="provider in tileProviders" :value="provider">{{provider.name}}</option>
       </select>
+      Zoom position:
+      <select v-model="zoomPosition">
+        <option v-for="position in zoomPositions" :value="position">{{position}}</option>
+      </select>
       <hr/>
       <h3>List of Markers</h3>
       <button name="button" @click="addMarker">Add a marker</button></br>
@@ -56,8 +60,9 @@
       </table>
       <hr/>
     </div>
-    <l-map style="height: 45%" :zoom.sync="zoom" :center="center" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
+    <l-map style="height: 45%" :zoom.sync="zoom" :options="mapOptions" :center="center" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
       <l-tile-layer :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"></l-tile-layer>
+      <l-control-zoom :position="zoomPosition" />
       <l-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
       @click="alert(item)" :icon="item.icon">
         <l-popup :content="item.tooltip"></l-popup>
@@ -77,7 +82,7 @@
 
 <script>
 import Vue from 'vue';
-import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup, LControlZoom } from 'vue2-leaflet';
 import Glyph from 'leaflet.icon.glyph';
 
 var markers1 = [
@@ -159,16 +164,21 @@ export default {
     LPolyline,
     LLayerGroup,
     LTooltip,
-    LPopup
+    LPopup,
+    LControlZoom
   },
   data () {
     return {
-      zoom:13,
       center: [51.505, -0.09],
-      minZoom:1,
-      maxZoom:20,
       opacity:0.6,
       token: 'your token if using mapbox',
+      mapOptions: { zoomControl: false , attributionControl: false },
+      zoom:13,
+      minZoom:1,
+      maxZoom:20,
+      zoomPosition: 'topleft',
+      zoomPositions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
+
       tileProviders: tileProviders,
       tileProvider: tileProviders[0],
       markers:[

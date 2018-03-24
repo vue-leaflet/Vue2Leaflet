@@ -1,5 +1,6 @@
 exports.LCircle = require('./components/LCircle').default;
 exports.LCircleMarker = require('./components/LCircleMarker').default;
+exports.LControlZoom = require('./components/LControlZoom').default;
 exports.LGeoJson = require('./components/LGeoJson').default;
 exports.LIconDefault = require('./components/LIconDefault').default;
 exports.LImageOverlay = require('./components/LImageOverlay').default;
