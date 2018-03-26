@@ -5,7 +5,8 @@
   "author": "Mickael Bouchaud",
   "license": "MIT",
   "scripts": {
-    "dev": "node build/dev-server.js"
+    "dev": "node build/dev-server.js",
+    "build": "node build/build.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +15,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "leaflet.icon.glyph": "^0.2.0",
-    "vue": "^2.5.13"
+    "vue": "^2.5.16"
   },
   "devDependencies": {
-    "autoprefixer": "^8.1.0",
+    "autoprefixer": "^8.2.0",
     "babel-core": "^6.22.1",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-runtime": "^6.22.0",
@@ -27,15 +28,14 @@
     "chalk": "^2.3.2",
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^4.5.1",
-    "css-loader": "^0.28.10",
+    "css-loader": "^0.28.11",
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.16.2",
-    "extract-text-webpack-plugin": "^3.0.0",
+    "express": "^4.16.3",
     "file-loader": "^1.1.11",
     "friendly-errors-webpack-plugin": "^1.6.1",
-    "html-webpack-plugin": "^3.0.6",
-    "http-proxy-middleware": "^0.17.3",
-    "opn": "^5.2.0",
+    "html-webpack-plugin": "^3.1.0",
+    "http-proxy-middleware": "^0.18.0",
+    "opn": "^5.3.0",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "ora": "^2.0.0",
     "portfinder": "^1.0.13",
@@ -44,11 +44,11 @@
     "shelljs": "^0.8.1",
     "url-loader": "^1.0.1",
     "vue-loader": "^14.2.1",
-    "vue-style-loader": "^4.0.2",
-    "vue-template-compiler": "^2.5.13",
-    "webpack": "^3.11.0",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.2.0",
     "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-dev-middleware": "^2.0.6",
+    "webpack-dev-middleware": "^3.0.1",
     "webpack-hot-middleware": "^2.21.2",
     "webpack-merge": "^4.1.2"
   },
