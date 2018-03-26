@@ -1,6 +1,7 @@
 exports.LCircle = require('./components/LCircle').default;
 exports.LCircleMarker = require('./components/LCircleMarker').default;
 exports.LControlAttribution = require('./components/LControlAttribution').default;
+exports.LControlLayers = require('./components/LControlLayers').default;
 exports.LControlScale = require('./components/LControlScale').default;
 exports.LControlZoom = require('./components/LControlZoom').default;
 exports.LFeatureGroup = require('./components/LFeatureGroup').default;

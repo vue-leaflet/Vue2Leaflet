@@ -7,5 +7,5 @@ export default (firstVueParent) => {
       found = true;
     }
   }
-  return firstVueParent.mapObject;
+  return firstVueParent;
 }

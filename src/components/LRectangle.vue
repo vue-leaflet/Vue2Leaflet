@@ -6,7 +6,7 @@
 
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import findParentMapObject from '../utils/findParentMapObject.js';
+import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   bounds: {
@@ -122,21 +122,20 @@ export default {
     this.ready = true;
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    this.parentMapObject = findParentMapObject(this.$parent);
-    if (this.visible) {
-      this.mapObject.addTo(this.parentMapObject);
-    }
+    this.ready = true;
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
   },
   beforeDestroy() {
-    this.parentMapObject.removeLayer(this.mapObject);
+    this.parentContainer.removeLayer(this);
   },
   methods: {
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
       if (newVal) {
-        this.mapObject.addTo(this.parentMapObject);
+        this.parentContainer.addLayer(this);
       } else {
-        this.parentMapObject.removeLayer(this.mapObject);
+        this.parentContainer.removeLayer(this);
       }
     },
     setLStyle(newVal, oldVal) {

@@ -16,7 +16,7 @@
 <script>
 import Vue from 'vue';
 import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet';
-import PopupContent from './PopupContent';
+import PopupContent from './GeoJson2Popup';
 
 import { default as data } from '../assets/geojson/sample-geojson.js';
 
@@ -29,7 +29,7 @@ var baseballIcon = L.icon({
 
 function onEachFeature(feature, layer) {
   let popupContent = Vue.extend(PopupContent);
-  let popup = new popupContent({ propsData: { data: { type: feature.type, color: 'blue'}}});
+  let popup = new popupContent({ propsData: { type: feature.geometry.type, text: feature.properties.popupContent }});
   layer.bindPopup(popup.$mount().$el);
 }
 
@@ -44,8 +44,10 @@ export default {
     return {
       zoom: 13,
       center: [39.74739, -105],
-      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      url:'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWJvdWNoYXVkIiwiYSI6ImNpdTA5bWw1azAyZDIyeXBqOWkxOGJ1dnkifQ.qha33VjEDTqcHQbibgHw3w',
+      attribution:'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
       bus: {
         geojson: data.freeBus,
         options: {

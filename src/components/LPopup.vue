@@ -6,7 +6,7 @@
 
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import findParentMapObject from '../utils/findParentMapObject.js';
+import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   content: {
@@ -39,12 +39,12 @@ export default {
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.ready = true;
-    this.parentMapObject = findParentMapObject(this.$parent);
-    this.parentMapObject.bindPopup(this.mapObject);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.mapObject.bindPopup(this.mapObject);
   },
   beforeDestroy() {
-    if (this.parentMapObject.getPopup && this.parentMapObject.getPopup()) {
-      this.parentMapObject.unbindPopup();
+    if (this.parentContainer.mapObject && this.parentContainer.mapObject.getPopup()) {
+      this.parentContainer.mapObject.unbindPopup();
     }
   },
 };

@@ -4,17 +4,17 @@
       <h3>Some examples</h3>
     </div>
     <div style="height: 47%; overflow: auto;">
-      Zoom Level :
-      <input v-model.number.sync="zoom" type="number"><br>
+      Zoom: level <input v-model.number.sync="zoom" type="number">
+            position:
+            <select v-model="zoomPosition">
+              <option v-for="position in Positions" :value="position">{{position}}</option>
+            </select>
+      <br>
       Center : <span> {{ center }} </span><br>
       Bounds : <span> {{ bounds }} </span><br>
       <button name="button" @click="fitPolyline">Fit map to polyline</button><br><br>
-      Tile Provider:
-      <select v-model="tileProvider">
-        <option v-for="provider in tileProviders" :value="provider">{{provider.name}}</option>
-      </select>
-      Zoom position:
-      <select v-model="zoomPosition">
+      Contol Layers position:
+      <select v-model="layersPosition">
         <option v-for="position in Positions" :value="position">{{position}}</option>
       </select>
       Attribution position:
@@ -63,23 +63,31 @@
       </table>
       <hr/>
     </div>
-    <l-map style="height: 45%" :zoom.sync="zoom" :options="mapOptions" :center="center" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom">
-      <l-tile-layer :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"></l-tile-layer>
+    <l-map style="height: 45%" :zoom.sync="zoom" :options="mapOptions"
+      :center="center" :bounds="bounds" :min-zoom="minZoom" :max-zoom="maxZoom" >
+      <l-control-layers :position="layersPosition"/>
+      <l-tile-layer v-for="tileProvider in tileProviders"
+        layerType="base" :name="tileProvider.name" :visible="tileProvider.visible"
+        :url="tileProvider.url" :attribution="tileProvider.attribution" :token="token"/>
       <l-control-zoom :position="zoomPosition" />
       <l-control-attribution :position="attributionPosition" :prefix="attributionPrefix" />
       <l-control-scale :imperial="imperial" />
-      <l-marker v-for="item in markers" :key="item.id" :lat-lng="item.position" :visible="item.visible" :draggable="item.draggable"
-      @click="alert(item)" :icon="item.icon">
-        <l-popup :content="item.tooltip"></l-popup>
-        <l-tooltip :content="item.tooltip"></l-tooltip>
+      <l-marker v-for="marker in markers" :key="marker.id"
+        :visible="marker.visible" :draggable="marker.draggable"
+        :lat-lng="marker.position" @click="alert(marker)" :icon="marker.icon">
+        <l-popup :content="marker.tooltip" />
+        <l-tooltip :content="marker.tooltip" />
       </l-marker>
-      <l-polyline v-for="item in polylines" :key="item.id" :lat-lngs="item.points" :visible="item.visible" @click="alert(item)"></l-polyline>
-      <l-layer-group v-for="item in stuff" :key="item.id" :visible="item.visible">
-        <l-layer-group :visible="item.markersVisible">
-          <l-marker v-for="marker in item.markers" :key="marker.id" :visible="marker.visible" :draggable="marker.draggable" :lat-lng="marker.position" @click="alert(marker)">
-          </l-marker>
+      <l-polyline v-for="item in polylines" :key="item.id"
+        :lat-lngs="item.points" :visible="item.visible" @click="alert(item)" />
+      <l-layer-group v-for="item in stuff" :key="item.id" :visible="item.visible" >
+        <l-layer-group :visible="item.markersVisible" >
+          <l-marker v-for="marker in item.markers" :key="marker.id"
+            :visible="marker.visible" :draggable="marker.draggable"
+            :lat-lng="marker.position" @click="alert(marker)" />
         </l-layer-group>
-        <l-polyline :lat-lngs="item.polyline.points" :visible="item.polyline.visible" @click="alert(item.polyline)"></l-polyline>
+        <l-polyline :lat-lngs="item.polyline.points" :visible="item.polyline.visible"
+          @click="alert(item.polyline)" />
       </l-layer-group>
     </l-map>
   </div>
@@ -87,7 +95,7 @@
 
 <script>
 import Vue from 'vue';
-import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup, LControlZoom, LControlAttribution, LControlScale } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPolyline, LLayerGroup, LTooltip, LPopup, LControlZoom, LControlAttribution, LControlScale, LControlLayers } from 'vue2-leaflet';
 import Glyph from 'leaflet.icon.glyph';
 
 var markers1 = [
@@ -150,11 +158,13 @@ var customIcon = L.icon({
 const tileProviders = [
   {
     name: 'OpenStreetMap',
+    visible: true,
     attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   },
   {
     name: 'OpenTopoMap',
+    visible: false,
     url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
     attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
   },
@@ -172,7 +182,8 @@ export default {
     LPopup,
     LControlZoom,
     LControlAttribution,
-    LControlScale
+    LControlScale,
+    LControlLayers
   },
   data () {
     return {
@@ -185,11 +196,11 @@ export default {
       maxZoom:20,
       zoomPosition: 'topleft',
       attributionPosition: 'bottomright',
+      layersPosition: 'topright',
       attributionPrefix: 'Vue2Leaflet',
       imperial: false,
       Positions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
       tileProviders: tileProviders,
-      tileProvider: tileProviders[0],
       markers:[
         { id: "m1", position : {lat:51.505, lng:-0.09}, tooltip: "tooltip for marker1", draggable: true, visible: true, icon: L.icon.glyph({
           prefix: '',

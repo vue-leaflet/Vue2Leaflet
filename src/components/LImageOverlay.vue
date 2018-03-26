@@ -1,5 +1,6 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
+import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   url: {
@@ -22,7 +23,12 @@ const props = {
   crossOrigin: {
     type: Boolean,
     default: false,
-  }
+  },
+  visible: {
+    type: Boolean,
+    custom: true,
+    default: true,
+  },
 };
 
 export default {
@@ -38,15 +44,26 @@ export default {
     this.mapObject = L.imageOverlay(this.url, this.bounds, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    this.mapObject.addTo(this.$parent.mapObject);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
   },
   methods: {
+    setVisible(newVal, oldVal) {
+      if (newVal == oldVal) return;
+      if (this.mapObject) {
+        if (newVal) {
+          this.parentContainer.addLayer(this);
+        } else {
+          this.parentContainer.removeLayer(this);
+        }
+      }
+    },
     getBounds() {
       return this.mapObject.getBounds();
     },
   },
   beforeDestroy() {
-    this.$parent.mapObject.removeLayer(this.mapObject);
+    this.parentContainer.removeLayer(this);
   },
   render() {
     return null;

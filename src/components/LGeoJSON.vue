@@ -1,5 +1,6 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
+import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   geojson: {
@@ -25,11 +26,20 @@ export default {
     this.mapObject = L.geoJSON(this.geojson, this.options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    if (this.visible) {
-      this.mapObject.addTo(this.$parent.mapObject);
-    }
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
   },
   methods: {
+    setVisible(newVal, oldVal) {
+      if (newVal == oldVal) return;
+      if (this.mapObject) {
+        if (newVal) {
+          this.parentContainer.addLayer(this);
+        } else {
+          this.parentContainer.removeLayer(this);
+        }
+      }
+    },
     setGeojson(newVal) {
       this.mapObject.clearLayers();
       this.mapObject.addData(newVal);

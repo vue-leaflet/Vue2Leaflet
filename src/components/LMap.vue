@@ -72,7 +72,9 @@ export default {
       ready: false,
       movingRequest: 0,
       lastSetCenter: undefined,
-      lastSetBounds: undefined
+      lastSetBounds: undefined,
+      layerControl: undefined,
+      layersToAdd: []
     }
   },
   mounted() {
@@ -93,7 +95,6 @@ export default {
     }
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
-    this.ready = true;
     this.mapObject.on('moveend', () => {
       if (this.movingRequest != 0) {
         this.movingRequest -= 1;
@@ -141,8 +142,41 @@ export default {
     });
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
+    this.ready = true;
   },
   methods: {
+    registerLayerControl(lControlLayers) {
+      this.layerControl = lControlLayers;
+      this.mapObject.addControl(lControlLayers.mapObject);
+      for(var layer in this.layersToAdd) {
+        this.layerControl.addLayer(layer);
+      }
+      this.layerToAdd = null;
+    },
+    addLayer(layer, alreadyAdded) {
+      if (layer.layerType !== undefined) {
+        if (this.layerControl == undefined) {
+          this.layersToAdd.push(layer);
+        } else {
+          this.layerControl.addLayer(layer);
+        }
+      }
+      if (!alreadyAdded) {
+        this.mapObject.addLayer(layer.mapObject);
+      }
+    },
+    removeLayer(layer, alreadyRemoved) {
+      if (layer.layerType !== undefined) {
+        if (this.layerControl == undefined) {
+          this.layersToAdd = this.layerToAdd.filter((l) => l.name !== layer.name );
+        } else {
+          this.layerControl.removeLayer(layer);
+        }
+      }
+      if (!alreadyRemoved) {
+        this.mapObject.removeLayer(layer.mapObject);
+      }
+    },
     setZoom(newVal , oldVal) {
       this.movingRequest += 1;
       this.mapObject.setZoom(newVal);

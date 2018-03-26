@@ -6,7 +6,7 @@
 
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import findParentMapObject from '../utils/findParentMapObject.js';
+import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   latLng: {
@@ -123,25 +123,23 @@ export default {
         options[propName] = this[propName];
       }
     }
-
     this.mapObject = L.circleMarker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.ready = true;
-    if (this.visible) {
-      this.mapObject.addTo(this.$parent.mapObject);
-    }
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
   },
   beforeDestroy() {
-    this.$parent.mapObject.removeLayer(this.mapObject);
+    this.parentContainer.removeLayer(this);
   },
   methods: {
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
       if (newVal) {
-        this.mapObject.addTo(this.$parent.mapObject);
+        this.parentContainer.addLayer(this);
       } else {
-        this.$parent.mapObject.removeLayer(this.mapObject);
+        this.parentContainer.removeLayer(this);
       }
     },
     setLStyle(newVal, oldVal) {

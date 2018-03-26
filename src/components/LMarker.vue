@@ -6,7 +6,7 @@
 
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import findParentMapObject from '../utils/findParentMapObject.js';
+import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   draggable: {
@@ -64,13 +64,11 @@ export default {
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.ready = true;
-    this.parentMapObject = findParentMapObject(this.$parent);
-    if (this.visible) {
-      this.mapObject.addTo(this.parentMapObject);
-    }
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
   },
   beforeDestroy() {
-    this.parentMapObject.removeLayer(this.mapObject);
+    this.parentContainer.removeLayer(this);
   },
   methods: {
     setDraggable(newVal, oldVal) {
@@ -82,9 +80,9 @@ export default {
       if (newVal == oldVal) return;
       if (this.mapObject) {
         if (newVal) {
-          this.mapObject.addTo(this.parentMapObject);
+          this.parentContainer.addLayer(this);
         } else {
-          this.parentMapObject.removeLayer(this.mapObject);
+          this.parentContainer.removeLayer(this);
         }
       }
     }

@@ -6,7 +6,7 @@
 
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import findParentMapObject from '../utils/findParentMapObject.js';
+import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   content: {
@@ -31,12 +31,12 @@ export default {
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.mapObject.setContent(this.content || this.$el);
-    this.parentMapObject = findParentMapObject(this.$parent);
-    this.parentMapObject.bindTooltip(this.mapObject);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.mapObject.bindTooltip(this.mapObject);
   },
   beforeDestroy() {
-    if (this.parentMapObject.getTooltip()) {
-      this.parentMapObject.unbindTooltip();
+    if (this.parentContainer.mapObject.getTooltip()) {
+      this.parentContainer.mapObject.unbindTooltip();
     }
   },
 };
