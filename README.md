@@ -1,137 +1,106 @@
 # Vue2Leaflet
 
-[![Join the chat at https://gitter.im/Vue2Leaflet/Lobby](https://badges.gitter.im/Vue2Leaflet/Lobby.svg)](https://gitter.im/Vue2Leaflet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+<img align="right" height="178" title="Vue2Leaflet Limit logo" src="./logo.png">
 
-<a href="https://travis-ci.org/KoRiGaN/Vue2Leaflet"><img src="https://travis-ci.org/KoRiGaN/Vue2Leaflet.svg?branch=master" alt="Downloads"></a>
-<a href="https://www.npmjs.com/package/vue2-leaflet"><img src="https://img.shields.io/npm/dt/vue2-leaflet.svg" alt="Downloads"></a>
-<a href="https://www.npmjs.com/package/vue2-leaflet"><img src="https://img.shields.io/npm/v/vue2-leaflet.svg" alt="Version"></a>
-<a href="https://www.npmjs.com/package/vue2-leaflet"><img src="https://img.shields.io/npm/l/vue2-leaflet.svg" alt="License"></a>
+<a href="https://travis-ci.org/KoRiGaN/Vue2Leaflet">
+  <img src="https://travis-ci.org/KoRiGaN/Vue2Leaflet.svg?branch=master" alt="Downloads">
+</a>
+<a href="https://www.npmjs.com/package/vue2-leaflet">
+  <img src="https://img.shields.io/npm/dt/vue2-leaflet.svg" alt="Downloads">
+</a>
+<a href="https://www.npmjs.com/package/vue2-leaflet">
+  <img src="https://img.shields.io/npm/v/vue2-leaflet.svg" alt="Version">
+</a>
+<a href="https://www.npmjs.com/package/vue2-leaflet">
+  <img src="https://img.shields.io/npm/l/vue2-leaflet.svg" alt="License">
+</a>
+<a href="https://gitter.im/Vue2Leaflet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+  <img src="https://badges.gitter.im/Vue2Leaflet/Lobby.svg" alt="Gitter">
+</a>
+
+Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework that wraps [Leaflet](http://leafletjs.com/) making it easy to create reactive maps.
 
 
-> Vue2 component that helps with leaflet interaction
+![Image of Map](./vue2leaflet-example.png)
 
+## Documentation
+[Go here](https://korigan.github.io/Vue2Leaflet/) to check out live examples and docs.
 
-## How to display a map with a marker
+If you want to hack around, here is a [JS Fiddle](https://jsfiddle.net/Boumi/k04zpLx9/) to get started
+### :warning: Breaking changes from v1.x.x to v0.x.x :warning:
+A new major release v1.x.x is available and come with some breaking changes.
+#### :exclamation: Components names
+As some component where conflicting with reserved name like Circle with SVG Circle, from v1.x.x all components are prefixed with L.
 
-Register Map and TileLayer components from Vue2Leaflet
+For example Marker component became LMarker (l-marker in template).
+#### :exclamation: Events names
+Event handling have been simplified and are now mapped directly to Leaflet event.
+
+For example Marker move event was 'l-move' and became simply 'move'.
+#### :sparkles: Leaflet Controls
+v1.0.0 introduces Leaflet Controls you can now use them using LControlAttribution, LControlLayers, LControlScale and LControlZoom.
+
+When adding LControlAttribution or LControlZoom to your template, remember to desactivate the default one by using LMap options:
 ``` javascript
-import Vue2Leaflet from 'vue2-leaflet';
-
-Vue.component('v-map', Vue2Leaflet.Map);
-Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
-Vue.component('v-marker', Vue2Leaflet.Marker);
+{
+  zoomControl: false,
+  attributionControl: false
+}
 ```
-
-Add the map to your page
-``` html
-<div id="app" style="height: 100%">
-  <v-map :zoom=13 :center="[47.413220, -1.219482]">
-    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-    <v-marker :lat-lng="[47.413220, -1.219482]"></v-marker>
-  </v-map>
-</div>
-```
-
-``` javascript
-new Vue({ el: '#app'});
-```
-
-Make sure the leaflet.css is included, either via a HTML link tag or in your vue component style
-
-``` css
-@import "~leaflet/dist/leaflet.css";
-```
-Here is the result
-
-![Image of Map](https://korigan.github.com/Vue2Leaflet/images/example_map.png)
-
-## [Live Demo here](https://korigan.github.io/Vue2Leaflet/)
-
-More live demos will come soon
-
-### If you want to try it here is a [JS Fiddle Hello Map of the World](https://jsfiddle.net/Boumi/k04zpLx9/)
-
+Otherwise you will end up with two zoom/attribution control)
 ## How to install
-
 ``` bash
 $ npm install vue2-leaflet --save
 ```
-
-## List of currently implemented components
-
--   [x] Map
--   [x] Marker
--   [x] Popup
--   [x] Tooltip
--   [x] TileLayer
--   [x] TileLayer.WMS
--   [x] ImageOverlay
--   [x] Polyline
--   [x] Polygon
--   [x] Rectangle
--   [x] Circle
--   [x] CircleMarker
--   [x] LayerGroup
--   [ ] FeatureGroup
--   [x] GeoJSON
-
-## Build Setup
-
-``` bash
-# Once you have cloned this repo, install dependencies
-$ npm install
-
-# build for development and production with minification
-$ npm run build
-
-```
+For more detailed informations you can follow the [Quick Start Guide](https://korigan.github.io/Vue2Leaflet/)
 ## Leaflet Plugins
-This repo is a wrapper for Leafet and VueJs. I want to keep it as simple as possible so I don't want to add any plugin support into this repo.
-
 Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would recommand to look at the awesome work made by the community in the list below.
 
 #### Vue2Leafet plugins:
-*  [MarkerCluster](https://github.com/jperelli/vue2-leaflet-markercluster)
-*  [TrackSymbol](https://github.com/ais-one/vue2-leaflet-tracksymbol)
-*  [Choropleth](https://github.com/voluntadpear/vue-choropleth)
-*  [VectorGrid](https://github.com/tesselo/vue2-leaflet-vectorgrid)
+* [vue2-leaflet-markercluster](https://github.com/jperelli/vue2-leaflet-markercluster) wrapper for [MarkerCluster](https://github.com/Leaflet/Leaflet.markercluster)
+*  [vue2-leaflet-tracksymbol](https://github.com/ais-one/vue2-leaflet-tracksymbol) wrapper for [TrackSymbol](https://github.com/lethexa/leaflet-tracksymbol)
+*  [vue-choropleth](https://github.com/voluntadpear/vue-choropleth) to display a choropleth map given a certain GeoJSON
+*  [vue2-leaflet-geosearch](https://github.com/fega/vue2-leaflet-geosearch) wrapper for [GeoSearch](https://github.com/smeijer/leaflet-geosearch)
+*  [vue2-leaflet-vectorgrid](https://github.com/tesselo/vue2-leaflet-vectorgrid) wrapper for [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) to display gridded vector data
 
 If you have created a plugin and want it to be listed here, let me know :-).
+
+Vue2Leaflet is only a wrapper for Leaflet. I want to keep it as simple as possible so I don't want to add any plugin support into this repo.
 
 ## FAQ
 #### How can I access the Leaflet map object ?
 First add a ref to the map
 ``` html
-<div id="app" style="height: 100%">
-  <v-map ref="map" :zoom=13 :center="[47.413220, -1.219482]">
-    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-  </v-map>
-</div>
+  <l-map ref="map" :zoom=13 :center="[47.413220, -1.219482]">
+    ...
+  </l-map>
 ```
-Then in you javascript you can use mapObject which is Leaflet map instance :
+Then in you JavaScript you can use mapObject which is Leaflet map instance :
 ``` javascript
 this.$refs.map.mapObject;
 ```
 This also work for any other component (Marker, Polyline, etc...)
 
 #### How can I bind events of Vue2Leaflet components ?
-All event binding can be done to event with the same as in leaflet documentation.
+All event binding can be done to event with the same name as in [leaflet documentation](http://leafletjs.com/reference-1.3.0.html).
 
-For example if you want to listen to Vue2Leaflet.Marker move event.
+For example if you want to listen to Vue2Leaflet.LMarker move event.
+``` html
+<l-marker :lat-lng="[47.413220, -1.219482]" @move="doSomething"></l-marker>
 ```
-<div id="app" style="height: 100%">
-  <v-map :zoom=13 :center="[47.413220, -1.219482]">
-    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-    <v-marker :lat-lng="[47.413220, -1.219482]" @move="doSomething"></v-marker>
-  </v-map>
-</div>
-```
-## Run demo locally
+## Run code locally for contributors
 ``` bash
-# Run demo at localhost:8080
+# clone the repository
+$ git clone git@github.com:KoRiGaN/Vue2Leaflet.git
+$ cd Vue2Leaflet
+# install dependencies and build vue2-leaflet
+$ npm install
+$ npm run build
+# create a symlink for vue2-leaflet
 $ npm link
 $ cd examples
 $ npm install
+# create a symbolic link for vue2-leaflet in node_modules/
 $ npm link vue2-leaflet
 # serve with hot reload at localhost:8080
 $ npm run dev
@@ -139,7 +108,7 @@ $ npm run dev
 Go to <http://localhost:8080/> to see running examples
 
 NOTE: If you make changes to the library you should run 'npm run build' again in the root folder.
-The dev server should detect modification and reload the demo
+The dev server should detect modification and reload the examples
 ## Authors
 
 Mickaël Bouchaud
@@ -148,18 +117,7 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
 
 ## Contributors
 
-Thanks goes to these wonderful people:
-
-*   [@zuck](https://github.com/zuck)
-*   [@SiggyF](https://github.com/SiggyF)
-*   [@nikos](https://github.com/nikos)
-*   [@Ralf8686](https://github.com/Ralf8686)
-*   [@antixrist](https://github.com/antixrist)
-*   [@jteppinette](https://github.com/jteppinette)
-*   [@rootman](https://github.com/rootman)
-*   [@strixy](https://github.com/strixy)
-*   [@EyMaddis](https://github.com/EyMaddis)
-*   [@schlunsen](https://github.com/schlunsen)
+Thanks goes to these [wonderful people](https://github.com/your/project/contributors)
 
 ## License
 
