@@ -27,7 +27,7 @@ Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework 
 [Go here](https://korigan.github.io/Vue2Leaflet/) to check out live examples and docs.
 
 If you want to hack around, here is a [JS Fiddle](https://jsfiddle.net/Boumi/k04zpLx9/) to get started
-### :warning: Breaking changes from v1.x.x to v0.x.x :warning:
+### :warning: Breaking changes from v0.x.x to v1.x.x :warning:
 A new major release v1.x.x is available and come with some breaking changes.
 #### :exclamation: Components names
 As some component where conflicting with reserved name like Circle with SVG Circle, from v1.x.x all components are prefixed with L.
