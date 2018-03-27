@@ -47,7 +47,7 @@ When adding LControlAttribution or LControlZoom to your template, remember to de
   attributionControl: false
 }
 ```
-Otherwise you will end up with two zoom/attribution control)
+Otherwise you will end up with two zoom/attribution control.
 ## How to install
 ``` bash
 $ npm install vue2-leaflet --save
