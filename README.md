@@ -117,7 +117,7 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
 
 ## Contributors
 
-Thanks goes to these [wonderful people](https://github.com/your/project/contributors)
+Thanks goes to these [wonderful people](https://github.com/KoRiGaN/Vue2Leaflet/contributors)
 
 ## License
 
