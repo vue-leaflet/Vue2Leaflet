@@ -86,13 +86,13 @@ export default {
         }
       }
     },
-    setLatLng(newVal, oldVal) {
-      if (newVal == oldVal) return;
+    setLatLng(newVal) {
+      if (newVal == null) {
+        return;
+      }
+
       if (this.mapObject) {
-        let oldLatLng = oldVal ? {
-          lat: oldVal[0] || oldVal.lat,
-          lng: oldVal[1] || oldVal.lng,
-        } : {};
+        let oldLatLng = this.mapObject.getLatLng();
         let newLatLng = {
           lat: newVal[0] || newVal.lat,
           lng: newVal[1] || newVal.lng,
