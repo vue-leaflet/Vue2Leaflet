@@ -95,7 +95,6 @@ export default {
   data() {
     return {
       ready: false,
-      parentMapObject: undefined
     }
   },
   mounted() {
