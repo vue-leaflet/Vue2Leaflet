@@ -59,6 +59,7 @@ Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would
 #### Vue2Leafet plugins:
 * [vue2-leaflet-markercluster](https://github.com/jperelli/vue2-leaflet-markercluster) wrapper for [MarkerCluster](https://github.com/Leaflet/Leaflet.markercluster)
 * [vue2-leaflet-polylinedecorator](https://github.com/jperelli/vue2-leaflet-polylinedecorator) wrapper for [PolylineDecorator](https://github.com/bbecquet/Leaflet.PolylineDecorator)
+* [vue2-leaflet-googlemutant](https://github.com/jperelli/vue2-leaflet-googlemutant) wrapper for [GoogleMutant](https://gitlab.com/IvanSanchez/Leaflet.GridLayer.GoogleMutant)
 *  [vue2-leaflet-tracksymbol](https://github.com/ais-one/vue2-leaflet-tracksymbol) wrapper for [TrackSymbol](https://github.com/lethexa/leaflet-tracksymbol)
 *  [vue-choropleth](https://github.com/voluntadpear/vue-choropleth) to display a choropleth map given a certain GeoJSON
 *  [vue2-leaflet-geosearch](https://github.com/fega/vue2-leaflet-geosearch) wrapper for [GeoSearch](https://github.com/smeijer/leaflet-geosearch)
