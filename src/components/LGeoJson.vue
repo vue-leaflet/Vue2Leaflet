@@ -53,14 +53,14 @@ export default {
     setVisible(newVal, oldVal) {
       if (newVal === oldVal) return;
       if (newVal) {
-        this.mapObject.addTo(this.$parent.mapObject);
+        this.mapObject.addTo(this.parentContainer.mapObject);
       } else {
-        this.$parent.mapObject.removeLayer(this.mapObject);
+        this.parentContainer.mapObject.removeLayer(this.mapObject);
       }
     },
   },
   beforeDestroy() {
-    this.$parent.mapObject.removeLayer(this.mapObject);
+    this.parentContainer.mapObject.removeLayer(this.mapObject);
   },
   render() {
     return null;
