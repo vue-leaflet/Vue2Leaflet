@@ -32,6 +32,10 @@ const props = {
       return {};
     }
   },
+  tms: {
+    type: Boolean,
+    default: false
+  },
   tileLayerClass: {
     type: Function,
     default: L.tileLayer
