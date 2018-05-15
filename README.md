@@ -70,7 +70,14 @@ If you have created a plugin and want it to be listed here, let me know :-).
 Vue2Leaflet is only a wrapper for Leaflet. I want to keep it as simple as possible so I don't want to add any plugin support into this repo.
 
 ## FAQ
-#### How can I access the Leaflet map object ?
+#### My map and/or markers don't fully render. What gives?
+Depending on your project setup, you may have to try different solutions.
+
+To fix map rendering issues, it may help to [import the Leaflet stylesheet within the **script** section of your Vue component](https://github.com/KoRiGaN/Vue2Leaflet/issues/157#issuecomment-384307765).
+
+In most cases, though, it is Webpack messing with Leaflet marker icons' paths, resulting in warnings or even errors. You can alleviate that by either [unsetting/replacing the default paths](https://github.com/KoRiGaN/Vue2Leaflet/issues/96#issuecomment-341453050) ([alternate solution](https://github.com/Leaflet/Leaflet/issues/4968#issuecomment-319569682)) or [using Webpack aliases](https://github.com/Leaflet/Leaflet/issues/4849#issuecomment-307436996).
+
+#### How can I access the Leaflet map object?
 First add a ref to the map
 ``` html
   <l-map ref="map" :zoom=13 :center="[47.413220, -1.219482]">
@@ -83,7 +90,7 @@ this.$refs.map.mapObject;
 ```
 This also work for any other component (Marker, Polyline, etc...)
 
-#### How can I bind events of Vue2Leaflet components ?
+#### How can I bind events of Vue2Leaflet components?
 All event binding can be done to event with the same name as in [leaflet documentation](http://leafletjs.com/reference-1.3.0.html).
 
 For example if you want to listen to Vue2Leaflet.LMarker move event.
