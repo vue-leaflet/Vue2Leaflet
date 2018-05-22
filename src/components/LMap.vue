@@ -54,7 +54,7 @@ const props = {
     custom: true,
     default: () => L.CRS.EPSG3857,
   },
-  maxBoundsViscosity: {
+  maxBoundsViscosity: {
     type: Number,
     default: 0
   },
@@ -102,17 +102,31 @@ export default {
       }
       if (this.mapObject.getZoom() != this.zoom) {
         this.$emit('update:zoom', this.mapObject.getZoom());
+        this.zoom = this.mapObject.getZoom();
       }
       let center = this.mapObject.getCenter();
-      if (this.center != null) {
-        if (Array.isArray(this.center)) {
-          this.center[0] = center.lat;
-          this.center[1] = center.lng;
-        } else {
-          this.center.lat = center.lat;
-          this.center.lng = center.lng;
+      let centerIsChanged = false;
+      if (null === this.center) {
+        this.center = {
+          lat: center.lat,
+          lng: center.lng,
+        };
+        centerIsChanged = true;
+      }
+      if (Array.isArray(this.center)) {
+        if (this.center[0] !== center.lat || this.center[1] !== center.lng) {
+          centerIsChanged = true;
         }
+        this.center[0] = center.lat;
+        this.center[1] = center.lng;
       } else {
+        if (this.center.lat !== center.lat || this.center.lng !== center.lng) {
+          centerIsChanged = true;
+        }
+        this.center.lat = center.lat;
+        this.center.lng = center.lng;
+      }
+      if (centerIsChanged) {
         this.$emit('update:center', center);
       }
 
@@ -136,9 +150,8 @@ export default {
           this.bounds._northEast.lat = bounds._northEast.lat;
           this.bounds._northEast.lng = bounds._northEast.lng;
         }
-      } else {
-        this.$emit('update:bounds', bounds);
       }
+      this.$emit('update:bounds', bounds);
     });
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
@@ -148,7 +161,7 @@ export default {
     registerLayerControl(lControlLayers) {
       this.layerControl = lControlLayers;
       this.mapObject.addControl(lControlLayers.mapObject);
-      for(var layer in this.layersToAdd) {
+      for (var layer in this.layersToAdd) {
         this.layerControl.addLayer(layer);
       }
       this.layerToAdd = null;
@@ -168,7 +181,7 @@ export default {
     removeLayer(layer, alreadyRemoved) {
       if (layer.layerType !== undefined) {
         if (this.layerControl == undefined) {
-          this.layersToAdd = this.layerToAdd.filter((l) => l.name !== layer.name );
+          this.layersToAdd = this.layerToAdd.filter((l) => l.name !== layer.name);
         } else {
           this.layerControl.removeLayer(layer);
         }
@@ -177,7 +190,7 @@ export default {
         this.mapObject.removeLayer(layer.mapObject);
       }
     },
-    setZoom(newVal , oldVal) {
+    setZoom(newVal, oldVal) {
       this.movingRequest += 1;
       this.mapObject.setZoom(newVal);
     },
@@ -196,7 +209,7 @@ export default {
         newLng = newVal.lng;
       }
       let center = this.lastSetCenter == null ? this.mapObject.getCenter() : this.lastSetCenter;
-      if (center.lat != newLat || center.lng != newLng) {
+      if (center.lat != newLat || center.lng != newLng) {
         center.lat = newVal.lat;
         center.lng = newVal.lng;
         this.lastSetCenter = center;
@@ -235,7 +248,7 @@ export default {
           northEastLat = bounds[1].lat;
           northEastLng = bounds[1].lng;
         }
-      } else {
+      } else {
         southWestLat = bounds._southWest.lat;
         southWestLng = bounds._southWest.lng;
         northEastLat = bounds._northEast.lat;
@@ -285,7 +298,7 @@ export default {
             bounds[1].lat = northEastLat;
             bounds[1].lng = northEastLng;
           }
-        } else {
+        } else {
           bounds._southWest.lat = southWestLat;
           bounds._southWest.lng = southWestLng;
           bounds._northEast.lat = northEastLat;
