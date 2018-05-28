@@ -65,6 +65,7 @@ Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would
 *  [vue2-leaflet-geosearch](https://github.com/fega/vue2-leaflet-geosearch) wrapper for [GeoSearch](https://github.com/smeijer/leaflet-geosearch)
 *  [vue2-leaflet-vectorgrid](https://github.com/tesselo/vue2-leaflet-vectorgrid) wrapper for [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) to display gridded vector data
 *  [vue2-leaflet-rotatedmarker](https://github.com/imudin/vue2-leaflet-rotatedmarker) wrapper for [RotatedMarker](https://github.com/bbecquet/Leaflet.RotatedMarker)
+* [vue2-leaflet-editablecirclemarker](https://github.com/cualbondi/vue2-leaflet-editablecirclemarker) wrapper for [leaflet-editablecirclemarker](https://github.com/cualbondi/leaflet-editablecirclemarker)
 
 If you have created a plugin and want it to be listed here, let me know :-).
 
