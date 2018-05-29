@@ -3,6 +3,7 @@ exports.propsBinder = require('./utils/propsBinder').default;
 
 exports.LCircle = require('./components/LCircle').default;
 exports.LCircleMarker = require('./components/LCircleMarker').default;
+exports.LControl = require('./components/LControl').default;
 exports.LControlAttribution = require('./components/LControlAttribution').default;
 exports.LControlLayers = require('./components/LControlLayers').default;
 exports.LControlScale = require('./components/LControlScale').default;
