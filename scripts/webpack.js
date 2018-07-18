@@ -17,8 +17,8 @@ config.entry = {
 config.output = {
   path: path.resolve(__dirname, '../dist'),
   filename: 'vue2-leaflet.js',
-  library: ["Vue2Leaflet"],
-  libraryTarget: "umd",
+  library: ['Vue2Leaflet'],
+  libraryTarget: 'umd'
 };
 
 config.externals = [{
@@ -62,15 +62,13 @@ config.module = {
       loader: 'babel-loader',
       // important: exclude files in node_modules, otherwise it's going to be really slow!
       exclude: /node_modules|vendor/
-    },
+    }
   ]
 };
 
 if (process.env.NODE_ENV === 'production') {
-  config.output.filename = "vue2-leaflet.min.js"
+  config.output.filename = 'vue2-leaflet.min.js';
   config.devtool = '#source-map';
-
-
 } else {
   config.devtool = '#eval-source-map';
 }
