@@ -7,7 +7,7 @@
   "scripts": {
     "build": "cd scripts && ./build.sh",
     "size": "size-limit",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "lint": "eslint src --ext .js,.vue --ignore-path .gitignore"
   },
   "main": "dist/vue2-leaflet.min.js",
   "module": "dist/vue2-leaflet.min.js",
@@ -17,7 +17,7 @@
     "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
   },
   "dependencies": {
-    "leaflet": "^1.3.1"
+    "leaflet": "1.3.1"
   },
   "peerDependencies": {
     "vue": "^2.5.3"
