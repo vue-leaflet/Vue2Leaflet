@@ -1,6 +1,6 @@
 <template>
   <div>
-    My {{ data.type }} is <span :style="{ color: data.color}">{{ data.color }}</span>
+    My {{ data.type }} is <span :style="{ color: data.color}">{{ data.color }}</span>
   </div>
 </template>
 
@@ -8,6 +8,11 @@
 
 export default {
   name: 'TooltipContent',
-  props: ['data'],
-}
+  props: {
+    data: {
+      type: Object,
+      default: () => ({})
+    }
+  }
+};
 </script>
