@@ -1,4 +1,4 @@
-function capitalizeFirstLetter(string) {
+function capitalizeFirstLetter (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -16,7 +16,7 @@ export default (vueElement, leafletElement, props, options) => {
       }, {
         deep: deepValue
       });
-    } else if (setMethodName == 'setOptions') {
+    } else if (setMethodName === 'setOptions') {
       vueElement.$watch(key, (newVal, oldVal) => {
         L.setOptions(leafletElement, newVal);
       }, {
@@ -30,4 +30,4 @@ export default (vueElement, leafletElement, props, options) => {
       });
     }
   }
-}
+};
