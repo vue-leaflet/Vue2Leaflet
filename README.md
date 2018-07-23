@@ -90,6 +90,22 @@ Then in you JavaScript you can use mapObject which is Leaflet map instance :
 ``` javascript
 this.$refs.map.mapObject;
 ```
+
+**Note:** `mapObject` is not available directly in vue's `mounted` hook. You need to wrap the call to `this.$refs.map` in a `nextTick` call:
+
+``` javascript
+data: () => ({map: null}),
+mounted () {
+  // DON'T
+  this.map = this.$refs.map.mapObject // doesn't work, this.map is null
+
+  // DO
+  this.$nextTick(() => {
+    this.map = this.$refs.map.mapObject // work as expected
+  })
+},
+```
+
 This also work for any other component (Marker, Polyline, etc...)
 
 #### How can I bind events of Vue2Leaflet components?
