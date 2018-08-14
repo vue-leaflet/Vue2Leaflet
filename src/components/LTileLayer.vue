@@ -80,9 +80,7 @@ export default {
     },
     setToken(val) {
       this.options.token = val;
-    }
-  },
-  methods: {
+    },
     setVisible(newVal, oldVal) {
       if (newVal == oldVal) return;
       if (this.mapObject) {
