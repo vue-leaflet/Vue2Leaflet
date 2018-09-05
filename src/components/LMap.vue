@@ -151,7 +151,7 @@ export default {
       for(var layer in this.layersToAdd) {
         this.layerControl.addLayer(layer);
       }
-      this.layerToAdd = null;
+      this.layersToAdd = null;
     },
     addLayer(layer, alreadyAdded) {
       if (layer.layerType !== undefined) {
@@ -168,7 +168,7 @@ export default {
     removeLayer(layer, alreadyRemoved) {
       if (layer.layerType !== undefined) {
         if (this.layerControl == undefined) {
-          this.layersToAdd = this.layerToAdd.filter((l) => l.name !== layer.name );
+          this.layersToAdd = this.layersToAdd.filter((l) => l.name !== layer.name );
         } else {
           this.layerControl.removeLayer(layer);
         }
