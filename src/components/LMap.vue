@@ -1,6 +1,6 @@
 <template>
   <div class="vue2leaflet-map">
-    <slot v-if="ready"></slot>
+    <slot v-if="ready"/>
   </div>
 </template>
 
@@ -12,31 +12,31 @@ const props = {
   center: {
     type: [Object, Array],
     custom: true,
-    default: () => [0, 0],
+    default: () => [0, 0]
   },
   bounds: {
     custom: true,
-    default: undefined,
+    default: undefined
   },
   maxBounds: {
-    default: undefined,
+    default: undefined
   },
   zoom: {
     type: Number,
     custom: true,
-    default: 0,
+    default: 0
   },
   minZoom: {
     type: Number,
-    default: undefined,
+    default: undefined
   },
   maxZoom: {
     type: Number,
-    default: undefined,
+    default: undefined
   },
   paddingBottomRight: {
     custom: true,
-    default: null,
+    default: null
   },
   paddingTopLeft: {
     custom: true,
@@ -52,22 +52,22 @@ const props = {
   },
   crs: {
     custom: true,
-    default: () => L.CRS.EPSG3857,
+    default: () => L.CRS.EPSG3857
   },
-  maxBoundsViscosity: {
+  maxBoundsViscosity: {
     type: Number,
     default: 0
   },
   options: {
     type: Object,
-    default: () => ({}),
-  },
+    default: () => ({})
+  }
 };
 
 export default {
   name: 'LMap',
   props: props,
-  data() {
+  data () {
     return {
       ready: false,
       movingRequest: 0,
@@ -75,9 +75,9 @@ export default {
       lastSetBounds: undefined,
       layerControl: undefined,
       layersToAdd: []
-    }
+    };
   },
-  mounted() {
+  mounted () {
     const options = this.options;
     Object.assign(options, {
       minZoom: this.minZoom,
@@ -85,77 +85,33 @@ export default {
       maxBounds: this.maxBounds,
       maxBoundsViscosity: this.maxBoundsViscosity,
       worldCopyJump: this.worldCopyJump,
-      crs: this.crs,
+      crs: this.crs
     });
-    if (this.center != null) {
+    if (this.center !== null) {
       options.center = this.center;
     }
-    if (this.zoom != null) {
+    if (this.zoom !== null) {
       options.zoom = this.zoom;
     }
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
-    this.mapObject.on('moveend', () => {
-      if (this.movingRequest != 0) {
-        this.movingRequest -= 1;
-        return;
-      }
-      if (this.mapObject.getZoom() != this.zoom) {
-        this.$emit('update:zoom', this.mapObject.getZoom());
-      }
-      let center = this.mapObject.getCenter();
-      if (this.center != null) {
-        if (Array.isArray(this.center)) {
-          this.center[0] = center.lat;
-          this.center[1] = center.lng;
-        } else {
-          this.center.lat = center.lat;
-          this.center.lng = center.lng;
-        }
-      } else {
-        this.$emit('update:center', center);
-      }
-
-      let bounds = this.mapObject.getBounds();
-      if (this.bounds != null) {
-        if (Array.isArray(this.bounds)) {
-          if (Array.isArray(this.bounds[0])) {
-            this.bounds[0][0] = bounds._southWest.lat;
-            this.bounds[0][1] = bounds._southWest.lng;
-            this.bounds[1][0] = bounds._northEast.lat;
-            this.bounds[1][1] = bounds._northEast.lng;
-          } else {
-            this.bounds[0].lat = bounds._southWest.lat;
-            this.bounds[0].lng = bounds._southWest.lng;
-            this.bounds[1].lat = bounds._northEast.lat;
-            this.bounds[1].lng = bounds._northEast.lng;
-          }
-        } else {
-          this.bounds._southWest.lat = bounds._southWest.lat;
-          this.bounds._southWest.lng = bounds._southWest.lng;
-          this.bounds._northEast.lat = bounds._northEast.lat;
-          this.bounds._northEast.lng = bounds._northEast.lng;
-        }
-      } else {
-        this.$emit('update:bounds', bounds);
-      }
-    });
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.ready = true;
+    this.$emit('load');
   },
   methods: {
-    registerLayerControl(lControlLayers) {
+    registerLayerControl (lControlLayers) {
       this.layerControl = lControlLayers;
       this.mapObject.addControl(lControlLayers.mapObject);
-      for(var layer in this.layersToAdd) {
+      for (var layer in this.layersToAdd) {
         this.layerControl.addLayer(layer);
       }
       this.layersToAdd = null;
     },
-    addLayer(layer, alreadyAdded) {
+    addLayer (layer, alreadyAdded) {
       if (layer.layerType !== undefined) {
-        if (this.layerControl == undefined) {
+        if (this.layerControl === undefined) {
           this.layersToAdd.push(layer);
         } else {
           this.layerControl.addLayer(layer);
@@ -165,10 +121,10 @@ export default {
         this.mapObject.addLayer(layer.mapObject);
       }
     },
-    removeLayer(layer, alreadyRemoved) {
+    removeLayer (layer, alreadyRemoved) {
       if (layer.layerType !== undefined) {
-        if (this.layerControl == undefined) {
-          this.layersToAdd = this.layersToAdd.filter((l) => l.name !== layer.name );
+        if (this.layerControl === undefined) {
+          this.layersToAdd = this.layersToAdd.filter((l) => l.name !== layer.name);
         } else {
           this.layerControl.removeLayer(layer);
         }
@@ -177,11 +133,11 @@ export default {
         this.mapObject.removeLayer(layer.mapObject);
       }
     },
-    setZoom(newVal , oldVal) {
+    setZoom (newVal, oldVal) {
       this.movingRequest += 1;
       this.mapObject.setZoom(newVal);
     },
-    setCenter(newVal, oldVal) {
+    setCenter (newVal, oldVal) {
       if (newVal == null) {
         return;
       }
@@ -196,7 +152,7 @@ export default {
         newLng = newVal.lng;
       }
       let center = this.lastSetCenter == null ? this.mapObject.getCenter() : this.lastSetCenter;
-      if (center.lat != newLat || center.lng != newLng) {
+      if (center.lat !== newLat || center.lng !== newLng) {
         center.lat = newVal.lat;
         center.lng = newVal.lng;
         this.lastSetCenter = center;
@@ -204,7 +160,7 @@ export default {
         this.mapObject.panTo(newVal);
       }
     },
-    setBounds(newVal, oldVal) {
+    setBounds (newVal, oldVal) {
       if (!newVal) {
         return;
       }
@@ -235,7 +191,7 @@ export default {
           northEastLat = bounds[1].lat;
           northEastLng = bounds[1].lng;
         }
-      } else {
+      } else {
         southWestLat = bounds._southWest.lat;
         southWestLng = bounds._southWest.lng;
         northEastLat = bounds._northEast.lat;
@@ -253,10 +209,10 @@ export default {
       northEastNewLat = newVal._northEast.lat;
       northEastNewLng = newVal._northEast.lng;
       let boundsChanged =
-        (southWestNewLat != southWestLat) ||
-        (southWestNewLng != southWestLng) ||
-        (northEastNewLat != northEastLat) ||
-        (northEastNewLng != northEastLng);
+        (southWestNewLat !== southWestLat) ||
+        (southWestNewLng !== southWestLng) ||
+        (northEastNewLat !== northEastLat) ||
+        (northEastNewLng !== northEastLng);
       if (boundsChanged) {
         var options = {};
         if (this.padding) {
@@ -285,7 +241,7 @@ export default {
             bounds[1].lat = northEastLat;
             bounds[1].lng = northEastLng;
           }
-        } else {
+        } else {
           bounds._southWest.lat = southWestLat;
           bounds._southWest.lng = southWestLng;
           bounds._northEast.lat = northEastLat;
@@ -295,23 +251,23 @@ export default {
         this.mapObject.fitBounds(newVal, options);
       }
     },
-    setPaddingBottomRight(newVal, oldVal) {
+    setPaddingBottomRight (newVal, oldVal) {
       this.paddingBottomRight = newVal;
     },
-    setPaddingTopLeft(newVal, oldVal) {
+    setPaddingTopLeft (newVal, oldVal) {
       this.paddingTopLeft = newVal;
     },
-    setPadding(newVal, oldVal) {
+    setPadding (newVal, oldVal) {
       this.padding = newVal;
     },
-    setCrs(newVal, oldVal) {
+    setCrs (newVal, oldVal) {
       console.log('Changing CRS is not yet supported by Leaflet');
     },
-    fitBounds(bounds) {
+    fitBounds (bounds) {
       this.mapObject.fitBounds(bounds);
     }
-  },
-}
+  }
+};
 </script>
 
 <style type="text/css">

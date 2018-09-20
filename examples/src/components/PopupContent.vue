@@ -1,6 +1,6 @@
 <template>
   <div>
-    My {{ data.type }} is <span :style="{ color: data.color}">{{ data.color }}</span>
+    My {{ data.type }} is <span :style="{ color: data.color }">{{ data.color }}</span>
   </div>
 </template>
 
@@ -11,8 +11,8 @@ export default {
   props: {
     data: {
       type: Object,
-      default: () => ({ type: '', color: '#ffffff'}),
-    },
+      default: () => ({ type: '', color: '#ffffff' })
+    }
   }
-}
+};
 </script>

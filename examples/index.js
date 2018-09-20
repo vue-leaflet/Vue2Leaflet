@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import L from 'leaflet';
 import App from './App';
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -10,6 +9,8 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
+Vue.config.productionTip = false;
+
 new Vue({
   render: h => h(App)
-}).$mount('#main');
+}).$mount('#app');

@@ -1,4 +1,9 @@
+<template>
+  <div/>
+</template>
+
 <script>
+import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 
@@ -28,7 +33,7 @@ const props = {
   },
   options: {
     type: Object,
-    default: function() {
+    default: function () {
       return {};
     }
   },
@@ -51,19 +56,19 @@ const props = {
   visible: {
     type: Boolean,
     custom: true,
-    default: true,
-  },
+    default: true
+  }
 };
 
 export default {
   name: 'LTileLayer',
   props: props,
-  mounted() {
+  mounted () {
     const options = this.options;
-    const otherPropertytoInitialize = [ "attribution", "token", "detectRetina", "opacity", "zIndex" ];
+    const otherPropertytoInitialize = [ 'attribution', 'token', 'detectRetina', 'opacity', 'zIndex' ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
-      if(this[propName] !== undefined) {
+      if (this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
@@ -73,18 +78,19 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
   },
+  beforeDestroy () {
+    this.parentContainer.removeLayer(this);
+  },
   methods: {
-    setAttribution(val, old) {
+    setAttribution (val, old) {
       let attributionControl = this.$parent.mapObject.attributionControl;
       attributionControl.removeAttribution(old).addAttribution(val);
     },
-    setToken(val) {
+    setToken (val) {
       this.options.token = val;
-    }
-  },
-  methods: {
-    setVisible(newVal, oldVal) {
-      if (newVal == oldVal) return;
+    },
+    setVisible (newVal, oldVal) {
+      if (newVal === oldVal) return;
       if (this.mapObject) {
         if (newVal) {
           this.parentContainer.addLayer(this);
@@ -94,10 +100,7 @@ export default {
       }
     }
   },
-  beforeDestroy() {
-    this.parentContainer.removeLayer(this);
-  },
-  render() {
+  render () {
     return null;
   }
 };

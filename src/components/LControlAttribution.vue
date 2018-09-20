@@ -12,19 +12,19 @@ const props = {
   },
   options: {
     type: Object,
-    default: () => ({}),
-  },
+    default: () => ({})
+  }
 };
 
 export default {
   name: 'LControlAttribution',
   props: props,
-  mounted() {
+  mounted () {
     const options = this.options;
-    const otherPropertytoInitialize = [ 'prefix', 'position'];
+    const otherPropertytoInitialize = [ 'prefix', 'position' ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
-      if(this[propName] !== undefined) {
+      if (this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
@@ -32,10 +32,10 @@ export default {
     propsBinder(this, this.mapObject, props);
     this.mapObject.addTo(this.$parent.mapObject);
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.mapObject.remove();
   },
-  render() {
+  render () {
     return null;
   }
 };

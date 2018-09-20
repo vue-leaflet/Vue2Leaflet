@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot></slot>
+    <slot/>
   </div>
 </template>
 
@@ -10,22 +10,22 @@ import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   content: {
-    default: '',
+    default: ''
   },
   options: {
     type: Object,
-    default: () => ({}),
+    default: () => ({})
   }
 };
 
 export default {
   name: 'LTooltip',
   props: props,
-  data() {
+  data () {
     return {
-    }
+    };
   },
-  mounted() {
+  mounted () {
     this.mapObject = L.tooltip(this.options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
@@ -33,10 +33,10 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindTooltip(this.mapObject);
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (this.parentContainer.mapObject.getTooltip()) {
       this.parentContainer.mapObject.unbindTooltip();
     }
-  },
+  }
 };
 </script>
