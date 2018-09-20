@@ -6,63 +6,53 @@ const props = {
   geojson: {
     type: [Object, Array],
     custom: true,
-    default: () => ({}),
+    default: () => ({})
   },
   options: {
     type: Object,
-    default: () => ({}),
+    default: () => ({})
   },
   visible: {
     type: Boolean,
     custom: true,
-    default: true,
+    default: true
   }
-}
+};
 
 export default {
   name: 'LGeoJson',
   props: props,
-  mounted() {
+  mounted () {
     this.mapObject = L.geoJSON(this.geojson, this.options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
-    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer = findRealParent(this.$parent, true);
     this.parentContainer.addLayer(this, !this.visible);
   },
+  beforeDestroy () {
+    this.parentContainer.mapObject.removeLayer(this.mapObject);
+  },
   methods: {
-    setVisible(newVal, oldVal) {
-      if (newVal == oldVal) return;
-      if (this.mapObject) {
-        if (newVal) {
-          this.parentContainer.addLayer(this);
-        } else {
-          this.parentContainer.removeLayer(this);
-        }
-      }
-    },
-    setGeojson(newVal) {
+    setGeojson (newVal) {
       this.mapObject.clearLayers();
       this.mapObject.addData(newVal);
     },
-    getGeoJSONData() {
+    getGeoJSONData () {
       return this.mapObject.toGeoJSON();
     },
-    getBounds() {
+    getBounds () {
       return this.mapObject.getBounds();
     },
-    setVisible(newVal, oldVal) {
+    setVisible (newVal, oldVal) {
       if (newVal === oldVal) return;
       if (newVal) {
         this.mapObject.addTo(this.parentContainer.mapObject);
       } else {
         this.parentContainer.mapObject.removeLayer(this.mapObject);
       }
-    },
+    }
   },
-  beforeDestroy() {
-    this.parentContainer.mapObject.removeLayer(this.mapObject);
-  },
-  render() {
+  render () {
     return null;
   }
 };

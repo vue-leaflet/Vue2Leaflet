@@ -66,6 +66,7 @@ Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would
 *  [vue2-leaflet-vectorgrid](https://github.com/tesselo/vue2-leaflet-vectorgrid) wrapper for [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) to display gridded vector data
 *  [vue2-leaflet-rotatedmarker](https://github.com/imudin/vue2-leaflet-rotatedmarker) wrapper for [RotatedMarker](https://github.com/bbecquet/Leaflet.RotatedMarker)
 * [vue2-leaflet-editablecirclemarker](https://github.com/cualbondi/vue2-leaflet-editablecirclemarker) wrapper for [leaflet-editablecirclemarker](https://github.com/cualbondi/leaflet-editablecirclemarker)
+* [vue2-leaflet-hotline](https://github.com/ikmolbo/vue2-leaflet-hotline) wrapper for [hotline](https://github.com/iosphere/Leaflet.hotline)
 
 If you have created a plugin and want it to be listed here, let me know :-).
 
@@ -90,6 +91,22 @@ Then in you JavaScript you can use mapObject which is Leaflet map instance :
 ``` javascript
 this.$refs.map.mapObject;
 ```
+
+**Note:** `mapObject` is not available directly in vue's `mounted` hook. You need to wrap the call to `this.$refs.map` in a `nextTick` call:
+
+``` javascript
+data: () => ({map: null}),
+mounted () {
+  // DON'T
+  this.map = this.$refs.map.mapObject // doesn't work, this.map is null
+
+  // DO
+  this.$nextTick(() => {
+    this.map = this.$refs.map.mapObject // work as expected
+  })
+},
+```
+
 This also work for any other component (Marker, Polyline, etc...)
 
 #### How can I bind events of Vue2Leaflet components?

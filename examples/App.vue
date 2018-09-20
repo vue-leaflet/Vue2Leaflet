@@ -27,10 +27,9 @@
           @click="currentView='custom-url-params'">Custom Url Params</a>
       </li>
       <li>
-        <a href="#" @click="currentView='custom-control'">Custom Leaflet Control</a>
-      </li>
-      <li>
-        <a href="#" @click="currentView='set-bounds'">Set bounds</a>
+        <a
+          href="#"
+          @click="currentView='set-bounds'">Set bounds</a>
       </li>
       <li>
         <a
@@ -80,8 +79,9 @@
 </template>
 
 <script>
+import 'leaflet.icon.glyph';
+
 import CRSAndImageOverlay from './components/CRSAndImageOverlay';
-import CustomControl from './components/CustomControl';
 import CustomPath from './components/CustomPath';
 import CustomUrlParams from './components/CustomUrlParams';
 import Example from './components/Example';
@@ -99,7 +99,6 @@ import WorldCopyJump from './components/WorldCopyJump';
 export default {
   name: 'App',
   components: {
-    CustomControl,
     CustomPath,
     CustomUrlParams,
     Example,
@@ -125,12 +124,12 @@ export default {
 
 <style>
 .leaflet-fake-icon-image-2x {
-  background-image: url(../../node_modules/leaflet/dist/images/marker-icon-2x.png);
+  background-image: url(../node_modules/leaflet/dist/images/marker-icon-2x.png);
 }
 .leaflet-fake-icon-shadow {
-  background-image: url(../../node_modules/leaflet/dist/images/marker-shadow.png);
+  background-image: url(../node_modules/leaflet/dist/images/marker-shadow.png);
 }
-@import "../../node_modules/leaflet/dist/leaflet.css";
+@import "../node_modules/leaflet/dist/leaflet.css";
 
 body {
   margin: 0px;

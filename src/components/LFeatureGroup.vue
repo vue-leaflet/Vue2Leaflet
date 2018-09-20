@@ -1,6 +1,6 @@
 <template>
   <div style="display: none;">
-    <slot v-if="ready"></slot>
+    <slot v-if="ready"/>
   </div>
 </template>
 
@@ -12,52 +12,52 @@ const props = {
   visible: {
     type: Boolean,
     custom: true,
-    default: true,
+    default: true
   }
 };
 
 export default {
   name: 'LFeatureGroup',
   props: props,
-  data() {
+  data () {
     return {
-      ready: false,
-    }
+      ready: false
+    };
   },
-  mounted() {
+  mounted () {
     this.mapObject = L.featureGroup();
     propsBinder(this, this.mapObject, props);
     L.DomEvent.on(this.mapObject, this.$listeners);
     this.ready = true;
-    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer = findRealParent(this.$parent, true);
     if (this.visible) {
       this.parentContainer.addLayer(this);
     }
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.parentContainer.removeLayer(this);
   },
   methods: {
-    addLayer(layer, alreadyAdded) {
+    addLayer (layer, alreadyAdded) {
       if (!alreadyAdded) {
         this.mapObject.addLayer(layer.mapObject);
       }
       this.parentContainer.addLayer(layer, true);
     },
-    removeLayer(layer, alreadyRemoved) {
+    removeLayer (layer, alreadyRemoved) {
       if (!alreadyRemoved) {
         this.mapObject.removeLayer(layer.mapObject);
       }
       this.parentContainer.removeLayer(layer, true);
     },
-    setVisible(newVal, oldVal) {
-      if (newVal == oldVal) return;
+    setVisible (newVal, oldVal) {
+      if (newVal === oldVal) return;
       if (newVal) {
         this.parentContainer.addLayer(this);
       } else {
         this.parentContainer.removeLayer(this);
       }
-    },
-  },
+    }
+  }
 };
 </script>

@@ -14,29 +14,29 @@ const props = {
     type: Boolean,
     default: true
   },
-  updateWhenIdle: {
+  updateWhenIdle: {
     type: Boolean,
     default: false
   },
-  position: {
+  position: {
     type: String,
     default: 'topright'
   },
   options: {
     type: Object,
-    default: () => ({}),
-  },
+    default: () => ({})
+  }
 };
 
 export default {
   name: 'LControlScale',
   props: props,
-  mounted() {
+  mounted () {
     const options = this.options;
-    const otherPropertytoInitialize = [ 'maxWidth', 'metric', 'imperial', 'updateWhenIdle', 'position'];
+    const otherPropertytoInitialize = [ 'maxWidth', 'metric', 'imperial', 'updateWhenIdle', 'position' ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
-      if(this[propName] !== undefined) {
+      if (this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
@@ -44,10 +44,10 @@ export default {
     propsBinder(this, this.mapObject, props);
     this.mapObject.addTo(this.$parent.mapObject);
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.mapObject.remove();
   },
-  render() {
+  render () {
     return null;
   }
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot v-if="ready"></slot>
+    <slot v-if="ready"/>
   </div>
 </template>
 
@@ -10,26 +10,26 @@ import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   content: {
-    default: '',
+    default: ''
   },
   latLng: {
     type: [Object, Array]
   },
   options: {
     type: Object,
-    default: () => ({}),
-  },
+    default: () => ({})
+  }
 };
 
 export default {
   name: 'LPopup',
   props: props,
-  data() {
+  data () {
     return {
-      ready: false,
-    }
+      ready: false
+    };
   },
-  mounted() {
+  mounted () {
     this.mapObject = L.popup(this.options);
     if (this.latLng !== undefined) {
       this.mapObject.setLatLng(this.latLng);
@@ -41,10 +41,10 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindPopup(this.mapObject);
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (this.parentContainer.mapObject && this.parentContainer.mapObject.getPopup()) {
       this.parentContainer.mapObject.unbindPopup();
     }
-  },
+  }
 };
 </script>

@@ -5,23 +5,23 @@ const props = {
   imagePath: {
     type: String,
     custom: true,
-    default: "",
+    default: ''
   }
 };
 
 export default {
   name: 'LIconDefault',
   props: props,
-  mounted() {
+  mounted () {
     L.Icon.Default.imagePath = this.imagePath;
     propsBinder(this, this.mapObject, props);
   },
   methods: {
-    setImagePath(newVal, oldVal) {
+    setImagePath (newVal, oldVal) {
       L.Icon.Default.imagePath = newVal;
-    },
+    }
   },
-  render() {
+  render () {
     return null;
   }
 };
