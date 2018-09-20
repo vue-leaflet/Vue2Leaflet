@@ -4,42 +4,42 @@ import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   url: {
-    type: String,
+    type: String
   },
   bounds: {
   },
   opacity: {
     type: Number,
-    default: 1.0,
+    default: 1.0
   },
   alt: {
     type: String,
-    default: '',
+    default: ''
   },
   interactive: {
     type: Boolean,
-    default: false,
+    default: false
   },
   crossOrigin: {
     type: Boolean,
-    default: false,
+    default: false
   },
   visible: {
     type: Boolean,
     custom: true,
-    default: true,
-  },
+    default: true
+  }
 };
 
 export default {
   name: 'LImageOverlay',
   props: props,
-  mounted() {
+  mounted () {
     let options = {
       opacity: this.opacity,
       alt: this.alt,
       interactive: this.interactive,
-      crossOrigin: this.crossOrigin,
+      crossOrigin: this.crossOrigin
     };
     this.mapObject = L.imageOverlay(this.url, this.bounds, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
@@ -47,9 +47,12 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
   },
+  beforeDestroy () {
+    this.parentContainer.removeLayer(this);
+  },
   methods: {
-    setVisible(newVal, oldVal) {
-      if (newVal == oldVal) return;
+    setVisible (newVal, oldVal) {
+      if (newVal === oldVal) return;
       if (this.mapObject) {
         if (newVal) {
           this.parentContainer.addLayer(this);
@@ -58,14 +61,11 @@ export default {
         }
       }
     },
-    getBounds() {
+    getBounds () {
       return this.mapObject.getBounds();
-    },
+    }
   },
-  beforeDestroy() {
-    this.parentContainer.removeLayer(this);
-  },
-  render() {
+  render () {
     return null;
   }
 };

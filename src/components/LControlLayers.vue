@@ -14,33 +14,33 @@ const props = {
     type: Boolean,
     default: false
   },
-  sortLayers: {
+  sortLayers: {
     type: Boolean,
     default: false
   },
-  sortFunction: {
+  sortFunction: {
     type: Function,
     default: undefined
   },
-  position: {
+  position: {
     type: String,
     default: 'topright'
   },
   options: {
     type: Object,
-    default: () => ({}),
-  },
+    default: () => ({})
+  }
 };
 
 export default {
   name: 'LControlLayers',
   props: props,
-  mounted() {
+  mounted () {
     const options = this.options;
-    const otherPropertytoInitialize = [ 'collapsed', 'autoZIndex', 'hideSingleBase', 'sortLayers', 'sortFunction'];
+    const otherPropertytoInitialize = [ 'collapsed', 'autoZIndex', 'hideSingleBase', 'sortLayers', 'sortFunction' ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
-      if(this[propName] !== undefined) {
+      if (this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
@@ -48,22 +48,22 @@ export default {
     propsBinder(this, this.mapObject, props);
     this.$parent.registerLayerControl(this);
   },
-  methods: {
-    addLayer(layer) {
-      if (layer.layerType == 'base') {
+  beforeDestroy () {
+    this.mapObject.remove();
+  },
+  methods: {
+    addLayer (layer) {
+      if (layer.layerType === 'base') {
         this.mapObject.addBaseLayer(layer.mapObject, layer.name);
-      } else if (layer.layerType == 'overlay') {
+      } else if (layer.layerType === 'overlay') {
         this.mapObject.addOverlay(layer.mapObject, layer.name);
       }
     },
-    removeLayer(layer) {
+    removeLayer (layer) {
       this.mapObject.removeLayer(layer.mapObject);
-    },
+    }
   },
-  beforeDestroy() {
-    this.mapObject.remove();
-  },
-  render() {
+  render () {
     return null;
   }
 };

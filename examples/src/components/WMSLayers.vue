@@ -9,10 +9,19 @@
         <a href="http://leafletjs.com/examples/wms/wms.html">leaflet.js WMS example page</a>.
       </p>
     </div>
-    <l-map style="height: 80%" :zoom="zoom" :center="center">
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 80%">
       <l-control-layers />
-      <l-wms-tile-layer v-for="layer in layers" :key="layer.name" :baseUrl="baseUrl"
-        :layers="layer.layers" :visible="layer.visible" :name="layer.name" layerType="base" />
+      <l-wms-tile-layer
+        v-for="layer in layers"
+        :key="layer.name"
+        :base-url="baseUrl"
+        :layers="layer.layers"
+        :visible="layer.visible"
+        :name="layer.name"
+        layer-type="base" />
     </l-map>
   </div>
 </template>
@@ -21,7 +30,7 @@
 import { LMap, LTileLayer, LWMSTileLayer, LControlLayers } from 'vue2-leaflet';
 
 export default {
-  name: 'wms-layers',
+  name: 'WmsLayers',
   components: {
     LMap,
     LTileLayer,
@@ -32,26 +41,26 @@ export default {
     return {
       zoom: 4,
       center: [49, 12],
-      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       baseUrl: 'https://demo.boundlessgeo.com/geoserver/ows?',
       layers: [
         {
           name: 'Boundaries',
           visible: true,
-          layers: 'ne:ne_10m_admin_0_boundary_lines_land',
+          layers: 'ne:ne_10m_admin_0_boundary_lines_land'
         },
         {
           name: 'Countries',
           visible: false,
-          layers: 'ne:ne_10m_admin_0_countries',
+          layers: 'ne:ne_10m_admin_0_countries'
         },
         {
           name: 'Boundaries and Countries',
           visible: false,
-          layers: 'ne:ne_10m_admin_0_boundary_lines_land,ne:ne_10m_admin_0_countries',
+          layers: 'ne:ne_10m_admin_0_boundary_lines_land,ne:ne_10m_admin_0_countries'
         }
       ]
-    }
+    };
   }
-}
+};
 </script>

@@ -3,19 +3,31 @@
     <div style="height: 10%; overflow: auto;">
       <h3>GeoJSON example as this <a href="http://leafletjs.com/examples/geojson/">example</a></h3>
     </div>
-    <l-map style="height: 90%" :zoom="zoom" :center="center">
-      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-geo-json :geojson="bus.geojson" :options="bus.options"></l-geo-json>
-      <l-geo-json :geojson="bicycleAndCampus.geojson" :options="bicycleAndCampus.options"></l-geo-json>
-      <l-geo-json :geojson="coors.geojson" :options="coors.options"></l-geo-json>
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%">
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"/>
+      <l-geo-json
+        :geojson="bus.geojson"
+        :options="bus.options"/>
+      <l-geo-json
+        :geojson="bicycleAndCampus.geojson"
+        :options="bicycleAndCampus.options"/>
+      <l-geo-json
+        :geojson="coors.geojson"
+        :options="coors.options"/>
     </l-map>
-      <div id='bla'></div>
+    <div id="bla"/>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet';
+
 import PopupContent from './GeoJson2Popup';
 
 import { default as data } from '../assets/geojson/sample-geojson.js';
@@ -27,25 +39,25 @@ var baseballIcon = L.icon({
   popupAnchor: [0, -28]
 });
 
-function onEachFeature(feature, layer) {
-  let popupContent = Vue.extend(PopupContent);
-  let popup = new popupContent({ propsData: { type: feature.geometry.type, text: feature.properties.popupContent }});
+function onEachFeature (feature, layer) {
+  let PopupCont = Vue.extend(PopupContent);
+  let popup = new PopupCont({ propsData: { type: feature.geometry.type, text: feature.properties.popupContent } });
   layer.bindPopup(popup.$mount().$el);
 }
 
 export default {
-  name: 'example',
+  name: 'Example',
   components: {
     LMap,
     LTileLayer,
-    LGeoJson,
+    LGeoJson
   },
   data () {
     return {
       zoom: 13,
       center: [39.74739, -105],
-      url:'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWJvdWNoYXVkIiwiYSI6ImNpdTA5bWw1azAyZDIyeXBqOWkxOGJ1dnkifQ.qha33VjEDTqcHQbibgHw3w',
-      attribution:'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+      url: 'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWJvdWNoYXVkIiwiYSI6ImNpdTA5bWw1azAyZDIyeXBqOWkxOGJ1dnkifQ.qha33VjEDTqcHQbibgHw3w',
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="http://mapbox.com">Mapbox</a>',
       bus: {
@@ -79,8 +91,8 @@ export default {
           pointToLayer: function (feature, latlng) {
             return L.circleMarker(latlng, {
               radius: 8,
-              fillColor: "#ff7800",
-              color: "#000",
+              fillColor: '#ff7800',
+              color: '#000',
               weight: 1,
               opacity: 1,
               fillOpacity: 0.8
@@ -88,7 +100,7 @@ export default {
           }
         }
       }
-    }
-  },
-}
+    };
+  }
+};
 </script>
