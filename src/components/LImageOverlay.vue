@@ -4,12 +4,15 @@ import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   url: {
-    type: String
+    type: String,
+    custom: true
   },
   bounds: {
+    custom: true
   },
   opacity: {
     type: Number,
+    custom: true,
     default: 1.0
   },
   alt: {
@@ -31,11 +34,13 @@ const props = {
   },
   errorOverlayUrl: {
     type: String,
-    default: '',
+    custom: true,
+    default: ''
   },
   zIndex: {
     type: Number,
-    default: 1,
+    custom: true,
+    default: 1
   },
   className: {
     type: String,
@@ -84,9 +89,6 @@ export default {
     },
     setBounds (bounds) {
       return this.mapObject.setBounds(bounds)
-    },
-    setZIndex (zIndex) {
-      return this.mapObject.setBounds(zIndex)
     },
     getBounds () {
       return this.mapObject.getBounds();
