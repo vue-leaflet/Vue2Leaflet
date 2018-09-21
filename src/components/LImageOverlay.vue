@@ -78,7 +78,13 @@ export default {
     },
     getBounds () {
       return this.mapObject.getBounds();
-    }
+    },
+    bringToFront() {
+      return this.mapObject.bringToFront()
+    },
+    bringToBack() {
+      return this.mapObject.bringToBack()
+    },
   },
   render () {
     return null;
