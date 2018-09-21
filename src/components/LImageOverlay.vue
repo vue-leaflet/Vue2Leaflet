@@ -76,13 +76,28 @@ export default {
         }
       }
     },
+    setOpacity (opacity) {
+      return this.mapObject.setOpacity(opacity)
+    },
+    setUrl (url) {
+      return this.mapObject.setUrl(url)
+    },
+    setBounds (bounds) {
+      return this.mapObject.setBounds(bounds)
+    },
+    setZIndex (zIndex) {
+      return this.mapObject.setBounds(zIndex)
+    },
     getBounds () {
       return this.mapObject.getBounds();
     },
-    bringToFront() {
+    getElement () {
+      return this.mapObject.getElement();
+    },
+    bringToFront () {
       return this.mapObject.bringToFront()
     },
-    bringToBack() {
+    bringToBack () {
       return this.mapObject.bringToBack()
     },
   },
