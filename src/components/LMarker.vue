@@ -77,7 +77,7 @@ export default {
         }
       }
     },
-    etLatLng (newVal) {
+    setLatLng (newVal) {
       if (newVal == null) {
         return;
       }
