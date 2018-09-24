@@ -4,12 +4,15 @@ import findRealParent from '../utils/findRealParent.js';
 
 const props = {
   url: {
-    type: String
+    type: String,
+    custom: true
   },
   bounds: {
+    custom: true
   },
   opacity: {
     type: Number,
+    custom: true,
     default: 1.0
   },
   alt: {
@@ -28,6 +31,20 @@ const props = {
     type: Boolean,
     custom: true,
     default: true
+  },
+  errorOverlayUrl: {
+    type: String,
+    custom: true,
+    default: ''
+  },
+  zIndex: {
+    type: Number,
+    custom: true,
+    default: 1
+  },
+  className: {
+    type: String,
+    default: ''
   }
 };
 
@@ -39,7 +56,10 @@ export default {
       opacity: this.opacity,
       alt: this.alt,
       interactive: this.interactive,
-      crossOrigin: this.crossOrigin
+      crossOrigin: this.crossOrigin,
+      errorOverlayUrl: this.errorOverlayUrl,
+      zIndex: this.zIndex,
+      className: this.className
     };
     this.mapObject = L.imageOverlay(this.url, this.bounds, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
@@ -61,9 +81,27 @@ export default {
         }
       }
     },
+    setOpacity (opacity) {
+      return this.mapObject.setOpacity(opacity)
+    },
+    setUrl (url) {
+      return this.mapObject.setUrl(url)
+    },
+    setBounds (bounds) {
+      return this.mapObject.setBounds(bounds)
+    },
     getBounds () {
       return this.mapObject.getBounds();
-    }
+    },
+    getElement () {
+      return this.mapObject.getElement();
+    },
+    bringToFront () {
+      return this.mapObject.bringToFront()
+    },
+    bringToBack () {
+      return this.mapObject.bringToBack()
+    },
   },
   render () {
     return null;
