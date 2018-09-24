@@ -1,6 +1,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import L from 'leaflet'
 
 const props = {
   geojson: {
@@ -10,6 +11,7 @@ const props = {
   },
   options: {
     type: Object,
+    custom: true,
     default: () => ({})
   },
   visible: {
@@ -50,6 +52,15 @@ export default {
       } else {
         this.parentContainer.mapObject.removeLayer(this.mapObject);
       }
+    },
+    setOptions(newVal, oldVal) {
+      // https://gist.github.com/js1568/7989256
+      // destory layer group
+      this.mapObject.clearLayers();
+      // set new options
+      L.setOptions(this.mapObject, newVal);
+      // recreate layer group
+      this.mapObject.addData(this.geojson);
     }
   },
   render () {
