@@ -9,6 +9,9 @@
     "size": "size-limit",
     "lint": "eslint src --ext .js,.vue --ignore-path .gitignore"
   },
+  "files": [
+    "dist/"
+  ],
   "main": "dist/vue2-leaflet.min.js",
   "module": "dist/vue2-leaflet.min.js",
   "unpkg": "dist/vue2-leaflet.min.js",
