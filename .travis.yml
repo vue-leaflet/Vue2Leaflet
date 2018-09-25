@@ -5,7 +5,7 @@ language:
   node_js
 
 node_js:
-  - 6
+  - 9.10.0
 
 script:
   - npm run build
