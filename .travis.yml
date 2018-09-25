@@ -7,6 +7,9 @@ language:
 node_js:
   - 9.10.0
 
+install:
+  - npm install
+
 script:
   - npm run build
 
