@@ -9,11 +9,6 @@ export default {
       custom: true,
       default: null
     },
-    visible: {
-      type: Boolean,
-      custom: true,
-      default: true
-    },
     stroke: {
       type: Boolean,
       custom: true,

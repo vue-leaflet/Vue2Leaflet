@@ -27,14 +27,6 @@ export default {
     };
   },
   methods: {
-    setVisible (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.parentContainer.addLayer(this);
-      } else {
-        this.parentContainer.removeLayer(this);
-      }
-    },
     setLStyle (newVal, oldVal) {
       if (newVal === oldVal) return;
       this.mapObject.setStyle(newVal);
