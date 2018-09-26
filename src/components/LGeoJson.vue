@@ -40,12 +40,9 @@ export default {
   },
   computed: {
     mergedOptions () {
-      if (this.optionsStyle) {
-        const options = L.Util.extend({}, this.options)
-        options.style = this.optionsStyle
-        return options
-      } else {
-        return this.options
+      return {
+        ...this.options,
+        style: this.optionsStyle || this.options.style
       }
     }
   },
