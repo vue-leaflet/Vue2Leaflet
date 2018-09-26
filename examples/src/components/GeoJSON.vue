@@ -10,6 +10,11 @@
         id="checkbox"
         v-model="show"
         type="checkbox">
+      <label for="checkboxTooltip">Enable tooltip</label>
+      <input
+        id="checkboxTooltip"
+        v-model="enableTooltip"
+        type="checkbox">
       <input
         type="color"
         v-model="fillColor" />
@@ -25,7 +30,9 @@
       <l-geo-json
         v-if="show"
         :geojson="geojson"
-        :options="options"/>
+        :options="options"
+        :optionsStyle="styleFunction"
+        />
       <l-marker :lat-lng="marker"/>
     </l-map>
   </div>
@@ -48,6 +55,7 @@ export default {
     return {
       loading: false,
       show: true,
+      enableTooltip: true,
       zoom: 6,
       center: [48, -1.219482],
       geojson: null,
@@ -60,16 +68,27 @@ export default {
   computed: {
     options () {
       return {
-        style: this.styleFunction
+        onEachFeature: this.onEachFeatureFunction
       }
     },
     styleFunction () {
-      return {
-        weight: 2,
-        color: '#ECEFF1',
-        opacity: 1,
-        fillColor: this.fillColor,
-        fillOpacity: 1
+      const fillColor = this.fillColor // important! need touch fillColor in computed for re-calculate when change color
+      return () => {
+        return {
+          weight: 2,
+          color: '#ECEFF1',
+          opacity: 1,
+          fillColor: fillColor,
+          fillOpacity: 1
+        }
+      }
+    },
+    onEachFeatureFunction () {
+      if (!this.enableTooltip) {
+        return undefined
+      }
+      return (feature, layer) => {
+        layer.bindTooltip('<div>code:'+feature.properties.code+'</div><div>nom: '+feature.properties.nom+'</div>', { permanent: false, sticky: true })
       }
     }
   },

@@ -14,6 +14,10 @@ const props = {
     custom: true,
     default: () => ({})
   },
+  optionsStyle: {
+    type: [Object, Function],
+    custom: true
+  },
   visible: {
     type: Boolean,
     custom: true,
@@ -25,7 +29,7 @@ export default {
   name: 'LGeoJson',
   props: props,
   mounted () {
-    this.mapObject = L.geoJSON(this.geojson, this.options);
+    this.mapObject = L.geoJSON(this.geojson, this.mergedOptions);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.parentContainer = findRealParent(this.$parent, true);
@@ -33,6 +37,17 @@ export default {
   },
   beforeDestroy () {
     this.parentContainer.mapObject.removeLayer(this.mapObject);
+  },
+  computed: {
+    mergedOptions () {
+      if (this.optionsStyle) {
+        const options = L.Util.extend({}, this.options)
+        options.style = this.optionsStyle
+        return options
+      } else {
+        return this.options
+      }
+    }
   },
   methods: {
     setGeojson (newVal) {
@@ -58,9 +73,12 @@ export default {
       // destory layer group
       this.mapObject.clearLayers();
       // set new options
-      L.setOptions(this.mapObject, newVal);
+      L.setOptions(this.mapObject, this.mergedOptions);
       // recreate layer group
       this.mapObject.addData(this.geojson);
+    },
+    setOptionsStyle(newVal, oldVal) {
+      this.mapObject.setStyle(newVal);
     }
   },
   render () {
