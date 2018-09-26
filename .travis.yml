@@ -5,7 +5,10 @@ language:
   node_js
 
 node_js:
-  - 6
+  - 9.10.0
+
+install:
+  - npm install
 
 script:
   - npm run build
