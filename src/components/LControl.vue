@@ -9,7 +9,7 @@ import propsBinder from '../utils/propsBinder.js';
 
 const LControl = L.Control.extend({
   element: undefined,
-  onAdd(/* map */) {
+  onAdd (/* map */) {
     return this.element;
   },
   setElement (el) {
@@ -31,7 +31,7 @@ const props = {
 export default {
   name: 'LControl',
   props: props,
-  data() {
+  data () {
     return {
       mapObject: undefined
     };
@@ -45,7 +45,7 @@ export default {
      * mapObject to attach to will be higher up the chain than simply on
      * this.$parent.
      */
-    parentMap() {
+    parentMap () {
       var ancestor = this.$parent;
       while (ancestor.$parent && !ancestor.mapObject) {
         ancestor = ancestor.$parent;
@@ -54,12 +54,12 @@ export default {
       return ancestor.mapObject;
     }
   },
-  mounted() {
+  mounted () {
     const options = this.options;
     const otherPropertytoInitialize = [ 'position' ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
-      if(this[propName] !== undefined) {
+      if (this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
@@ -70,8 +70,8 @@ export default {
     this.mapObject.setElement(this.$el);
     this.mapObject.addTo(this.parentMap);
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.mapObject.remove();
   }
-}
+};
 </script>
