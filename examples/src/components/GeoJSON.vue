@@ -72,7 +72,7 @@ export default {
       }
     },
     styleFunction () {
-      const fillColor = this.fillColor // important! need touch fillColor in computed for re-calculate when change color
+      const fillColor = this.fillColor // important! need touch fillColor in computed for re-calculate when change fillColor
       return () => {
         return {
           weight: 2,

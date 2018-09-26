@@ -16,7 +16,8 @@ const props = {
   },
   optionsStyle: {
     type: [Object, Function],
-    custom: true
+    custom: true,
+    default: null
   },
   visible: {
     type: Boolean,
