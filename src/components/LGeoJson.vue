@@ -1,7 +1,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
-import L from 'leaflet'
+import L from 'leaflet';
 
 const props = {
   geojson: {
@@ -28,6 +28,14 @@ const props = {
 export default {
   name: 'LGeoJson',
   props: props,
+  computed: {
+    mergedOptions () {
+      return {
+        ...this.options,
+        style: this.optionsStyle || this.options.style
+      };
+    }
+  },
   mounted () {
     this.mapObject = L.geoJSON(this.geojson, this.mergedOptions);
     L.DomEvent.on(this.mapObject, this.$listeners);
@@ -37,14 +45,6 @@ export default {
   },
   beforeDestroy () {
     this.parentContainer.mapObject.removeLayer(this.mapObject);
-  },
-  computed: {
-    mergedOptions () {
-      return {
-        ...this.options,
-        style: this.optionsStyle || this.options.style
-      }
-    }
   },
   methods: {
     setGeojson (newVal) {
@@ -65,7 +65,7 @@ export default {
         this.parentContainer.mapObject.removeLayer(this.mapObject);
       }
     },
-    setOptions(newVal, oldVal) {
+    setOptions (newVal, oldVal) {
       // https://gist.github.com/js1568/7989256
       // destory layer group
       this.mapObject.clearLayers();
@@ -74,7 +74,7 @@ export default {
       // recreate layer group
       this.mapObject.addData(this.geojson);
     },
-    setOptionsStyle(newVal, oldVal) {
+    setOptionsStyle (newVal, oldVal) {
       this.mapObject.setStyle(newVal);
     }
   },
