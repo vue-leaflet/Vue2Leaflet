@@ -37,7 +37,7 @@ export default {
       sortFunction: this.sortFunction
     };
     this.mapObject = L.control.layers(null, null, this.controlLayersOptions);
-    propsBinder(this, this.mapObject, props);
+    propsBinder(this, this.mapObject, this.$options.props);
     this.$parent.registerLayerControl(this);
   },
   methods: {
