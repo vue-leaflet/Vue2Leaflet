@@ -1,8 +1,7 @@
 <template>
   <div>
     <div style="height: 20%; overflow: auto;">
-      <h3>Simple map</h3>
-      <p>Marker is placed at {{ marker.lat }}, {{ marker.lng }}</p>
+      <h3>Load test</h3>
       <p> Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }} </p>
     </div>
     <l-map
@@ -14,8 +13,22 @@
       <l-tile-layer
         :url="url"
         :attribution="attribution"/>
-      <l-marker :lat-lng="marker">
-        <l-tooltip> I am a tooltip </l-tooltip>
+
+      <l-marker
+        v-for="marker in markers"
+        :key="marker.index"
+        :lat-lng="marker"
+      >
+        <l-tooltip>
+          <video
+            controls
+            muted
+            src="https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4"
+            width="300"
+            height="200">
+            Sorry, your browser doesn't support embedded videos.
+          </video>
+        </l-tooltip>
       </l-marker>
     </l-map>
   </div>
@@ -25,7 +38,7 @@
 import { LMap, LTileLayer, LMarker, LTooltip } from 'vue2-leaflet';
 
 export default {
-  name: 'Example',
+  name: 'LoadTest',
   components: {
     LMap,
     LTileLayer,
@@ -34,14 +47,22 @@ export default {
   },
   data () {
     return {
-      zoom: 13,
+      zoom: 1,
       center: L.latLng(47.413220, -1.219482),
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      marker: L.latLng(47.413220, -1.219482),
       currentZoom: 13,
       currentCenter: L.latLng(47.413220, -1.219482)
     };
+  },
+  computed: {
+    markers () {
+      const markers = [];
+      for (let i = 0; i < 1000; i++) {
+        markers.push({lat: Math.random() * 360 - 180, lng: Math.random() * 360 - 180, index: i});
+      }
+      return markers;
+    }
   },
   methods: {
     zoomUpdate (zoom) {
