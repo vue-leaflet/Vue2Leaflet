@@ -1,20 +1,18 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 
-const props = {
-  imagePath: {
-    type: String,
-    custom: true,
-    default: ''
-  }
-};
-
 export default {
   name: 'LIconDefault',
-  props: props,
+  props: {
+    imagePath: {
+      type: String,
+      custom: true,
+      default: ''
+    }
+  },
   mounted () {
     L.Icon.Default.imagePath = this.imagePath;
-    propsBinder(this, this.mapObject, props);
+    propsBinder(this, this.mapObject, this.$options.props);
   },
   methods: {
     setImagePath (newVal, oldVal) {
