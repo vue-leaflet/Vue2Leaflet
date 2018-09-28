@@ -2,36 +2,32 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import L from 'leaflet';
-
-const props = {
-  geojson: {
-    type: [Object, Array],
-    custom: true,
-    default: () => ({})
-  },
-  options: {
-    type: Object,
-    custom: true,
-    default: () => ({})
-  },
-  optionsStyle: {
-    type: [Object, Function],
-    custom: true,
-    default: null
-  },
-  visible: {
-    type: Boolean,
-    custom: true,
-    default: true
-  }
-};
+import LayerGroup from '../mixins/LayerGroup.js';
 
 export default {
   name: 'LGeoJson',
-  props: props,
+  mixins: [LayerGroup],
+  props: {
+    geojson: {
+      type: [Object, Array],
+      custom: true,
+      default: () => ({})
+    },
+    options: {
+      type: Object,
+      custom: true,
+      default: () => ({})
+    },
+    optionsStyle: {
+      type: [Object, Function],
+      custom: true,
+      default: null
+    }
+  },
   computed: {
     mergedOptions () {
       return {
+        ...this.layerGroupOptions,
         ...this.options,
         style: this.optionsStyle || this.options.style
       };
@@ -40,7 +36,7 @@ export default {
   mounted () {
     this.mapObject = L.geoJSON(this.geojson, this.mergedOptions);
     L.DomEvent.on(this.mapObject, this.$listeners);
-    propsBinder(this, this.mapObject, props);
+    propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent, true);
     this.parentContainer.addLayer(this, !this.visible);
   },
@@ -58,21 +54,9 @@ export default {
     getBounds () {
       return this.mapObject.getBounds();
     },
-    setVisible (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.addTo(this.parentContainer.mapObject);
-      } else {
-        this.parentContainer.mapObject.removeLayer(this.mapObject);
-      }
-    },
     setOptions (newVal, oldVal) {
-      // https://gist.github.com/js1568/7989256
-      // destory layer group
       this.mapObject.clearLayers();
-      // set new options
       L.setOptions(this.mapObject, this.mergedOptions);
-      // recreate layer group
       this.mapObject.addData(this.geojson);
     },
     setOptionsStyle (newVal, oldVal) {
