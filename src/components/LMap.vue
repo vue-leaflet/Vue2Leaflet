@@ -17,7 +17,7 @@ export default {
       default: () => [0, 0]
     },
     bounds: {
-      type: Array,
+      type: [Array, Object],
       custom: true,
       default: null
     },
@@ -82,15 +82,15 @@ export default {
     };
   },
   mounted () {
-    const options = this.options;
-    Object.assign(options, {
+    const options = {
+      ...this.options,
       minZoom: this.minZoom,
       maxZoom: this.maxZoom,
       maxBounds: this.maxBounds,
       maxBoundsViscosity: this.maxBoundsViscosity,
       worldCopyJump: this.worldCopyJump,
       crs: this.crs
-    });
+    };
     if (this.center !== null) {
       options.center = this.center;
     }
