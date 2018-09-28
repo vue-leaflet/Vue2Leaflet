@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot v-if="ready"/>
+    <slot v-if="!ready"/>
   </div>
 </template>
 
@@ -8,22 +8,22 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 
-const props = {
-  content: {
-    default: ''
-  },
-  latLng: {
-    type: [Object, Array]
-  },
-  options: {
-    type: Object,
-    default: () => ({})
-  }
-};
-
 export default {
   name: 'LPopup',
-  props: props,
+  props: {
+    content: {
+      type: String,
+      default: ''
+    },
+    latLng: {
+      type: [Object, Array],
+      default: () => []
+    },
+    options: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data () {
     return {
       ready: false
@@ -34,9 +34,9 @@ export default {
     if (this.latLng !== undefined) {
       this.mapObject.setLatLng(this.latLng);
     }
-    this.mapObject.setContent(this.content || this.$el);
+    this.mapObject.setContent(this.content || this.$el.cloneNode(true));
     L.DomEvent.on(this.mapObject, this.$listeners);
-    propsBinder(this, this.mapObject, props);
+    propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindPopup(this.mapObject);
