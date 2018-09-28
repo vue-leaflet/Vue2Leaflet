@@ -108,7 +108,7 @@ export default {
     },
     setColor (newVal, oldVal) {
       if (newVal === oldVal) return;
-      if (newVal) {
+      if (newVal !== undefined && newVal !== null) {
         this.mapObject.setStyle({ color: newVal });
       }
     },
@@ -120,7 +120,7 @@ export default {
     },
     setOpacity (newVal, oldVal) {
       if (newVal === oldVal) return;
-      if (newVal) {
+      if (newVal !== undefined && newVal !== null) {
         this.mapObject.setStyle({ opacity: newVal });
       }
     },
