@@ -10,8 +10,6 @@ import findRealParent from '../utils/findRealParent.js';
 
 export default {
   name: 'LControl',
-  data () {
-  },
   mounted () {
     const LControl = L.Control.extend({
       element: undefined,
