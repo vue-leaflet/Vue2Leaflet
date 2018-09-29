@@ -1,55 +1,44 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
-
-const props = {
-  collapsed: {
-    type: Boolean,
-    default: true
-  },
-  autoZIndex: {
-    type: Boolean,
-    default: true
-  },
-  hideSingleBase: {
-    type: Boolean,
-    default: false
-  },
-  sortLayers: {
-    type: Boolean,
-    default: false
-  },
-  sortFunction: {
-    type: Function,
-    default: undefined
-  },
-  position: {
-    type: String,
-    default: 'topright'
-  },
-  options: {
-    type: Object,
-    default: () => ({})
-  }
-};
+import Control from '../mixins/Control.js';
 
 export default {
   name: 'LControlLayers',
-  props: props,
-  mounted () {
-    const options = this.options;
-    const otherPropertytoInitialize = [ 'collapsed', 'autoZIndex', 'hideSingleBase', 'sortLayers', 'sortFunction' ];
-    for (var i = 0; i < otherPropertytoInitialize.length; i++) {
-      const propName = otherPropertytoInitialize[i];
-      if (this[propName] !== undefined) {
-        options[propName] = this[propName];
-      }
+  mnixins: [Control],
+  props: {
+    collapsed: {
+      type: Boolean,
+      default: true
+    },
+    autoZIndex: {
+      type: Boolean,
+      default: true
+    },
+    hideSingleBase: {
+      type: Boolean,
+      default: false
+    },
+    sortLayers: {
+      type: Boolean,
+      default: false
+    },
+    sortFunction: {
+      type: Function,
+      default: undefined
     }
-    this.mapObject = L.control.layers(null, null, options);
-    propsBinder(this, this.mapObject, props);
-    this.$parent.registerLayerControl(this);
   },
-  beforeDestroy () {
-    this.mapObject.remove();
+  mounted () {
+    this.controlLayersOptions = {
+      ...this.controlOptions,
+      collapsed: this.collapsed,
+      autoZIndex: this.autoZIndex,
+      hideSingleBase: this.hideSingleBase,
+      sortLayers: this.sortLayers,
+      sortFunction: this.sortFunction
+    };
+    this.mapObject = L.control.layers(null, null, this.controlLayersOptions);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.$parent.registerLayerControl(this);
   },
   methods: {
     addLayer (layer) {

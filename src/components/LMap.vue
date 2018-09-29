@@ -8,65 +8,69 @@
 import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
 
-const props = {
-  center: {
-    type: [Object, Array],
-    custom: true,
-    default: () => [0, 0]
-  },
-  bounds: {
-    custom: true,
-    default: undefined
-  },
-  maxBounds: {
-    default: undefined
-  },
-  zoom: {
-    type: Number,
-    custom: true,
-    default: 0
-  },
-  minZoom: {
-    type: Number,
-    default: undefined
-  },
-  maxZoom: {
-    type: Number,
-    default: undefined
-  },
-  paddingBottomRight: {
-    custom: true,
-    default: null
-  },
-  paddingTopLeft: {
-    custom: true,
-    default: null
-  },
-  padding: {
-    custom: true,
-    default: null
-  },
-  worldCopyJump: {
-    type: Boolean,
-    default: false
-  },
-  crs: {
-    custom: true,
-    default: () => L.CRS.EPSG3857
-  },
-  maxBoundsViscosity: {
-    type: Number,
-    default: 0
-  },
-  options: {
-    type: Object,
-    default: () => ({})
-  }
-};
-
 export default {
   name: 'LMap',
-  props: props,
+  props: {
+    center: {
+      type: [Object, Array],
+      custom: true,
+      default: () => [0, 0]
+    },
+    bounds: {
+      type: [Array, Object],
+      custom: true,
+      default: null
+    },
+    maxBounds: {
+      type: Array,
+      default: null
+    },
+    zoom: {
+      type: Number,
+      custom: true,
+      default: 0
+    },
+    minZoom: {
+      type: Number,
+      default: undefined
+    },
+    maxZoom: {
+      type: Number,
+      default: undefined
+    },
+    paddingBottomRight: {
+      type: Array,
+      custom: true,
+      default: null
+    },
+    paddingTopLeft: {
+      type: Array,
+      custom: true,
+      default: null
+    },
+    padding: {
+      type: Array,
+      custom: true,
+      default: null
+    },
+    worldCopyJump: {
+      type: Boolean,
+      default: false
+    },
+    crs: {
+      type: Object,
+      custom: true,
+      default: () => L.CRS.EPSG3857
+    },
+    maxBoundsViscosity: {
+      type: Number,
+      default: 0
+    },
+    options: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data () {
     return {
       ready: false,
@@ -78,15 +82,15 @@ export default {
     };
   },
   mounted () {
-    const options = this.options;
-    Object.assign(options, {
+    const options = {
+      ...this.options,
       minZoom: this.minZoom,
       maxZoom: this.maxZoom,
       maxBounds: this.maxBounds,
       maxBoundsViscosity: this.maxBoundsViscosity,
       worldCopyJump: this.worldCopyJump,
       crs: this.crs
-    });
+    };
     if (this.center !== null) {
       options.center = this.center;
     }
@@ -96,7 +100,7 @@ export default {
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
     L.DomEvent.on(this.mapObject, this.$listeners);
-    propsBinder(this, this.mapObject, props);
+    propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
     this.$emit('load');
   },

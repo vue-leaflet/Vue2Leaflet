@@ -8,19 +8,18 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 
-const props = {
-  content: {
-    default: ''
-  },
-  options: {
-    type: Object,
-    default: () => ({})
-  }
-};
-
 export default {
   name: 'LTooltip',
-  props: props,
+  props: {
+    content: {
+      type: String,
+      default: ''
+    },
+    options: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data () {
     return {
       ready: false
@@ -29,7 +28,7 @@ export default {
   mounted () {
     this.mapObject = L.tooltip(this.options);
     L.DomEvent.on(this.mapObject, this.$listeners);
-    propsBinder(this, this.mapObject, props);
+    propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.setContent(this.content || this.$el.cloneNode(true));
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);

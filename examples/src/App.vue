@@ -126,7 +126,7 @@ export default {
   },
   data () {
     return {
-      currentView: 'stress'
+      currentView: 'simple'
     };
   }
 };
