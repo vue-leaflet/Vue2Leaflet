@@ -22,7 +22,7 @@ export default {
       default: null
     },
     maxBounds: {
-      type: Array,
+      type: [Array, Object],
       default: null
     },
     zoom: {
