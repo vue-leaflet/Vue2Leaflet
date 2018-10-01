@@ -78,7 +78,7 @@ export default {
       lastSetCenter: null,
       lastSetBounds: null,
       lastSetZoom: null,
-      layerControl: null,
+      layerControl: undefined,
       layersToAdd: []
     };
   },
