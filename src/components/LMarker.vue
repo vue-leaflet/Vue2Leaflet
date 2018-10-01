@@ -1,9 +1,3 @@
-<template>
-  <div style="display: none;">
-    <slot v-if="ready"/>
-  </div>
-</template>
-
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
@@ -80,6 +74,12 @@ export default {
         }
       }
     }
+  },
+  render (createElement) {
+    if (this.ready && this.$slots.default) {
+      return createElement('div', {style: {display: 'none'}}, this.$slots.default);
+    }
+    return null;
   }
 };
 </script>

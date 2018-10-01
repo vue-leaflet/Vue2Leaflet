@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <slot v-if="!ready"/>
-  </div>
-</template>
-
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
@@ -45,6 +39,12 @@ export default {
     if (this.parentContainer.mapObject && this.parentContainer.mapObject.getPopup()) {
       this.parentContainer.mapObject.unbindPopup();
     }
+  },
+  render (createElement) {
+    if (!this.ready && this.$slots.default) {
+      return createElement('div', this.$slots.default);
+    }
+    return null;
   }
 };
 </script>
