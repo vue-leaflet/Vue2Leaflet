@@ -110,7 +110,9 @@
       :min-zoom="minZoom"
       :max-zoom="maxZoom"
       style="height: 45%">
-      <l-control-layers :position="layersPosition" :collapsed="false" />
+      <l-control-layers
+        :position="layersPosition"
+        :collapsed="false" />
       <l-tile-layer
         v-for="tileProvider in tileProviders"
         :key="tileProvider.name"
@@ -146,9 +148,9 @@
         v-for="item in stuff"
         :key="item.id"
         :visible="item.visible"
-        layerType="overlay"
+        layer-type="overlay"
         name="Layer 1"
-        >
+      >
         <l-layer-group :visible="item.markersVisible" >
           <l-marker
             v-for="marker in item.markers"
