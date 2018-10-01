@@ -16,7 +16,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "leaflet.icon.glyph": "^0.2.0",
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue2-leaflet-markercluster": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",
@@ -56,7 +57,7 @@
     "vue-loader": "^14.2.1",
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.16",
-    "webpack": "^4.2.0",
+    "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-dev-middleware": "^3.0.1",
     "webpack-hot-middleware": "^2.21.2",
