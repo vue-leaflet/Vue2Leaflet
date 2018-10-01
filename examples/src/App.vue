@@ -85,7 +85,6 @@
 </template>
 
 <script>
-import 'leaflet.icon.glyph';
 
 import CRSAndImageOverlay from './components/CRSAndImageOverlay';
 import CustomControl from './components/CustomControl';
