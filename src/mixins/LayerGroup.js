@@ -12,6 +12,9 @@ export default {
   mounted () {
     this.layerGroupOptions = {...this.layerOptions};
   },
+  beforeDestroy () {
+    this.parentContainer.removeLayer(this);
+  },
   methods: {
     addLayer (layer, alreadyAdded) {
       if (!alreadyAdded) {
