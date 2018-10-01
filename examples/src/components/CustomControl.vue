@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { LMap, LTileLayer, LControl } from 'vue2-leaflet/dist/vue2-leaflet.js';
+import { LMap, LTileLayer, LControl } from 'vue2-leaflet';
 
 export default {
   name: 'Example',
