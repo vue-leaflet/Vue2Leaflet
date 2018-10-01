@@ -7,6 +7,7 @@
 <script>
 import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
+import debounce from '../utils/debounce.js';
 
 export default {
   name: 'LMap',
@@ -74,10 +75,10 @@ export default {
   data () {
     return {
       ready: false,
-      movingRequest: 0,
-      lastSetCenter: undefined,
-      lastSetBounds: undefined,
-      layerControl: undefined,
+      lastSetCenter: null,
+      lastSetBounds: null,
+      lastSetZoom: null,
+      layerControl: null,
       layersToAdd: []
     };
   },
@@ -89,20 +90,17 @@ export default {
       maxBounds: this.maxBounds,
       maxBoundsViscosity: this.maxBoundsViscosity,
       worldCopyJump: this.worldCopyJump,
-      crs: this.crs
+      crs: this.crs,
+      center: this.center,
+      zoom: this.zoom
     };
-    if (this.center !== null) {
-      options.center = this.center;
-    }
-    if (this.zoom !== null) {
-      options.zoom = this.zoom;
-    }
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
+    this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
-    this.$emit('load');
+    this.$emit('leaflet:load');
   },
   methods: {
     registerLayerControl (lControlLayers) {
@@ -138,7 +136,6 @@ export default {
       }
     },
     setZoom (newVal, oldVal) {
-      this.movingRequest += 1;
       this.mapObject.setZoom(newVal);
     },
     setCenter (newVal, oldVal) {
@@ -160,7 +157,6 @@ export default {
         center.lat = newVal.lat;
         center.lng = newVal.lng;
         this.lastSetCenter = center;
-        this.movingRequest += 1;
         this.mapObject.panTo(newVal);
       }
     },
@@ -251,7 +247,6 @@ export default {
           bounds._northEast.lat = northEastLat;
           bounds._northEast.lng = northEastLng;
         }
-        this.movingRequest += 1;
         this.mapObject.fitBounds(newVal, options);
       }
     },
@@ -269,6 +264,13 @@ export default {
     },
     fitBounds (bounds) {
       this.mapObject.fitBounds(bounds);
+    },
+    moveEndHandler () {
+      this.$emit('update:zoom', this.mapObject.getZoom());
+      let center = this.mapObject.getCenter();
+      this.$emit('update:center', center);
+      let bounds = this.mapObject.getBounds();
+      this.$emit('update:bounds', bounds);
     }
   }
 };
