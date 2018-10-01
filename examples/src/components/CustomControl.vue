@@ -6,12 +6,19 @@
       element that responds to click events, and the other overrides the
       default position to place itself in the opposite corner.
     </div>
-    <l-map style="height: 90%" :zoom="zoom" :center="center">
-      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%">
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"/>
       <l-control class="example-custom-control">
         <p @click="showAlert">Click me</p>
       </l-control>
-      <l-control class="custom-control-watermark" :position="'bottomleft'">
+      <l-control
+        :position="'bottomleft'"
+        class="custom-control-watermark">
         Vue2Leaflet Watermark Control
       </l-control>
     </l-map>
@@ -19,10 +26,10 @@
 </template>
 
 <script>
-import { LMap, LTileLayer, LControl } from 'vue2-leaflet';
+import { LMap, LTileLayer, LControl } from 'vue2-leaflet/dist/vue2-leaflet.js';
 
 export default {
-  name: 'example',
+  name: 'Example',
   components: {
     LMap,
     LTileLayer,
@@ -30,18 +37,18 @@ export default {
   },
   data () {
     return {
-      zoom:13,
+      zoom: 13,
       center: L.latLng(47.413220, -1.219482),
-      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    }
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    };
   },
   methods: {
-    showAlert() {
+    showAlert () {
       alert('Click!');
     }
   }
-}
+};
 </script>
 
 <style>
