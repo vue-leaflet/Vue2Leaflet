@@ -21,7 +21,7 @@ export default {
     latLng: {
       type: [Object, Array],
       custom: true,
-      default: () => []
+      default: null
     },
     icon: {
       type: [Object],
@@ -50,7 +50,7 @@ export default {
       icon: this.icon,
       zIndexOffset: this.zIndexOffset,
       draggable: this.draggable
-    }
+    };
     this.mapObject = L.marker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
