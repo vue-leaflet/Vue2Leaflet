@@ -75,7 +75,7 @@ export default {
       }
     }
   },
-  render (createElement) {
+  render: function (createElement) {
     if (this.ready && this.$slots.default) {
       return createElement('div', {style: {display: 'none'}}, this.$slots.default);
     }
