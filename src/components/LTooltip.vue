@@ -1,43 +1,24 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import Popper from '../mixins/Popper.js';
 
 export default {
   name: 'LTooltip',
-  props: {
-    content: {
-      type: String,
-      default: ''
-    },
-    options: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-  data () {
-    return {
-      ready: false
-    };
-  },
+  mixins: [Popper],
   mounted () {
-    this.mapObject = L.tooltip(this.options);
+    this.mapObject = L.tooltip(this.popperOptions);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
-    this.mapObject.setContent(this.content || this.$el.cloneNode(true));
+    this.setContent();
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindTooltip(this.mapObject);
   },
   beforeDestroy () {
-    if (this.parentContainer.mapObject.getTooltip()) {
+    if (this.parentContainer.mapObject && this.parentContainer.mapObject.getTooltip()) {
       this.parentContainer.mapObject.unbindTooltip();
     }
-  },
-  render (createElement) {
-    if (!this.ready && this.$slots.default) {
-      return createElement('div', this.$slots.default);
-    }
-    return null;
   }
 };
 </script>
