@@ -4,6 +4,7 @@
       <h3>Simple map</h3>
       <p>Marker is placed at {{ marker.lat }}, {{ marker.lng }}</p>
       <p> Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }} </p>
+      <button @click="showLongTooltip">Toggle Long tooltip</button>
     </div>
     <l-map
       :zoom="zoom"
@@ -15,7 +16,14 @@
         :url="url"
         :attribution="attribution"/>
       <l-marker :lat-lng="marker">
-        <l-tooltip> I am a tooltip </l-tooltip>
+        <l-tooltip dynamic>
+          <div>
+            I am a tooltip
+            <p v-show="showParagraph">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi. Donec finibus semper metus id malesuada.
+            </p>
+          </div>
+        </l-tooltip>
       </l-marker>
     </l-map>
   </div>
@@ -40,7 +48,8 @@ export default {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       marker: L.latLng(47.413220, -1.219482),
       currentZoom: 13,
-      currentCenter: L.latLng(47.413220, -1.219482)
+      currentCenter: L.latLng(47.413220, -1.219482),
+      showParagraph: false
     };
   },
   methods: {
@@ -49,6 +58,9 @@ export default {
     },
     centerUpdate (center) {
       this.currentCenter = center;
+    },
+    showLongTooltip () {
+      this.showParagraph = !this.showParagraph;
     }
   }
 };
