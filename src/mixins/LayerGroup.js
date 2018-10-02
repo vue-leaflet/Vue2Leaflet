@@ -26,7 +26,6 @@ export default {
       this.parentContainer.removeLayer(layer, true);
     },
     setLayerType (newVal, oldVal) {
-      console.warn('setLayerType has beed deprecated and is going to be removed on the next major version');
       if (newVal === oldVal) return;
       this.parentContainer.removeLayer(this);
       if (this.visible) {
