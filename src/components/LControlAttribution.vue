@@ -15,7 +15,7 @@ export default {
     this.attributionControlOptions = {
       ...this.controlOptions,
       prefix: this.prefix
-    }
+    };
     this.mapObject = L.control.attribution(this.attributionControlOptions);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
