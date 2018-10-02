@@ -4,7 +4,7 @@ import Control from '../mixins/Control.js';
 
 export default {
   name: 'LControlZoom',
-  mnixins: [Control],
+  mixins: [Control],
   props: {
     zoomInText: {
       type: String,

@@ -4,7 +4,7 @@ import Control from '../mixins/Control.js';
 
 export default {
   name: 'LControlScale',
-  mnixins: [Control],
+  mixins: [Control],
   props: {
     maxWidth: {
       type: Number,

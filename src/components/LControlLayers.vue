@@ -4,7 +4,7 @@ import Control from '../mixins/Control.js';
 
 export default {
   name: 'LControlLayers',
-  mnixins: [Control],
+  mixins: [Control],
   props: {
     collapsed: {
       type: Boolean,
