@@ -11,7 +11,6 @@ export default {
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.setContent();
-    this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindTooltip(this.mapObject);
   },

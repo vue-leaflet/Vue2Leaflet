@@ -19,7 +19,7 @@
         :key="marker.index"
         :lat-lng="marker"
       >
-        <l-tooltip>
+        <l-popup>
           <video
             controls
             muted
@@ -28,14 +28,14 @@
             height="200">
             Sorry, your browser doesn't support embedded videos.
           </video>
-        </l-tooltip>
+        </l-popup>
       </l-marker>
     </l-map>
   </div>
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LTooltip } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 
 export default {
   name: 'LoadTest',
@@ -43,7 +43,7 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
-    LTooltip
+    LPopup
   },
   data () {
     return {
