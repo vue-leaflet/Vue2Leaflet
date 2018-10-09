@@ -36,7 +36,7 @@ export default {
     if (!this.content) {
       const child = new RendererConstructor({propsData: {nodes: this.$slots.default}});
       child.$mount();
-      const htmlString = child.$el.cloneNode(true);
+      const htmlString = child.$el;
       child.$destroy();
       this.setContent(htmlString);
     } else {

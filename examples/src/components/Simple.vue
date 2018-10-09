@@ -4,7 +4,7 @@
       <h3>Simple map</h3>
       <p>Marker is placed at {{ marker.lat }}, {{ marker.lng }}</p>
       <p> Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }} </p>
-      <button @click="showLongTooltip">Toggle Long tooltip</button>
+      <button @click="showLongText">Toggle Long popup</button>
     </div>
     <l-map
       :zoom="zoom"
@@ -16,21 +16,21 @@
         :url="url"
         :attribution="attribution"/>
       <l-marker :lat-lng="marker">
-        <l-tooltip dynamic>
-          <div>
+        <l-popup>
+          <div @click="popupClick">
             I am a tooltip
             <p v-show="showParagraph">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi. Donec finibus semper metus id malesuada.
             </p>
           </div>
-        </l-tooltip>
+        </l-popup>
       </l-marker>
     </l-map>
   </div>
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LTooltip } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 
 export default {
   name: 'Example',
@@ -38,7 +38,7 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
-    LTooltip
+    LPopup
   },
   data () {
     return {
@@ -59,8 +59,11 @@ export default {
     centerUpdate (center) {
       this.currentCenter = center;
     },
-    showLongTooltip () {
+    showLongText () {
       this.showParagraph = !this.showParagraph;
+    },
+    popupClick () {
+      alert('Popup Click!');
     }
   }
 };
