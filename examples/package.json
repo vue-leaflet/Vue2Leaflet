@@ -16,8 +16,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "leaflet.icon.glyph": "^0.2.0",
-    "vue": "^2.5.16",
-    "vue2-leaflet-markercluster": "^2.0.0"
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",
