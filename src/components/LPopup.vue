@@ -17,10 +17,9 @@ export default {
     if (this.latLng !== undefined) {
       this.mapObject.setLatLng(this.latLng);
     }
-    this.setContent();
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
-    this.ready = true;
+    this.setContent();
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindPopup(this.mapObject);
   },
