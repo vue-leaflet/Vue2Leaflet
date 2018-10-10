@@ -34,7 +34,12 @@ export default {
   },
   render () {
     if (!this.content) {
-      const child = new RendererConstructor({propsData: {nodes: this.$slots.default}});
+      const instance = {
+        store: this.$store ? this.$store : undefined,
+        router: this.$router ? this.$router : undefined,
+        propsData: {nodes: this.$slots.default}
+      };
+      const child = new RendererConstructor(instance);
       child.$mount();
       const htmlString = child.$el;
       child.$destroy();
