@@ -1,51 +1,28 @@
-import Vue from 'vue';
-import nodeRenderer from '../utils/renderer';
-const RendererConstructor = Vue.extend(nodeRenderer);
-
 export default {
   props: {
     content: {
       type: String,
-      default: null
+      default: null,
+      custom: true
     },
     options: {
       type: Object,
       default: () => ({})
     }
   },
-  data () {
-    return {
-      storedContent: null
-    };
-  },
   mounted () {
     this.popperOptions = { ...this.options };
   },
   methods: {
-    setContent (content) {
+    setContent (newVal) {
       if (this.mapObject) {
-        content = this.storedContent ? this.storedContent : this.content ? this.content : content;
-        this.mapObject.setContent(content);
-        this.storedContent = null;
-      } else {
-        this.storedContent = content;
+        this.mapObject.setContent(newVal);
       }
     }
   },
-  render () {
-    if (!this.content) {
-      const instance = {
-        store: this.$store ? this.$store : undefined,
-        router: this.$router ? this.$router : undefined,
-        propsData: {nodes: this.$slots.default}
-      };
-      const child = new RendererConstructor(instance);
-      child.$mount();
-      const htmlString = child.$el;
-      child.$destroy();
-      this.setContent(htmlString);
-    } else {
-      this.setContent(this.content);
+  render (h) {
+    if (this.$slots.default) {
+      return h('div', this.$slots.default);
     }
     return null;
   }

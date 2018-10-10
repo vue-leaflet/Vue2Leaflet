@@ -79,9 +79,9 @@ export default {
       }
     }
   },
-  render: function (createElement) {
+  render: function (h) {
     if (this.ready && this.$slots.default) {
-      return createElement('div', {style: {display: 'none'}}, this.$slots.default);
+      return h('div', {style: {display: 'none'}}, this.$slots.default);
     }
     return null;
   }
