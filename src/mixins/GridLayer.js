@@ -3,6 +3,10 @@ import Layer from './Layer';
 export default {
   mixins: [Layer],
   props: {
+    pane: {
+      type: String,
+      default: 'tilePane'
+    },
     opacity: {
       type: Number,
       custom: false,

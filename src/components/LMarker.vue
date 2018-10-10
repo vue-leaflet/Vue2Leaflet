@@ -7,6 +7,10 @@ export default {
   name: 'LMarker',
   mixins: [Layer],
   props: {
+    pane: {
+      type: String,
+      default: 'markerPane'
+    },
     draggable: {
       type: Boolean,
       custom: true,
