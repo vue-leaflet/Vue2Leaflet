@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     setContent (newVal) {
-      if (this.mapObject) {
+      if (this.mapObject && newVal !== null && newVal !== undefined) {
         this.mapObject.setContent(newVal);
       }
     }
