@@ -1,6 +1,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import L from 'leaflet';
 import LayerGroup from '../mixins/LayerGroup.js';
 
@@ -26,11 +27,10 @@ export default {
   },
   computed: {
     mergedOptions () {
-      return {
+      return optionsMerger({
         ...this.layerGroupOptions,
-        ...this.options,
-        style: this.optionsStyle || this.options.style
-      };
+        style: this.optionsStyle
+      }, this.options);
     }
   },
   mounted () {

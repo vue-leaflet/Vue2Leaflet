@@ -6,6 +6,7 @@
 import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import TileLayer from '../mixins/TileLayer.js';
 
 export default {
@@ -22,7 +23,8 @@ export default {
     }
   },
   mounted () {
-    this.mapObject = this.tileLayerClass(this.url, this.tileLayerOptions);
+    const options = optionsMerger(this.tileLayerOptions, this.options);
+    this.mapObject = this.tileLayerClass(this.url, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);

@@ -1,6 +1,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Layer from '../mixins/Layer.js';
 
 export default {
@@ -42,13 +43,12 @@ export default {
     };
   },
   mounted () {
-    const options = {
+    const options = optionsMerger({
       ...this.layerOptions,
-      ...this.options,
       icon: this.icon,
       zIndexOffset: this.zIndexOffset,
       draggable: this.draggable
-    };
+    }, this.options);
     this.mapObject = L.marker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

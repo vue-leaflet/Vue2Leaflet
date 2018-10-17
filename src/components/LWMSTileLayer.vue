@@ -1,6 +1,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import TileLayerWMS from '../mixins/TileLayerWMS.js';
 
 export default {
@@ -13,7 +14,8 @@ export default {
     }
   },
   mounted () {
-    this.mapObject = L.tileLayer.wms(this.baseUrl, this.tileLayerWMSOptions);
+    const options = optionsMerger(this.tileLayerWMSOptions, this.options);
+    this.mapObject = L.tileLayer.wms(this.baseUrl, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);

@@ -7,6 +7,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Polygon from '../mixins/Polygon.js';
 
 export default {
@@ -24,7 +25,8 @@ export default {
     };
   },
   mounted () {
-    this.mapObject = L.rectangle(this.bounds, this.polygonOptions);
+    const options = optionsMerger(this.polygonOptions, this.options);
+    this.mapObject = L.rectangle(this.bounds, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
