@@ -90,6 +90,9 @@ export default {
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
       if (this[propName] !== undefined) {
+        if (this.pathOptions[propName] !== undefined && this.pathOptions[propName] !== null) {
+          console.warn(`${propName} defined in prop lStyle is being overridden by a direct prop`);
+        }
         this.pathOptions[propName] = this[propName];
       }
     }
