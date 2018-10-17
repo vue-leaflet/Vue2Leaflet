@@ -1,27 +1,23 @@
 import Layer from './Layer';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   mixins: [Layer],
   props: {
-    pane: {
-      type: String,
-      default: 'tilePane'
-    },
     opacity: {
       type: Number,
-      custom: false,
-      default: 1.0
+      default: undefined
     },
     zIndex: {
       type: Number,
-      default: 1
+      default: undefined
     }
   },
   mounted () {
-    this.gridLayerOptions = {
-      ...this.layerOptions,
-      opacity: this.opacity,
-      zIndex: this.zIndex
-    };
+    this.gridLayerOptions = mergeIgnoreUndefined(
+      this.layerOptions, {
+        opacity: this.opacity,
+        zIndex: this.zIndex
+      });
   }
 };

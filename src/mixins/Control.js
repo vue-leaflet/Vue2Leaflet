@@ -1,19 +1,16 @@
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
+
 export default {
   props: {
     position: {
       type: String,
-      default: 'topright'
-    },
-    options: {
-      type: Object,
-      default: () => ({})
+      default: undefined
     }
   },
   mounted () {
-    this.controlOptions = {
-      ...this.options,
+    this.controlOptions = mergeIgnoreUndefined({
       position: this.position
-    };
+    });
   },
   beforeDestroy () {
     if (this.mapObject) {

@@ -1,26 +1,31 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import Control from '../mixins/Control.js';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   name: 'LControlLayers',
   mixins: [Control],
   props: {
+    options: {
+      type: Object,
+      default: () => ({})
+    },
     collapsed: {
       type: Boolean,
-      default: true
+      default: undefined
     },
     autoZIndex: {
       type: Boolean,
-      default: true
+      default: undefined
     },
     hideSingleBase: {
       type: Boolean,
-      default: false
+      default: undefined
     },
     sortLayers: {
       type: Boolean,
-      default: false
+      default: undefined
     },
     sortFunction: {
       type: Function,
@@ -28,15 +33,16 @@ export default {
     }
   },
   mounted () {
-    this.controlLayersOptions = {
-      ...this.controlOptions,
-      collapsed: this.collapsed,
-      autoZIndex: this.autoZIndex,
-      hideSingleBase: this.hideSingleBase,
-      sortLayers: this.sortLayers,
-      sortFunction: this.sortFunction
-    };
-    this.mapObject = L.control.layers(null, null, this.controlLayersOptions);
+    const options = mergeIgnoreUndefined(
+      this.options,
+      this.controlOptions, {
+        collapsed: this.collapsed,
+        autoZIndex: this.autoZIndex,
+        hideSingleBase: this.hideSingleBase,
+        sortLayers: this.sortLayers,
+        sortFunction: this.sortFunction
+      });
+    this.mapObject = L.control.layers(null, null, options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.$parent.registerLayerControl(this);
   },
