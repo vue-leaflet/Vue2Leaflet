@@ -25,7 +25,7 @@ export default {
     };
   },
   mounted () {
-    const options = optionsMerger(this.polyLineOptions, this.options);
+    const options = optionsMerger(this.polyLineOptions, this);
     this.mapObject = L.polyline(this.latLngs, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

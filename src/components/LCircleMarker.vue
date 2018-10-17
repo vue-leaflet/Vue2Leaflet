@@ -25,7 +25,7 @@ export default {
     };
   },
   mounted () {
-    const options = optionsMerger(this.circleOptions, this.options);
+    const options = optionsMerger(this.circleOptions, this);
     this.mapObject = L.circleMarker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

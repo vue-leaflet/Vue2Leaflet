@@ -8,7 +8,7 @@ export default {
   name: 'LTooltip',
   mixins: [Popper],
   mounted () {
-    const options = optionsMerger(this.popperOptions, this.options);
+    const options = optionsMerger(this.popperOptions, this);
     this.mapObject = L.tooltip(options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

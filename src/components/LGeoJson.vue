@@ -30,7 +30,7 @@ export default {
       return optionsMerger({
         ...this.layerGroupOptions,
         style: this.optionsStyle
-      }, this.options);
+      }, this);
     }
   },
   mounted () {

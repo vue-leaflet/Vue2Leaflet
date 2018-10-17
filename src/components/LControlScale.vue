@@ -31,7 +31,7 @@ export default {
       metric: this.metric,
       imperial: this.imperial,
       updateWhenIdle: this.updateWhenIdle
-    }, this.options);
+    }, this);
     this.mapObject = L.control.scale(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);

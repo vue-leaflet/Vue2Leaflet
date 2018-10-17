@@ -23,7 +23,7 @@ export default {
     }
   },
   mounted () {
-    const options = optionsMerger(this.tileLayerOptions, this.options);
+    const options = optionsMerger(this.tileLayerOptions, this);
     this.mapObject = this.tileLayerClass(this.url, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

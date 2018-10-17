@@ -25,7 +25,7 @@ export default {
     };
   },
   mounted () {
-    const options = optionsMerger(this.polygonOptions, this.options);
+    const options = optionsMerger(this.polygonOptions, this);
     this.mapObject = L.rectangle(this.bounds, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

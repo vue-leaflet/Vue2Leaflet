@@ -23,7 +23,7 @@ export default {
         this.element = el;
       }
     });
-    const options = optionsMerger(this.controlOptions, this.options);
+    const options = optionsMerger(this.controlOptions, this);
     this.mapObject = new LControl(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);

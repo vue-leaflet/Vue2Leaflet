@@ -93,8 +93,7 @@ export default {
       crs: this.crs,
       center: this.center,
       zoom: this.zoom
-    }, this.options);
-
+    }, this);
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
     this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));

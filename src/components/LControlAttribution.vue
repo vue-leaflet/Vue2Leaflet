@@ -16,7 +16,7 @@ export default {
     const options = optionsMerger({
       ...this.controlOptions,
       prefix: this.prefix
-    }, this.options);
+    }, this);
     this.mapObject = L.control.attribution(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);

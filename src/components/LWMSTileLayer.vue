@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted () {
-    const options = optionsMerger(this.tileLayerWMSOptions, this.options);
+    const options = optionsMerger(this.tileLayerWMSOptions, this);
     this.mapObject = L.tileLayer.wms(this.baseUrl, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

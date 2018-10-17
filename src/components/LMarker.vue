@@ -48,7 +48,7 @@ export default {
       icon: this.icon,
       zIndexOffset: this.zIndexOffset,
       draggable: this.draggable
-    }, this.options);
+    }, this);
     this.mapObject = L.marker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

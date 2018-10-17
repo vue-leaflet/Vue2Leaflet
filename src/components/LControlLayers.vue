@@ -36,7 +36,7 @@ export default {
       hideSingleBase: this.hideSingleBase,
       sortLayers: this.sortLayers,
       sortFunction: this.sortFunction
-    }, this.options);
+    }, this);
     this.mapObject = L.control.layers(null, null, options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.$parent.registerLayerControl(this);

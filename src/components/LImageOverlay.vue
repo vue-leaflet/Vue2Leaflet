@@ -8,7 +8,7 @@ export default {
   name: 'LImageOverlay',
   mixins: [ImageOverlay],
   mounted () {
-    const options = optionsMerger(this.imageOverlayOptions, this.options);
+    const options = optionsMerger(this.imageOverlayOptions, this);
     this.mapObject = L.imageOverlay(this.url, this.bounds, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

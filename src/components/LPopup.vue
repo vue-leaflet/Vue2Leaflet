@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted () {
-    const options = optionsMerger(this.popperOptions, this.options);
+    const options = optionsMerger(this.popperOptions, this);
     this.mapObject = L.popup(options);
     if (this.latLng !== undefined) {
       this.mapObject.setLatLng(this.latLng);

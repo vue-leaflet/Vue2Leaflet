@@ -31,7 +31,7 @@ export default {
       zoomInTitle: this.zoomInTitle,
       zoomOutText: this.zoomOutText,
       zoomOutTitle: this.zoomOutTitle
-    }, this.options);
+    }, this);
     this.mapObject = L.control.zoom(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
