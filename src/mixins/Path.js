@@ -1,5 +1,6 @@
 import Layer from './Layer';
 import InteractiveLayer from './InteractiveLayer';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   mixins: [Layer, InteractiveLayer],
@@ -7,91 +8,95 @@ export default {
     lStyle: {
       type: Object,
       custom: true,
-      default: null
+      default: undefined
     },
     stroke: {
       type: Boolean,
       custom: true,
-      default: true
+      default: undefined
     },
     color: {
       type: String,
       custom: true,
-      default: '#3388ff'
+      default: undefined
     },
     weight: {
       type: Number,
       custom: true,
-      default: 3
+      default: undefined
     },
     opacity: {
       type: Number,
       custom: true,
-      default: 1.0
+      default: undefined
     },
     lineCap: {
       type: String,
       custom: true,
-      default: 'round'
+      default: undefined
     },
     lineJoin: {
       type: String,
       custom: true,
-      default: 'round'
+      default: undefined
     },
     dashArray: {
       type: String,
       custom: true,
-      default: null
+      default: undefined
     },
     dashOffset: {
       type: String,
       custom: true,
-      default: null
+      default: undefined
     },
     fill: {
       type: Boolean,
       custom: true,
-      default: true
+      default: undefined
     },
     fillColor: {
       type: String,
       custom: true,
-      default: '#3388ff'
+      default: undefined
     },
     fillOpacity: {
       type: Number,
       custom: true,
-      default: 0.2
+      default: undefined
     },
     fillRule: {
       type: String,
       custom: true,
-      default: 'evenodd'
+      default: undefined
     },
     className: {
       type: String,
       custom: true,
-      default: null
+      default: undefined
     }
   },
   mounted () {
-    this.pathOptions = {};
+    this.pathOptions = mergeIgnoreUndefined(this.layerOptions,
+      this.interactiveLayerOptions,
+      this.lStyle,
+      {
+        stroke: this.stroke,
+        color: this.color,
+        weight: this.weight,
+        opacity: this.opacity,
+        lineCap: this.lineCap,
+        lineJoin: this.lineJoin,
+        dashArray: this.dashArray,
+        dashOffset: this.dashOffset,
+        fill: this.fill,
+        fillColor: this.fillColor,
+        fillOpacity: this.fillOpacity,
+        fillRule: this.fillRule,
+        className: this.className
+      });
     if (this.lStyle) {
       console.warn('lStyle is deprecated and is going to be removed in the next major version');
-      for (var style in this.lStyle) {
-        this.pathOptions[style] = this.lStyle[style];
-      }
-    }
-    const otherPropertytoInitialize = ['smoothFactor', 'noClip', 'stroke', 'color', 'weight',
-      'opacity', 'lineCap', 'lineJoin', 'dashArray', 'dashOffset', 'fill', 'fillColor',
-      'fillOpacity', 'fillRule', 'className'
-    ];
-    for (var i = 0; i < otherPropertytoInitialize.length; i++) {
-      const propName = otherPropertytoInitialize[i];
-      if (this[propName] !== undefined) {
-        this.pathOptions[propName] = this[propName];
-      }
     }
   },
   beforeDestroy () {
@@ -102,6 +107,10 @@ export default {
     }
   },
   methods: {
+    setLStyle (newVal, oldVal) {
+      if (newVal === oldVal) return;
+      this.mapObject.setStyle(newVal);
+    },
     setStroke (newVal, oldVal) {
       if (newVal === oldVal) return;
       this.mapObject.setStyle({ stroke: newVal });

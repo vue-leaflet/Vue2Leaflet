@@ -2,6 +2,7 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import Layer from '../mixins/Layer.js';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   name: 'LMarker',
@@ -9,12 +10,12 @@ export default {
   props: {
     pane: {
       type: String,
-      default: 'markerPane'
+      default: undefined
     },
     draggable: {
       type: Boolean,
       custom: true,
-      default: false
+      default: undefined
     },
     latLng: {
       type: [Object, Array],
@@ -24,12 +25,12 @@ export default {
     icon: {
       type: [Object],
       custom: false,
-      default: () => new L.Icon.Default()
+      default: undefined
     },
     zIndexOffset: {
       type: Number,
       custom: false,
-      default: null
+      default: undefined
     },
     options: {
       type: Object,
@@ -42,13 +43,16 @@ export default {
     };
   },
   mounted () {
-    const options = {
-      ...this.layerOptions,
-      ...this.options,
-      icon: this.icon,
-      zIndexOffset: this.zIndexOffset,
-      draggable: this.draggable
-    };
+    const options = mergeIgnoreUndefined(
+      this.options,
+      this.layerOptions,
+      {
+        pane: this.pane,
+        icon: this.icon,
+        zIndexOffset: this.zIndexOffset,
+        draggable: this.draggable
+      }
+    );
     this.mapObject = L.marker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);

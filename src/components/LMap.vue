@@ -8,6 +8,7 @@
 import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
 import debounce from '../utils/debounce.js';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   name: 'LMap',
@@ -15,21 +16,21 @@ export default {
     center: {
       type: [Object, Array],
       custom: true,
-      default: () => [0, 0]
+      default: undefined
     },
     bounds: {
       type: [Array, Object],
       custom: true,
-      default: null
+      default: undefined
     },
     maxBounds: {
       type: [Array, Object],
-      default: null
+      default: undefined
     },
     zoom: {
       type: Number,
       custom: true,
-      default: 0
+      default: undefined
     },
     minZoom: {
       type: Number,
@@ -56,16 +57,16 @@ export default {
     },
     worldCopyJump: {
       type: Boolean,
-      default: false
+      default: undefined
     },
     crs: {
       type: Object,
       custom: true,
-      default: () => L.CRS.EPSG3857
+      default: undefined
     },
     maxBoundsViscosity: {
       type: Number,
-      default: 0
+      default: undefined
     },
     options: {
       type: Object,
@@ -83,17 +84,19 @@ export default {
     };
   },
   mounted () {
-    const options = {
-      ...this.options,
-      minZoom: this.minZoom,
-      maxZoom: this.maxZoom,
-      maxBounds: this.maxBounds,
-      maxBoundsViscosity: this.maxBoundsViscosity,
-      worldCopyJump: this.worldCopyJump,
-      crs: this.crs,
-      center: this.center,
-      zoom: this.zoom
-    };
+    const options = mergeIgnoreUndefined(
+      this.options,
+      {
+        minZoom: this.minZoom,
+        maxZoom: this.maxZoom,
+        maxBounds: this.maxBounds,
+        maxBoundsViscosity: this.maxBoundsViscosity,
+        worldCopyJump: this.worldCopyJump,
+        crs: this.crs,
+        center: this.center,
+        zoom: this.zoom
+      }
+    );
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
     this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));

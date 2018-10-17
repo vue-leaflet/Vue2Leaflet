@@ -1,7 +1,9 @@
 import Layer from './Layer.js';
+import InteractiveLayer from './InteractiveLayer';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
-  mixins: [Layer],
+  mixins: [Layer, InteractiveLayer],
   props: {
     url: {
       type: String,
@@ -13,45 +15,42 @@ export default {
     opacity: {
       type: Number,
       custom: true,
-      default: 1.0
+      default: undefined
     },
     alt: {
       type: String,
-      default: ''
-    },
-    interactive: {
-      type: Boolean,
-      default: false
+      default: undefined
     },
     crossOrigin: {
       type: Boolean,
-      default: false
+      default: undefined
     },
     errorOverlayUrl: {
       type: String,
       custom: true,
-      default: ''
+      default: undefined
     },
     zIndex: {
       type: Number,
       custom: true,
-      default: 1
+      default: undefined
     },
     className: {
       type: String,
-      default: ''
+      default: undefined
     }
   },
   mounted () {
-    this.imageOverlayOptions = {
-      opacity: this.opacity,
-      alt: this.alt,
-      interactive: this.interactive,
-      crossOrigin: this.crossOrigin,
-      errorOverlayUrl: this.errorOverlayUrl,
-      zIndex: this.zIndex,
-      className: this.className
-    };
+    this.imageOverlayOptions = mergeIgnoreUndefined(
+      this.layerOptions,
+      this.interactiveLayerOptions, {
+        opacity: this.opacity,
+        alt: this.alt,
+        crossOrigin: this.crossOrigin,
+        errorOverlayUrl: this.errorOverlayUrl,
+        zIndex: this.zIndex,
+        className: this.className
+      });
   },
   methods: {
     setOpacity (opacity) {

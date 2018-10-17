@@ -3,6 +3,7 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import L from 'leaflet';
 import LayerGroup from '../mixins/LayerGroup.js';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   name: 'LGeoJson',
@@ -21,16 +22,18 @@ export default {
     optionsStyle: {
       type: [Object, Function],
       custom: true,
-      default: null
+      default: undefined
     }
   },
   computed: {
     mergedOptions () {
-      return {
-        ...this.layerGroupOptions,
-        ...this.options,
-        style: this.optionsStyle || this.options.style
-      };
+      return mergeIgnoreUndefined(
+        this.options,
+        this.layerGroupOptions,
+        {
+          style: this.optionsStyle
+        }
+      );
     }
   },
   mounted () {

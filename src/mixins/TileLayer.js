@@ -1,33 +1,24 @@
 import GridLayer from './GridLayer';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   mixins: [GridLayer],
   props: {
     tms: {
       type: Boolean,
-      default: false
+      default: undefined
     },
     detectRetina: {
       type: Boolean,
-      custom: false,
-      default: false
-    },
-    options: {
-      type: Object,
-      default: () => ({})
-    },
-    layerType: {
-      type: String,
       default: undefined
     }
   },
   mounted () {
-    this.tileLayerOptions = {
-      ...this.gridLayerOptions,
-      ...this.options,
-      tms: this.tms,
-      detectRetina: this.detectRetina
-    };
+    this.tileLayerOptions = mergeIgnoreUndefined(
+      this.gridLayerOptions, {
+        tms: this.tms,
+        detectRetina: this.detectRetina
+      });
   },
   render () {
     return null;

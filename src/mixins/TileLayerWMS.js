@@ -1,46 +1,47 @@
 import TileLayer from './TileLayer';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   mixins: [TileLayer],
   props: {
     layers: {
       type: String,
-      default: ''
+      default: undefined
     },
     styles: {
       type: String,
-      default: ''
+      default: undefined
     },
     format: {
       type: String,
-      default: 'image/jpeg'
+      default: undefined
     },
     transparent: {
       type: Boolean,
-      custom: false
+      default: undefined
     },
     version: {
       type: String,
-      default: '1.1.1'
+      default: undefined
     },
     crs: {
-      default: null
+      default: undefined
     },
     upperCase: {
       type: Boolean,
-      default: false
+      default: undefined
     }
   },
   mounted () {
-    this.tileLayerWMSOptions = {
-      ...this.tileLayerOptions,
-      layers: this.layers,
-      styles: this.styles,
-      format: this.format,
-      transparent: this.transparent,
-      version: this.version,
-      crs: this.crs,
-      upperCase: this.upperCase
-    };
+    this.tileLayerWMSOptions = mergeIgnoreUndefined(
+      this.tileLayerOptions, {
+        layers: this.layers,
+        styles: this.styles,
+        format: this.format,
+        transparent: this.transparent,
+        version: this.version,
+        crs: this.crs,
+        upperCase: this.upperCase
+      });
   }
 };

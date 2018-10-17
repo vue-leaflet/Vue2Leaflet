@@ -3,7 +3,7 @@ import Polyline from './Polyline';
 export default {
   mixins: [Polyline],
   mounted () {
-    this.polygonOptions = {...this.polyLineOptions};
+    this.polygonOptions = this.polyLineOptions;
   },
   methods: {
     getGeoJSONData () {

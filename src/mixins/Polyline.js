@@ -1,4 +1,5 @@
 import Path from './Path';
+import { mergeIgnoreUndefined } from '../utils/optionsUtils.js';
 
 export default {
   mixins: [Path],
@@ -6,12 +7,12 @@ export default {
     smoothFactor: {
       type: Number,
       custom: true,
-      default: 1.0
+      default: undefined
     },
     noClip: {
       type: Boolean,
       custom: true,
-      default: false
+      default: undefined
     }
   },
   data () {
@@ -20,17 +21,13 @@ export default {
     };
   },
   mounted () {
-    this.polyLineOptions = {
-      ...this.pathOptions,
-      smoothFactor: this.smoothFactor ? this.smoothFactor : undefined,
-      noClip: this.noClip
-    };
+    this.polyLineOptions = mergeIgnoreUndefined(
+      this.pathOptions, {
+        smoothFactor: this.smoothFactor,
+        noClip: this.noClip
+      });
   },
   methods: {
-    setLStyle (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      this.mapObject.setStyle(newVal);
-    },
     setSmoothFactor (newVal, oldVal) {
       if (newVal === oldVal) return;
       if (newVal) {
