@@ -7,6 +7,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Polyline from '../mixins/Polyline.js';
 
 export default {
@@ -24,7 +25,8 @@ export default {
     };
   },
   mounted () {
-    this.mapObject = L.polyline(this.latLngs, this.polyLineOptions);
+    const options = optionsMerger(this.polyLineOptions, this);
+    this.mapObject = L.polyline(this.latLngs, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;

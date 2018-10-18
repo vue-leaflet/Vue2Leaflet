@@ -8,6 +8,7 @@
 import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
 import debounce from '../utils/debounce.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 
 export default {
   name: 'LMap',
@@ -33,11 +34,11 @@ export default {
     },
     minZoom: {
       type: Number,
-      default: undefined
+      default: null
     },
     maxZoom: {
       type: Number,
-      default: undefined
+      default: null
     },
     paddingBottomRight: {
       type: Array,
@@ -65,7 +66,7 @@ export default {
     },
     maxBoundsViscosity: {
       type: Number,
-      default: 0
+      default: null
     },
     options: {
       type: Object,
@@ -83,8 +84,7 @@ export default {
     };
   },
   mounted () {
-    const options = {
-      ...this.options,
+    const options = optionsMerger({
       minZoom: this.minZoom,
       maxZoom: this.maxZoom,
       maxBounds: this.maxBounds,
@@ -93,7 +93,7 @@ export default {
       crs: this.crs,
       center: this.center,
       zoom: this.zoom
-    };
+    }, this);
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
     this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));

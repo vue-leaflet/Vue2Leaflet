@@ -1,5 +1,6 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Control from '../mixins/Control.js';
 
 export default {
@@ -24,14 +25,14 @@ export default {
     }
   },
   mounted () {
-    this.controlZoomOptions = {
+    const options = optionsMerger({
       ...this.controlOptions,
       zoomInText: this.zoomInText,
       zoomInTitle: this.zoomInTitle,
       zoomOutText: this.zoomOutText,
       zoomOutTitle: this.zoomOutTitle
-    };
-    this.mapObject = L.control.zoom(this.controlZoomOptions);
+    }, this);
+    this.mapObject = L.control.zoom(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
   },

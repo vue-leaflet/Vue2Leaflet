@@ -7,6 +7,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Circle from '../mixins/Circle.js';
 
 export default {
@@ -24,7 +25,8 @@ export default {
     };
   },
   mounted () {
-    this.mapObject = L.circleMarker(this.latLng, this.circleOptions);
+    const options = optionsMerger(this.circleOptions, this);
+    this.mapObject = L.circleMarker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;

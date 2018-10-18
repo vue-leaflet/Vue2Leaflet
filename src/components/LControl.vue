@@ -7,6 +7,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Control from '../mixins/Control.js';
 
 export default {
@@ -22,7 +23,8 @@ export default {
         this.element = el;
       }
     });
-    this.mapObject = new LControl(this.controlOptions);
+    const options = optionsMerger(this.controlOptions, this);
+    this.mapObject = new LControl(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);
     this.mapObject.setElement(this.$el);

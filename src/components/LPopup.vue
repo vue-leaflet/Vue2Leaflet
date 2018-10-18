@@ -1,6 +1,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Popper from '../mixins/Popper.js';
 
 export default {
@@ -13,7 +14,8 @@ export default {
     }
   },
   mounted () {
-    this.mapObject = L.popup(this.popperOptions);
+    const options = optionsMerger(this.popperOptions, this);
+    this.mapObject = L.popup(options);
     if (this.latLng !== undefined) {
       this.mapObject.setLatLng(this.latLng);
     }

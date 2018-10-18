@@ -10,7 +10,10 @@ export default {
     }
   },
   mounted () {
-    this.layerGroupOptions = {...this.layerOptions};
+    this.layerGroupOptions = {
+      ...this.layerOptions,
+      layerType: this.layerType
+    };
   },
   methods: {
     addLayer (layer, alreadyAdded) {

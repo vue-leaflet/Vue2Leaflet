@@ -1,5 +1,6 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Control from '../mixins/Control.js';
 
 export default {
@@ -28,15 +29,15 @@ export default {
     }
   },
   mounted () {
-    this.controlLayersOptions = {
+    const options = optionsMerger({
       ...this.controlOptions,
       collapsed: this.collapsed,
       autoZIndex: this.autoZIndex,
       hideSingleBase: this.hideSingleBase,
       sortLayers: this.sortLayers,
       sortFunction: this.sortFunction
-    };
-    this.mapObject = L.control.layers(null, null, this.controlLayersOptions);
+    }, this);
+    this.mapObject = L.control.layers(null, null, options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.$parent.registerLayerControl(this);
   },

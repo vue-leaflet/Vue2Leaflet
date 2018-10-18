@@ -11,7 +11,6 @@ export default {
   },
   mounted () {
     this.controlOptions = {
-      ...this.options,
       position: this.position
     };
   },

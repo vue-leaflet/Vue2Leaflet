@@ -1,5 +1,6 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Control from '../mixins/Control.js';
 
 export default {
@@ -24,14 +25,14 @@ export default {
     }
   },
   mounted () {
-    this.controlScaleOptions = {
+    const options = optionsMerger({
       ...this.controlOptions,
       maxWidth: this.maxWidth,
       metric: this.metric,
       imperial: this.imperial,
       updateWhenIdle: this.updateWhenIdle
-    };
-    this.mapObject = L.control.scale(this.controlScaleOptions);
+    }, this);
+    this.mapObject = L.control.scale(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
   },

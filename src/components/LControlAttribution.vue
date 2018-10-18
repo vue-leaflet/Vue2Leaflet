@@ -1,5 +1,6 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
+import { optionsMerger } from '../utils/optionsUtils.js';
 import Control from '../mixins/Control';
 
 export default {
@@ -8,15 +9,15 @@ export default {
   props: {
     prefix: {
       type: String,
-      default: 'Leaflet'
+      default: null
     }
   },
   mounted () {
-    this.attributionControlOptions = {
+    const options = optionsMerger({
       ...this.controlOptions,
       prefix: this.prefix
-    };
-    this.mapObject = L.control.attribution(this.attributionControlOptions);
+    }, this);
+    this.mapObject = L.control.attribution(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
   },
