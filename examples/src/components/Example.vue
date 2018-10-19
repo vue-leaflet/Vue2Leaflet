@@ -112,7 +112,9 @@
       style="height: 45%">
       <l-control-layers
         :position="layersPosition"
-        :collapsed="false" />
+        :collapsed="false"
+        :sortLayers="true"
+        />
       <l-tile-layer
         v-for="tileProvider in tileProviders"
         :key="tileProvider.name"
@@ -138,12 +140,17 @@
         <l-popup :content="marker.tooltip" />
         <l-tooltip :content="marker.tooltip" />
       </l-marker>
-      <l-polyline
-        v-for="item in polylines"
-        :key="item.id"
-        :lat-lngs="item.points"
-        :visible="item.visible"
-        @click="alert(item)" />
+      <l-layer-group
+        layer-type="overlay"
+        name="Layer polyline"
+      >
+        <l-polyline
+          v-for="item in polylines"
+          :key="item.id"
+          :lat-lngs="item.points"
+          :visible="item.visible"
+          @click="alert(item)" />
+      </l-layer-group>
       <l-layer-group
         v-for="item in stuff"
         :key="item.id"
