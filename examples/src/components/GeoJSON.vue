@@ -85,7 +85,7 @@ export default {
     },
     onEachFeatureFunction () {
       if (!this.enableTooltip) {
-        return undefined
+        return () => {}
       }
       return (feature, layer) => {
         layer.bindTooltip('<div>code:'+feature.properties.code+'</div><div>nom: '+feature.properties.nom+'</div>', { permanent: false, sticky: true })
