@@ -4,14 +4,10 @@ export default {
       type: String,
       default: null,
       custom: true
-    },
-    options: {
-      type: Object,
-      default: () => ({})
     }
   },
   mounted () {
-    this.popperOptions = { ...this.options };
+    this.popperOptions = {};
   },
   methods: {
     setContent (newVal) {
