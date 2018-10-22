@@ -2,10 +2,11 @@
 import propsBinder from '../utils/propsBinder.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Control from '../mixins/Control.js';
+import Options from '../mixins/Options.js';
 
 export default {
   name: 'LControlZoom',
-  mixins: [Control],
+  mixins: [Control, Options],
   props: {
     zoomInText: {
       type: String,

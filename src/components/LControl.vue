@@ -9,10 +9,11 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Control from '../mixins/Control.js';
+import Options from '../mixins/Options.js';
 
 export default {
   name: 'LControl',
-  mixins: [Control],
+  mixins: [Control, Options],
   mounted () {
     const LControl = L.Control.extend({
       element: undefined,
