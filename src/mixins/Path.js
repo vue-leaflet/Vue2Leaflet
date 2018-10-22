@@ -109,8 +109,7 @@ export default {
     }
   },
   methods: {
-    setLStyle (newVal, oldVal) {
-      if (newVal === oldVal) return;
+    setLStyle (newVal) {
       this.mapObject.setStyle(newVal);
     },
     setStroke (newVal, oldVal) {
