@@ -77,19 +77,22 @@ export default {
   },
   mounted () {
     this.pathOptions = {
-      ...this.interactiveLayerOptions
+      ...this.layerOptions,
+      ...this.interactiveLayerOptions,
+      stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className
     };
-    const otherPropertytoInitialize = ['smoothFactor', 'noClip', 'stroke', 'color', 'weight',
-      'opacity', 'lineCap', 'lineJoin', 'dashArray', 'dashOffset', 'fill', 'fillColor',
-      'fillOpacity', 'fillRule', 'className'
-    ];
-
-    for (var i = 0; i < otherPropertytoInitialize.length; i++) {
-      const propName = otherPropertytoInitialize[i];
-      if (this[propName] !== undefined && this.propName !== null) {
-        this.pathOptions[propName] = this[propName];
-      }
-    }
 
     if (this.lStyle) {
       console.warn('lStyle is deprecated and is going to be removed in the next major version');

@@ -22,7 +22,7 @@ export default {
   mounted () {
     this.polyLineOptions = {
       ...this.pathOptions,
-      smoothFactor: this.smoothFactor ? this.smoothFactor : undefined,
+      smoothFactor: this.smoothFactor,
       noClip: this.noClip
     };
   },
