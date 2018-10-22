@@ -3,10 +3,11 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import TileLayerWMS from '../mixins/TileLayerWMS.js';
+import Options from '../mixins/Options.js';
 
 export default {
   name: 'LWMSTileLayer',
-  mixins: [TileLayerWMS],
+  mixins: [TileLayerWMS, Options],
   props: {
     baseUrl: {
       type: String,

@@ -10,7 +10,13 @@ export default {
     },
     name: {
       type: String,
-      default: null
+      custom: true,
+      default: undefined
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined
     },
     visible: {
       type: Boolean,
@@ -21,7 +27,6 @@ export default {
   mounted () {
     this.layerOptions = {
       attribution: this.attribution,
-      name: this.name,
       pane: this.pane
     };
   },
@@ -34,6 +39,13 @@ export default {
       attributionControl.removeAttribution(old).addAttribution(val);
     },
     setName (newVal, oldVal) {
+      if (newVal === oldVal) return;
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType (newVal, oldVal) {
       if (newVal === oldVal) return;
       this.parentContainer.removeLayer(this);
       if (this.visible) {

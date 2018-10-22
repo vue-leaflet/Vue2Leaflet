@@ -20,6 +20,7 @@ export default {
   mounted () {
     this.gridLayerOptions = {
       ...this.layerOptions,
+      pane: this.pane,
       opacity: this.opacity,
       zIndex: this.zIndex
     };

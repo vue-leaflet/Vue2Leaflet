@@ -8,5 +8,11 @@ export default {
       type: Boolean,
       default: true
     }
+  },
+  mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
   }
 };

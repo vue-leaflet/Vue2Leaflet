@@ -3,10 +3,11 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Layer from '../mixins/Layer.js';
+import Options from '../mixins/Options.js';
 
 export default {
   name: 'LMarker',
-  mixins: [Layer],
+  mixins: [Layer, Options],
   props: {
     pane: {
       type: String,
@@ -31,10 +32,6 @@ export default {
       type: Number,
       custom: false,
       default: null
-    },
-    options: {
-      type: Object,
-      default: () => ({})
     }
   },
   data () {
