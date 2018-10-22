@@ -76,7 +76,9 @@ export default {
     }
   },
   mounted () {
-    this.pathOptions = {};
+    this.pathOptions = {
+      ...this.interactiveLayerOptions
+    };
     const otherPropertytoInitialize = ['smoothFactor', 'noClip', 'stroke', 'color', 'weight',
       'opacity', 'lineCap', 'lineJoin', 'dashArray', 'dashOffset', 'fill', 'fillColor',
       'fillOpacity', 'fillRule', 'className'
@@ -104,6 +106,10 @@ export default {
     }
   },
   methods: {
+    setLStyle (newVal, oldVal) {
+      if (newVal === oldVal) return;
+      this.mapObject.setStyle(newVal);
+    },
     setStroke (newVal, oldVal) {
       if (newVal === oldVal) return;
       this.mapObject.setStyle({ stroke: newVal });

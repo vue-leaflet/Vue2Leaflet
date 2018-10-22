@@ -27,10 +27,6 @@ export default {
     };
   },
   methods: {
-    setLStyle (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      this.mapObject.setStyle(newVal);
-    },
     setSmoothFactor (newVal, oldVal) {
       if (newVal === oldVal) return;
       if (newVal) {
