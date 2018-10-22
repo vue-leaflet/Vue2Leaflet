@@ -108,8 +108,8 @@ declare module "vue2-leaflet" {
     setBounds(bounds: any): any;
     getBounds(): any;
     getElement(): any;
-    bringToFront(): void;
-    bringToBack(): void;
+    bringToFront(): any;
+    bringToBack(): any;
   }
   class InteractiveLayer extends Vue {
     /**
