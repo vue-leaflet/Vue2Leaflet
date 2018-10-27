@@ -8,10 +8,11 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import TileLayer from '../mixins/TileLayer.js';
+import Options from '../mixins/Options.js';
 
 export default {
   name: 'LTileLayer',
-  mixins: [TileLayer],
+  mixins: [TileLayer, Options],
   props: {
     url: {
       type: String,

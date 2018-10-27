@@ -3,10 +3,6 @@ export default {
     position: {
       type: String,
       default: 'topright'
-    },
-    options: {
-      type: Object,
-      default: () => ({})
     }
   },
   mounted () {

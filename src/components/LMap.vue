@@ -9,9 +9,11 @@ import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
 import debounce from '../utils/debounce.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
+import Options from '../mixins/Options.js';
 
 export default {
   name: 'LMap',
+  mixins: [Options],
   props: {
     center: {
       type: [Object, Array],
@@ -67,10 +69,6 @@ export default {
     maxBoundsViscosity: {
       type: Number,
       default: null
-    },
-    options: {
-      type: Object,
-      default: () => ({})
     }
   },
   data () {

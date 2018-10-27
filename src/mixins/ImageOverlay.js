@@ -1,7 +1,8 @@
 import Layer from './Layer.js';
+import InteractiveLayer from './InteractiveLayer';
 
 export default {
-  mixins: [Layer],
+  mixins: [Layer, InteractiveLayer],
   props: {
     url: {
       type: String,
@@ -44,6 +45,8 @@ export default {
   },
   mounted () {
     this.imageOverlayOptions = {
+      ...this.layerOptions,
+      ...this.interactiveLayerOptions,
       opacity: this.opacity,
       alt: this.alt,
       interactive: this.interactive,

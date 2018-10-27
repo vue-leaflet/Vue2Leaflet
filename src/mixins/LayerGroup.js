@@ -2,18 +2,8 @@ import Layer from './Layer';
 
 export default {
   mixins: [Layer],
-  props: {
-    layerType: {
-      type: String,
-      custom: true,
-      default: null
-    }
-  },
   mounted () {
-    this.layerGroupOptions = {
-      ...this.layerOptions,
-      layerType: this.layerType
-    };
+    this.layerGroupOptions = this.layerOptions;
   },
   methods: {
     addLayer (layer, alreadyAdded) {
@@ -27,13 +17,6 @@ export default {
         this.mapObject.removeLayer(layer.mapObject);
       }
       this.parentContainer.removeLayer(layer, true);
-    },
-    setLayerType (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      this.parentContainer.removeLayer(this);
-      if (this.visible) {
-        this.parentContainer.addLayer(this);
-      }
     }
   }
 };

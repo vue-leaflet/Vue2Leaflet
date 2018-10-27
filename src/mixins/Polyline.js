@@ -22,15 +22,11 @@ export default {
   mounted () {
     this.polyLineOptions = {
       ...this.pathOptions,
-      smoothFactor: this.smoothFactor ? this.smoothFactor : undefined,
+      smoothFactor: this.smoothFactor,
       noClip: this.noClip
     };
   },
   methods: {
-    setLStyle (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      this.mapObject.setStyle(newVal);
-    },
     setSmoothFactor (newVal, oldVal) {
       if (newVal === oldVal) return;
       if (newVal) {

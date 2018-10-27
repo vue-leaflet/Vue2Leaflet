@@ -12,7 +12,7 @@ export const collectionCleaner = (options) => {
 export const optionsMerger = (props, instance) => {
   const options = instance.options && instance.options.constructor === Object ? instance.options : {};
   props = props && props.constructor === Object ? props : {};
-  const result = {...collectionCleaner(options)};
+  const result = collectionCleaner(options);
   props = collectionCleaner(props);
   const defaultProps = instance.$options.props;
   for (let key in props) {

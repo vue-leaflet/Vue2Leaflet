@@ -9,22 +9,12 @@ export default {
     },
     detectRetina: {
       type: Boolean,
-      custom: false,
       default: false
-    },
-    options: {
-      type: Object,
-      default: () => ({})
-    },
-    layerType: {
-      type: String,
-      default: undefined
     }
   },
   mounted () {
     this.tileLayerOptions = {
       ...this.gridLayerOptions,
-      ...this.options,
       tms: this.tms,
       detectRetina: this.detectRetina
     };

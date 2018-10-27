@@ -2,6 +2,9 @@
   <div>
     <div style="height: 10%; overflow: auto;">
       <h3>Geometry</h3>
+      <button
+      @click="clickBtn"
+      >Change rectange style</button>
     </div>
     <l-map
       :zoom="zoom"
@@ -62,6 +65,12 @@ export default {
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     };
+  },
+  methods: {
+    clickBtn () {
+      this.rectangle.style.weight++;
+      this.rectangle.style.color = this.rectangle.style.weight % 2 === 0 ? 'blue' : 'green'
+    }
   }
 };
 </script>
