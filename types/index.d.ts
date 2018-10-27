@@ -51,7 +51,6 @@ declare module "vue2-leaflet" {
   }
   class Control extends Vue {
     position: "topleft" | "topright" | "bottomleft" | "bottomright";
-    options: L.ControlOptions;
   }
   class GridLayer extends Mixins(Layer) {
     /**
@@ -67,7 +66,7 @@ declare module "vue2-leaflet" {
      */
     zIndex: number;
   }
-  class ImageOverlay extends Mixins(Layer) {
+  class ImageOverlay extends Mixins(Layer, InteractiveLayer) {
     // props
     url: string;
     /**
@@ -155,6 +154,9 @@ declare module "vue2-leaflet" {
     addLayer(layer: any, alreadyAdded?: boolean): void;
     removeLayer(layer: any, alreadyRemoved?: boolean): void;
     setLayerType(newVal: string | null, oldVal?: string | null): void;
+  }
+  class Options extends Vue {
+    options: any;
   }
   class Path extends Mixins(Layer, InteractiveLayer) {
     // props
@@ -250,21 +252,15 @@ declare module "vue2-leaflet" {
   class Popper extends Vue {
     // props
     /**
-     * @default ''
+     * @default null
      */
-    content: string;
+    content: string | null;
     /**
      * @default {}
      */
-    options: any;
-    /**
-     * @default false
-     */
-    dynamic: boolean;
-    // data
-    ready: boolean;
+    popperOptions: any;
     // methods
-    setContent(): void;
+    setContent(newVal?: string | null): void;
   }
   class TileLayer extends Mixins(GridLayer) {
     // props
@@ -279,8 +275,7 @@ declare module "vue2-leaflet" {
     /**
      * @default {}
      */
-    options: L.TileLayerOptions;
-    layerType?: string;
+    tileLayerOptions: L.TileLayerOptions;
   }
   class TileLayerWMS extends Mixins(TileLayer) {
     /**
@@ -333,7 +328,7 @@ declare module "vue2-leaflet" {
     mapObject: L.CircleMarker;
     parentContainer: any;
   }
-  class LControl extends Mixins(Control) {
+  class LControl extends Mixins(Control, Options) {
     mapObject: L.Control & {
       element?: HTMLElement;
       onAdd(): HTMLElement;
@@ -341,14 +336,14 @@ declare module "vue2-leaflet" {
     };
     parentContainer: any;
   }
-  class LControlAttribution extends Mixins(Control) {
+  class LControlAttribution extends Mixins(Control, Options) {
     /**
      * @default null
      */
     prefix: string | null;
     mapObject: L.Control.Attribution;
   }
-  class LControlLayers extends Mixins(Control) {
+  class LControlLayers extends Mixins(Control, Options) {
     // Props
     /**
      * @default true
@@ -375,7 +370,7 @@ declare module "vue2-leaflet" {
     addLayer(layer: any): void;
     removeLayer(layer: any): void;
   }
-  class LControlScale extends Mixins(Control) {
+  class LControlScale extends Mixins(Control, Options) {
     // props
     /**
      * @default 100
@@ -397,7 +392,7 @@ declare module "vue2-leaflet" {
     // data
     mapObject: L.Control.Scale;
   }
-  class LControlZoom extends Mixins(Control) {
+  class LControlZoom extends Mixins(Control, Options) {
     // props
     /**
      * @default '+'
@@ -471,12 +466,12 @@ declare module "vue2-leaflet" {
     mapObject: L.ImageOverlay;
     parentContainer: any;
   }
-  class LLayerGroup extends LayerGroup {
+  class LLayerGroup extends Mixins(LayerGroup) {
     ready: boolean;
     mapObject: L.LayerGroup;
     parentContainer: any;
   }
-  class LMap extends Vue {
+  class LMap extends Mixins(Options) {
     // props
     /**
      * @default [0, 0]
@@ -564,7 +559,7 @@ declare module "vue2-leaflet" {
 
     moveEndHandler(): void;
   }
-  class LMarker extends Mixins(Layer) {
+  class LMarker extends Mixins(Layer, Options) {
     // props
     /**
      * @default 'markerPane'
@@ -624,7 +619,7 @@ declare module "vue2-leaflet" {
     mapObject: L.Polyline;
     parentContainer: any;
   }
-  class LPopup extends Mixins(Popper) {
+  class LPopup extends Mixins(Popper, Options) {
     // props
     /**
      * @default []
@@ -647,7 +642,7 @@ declare module "vue2-leaflet" {
     mapObject: L.Rectangle;
     parentContainer: any;
   }
-  class LTileLayer extends Mixins(TileLayer) {
+  class LTileLayer extends Mixins(TileLayer, Options) {
     // props
     /**
      * @default null
@@ -663,12 +658,12 @@ declare module "vue2-leaflet" {
     mapObject: L.TileLayer;
     parentContainer: any;
   }
-  class LTooltip extends Mixins(Popper) {
+  class LTooltip extends Mixins(Popper, Options) {
     // data
     mapObject: L.Tooltip;
     parentContainer: any;
   }
-  class LWMSTileLayer extends Mixins(TileLayerWMS) {
+  class LWMSTileLayer extends Mixins(TileLayerWMS, Options) {
     // props
     /**
      * @default null
