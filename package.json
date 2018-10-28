@@ -7,21 +7,25 @@
   "scripts": {
     "build": "cd scripts && ./build.sh",
     "size": "size-limit",
-    "lint": "eslint src --ext .js,.vue --ignore-path .gitignore"
+    "lint": "eslint src --ext .js,.vue --ignore-path .gitignore",
+    "test:types": "tsc -p ./types/test/tsconfig.json"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "types/*.d.ts"
   ],
   "main": "dist/vue2-leaflet.min.js",
   "module": "dist/vue2-leaflet.min.js",
   "unpkg": "dist/vue2-leaflet.min.js",
+  "typings": "types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
   },
   "dependencies": {
     "leaflet": "^1.3.4",
-    "vue": "^2.5.3"
+    "vue": "^2.5.3",
+    "@types/leaflet": "^1.2.11"
   },
   "peerDependencies": {},
   "size-limit": [
@@ -53,6 +57,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.0.0",
     "size-limit": "^0.17.1",
+    "typescript": "^2.7.1",
     "vue-loader": "^14.2.3",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
