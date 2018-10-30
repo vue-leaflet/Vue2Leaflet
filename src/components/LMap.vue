@@ -151,6 +151,7 @@ export default {
         newLng = newVal.lng;
       }
       let center = this.lastSetCenter == null ? this.mapObject.getCenter() : this.lastSetCenter;
+      center = {...center};
       if (center.lat !== newLat || center.lng !== newLng) {
         center.lat = newVal.lat;
         center.lng = newVal.lng;
