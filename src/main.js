@@ -10,6 +10,7 @@ exports.LControlScale = require('./components/LControlScale').default;
 exports.LControlZoom = require('./components/LControlZoom').default;
 exports.LFeatureGroup = require('./components/LFeatureGroup').default;
 exports.LGeoJson = require('./components/LGeoJson').default;
+exports.LIcon = require('./components/LIcon').default;
 exports.LIconDefault = require('./components/LIconDefault').default;
 exports.LImageOverlay = require('./components/LImageOverlay').default;
 exports.LLayerGroup = require('./components/LLayerGroup').default;

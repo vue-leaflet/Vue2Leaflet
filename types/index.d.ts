@@ -3,7 +3,7 @@
 // Definitions by: Matthew Meehan <https://github.com/HIMISOCOOL>
 
 /**
- * TODO: 
+ * TODO:
  * create test cases for types
  * type parentContainer in components
  * type findRealParent
@@ -452,6 +452,26 @@ declare module "vue2-leaflet" {
       oldVal?: object | Function | null
     ): void;
   }
+  class LIcon extends Mixins(Options) {
+      // props
+      iconUrl: String;
+      iconRetinaUrl: String;
+      iconSize: L.Point;
+      iconAnchor: L.Point;
+      popupAnchor: L.Point;
+      tooltipAnchor: L.Point;
+      shadowUrl: String;
+      shadowRetinaUrl: String;
+      shadowSize: L.Point;
+      shadowAnchor: L.Point;
+      bgPos: L.Point;
+      className: String;
+
+      // data
+      iconObject: L.Icon;
+      parentContainer: L.Marker;
+  }
+
   class LIconDefault extends Vue {
     // props
     /**
