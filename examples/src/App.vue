@@ -27,10 +27,14 @@
           @click="currentView='custom-url-params'">Custom Url Params</a>
       </li>
       <li>
-        <a href="#" @click="currentView='custom-control'">Custom Leaflet Control</a>
+        <a
+          href="#"
+          @click="currentView='custom-control'">Custom Leaflet Control</a>
       </li>
       <li>
-        <a href="#" @click="currentView='set-bounds'">Set bounds</a>
+        <a
+          href="#"
+          @click="currentView='set-bounds'">Set bounds</a>
       </li>
       <li>
         <a

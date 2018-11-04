@@ -1,58 +1,108 @@
 <template>
-    <div>
-        <slot></slot>
-    </div>
+  <div>
+    <slot/>
+  </div>
 </template>
 
 <script>
+import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
-import Options from '../mixins/Options.js';
 
 export default {
   name: 'LIcon',
-  mixins: [Options],
   props: {
-    iconUrl: String,
-    iconRetinaUrl: String,
-    iconSize: [Object, Array],
-    iconAnchor: [Object, Array],
-    popupAnchor: [Object, Array],
-    tooltipAnchor: [Object, Array],
-    shadowUrl: String,
-    shadowRetinaUrl: String,
-    shadowSize: [Object, Array],
-    shadowAnchor: [Object, Array],
-    bgPos: [Object, Array],
-    className: String
-  },
-
-  data() {
-    return {
-      observer: null
+    iconUrl: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    iconRetinaUrl: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    iconSize: {
+      type: [Object, Array],
+      custom: true,
+      default: null
+    },
+    iconAnchor: {
+      type: [Object, Array],
+      custom: true,
+      default: null
+    },
+    popupAnchor: {
+      type: [Object, Array],
+      custom: true,
+      default: () => [0, 0]
+    },
+    tooltipAnchor: {
+      type: [Object, Array],
+      custom: true,
+      default: () => [0, 0]
+    },
+    shadowUrl: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    shadowRetinaUrl: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    shadowSize: {
+      type: [Object, Array],
+      custom: true,
+      default: null
+    },
+    shadowAnchor: {
+      type: [Object, Array],
+      custom: true,
+      default: null
+    },
+    bgPos: {
+      type: [Object, Array],
+      custom: true,
+      default: () => [0, 0]
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: ''
+    },
+    options: {
+      type: Object,
+      custom: true,
+      default: () => ({})
+    },
+    // TODO: Remove tempName here (and from the example)
+    tempName: {
+      type: String,
+      custom: true,
+      default: null
     }
   },
 
+  data () {
+    return {
+      observer: null
+    };
+  },
+
   mounted () {
-    const options = optionsMerger({
-      iconUrl: this.iconUrl,
-      iconRetinaUrl: this.iconRetinaUrl,
-      iconSize: this.iconSize,
-      iconAnchor: this.iconAnchor,
-      popupAnchor: this.popupAnchor,
-      tooltipAnchor: this.tooltipAnchor,
-      shadowUrl: this.shadowUrl,
-      shadowRetinaUrl: this.shadowRetinaUrl,
-      shadowSize: this.shadowSize,
-      shadowAnchor: this.shadowAnchor,
-      bgPos: this.bgPos,
-      className: this.className
-    }, this);
+    propsBinder(this, null, this.$options.props);
 
-    this.watchProps(options);
-    this.watchSlot(options);
+    this.observer = new MutationObserver(() => {
+      this.createIcon();
+    });
+    this.observer.observe(
+      this.$el,
+      { attributes: true, childList: true, characterData: true, subtree: true }
+    );
 
-    this.createIcon(options);
+    this.createIcon();
   },
 
   beforeDestroy () {
@@ -63,17 +113,29 @@ export default {
     this.observer.disconnect();
   },
 
-  render() {
-    return null;
-  },
-
   methods: {
-    createIcon(options) {
+    createIcon () {
+      console.log(Date.now() + ' - recreate ' + this.tempName);
+
       if (this.iconObject) {
         L.DomEvent.off(this.iconObject, this.$listeners);
       }
 
-      options.html = this.$el.innerHTML;
+      const options = optionsMerger({
+        iconUrl: this.iconUrl,
+        iconRetinaUrl: this.iconRetinaUrl,
+        iconSize: this.iconSize,
+        iconAnchor: this.iconAnchor,
+        popupAnchor: this.popupAnchor,
+        tooltipAnchor: this.tooltipAnchor,
+        shadowUrl: this.shadowUrl,
+        shadowRetinaUrl: this.shadowRetinaUrl,
+        shadowSize: this.shadowSize,
+        shadowAnchor: this.shadowAnchor,
+        bgPos: this.bgPos,
+        className: this.className,
+        html: this.$el.innerHTML || this.html
+      }, this);
 
       if (options.html) {
         this.iconObject = L.divIcon(options);
@@ -86,36 +148,46 @@ export default {
       this.parentContainer = findRealParent(this.$parent);
       this.parentContainer.mapObject.setIcon(this.iconObject);
     },
-
-    watchProps(options) {
-      const props = this.$options.props;
-      const keys = Object.keys(props);
-
-      for (let i = 0; i < keys.length; i++) {
-        this.$watch(keys[i], (newVal, oldVal) => {
-          //TODO: why is watch triggered on foreign props when changing icon size in my example?
-          if (JSON.stringify(newVal) === JSON.stringify(oldVal)) {
-            return;
-          }
-
-          options[keys[i]] = newVal;
-          this.createIcon(options);
-        }, {
-          deep: props[keys[i]].type === Object
-        });
-      }
+    setIconUrl () {
+      this.createIcon();
     },
-
-    watchSlot(options) {
-      this.observer = new MutationObserver(() => {
-        this.createIcon(options);
-      });
-
-      this.observer.observe(
-        this.$el,
-        { attributes: true, childList: true, characterData: true, subtree: true }
-      );
+    setIconRetinaUrl () {
+      this.createIcon();
+    },
+    setIconSize () {
+      this.createIcon();
+    },
+    setIconAnchor () {
+      this.createIcon();
+    },
+    setPopupAnchor () {
+      this.createIcon();
+    },
+    setTooltipAnchor () {
+      this.createIcon();
+    },
+    setShadowUrl () {
+      this.createIcon();
+    },
+    setShadowRetinaUrl () {
+      this.createIcon();
+    },
+    setShadowAnchor () {
+      this.createIcon();
+    },
+    setBgPos () {
+      this.createIcon();
+    },
+    setClassName () {
+      this.createIcon();
+    },
+    setHtml () {
+      this.createIcon();
     }
+  },
+
+  render () {
+    return null;
   }
 };
 </script>
