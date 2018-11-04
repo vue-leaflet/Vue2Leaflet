@@ -95,14 +95,14 @@ export default {
     propsBinder(this, null, this.$options.props);
 
     this.observer = new MutationObserver(() => {
-      this.createIcon();
+      this.createIcon('html slot');
     });
     this.observer.observe(
       this.$el,
       { attributes: true, childList: true, characterData: true, subtree: true }
     );
 
-    this.createIcon();
+    this.createIcon('initial');
   },
 
   beforeDestroy () {
@@ -114,8 +114,8 @@ export default {
   },
 
   methods: {
-    createIcon () {
-      console.log(Date.now() + ' - recreate ' + this.tempName);
+    createIcon (reason) {
+      console.log(Date.now() + ' - recreate ' + this.tempName + ' (' + reason + ')');
 
       if (this.iconObject) {
         L.DomEvent.off(this.iconObject, this.$listeners);
@@ -149,40 +149,40 @@ export default {
       this.parentContainer.mapObject.setIcon(this.iconObject);
     },
     setIconUrl () {
-      this.createIcon();
+      this.createIcon('iconUrl');
     },
     setIconRetinaUrl () {
-      this.createIcon();
+      this.createIcon('iconRetinaUrl');
     },
     setIconSize () {
-      this.createIcon();
+      this.createIcon('iconSize');
     },
     setIconAnchor () {
-      this.createIcon();
+      this.createIcon('iconAnchor');
     },
     setPopupAnchor () {
-      this.createIcon();
+      this.createIcon('popupAnchor');
     },
     setTooltipAnchor () {
-      this.createIcon();
+      this.createIcon('tooltipAnchor');
     },
     setShadowUrl () {
-      this.createIcon();
+      this.createIcon('shadowUrl');
     },
     setShadowRetinaUrl () {
-      this.createIcon();
+      this.createIcon('shadowRetinaUrl');
     },
     setShadowAnchor () {
-      this.createIcon();
+      this.createIcon('shadowAnchor');
     },
     setBgPos () {
-      this.createIcon();
+      this.createIcon('bgPos');
     },
     setClassName () {
-      this.createIcon();
+      this.createIcon('className');
     },
     setHtml () {
-      this.createIcon();
+      this.createIcon('html');
     }
   },
 
