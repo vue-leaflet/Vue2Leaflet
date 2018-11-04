@@ -15,6 +15,10 @@ export default {
   name: 'LMap',
   mixins: [Options],
   props: {
+    zoomControl: {
+      type: Boolean,
+      default: true
+    },
     center: {
       type: [Object, Array],
       custom: true,
@@ -90,7 +94,8 @@ export default {
       worldCopyJump: this.worldCopyJump,
       crs: this.crs,
       center: this.center,
-      zoom: this.zoom
+      zoom: this.zoom,
+      zoomControl: this.zoomControl
     }, this);
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
