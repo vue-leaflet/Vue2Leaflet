@@ -109,8 +109,6 @@ import WorldCopyJump from './components/WorldCopyJump';
 import LoadTest from './components/LoadTest';
 import Icon from './components/Icon';
 
-import '../node_modules/vue2-leaflet/dist/vue2-leaflet.js'
-
 export default {
   name: 'App',
   components: {
