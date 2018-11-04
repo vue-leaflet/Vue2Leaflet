@@ -1,5 +1,7 @@
 <template>
-    <div><slot></slot></div>
+    <div>
+        <slot></slot>
+    </div>
 </template>
 
 <script>
@@ -24,9 +26,13 @@ export default {
     bgPos: [Object, Array],
     className: String
   },
+
   data() {
-    return {observer: null}
+    return {
+      observer: null
+    }
   },
+
   mounted () {
     const options = optionsMerger({
       iconUrl: this.iconUrl,
@@ -43,34 +49,31 @@ export default {
       className: this.className
     }, this);
 
-    if (this.$slots.default) {
-      options.html = this.$el.innerHTML;
-    }
-
     this.watchProps(options);
     this.watchSlot(options);
 
     this.createIcon(options);
   },
-  beforeDestroy () {
-    if (this.iconObject) {
-      L.DomEvent.off(this.iconObject, this.$listeners);
-    }
 
+  beforeDestroy () {
     if (this.parentContainer.mapObject) {
       this.parentContainer.mapObject.setIcon(null);
     }
 
     this.observer.disconnect();
   },
+
   render() {
     return null;
   },
+
   methods: {
     createIcon(options) {
       if (this.iconObject) {
         L.DomEvent.off(this.iconObject, this.$listeners);
       }
+
+      options.html = this.$el.innerHTML;
 
       if (options.html) {
         this.iconObject = L.divIcon(options);
@@ -83,30 +86,28 @@ export default {
       this.parentContainer = findRealParent(this.$parent);
       this.parentContainer.mapObject.setIcon(this.iconObject);
     },
+
     watchProps(options) {
       const props = this.$options.props;
       const keys = Object.keys(props);
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        const deepValue = (props[key].type === Object);
 
-        this.$watch(key, (newVal, oldVal) => {
+      for (let i = 0; i < keys.length; i++) {
+        this.$watch(keys[i], (newVal, oldVal) => {
           //TODO: why is watch triggered on foreign props when changing icon size in my example?
           if (JSON.stringify(newVal) === JSON.stringify(oldVal)) {
             return;
           }
 
-          options[key] = newVal;
+          options[keys[i]] = newVal;
           this.createIcon(options);
         }, {
-          deep: deepValue
+          deep: props[keys[i]].type === Object
         });
       }
     },
+
     watchSlot(options) {
       this.observer = new MutationObserver(() => {
-        options.html = this.$el.innerHTML;
-
         this.createIcon(options);
       });
 

@@ -56,6 +56,7 @@ export default {
       center: L.latLng(47.413220, -1.219482),
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+
       icon: L.icon({
         iconUrl: 'static/images/baseball-marker.png',
         iconSize: [32, 37],
@@ -75,7 +76,8 @@ export default {
     background-color: aqua;
     padding: 10px;
     border: 1px solid #333;
-    border-radius: 0 5px 5px 5px;
+    border-radius: 0 20px 20px 20px;
+    box-shadow: 5px 3px 10px rgba(0,0,0,0.2);
     text-align: center;
     width: auto !important;
     height: auto !important;
