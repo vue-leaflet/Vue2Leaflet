@@ -716,6 +716,7 @@ declare module "vue2-leaflet" {
     LControlZoom,
     LFeatureGroup,
     LGeoJson,
+    LIcon,
     LIconDefault,
     LImageOverlay,
     LLayerGroup,
