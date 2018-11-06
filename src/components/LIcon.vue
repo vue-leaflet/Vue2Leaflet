@@ -127,7 +127,7 @@ export default {
 
     createIcon () {
       // If only html of a divIcon changed, we can just replace the DOM without the need of recreating the whole icon
-      if (this.htmlSwapNeeded && !this.recreationNeeded && this.iconObject) {
+      if (this.htmlSwapNeeded && !this.recreationNeeded && this.iconObject && this.parentContainer.mapObject.getElement()) {
         this.parentContainer.mapObject.getElement().innerHTML = this.$el.innerHTML;
 
         this.htmlSwapNeeded = false;
