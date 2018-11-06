@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LPopup, LIcon } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
 
 export default {
   name: 'Icon',
@@ -63,7 +63,6 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
-    LPopup,
     LIcon
   },
   data () {
