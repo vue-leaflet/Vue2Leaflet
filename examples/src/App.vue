@@ -27,10 +27,14 @@
           @click="currentView='custom-url-params'">Custom Url Params</a>
       </li>
       <li>
-        <a href="#" @click="currentView='custom-control'">Custom Leaflet Control</a>
+        <a
+          href="#"
+          @click="currentView='custom-control'">Custom Leaflet Control</a>
       </li>
       <li>
-        <a href="#" @click="currentView='set-bounds'">Set bounds</a>
+        <a
+          href="#"
+          @click="currentView='set-bounds'">Set bounds</a>
       </li>
       <li>
         <a
@@ -77,6 +81,11 @@
           href="#"
           @click="currentView='stress'">Load Test</a>
       </li>
+      <li>
+        <a
+          href="#"
+          @click="currentView='icon'">Custom Marker Icons</a>
+      </li>
     </ul>
     <component
       id="full_div"
@@ -102,6 +111,7 @@ import Simple from './components/Simple';
 import WMSLayers from './components/WMSLayers';
 import WorldCopyJump from './components/WorldCopyJump';
 import LoadTest from './components/LoadTest';
+import Icon from './components/Icon';
 
 export default {
   name: 'App',
@@ -121,7 +131,8 @@ export default {
     'geo-json2': GeoJSON2,
     'wms-layers': WMSLayers,
     'crs': CRSAndImageOverlay,
-    stress: LoadTest
+    stress: LoadTest,
+    Icon
   },
   data () {
     return {
