@@ -106,7 +106,7 @@ export default {
 
   beforeDestroy () {
     if (this.parentContainer.mapObject) {
-      this.parentContainer.mapObject.setIcon(null);
+      this.parentContainer.mapObject.setIcon(this.parentContainer.$props.icon);
     }
 
     this.observer.disconnect();
