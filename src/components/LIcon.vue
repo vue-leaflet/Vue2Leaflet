@@ -76,33 +76,32 @@ export default {
       type: Object,
       custom: true,
       default: () => ({})
-    },
-    // TODO: Remove tempName here (and from the example)
-    tempName: {
-      type: String,
-      custom: true,
-      default: null
     }
   },
 
   data () {
     return {
-      observer: null
+      parentContainer: null,
+      observer: null,
+      recreationNeeded: false,
+      swapHtmlNeeded: false
     };
   },
 
   mounted () {
+    this.parentContainer = findRealParent(this.$parent);
+
     propsBinder(this, null, this.$options.props);
 
     this.observer = new MutationObserver(() => {
-      this.createIcon('html slot');
+      this.scheduleHtmlSwap();
     });
     this.observer.observe(
       this.$el,
       { attributes: true, childList: true, characterData: true, subtree: true }
     );
 
-    this.createIcon('initial');
+    this.scheduleCreateIcon();
   },
 
   beforeDestroy () {
@@ -114,8 +113,30 @@ export default {
   },
 
   methods: {
-    createIcon (reason) {
-      console.log(Date.now() + ' - recreate ' + this.tempName + ' (' + reason + ')');
+    scheduleCreateIcon () {
+      this.recreationNeeded = true;
+
+      this.$nextTick(this.createIcon);
+    },
+
+    scheduleHtmlSwap () {
+      this.htmlSwapNeeded = true;
+
+      this.$nextTick(this.createIcon);
+    },
+
+    createIcon () {
+      // If only html of a divIcon changed, we can just replace the DOM without the need of recreating the whole icon
+      if (this.htmlSwapNeeded && !this.recreationNeeded && this.iconObject) {
+        this.parentContainer.mapObject.getElement().innerHTML = this.$el.innerHTML;
+
+        this.htmlSwapNeeded = false;
+        return;
+      }
+
+      if (!this.recreationNeeded) {
+        return;
+      }
 
       if (this.iconObject) {
         L.DomEvent.off(this.iconObject, this.$listeners);
@@ -145,44 +166,47 @@ export default {
 
       L.DomEvent.on(this.iconObject, this.$listeners);
 
-      this.parentContainer = findRealParent(this.$parent);
       this.parentContainer.mapObject.setIcon(this.iconObject);
+
+      this.recreationNeeded = false;
+      this.htmlSwapNeeded = false;
     },
+
     setIconUrl () {
-      this.createIcon('iconUrl');
+      this.scheduleCreateIcon();
     },
     setIconRetinaUrl () {
-      this.createIcon('iconRetinaUrl');
+      this.scheduleCreateIcon();
     },
     setIconSize () {
-      this.createIcon('iconSize');
+      this.scheduleCreateIcon();
     },
     setIconAnchor () {
-      this.createIcon('iconAnchor');
+      this.scheduleCreateIcon();
     },
     setPopupAnchor () {
-      this.createIcon('popupAnchor');
+      this.scheduleCreateIcon();
     },
     setTooltipAnchor () {
-      this.createIcon('tooltipAnchor');
+      this.scheduleCreateIcon();
     },
     setShadowUrl () {
-      this.createIcon('shadowUrl');
+      this.scheduleCreateIcon();
     },
     setShadowRetinaUrl () {
-      this.createIcon('shadowRetinaUrl');
+      this.scheduleCreateIcon();
     },
     setShadowAnchor () {
-      this.createIcon('shadowAnchor');
+      this.scheduleCreateIcon();
     },
     setBgPos () {
-      this.createIcon('bgPos');
+      this.scheduleCreateIcon();
     },
     setClassName () {
-      this.createIcon('className');
+      this.scheduleCreateIcon();
     },
     setHtml () {
-      this.createIcon('html');
+      this.scheduleCreateIcon();
     }
   },
 

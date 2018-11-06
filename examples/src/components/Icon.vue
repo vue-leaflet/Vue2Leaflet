@@ -35,17 +35,15 @@
       <!-- Create image icon (L.icon) from l-icon tag -->
       <l-marker :lat-lng="[47.413220, -1.199482]">
         <l-icon
-          :icon-size="[iconSize, iconSize*1.15]"
-          :icon-anchor="[iconSize/2, iconSize*1.15]"
-          temp-name="icon 1"
+          :icon-size="dynamicSize"
+          :icon-anchor="dynamicAnchor"
           icon-url="static/images/baseball-marker.png" />
       </l-marker>
 
       <!-- Create HTML icon (L.divIcon) by providing content inside the l-icon tag -->
       <l-marker :lat-lng="[47.413220, -1.189482]">
         <l-icon
-          :icon-anchor="[16, 37]"
-          temp-name="icon 2"
+          :icon-anchor="staticAnchor"
           class-name="someExtraClass">
           <div class="headline">{{ customText }}</div>
           <img src="static/images/layers.png">
@@ -80,9 +78,18 @@ export default {
         iconSize: [32, 37],
         iconAnchor: [16, 37]
       }),
+      staticAnchor: [16, 37],
       customText: 'Foobar',
       iconSize: 64
     };
+  },
+  computed: {
+    dynamicSize () {
+      return [this.iconSize, this.iconSize * 1.15];
+    },
+    dynamicAnchor () {
+      return [this.iconSize / 2, this.iconSize * 1.15];
+    }
   },
   methods: {
   }
