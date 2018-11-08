@@ -9,6 +9,7 @@
     <l-map
       :zoom="zoom"
       :center="center"
+      :options="mapOptions"
       style="height: 80%"
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate">
@@ -47,9 +48,12 @@ export default {
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       marker: L.latLng(47.413220, -1.219482),
-      currentZoom: 13,
+      currentZoom: 11.5,
       currentCenter: L.latLng(47.413220, -1.219482),
-      showParagraph: false
+      showParagraph: false,
+      mapOptions: {
+        zoomSnap: 0.5
+      }
     };
   },
   methods: {
