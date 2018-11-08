@@ -1,6 +1,7 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
+import debounce from '../utils/debounce.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Layer from '../mixins/Layer.js';
 import Options from '../mixins/Options.js';
@@ -48,6 +49,7 @@ export default {
     }, this);
     this.mapObject = L.marker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
+    this.mapObject.on('move', debounce(this.latLngSync, 100));
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
@@ -74,6 +76,9 @@ export default {
           this.mapObject.setLatLng(newLatLng);
         }
       }
+    },
+    latLngSync (event) {
+      this.$emit('update:latLng', event.latlng);
     }
   },
   render: function (h) {
