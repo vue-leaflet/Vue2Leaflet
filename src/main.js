@@ -1,3 +1,4 @@
+exports.L = require('leaflet');
 exports.findRealParent = require('./utils/findRealParent').default;
 exports.propsBinder = require('./utils/propsBinder').default;
 
