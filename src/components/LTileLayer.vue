@@ -1,9 +1,8 @@
 <template>
-  <div/>
+  <div />
 </template>
 
 <script>
-import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';

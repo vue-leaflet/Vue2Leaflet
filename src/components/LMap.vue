@@ -1,11 +1,10 @@
 <template>
   <div class="vue2leaflet-map">
-    <slot v-if="ready"/>
+    <slot v-if="ready" />
   </div>
 </template>
 
 <script>
-import L from 'leaflet';
 import propsBinder from '../utils/propsBinder.js';
 import debounce from '../utils/debounce.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
@@ -151,7 +150,7 @@ export default {
         newLng = newVal.lng;
       }
       let center = this.lastSetCenter == null ? this.mapObject.getCenter() : this.lastSetCenter;
-      center = {...center};
+      center = { ...center };
       if (center.lat !== newLat || center.lng !== newLng) {
         center.lat = newVal.lat;
         center.lng = newVal.lng;
