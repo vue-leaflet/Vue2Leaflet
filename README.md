@@ -68,6 +68,7 @@ Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would
 * [vue2-leaflet-editablecirclemarker](https://github.com/cualbondi/vue2-leaflet-editablecirclemarker) wrapper for [leaflet-editablecirclemarker](https://github.com/cualbondi/leaflet-editablecirclemarker)
 * [vue2-leaflet-hotline](https://github.com/ikmolbo/vue2-leaflet-hotline) wrapper for [hotline](https://github.com/iosphere/Leaflet.hotline)
 * [vue2-leaflet-movingmarker](https://github.com/LouisMazel/vue2-leaflet-movingmarker) wrapper for [Leaflet.Marker.SlideTo](https://gitlab.com/IvanSanchez/Leaflet.Marker.SlideTo)
+* [vue2-leaflet-path-transform](https://github.com/imudin/vue2-leaflet-path-transform) wrapper for [Leaflet.Path.Transform ](https://github.com/w8r/Leaflet.Path.Transform)
 
 If you have created a plugin and want it to be listed here, let me know :-).
 
