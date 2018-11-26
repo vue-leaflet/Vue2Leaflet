@@ -1,22 +1,23 @@
 {
   "name": "vue2-leaflet",
-  "version": "1.2.3",
+  "version": "1.2.3-next.1",
   "description": "Vue2 leaflet library",
   "author": "Mickael Bouchaud",
   "license": "MIT",
   "scripts": {
-    "build": "cd scripts && ./build.sh",
-    "size": "size-limit",
-    "lint": "eslint src --ext .js,.vue --ignore-path .gitignore",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --entry src/main.js",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
     "test:types": "tsc -p ./types/test/tsconfig.json"
   },
   "files": [
     "dist/",
     "types/*.d.ts"
   ],
-  "main": "dist/vue2-leaflet.min.js",
-  "module": "dist/vue2-leaflet.min.js",
-  "unpkg": "dist/vue2-leaflet.min.js",
+  "main": "dist/vue2-leaflet.umd.min.js",
+  "module": "dist/vue2-leaflet.common.js",
+  "unpkg": "dist/vue2-leaflet.umd.min.js",
   "typings": "types/index.d.ts",
   "repository": {
     "type": "git",
@@ -27,42 +28,40 @@
     "leaflet": "1.3.1"
   },
   "peerDependencies": {
-    "vue": "^2.5.3"
+    "vue": "^2.5.17"
   },
-  "size-limit": [
-    {
-      "path": "dist/vue2-leaflet.min.js",
-      "limit": "10 KB",
-      "webpack": false
-    }
-  ],
   "keywords": [
     "vue",
     "leaflet"
   ],
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-2": "^6.22.0",
-    "css-loader": "^0.28.11",
-    "eslint": "^5.1.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-vue": "^4.0.0",
-    "size-limit": "^0.17.1",
-    "typescript": "^2.7.1",
-    "vue-loader": "^14.2.3",
-    "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.5.17",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^2.1.5"
+    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-eslint": "^3.1.1",
+    "@vue/cli-plugin-unit-jest": "^3.1.1",
+    "@vue/cli-service": "^3.1.1",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "lint-staged": "^7.2.2",
+    "typescript": "^3.1.6",
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
   }
 }

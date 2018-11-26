@@ -23,10 +23,10 @@ module.exports = {
   // add your custom rules here
   rules: {
     camelcase: 0,
-    "indent": ["error", 2],
-    "arrow-parens": 0,
-    "one-var": 0,
-    semi: ["warn", "always"],
-    "eol-last": ["error", "always"]
+    'indent': ['error', 2],
+    'arrow-parens': 0,
+    'one-var': 0,
+    semi: ['warn', 'always'],
+    'eol-last': ['error', 'always']
   }
-}
+};
