@@ -18,8 +18,8 @@ export default {
     this.parentContainer.mapObject.bindTooltip(this.mapObject);
   },
   beforeDestroy () {
-    if (this.parentContainer.mapObject && this.parentContainer.mapObject.getTooltip()) {
-      this.parentContainer.mapObject.unbindTooltip();
+    if (this.parentContainer) {
+      this.parentContainer.unbindTooltip();
     }
   }
 };

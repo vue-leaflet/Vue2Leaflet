@@ -31,6 +31,8 @@ export default {
     };
   },
   beforeDestroy () {
+    this.unbindPopup();
+    this.unbindTooltip();
     this.parentContainer.removeLayer(this);
   },
   methods: {
@@ -60,6 +62,18 @@ export default {
         } else {
           this.parentContainer.removeLayer(this);
         }
+      }
+    },
+    unbindTooltip () {
+      const tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup () {
+      const popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindTooltip();
       }
     }
   }
