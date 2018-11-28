@@ -17,6 +17,10 @@ export default {
     latLng: {
       type: [Object, Array],
       default: () => []
+    },
+    pane: {
+      type: String,
+      default: 'markerPane'
     }
   },
   data () {
