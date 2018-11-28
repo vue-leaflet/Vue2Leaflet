@@ -1,2 +1,6 @@
 * [l-circle](/components/l-circle/)
 * [l-circle-marker](/components/l-circle-marker/)
+* [l-control](/components/l-control/)
+* [l-control-attribution](/components/l-control-attribution/)
+* [l-control-layers](/components/l-control-layers/)
+* [l-control-scale](/components/l-control-scale/)
