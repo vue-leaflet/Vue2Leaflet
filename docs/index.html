@@ -8,20 +8,39 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="stylesheet" href="//unpkg.com/vuep/dist/vuep.css">
+  <link rel="stylesheet" href="//unpkg.com/leaflet/dist/leaflet.css">
 </head>
 <body>
+    <nav>
+      <a href="#/">Intro</a>
+      <a href="#/components/">Components</a>
+      <a href="#/mixins/">Mixins</a>
+    </nav>
+
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: 'Vue2Leaflet',
       repo: 'git://github.com/KoRiGaN/Vue2Leaflet',
       loadSidebar: true,
+      maxLevel: 2,
       subMaxLevel: 0,
-      loadNavbar: true
+      loadNavbar: false,
+      tabs: {
+        persist    : true,      // default
+        sync       : true,      // default
+        theme      : 'classic', // default
+        tabComments: true,      // default
+        tabHeadings: true       // default
+      }
     }
   </script>
-  <script src="//unpkg.com/vue/dist/vue.min.js"></script>
-  <script src="//unpkg.com/vuep/dist/vuep.min.js"></script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+  <script src="//unpkg.com/docsify-tabs@1"></script>
+  <script src="//unpkg.com/vue/dist/vue"></script>
+  <script src="//unpkg.com/vuep"></script>
+  <script src="//unpkg.com/leaflet@1.3.1"></script>
+  <script src="//unpkg.com/vue2-leaflet/dist/vue2-leaflet.min.js"></script>
 </body>
 </html>
