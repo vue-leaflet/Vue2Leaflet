@@ -4,3 +4,7 @@
 * [l-control-attribution](/components/l-control-attribution/)
 * [l-control-layers](/components/l-control-layers/)
 * [l-control-scale](/components/l-control-scale/)
+* [l-control-zoom](/components/l-control-zoom/)
+* [l-feature-group](/components/l-feature-group/)
+* [l-geo-json](/components/l-geo-json/)
+* [l-icon](/components/l-icon/)

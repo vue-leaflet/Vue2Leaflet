@@ -1,6 +1,6 @@
 # l-control-scale
 
-Add any custom component as a leaflet control-scale
+Display and customize the control-scale of the map
 
 ## Playground
 Any of the props of `l-control-scale` or the classes that it extends can be used

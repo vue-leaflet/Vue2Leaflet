@@ -37,7 +37,7 @@ export default {
         center: [47.413220, -1.0482],
         radius: 4500,
         color: 'red'
-      },
+      }
     };
   }
 }
