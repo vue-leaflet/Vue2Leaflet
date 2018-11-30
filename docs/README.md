@@ -1,4 +1,4 @@
-# Vue2Leaflet
+# Vue2Leaflet {docsify-ignore}
 
 <img align="right" height="178" title="Vue2Leaflet Limit logo" src="./logo.png">
 
