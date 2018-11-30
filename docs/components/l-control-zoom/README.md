@@ -63,6 +63,10 @@ export default {
 
 `l-control-zoom` does not expose any public method on his own, see inherited ones.
 
+## Events
+
+`l-control-zoom` does emit any event
+
 ## Extends
 
 <!-- tabs:start -->

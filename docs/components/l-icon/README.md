@@ -145,3 +145,7 @@ export default {
 ## Methods
 
 `l-icon` does not expose any public method on his own, see inherited ones.
+
+## Events
+
+`l-icon` does emit any event

@@ -61,6 +61,10 @@ export default {
 
 `l-control-scale` does not expose any public method on his own, see inherited ones.
 
+## Events
+
+`l-control-scale` does emit any event
+
 ## Extends
 
 <!-- tabs:start -->

@@ -63,6 +63,11 @@ export default {
 
 `l-circle-marker` does not expose any public method on his own, see inherited methods.
 
+## Events
+
+`l-circle-marker` does emit any event
+
+
 ## Extends
 
 <!-- tabs:start -->

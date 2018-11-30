@@ -58,6 +58,10 @@ export default {
 
 `l-image-overlay` does not expose any public method on his own, see inherited ones.
 
+## Events
+
+`l-image-overlay` does emit any event
+
 ## Extends
 
 <!-- tabs:start -->

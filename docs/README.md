@@ -23,38 +23,14 @@ Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework 
 
 ![Image of Map](./vue2leaflet-example.png)
 
-## Documentation
-[Go here](https://korigan.github.io/Vue2Leaflet/) to check out live examples and docs.
-
-If you want to hack around, here is a [JS Fiddle](https://jsfiddle.net/Boumi/k04zpLx9/) to get started
-### :warning: Breaking changes from v0.x.x to v1.x.x :warning:
-A new major release v1.x.x is available and come with some breaking changes.
-#### :exclamation: Components names
-As some component where conflicting with reserved name like Circle with SVG Circle, from v1.x.x all components are prefixed with L.
-
-For example Marker component became LMarker (l-marker in template).
-#### :exclamation: Events names
-Event handling have been simplified and are now mapped directly to Leaflet event.
-
-For example Marker move event was 'l-move' and became simply 'move'.
-#### :sparkles: Leaflet Controls
-v1.0.0 introduces Leaflet Controls you can now use them using LControlAttribution, LControlLayers, LControlScale and LControlZoom.
-
-When adding LControlAttribution or LControlZoom to your template, remember to desactivate the default one by using LMap options:
-``` javascript
-{
-  zoomControl: false,
-  attributionControl: false
-}
-```
-Otherwise you will end up with two zoom/attribution control.
 ## How to install
 ``` bash
 $ npm install vue2-leaflet --save
 ```
 For more detailed informations you can follow the [Quick Start Guide](https://korigan.github.io/Vue2Leaflet/)
+
 ## Leaflet Plugins
-Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would recommand to look at the awesome work made by the community in the list below.
+Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would recommend to look at the awesome work made by the community in the list below.
 
 #### Vue2Leafet plugins:
 * [vue2-leaflet-markercluster](https://github.com/jperelli/vue2-leaflet-markercluster) wrapper for [MarkerCluster](https://github.com/Leaflet/Leaflet.markercluster)
@@ -118,7 +94,39 @@ For example if you want to listen to Vue2Leaflet.LMarker move event.
 ``` html
 <l-marker :lat-lng="[47.413220, -1.219482]" @move="doSomething"></l-marker>
 ```
-## Run code locally for contributors
+
+
+## Breaking changes from v0.x.x to v1.x.x
+
+A new major release v1.x.x is available and come with some breaking changes.
+
+### Components names
+
+As some component where conflicting with reserved name like Circle with SVG Circle, from v1.x.x all components are prefixed with L.
+For example Marker component became LMarker (l-marker in template).
+
+### Events names
+
+Event handling have been simplified and are now mapped directly to Leaflet event.
+For example Marker move event was 'l-move' and became simply 'move'.
+
+### Leaflet Controls
+
+v1.0.0 introduces Leaflet Controls you can now use them using LControlAttribution, LControlLayers, LControlScale and LControlZoom.
+
+When adding LControlAttribution or LControlZoom to your template, remember to desactivate the default one by using LMap options:
+
+``` js
+{
+  zoomControl: false,
+  attributionControl: false
+}
+```
+
+Otherwise you will end up with two zoom/attribution control.
+
+
+## Contribute
 ``` bash
 # clone the repository
 $ git clone git@github.com:KoRiGaN/Vue2Leaflet.git
@@ -139,6 +147,7 @@ Go to <http://localhost:8080/> to see running examples
 
 NOTE: If you make changes to the library you should run 'npm run build' again in the root folder.
 The dev server should detect modification and reload the examples
+
 ## Authors
 
 Mickaël Bouchaud
@@ -152,3 +161,4 @@ Thanks goes to these [wonderful people](https://github.com/KoRiGaN/Vue2Leaflet/c
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+

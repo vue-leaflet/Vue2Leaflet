@@ -87,6 +87,10 @@ export default {
 
 `l-control-layers` does not expose any public method on his own, see inherited ones.
 
+## Events
+
+`l-control-layers` does emit any event
+
 ## Extends
 
 <!-- tabs:start -->

@@ -59,6 +59,10 @@ export default {
 
 `l-circle` does not expose any public method on his own, see inherited methods.
 
+## Events
+
+`l-circle` does emit any event
+
 ## Extends
 
 <!-- tabs:start -->

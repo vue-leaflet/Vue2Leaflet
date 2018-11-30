@@ -71,6 +71,10 @@ export default {
 * **getGeoJSONData** - call leaflet [toGeoJSON](https://leafletjs.com/reference-1.3.0.html#geojson-togeojson) function
 * **getBounds** - call leaflet [getElement](https://leafletjs.com/reference-1.3.0.html#geojson-getbounds) function
 
+## Events
+
+`l-geo-json` does emit any event
+
 ## Extends
 
 <!-- tabs:start -->

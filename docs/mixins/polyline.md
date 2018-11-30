@@ -14,4 +14,9 @@
   }
 }
 ```
+
+### Methods
+
+* **addLatLng** - call leaflet [addLatLng](https://leafletjs.com/reference-1.3.0.html#polyline-addlatlng) function
+
 !> Extends [Path](#Path)
