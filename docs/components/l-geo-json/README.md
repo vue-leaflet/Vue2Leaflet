@@ -39,12 +39,6 @@ export default {
     axios.get('https://rawgit.com/gregoiredavid/france-geojson/master/regions/pays-de-la-loire/communes-pays-de-la-loire.geojson').then((response) => {
       this.geojson = response.data;
     })
-  },
-  methods: {
-    openPopUp (latLng, caller) {
-      this.caller = caller;
-      this.$refs.features.mapObject.openPopup(latLng);
-    }
   }
 }
 </script>

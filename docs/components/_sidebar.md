@@ -8,3 +8,6 @@
 * [l-feature-group](/components/l-feature-group/)
 * [l-geo-json](/components/l-geo-json/)
 * [l-icon](/components/l-icon/)
+* [l-icon-default](/components/l-icon-default/)
+* [l-image-overlay](/components/l-image-overlay/)
+* [l-layer-group](/components/l-layer-group/)

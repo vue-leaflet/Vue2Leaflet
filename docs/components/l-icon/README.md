@@ -4,7 +4,7 @@ Easy and reactive way to configure the icon of a marker
 
 
 ## Playground
-Any of the props of `l-geo-json` or the classes that it extends can be used
+Any of the props of `l-icon` or the classes that it extends can be used
 
 <vuep template="#control-zoom-example"></vuep>
 
@@ -13,7 +13,25 @@ Any of the props of `l-geo-json` or the classes that it extends can be used
 <template>
   <l-map style="height: 100%; width: 100%" :zoom="zoom" :center="center" :options="{zoomControl: false}">
     <l-tile-layer :url="url"></l-tile-layer>
-   <l-geo-json
+    <l-marker :lat-lng="[47.413220, -1.219482]" > </l-marker>
+      <l-marker
+        :lat-lng="[47.413220, -1.209482]"
+        :icon="icon" > </l-marker>
+      <l-marker :lat-lng="[47.413220, -1.199482]">
+        <l-icon
+          :icon-size="dynamicSize"
+          :icon-anchor="dynamicAnchor"
+          icon-url="static/images/baseball-marker.png" >
+        </l-icon>
+      </l-marker>
+      <l-marker :lat-lng="[47.413220, -1.189482]">
+        <l-icon
+          :icon-anchor="staticAnchor"
+          class-name="someExtraClass">
+          <div class="headline">{{ customText }}</div>
+          <img src="static/images/layers.png">
+        </l-icon>
+      </l-marker>
   </l-map>
 </template>
 
@@ -21,27 +39,31 @@ Any of the props of `l-geo-json` or the classes that it extends can be used
 
 Vue.component('l-map', Vue2Leaflet.LMap)
 Vue.component('l-tile-layer', Vue2Leaflet.LTileLayer)
-Vue.component('l-geo-json', Vue2Leaflet.LGeoJson)
+Vue.component('l-marker', Vue2Leaflet.LMarker)
+Vue.component('l-icon', Vue2Leaflet.LIcon)
 
 export default {
   data () {
     return {
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      zoom: 8,
-      center: [47.313220, -1.319482],
-      markerLatLng: [47.313220, -1.319482],
-      caller: null,
-      circle: {
-        center: [47.413220, -1.0482],
-        radius: 4500,
-        color: 'red'
-      }
+      zoom: 13,
+      center: [47.413220, -1.219482],
+      icon: L.icon({
+        iconUrl: 'static/images/baseball-marker.png',
+        iconSize: [32, 37],
+        iconAnchor: [16, 37]
+      }),
+      staticAnchor: [16, 37],
+      customText: 'Foobar',
+      iconSize: 64
     };
   },
-  methods: {
-    openPopUp (latLng, caller) {
-      this.caller = caller;
-      this.$refs.features.mapObject.openPopup(latLng);
+  computed: {
+    dynamicSize () {
+      return [this.iconSize, this.iconSize * 1.15];
+    },
+    dynamicAnchor () {
+      return [this.iconSize / 2, this.iconSize * 1.15];
     }
   }
 }
@@ -122,19 +144,4 @@ export default {
 
 ## Methods
 
-* **getGeoJSONData** - call leaflet [toGeoJSON](https://leafletjs.com/reference-1.3.0.html#geojson-togeojson) function
-* **getBounds** - call leaflet [getElement](https://leafletjs.com/reference-1.3.0.html#geojson-getbounds) function
-
-## Extends
-
-<!-- tabs:start -->
-
-## ** LayerGroup **
-
-[circle.md](../../mixins/layer-group.md ':include')
-
-## ** Layer **
-
-[path.md](../../mixins/layer.md ':include')
-
-<!-- tabs:end -->
+`l-icon` does not expose any public method on his own, see inherited ones.
