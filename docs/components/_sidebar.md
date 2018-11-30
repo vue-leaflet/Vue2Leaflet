@@ -11,3 +11,4 @@
 * [l-icon-default](/components/l-icon-default/)
 * [l-image-overlay](/components/l-image-overlay/)
 * [l-layer-group](/components/l-layer-group/)
+* [l-map](/components/l-map/)
