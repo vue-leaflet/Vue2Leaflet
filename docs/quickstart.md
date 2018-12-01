@@ -137,3 +137,26 @@ And then by remembering that `leaflet` cannot be server-side-rendered and so usi
   <l-map></l-map>
 </no-ssr>
 ```
+
+## Accessing `leaflet` api
+
+Leaflet inner methods and properties can always be accessed by the `mapObject` attribute, to do so a simple ref is necessary:
+
+```html
+<template>
+  <l-map ref="myMap">
+  </l-map>
+</template>
+
+<script>
+  export default {
+    mounted () {
+      this.$nextTick(() => {
+        this.$refs.myMap.mapObject.ANY_LEAFLET_MAP_METHOD();
+      })
+    }
+  }
+</script>
+```
+
+!> `mapObject` is not going to be available immediately that is why  `$nextTick` method is used.

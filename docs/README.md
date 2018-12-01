@@ -20,7 +20,6 @@
 
 Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework that wraps [Leaflet](http://leafletjs.com/) making it easy to create reactive maps.
 
-
 ![Image of Map](./vue2leaflet-example.png)
 
 ## How to install
