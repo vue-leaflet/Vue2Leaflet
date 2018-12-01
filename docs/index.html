@@ -1,1 +1,72 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Vue-Leaflet-Demo</title></head><body><div id=main></div><script type=text/javascript src=/Vue2Leaflet/static/js/app.98583bb68e52270429ad.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue2-leaflet - Vue2 leaflet library</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Vue2 leaflet library">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//unpkg.com/vuep/dist/vuep.css">
+  <link rel="stylesheet" href="//unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+    <nav>
+      <a href="#/">Intro</a>
+      <a href="#/quickstart.md">Quick Start</a>
+      <a href="#/components/">Components</a>
+      <a href="#/mixins/">Mixins</a>
+      <a href="#/plugins/">Plugins</a>
+      <a href="#/faq/">F.A.Q.</a>
+      <a href="/examples/">Examples</a>
+    </nav>
+
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: 'Vue2Leaflet',
+      repo: 'https://github.com/KoRiGaN/Vue2Leaflet',
+      loadSidebar: true,
+      autoHeader: true,
+      maxLevel: 2,
+      subMaxLevel: 0,
+      loadNavbar: false,
+      tabs: {
+        persist    : true,      // default
+        sync       : true,      // default
+        theme      : 'classic', // default
+        tabComments: true,      // default
+        tabHeadings: true       // default
+      }
+    }
+  </script>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+  <script src="//unpkg.com/docsify-tabs@1"></script>
+  <script src="//unpkg.com/vue/dist/vue"></script>
+  <script src="//unpkg.com/vuep"></script>
+  <script src="//unpkg.com/leaflet@1.3.1"></script>
+  <script src="//unpkg.com/vue2-leaflet/dist/vue2-leaflet.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <style type="text/css">
+
+
+    .markdown-section {
+      max-width: 1280px;
+    }
+    .vuep{
+      height: inherit !important;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .vuep-editor,
+    .vuep-preview{
+      width:100%;
+    }
+
+    .vuep-preview {
+      height: 600px;
+    }
+    </style>
+</body>
+</html>

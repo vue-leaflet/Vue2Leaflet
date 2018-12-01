@@ -9,7 +9,8 @@
     "build": "vue-cli-service build --entry src/main.js",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "test:types": "tsc -p ./types/test/tsconfig.json"
+    "test:types": "tsc -p ./types/test/tsconfig.json",
+    "docs:serve": "docsify serve ./docs -p 4000 -o"
   },
   "files": [
     "dist/",

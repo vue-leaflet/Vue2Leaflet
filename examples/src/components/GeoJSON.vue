@@ -3,37 +3,42 @@
     <div style="height: 10%; overflow: auto;">
       <h3>GeoJSON</h3>
       <span
-      v-if="loading"
+        v-if="loading"
       >Loading...</span>
       <label for="checkbox">GeoJSON Visibility</label>
       <input
         id="checkbox"
         v-model="show"
-        type="checkbox">
+        type="checkbox"
+      >
       <label for="checkboxTooltip">Enable tooltip</label>
       <input
         id="checkboxTooltip"
         v-model="enableTooltip"
-        type="checkbox">
+        type="checkbox"
+      >
       <input
+        v-model="fillColor"
         type="color"
-        v-model="fillColor" />
+      >
       <br>
     </div>
     <l-map
       :zoom="zoom"
       :center="center"
-      style="height: 90%">
+      style="height: 90%"
+    >
       <l-tile-layer
         :url="url"
-        :attribution="attribution"/>
+        :attribution="attribution"
+      />
       <l-geo-json
         v-if="show"
         :geojson="geojson"
         :options="options"
-        :optionsStyle="styleFunction"
-        />
-      <l-marker :lat-lng="marker"/>
+        :options-style="styleFunction"
+      />
+      <l-marker :lat-lng="marker" />
     </l-map>
   </div>
 </template>
@@ -69,10 +74,10 @@ export default {
     options () {
       return {
         onEachFeature: this.onEachFeatureFunction
-      }
+      };
     },
     styleFunction () {
-      const fillColor = this.fillColor // important! need touch fillColor in computed for re-calculate when change fillColor
+      const fillColor = this.fillColor; // important! need touch fillColor in computed for re-calculate when change fillColor
       return () => {
         return {
           weight: 2,
@@ -80,23 +85,23 @@ export default {
           opacity: 1,
           fillColor: fillColor,
           fillOpacity: 1
-        }
-      }
+        };
+      };
     },
     onEachFeatureFunction () {
       if (!this.enableTooltip) {
-        return () => {}
+        return () => {};
       }
       return (feature, layer) => {
-        layer.bindTooltip('<div>code:'+feature.properties.code+'</div><div>nom: '+feature.properties.nom+'</div>', { permanent: false, sticky: true })
-      }
+        layer.bindTooltip('<div>code:' + feature.properties.code + '</div><div>nom: ' + feature.properties.nom + '</div>', { permanent: false, sticky: true });
+      };
     }
   },
   created () {
-    this.loading = true
+    this.loading = true;
     axios.get('https://rawgit.com/gregoiredavid/france-geojson/master/regions/pays-de-la-loire/communes-pays-de-la-loire.geojson').then(response => {
       this.geojson = response.data;
-      this.loading = false
+      this.loading = false;
     });
   }
 };
