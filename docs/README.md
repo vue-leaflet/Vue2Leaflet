@@ -59,15 +59,18 @@ When adding LControlAttribution or LControlZoom to your template, remember to de
 
 Otherwise you will end up with two zoom/attribution control.
 
-
 ## Contribute
+
+Contribution are welcome and we are always happy to review any PR received.
+
 ``` bash
 # clone the repository
 $ git clone git@github.com:KoRiGaN/Vue2Leaflet.git
 $ cd Vue2Leaflet
 # install dependencies and build vue2-leaflet
 $ npm install
-$ npm run build
+$ vue-cli-service build --entry src/main.js --mode production --dest dist --target lib --watch
+# Or use vue-cli ui to do so with a graphical interface
 # create a symlink for vue2-leaflet
 $ npm link
 $ cd examples
@@ -77,10 +80,8 @@ $ npm link vue2-leaflet
 # serve with hot reload at localhost:8080
 $ npm run dev
 ```
-Go to <http://localhost:8080/> to see running examples
 
-NOTE: If you make changes to the library you should run 'npm run build' again in the root folder.
-The dev server should detect modification and reload the examples
+Go to <http://localhost:8080/> to see running examples, updating the lib code will auto-reload the examples as well.
 
 ## Authors
 
