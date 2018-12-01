@@ -28,7 +28,7 @@ Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework 
 ``` bash
 $ npm install vue2-leaflet --save
 ```
-For more detailed informations you can follow the [Quick Start Guide](https://korigan.github.io/Vue2Leaflet/)
+For more detailed informations you can follow the [Quick Start Guide](quickstart.md)
 
 
 ## Breaking changes from v0.x.x to v1.x.x
