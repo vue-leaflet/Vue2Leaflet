@@ -50,3 +50,7 @@ wrapper for [Leaflet.Marker.SlideTo](https://gitlab.com/IvanSanchez/Leaflet.Mark
 ## [vue2-leaflet-path-transform](https://github.com/imudin/vue2-leaflet-path-transform)
 
 wrapper for [Leaflet.Path.Transform](https://github.com/w8r/Leaflet.Path.Transform)
+
+## [vue2-leaflet-gpx](https://github.com/tdcook/vue2-leaflet-gpx)
+
+wrapper for [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx)
