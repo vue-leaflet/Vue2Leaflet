@@ -7,6 +7,7 @@
 * [l-control-zoom](/components/l-control-zoom/)
 * [l-feature-group](/components/l-feature-group/)
 * [l-geo-json](/components/l-geo-json/)
+* [l-grid-layer](/components/l-grid-layer/)
 * [l-icon](/components/l-icon/)
 * [l-icon-default](/components/l-icon-default/)
 * [l-image-overlay](/components/l-image-overlay/)

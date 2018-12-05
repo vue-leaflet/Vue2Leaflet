@@ -23,6 +23,7 @@ It's possible to bind to them by simply writing `@leafletEventName`
 
 ## Tiles
 
+* [l-grid-layer](/components/l-grid-layer/)
 * [l-tile-layer](/components/l-tile-layer/)
 * [l-wms-tile-layer](/components/l-wms-tile-layer/)
 

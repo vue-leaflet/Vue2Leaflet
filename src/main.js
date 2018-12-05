@@ -11,6 +11,7 @@ import LControlScale from './components/LControlScale';
 import LControlZoom from './components/LControlZoom';
 import LFeatureGroup from './components/LFeatureGroup';
 import LGeoJson from './components/LGeoJson';
+import LGridLayer from './components/LGridLayer';
 import LIcon from './components/LIcon';
 import LIconDefault from './components/LIconDefault';
 import LImageOverlay from './components/LImageOverlay';
@@ -38,6 +39,7 @@ export {
   LControlZoom,
   LFeatureGroup,
   LGeoJson,
+  LGridLayer,
   LIcon,
   LIconDefault,
   LImageOverlay,
