@@ -3,6 +3,10 @@ module.exports = {
     extract: false
   },
   configureWebpack: config => {
+    if (config.output.libraryTarget === 'umd') {
+      config.output.umdNamedDefine = true;
+      config.output.library = 'Vue2Leaflet';
+    }
     config.externals = [{
       'leaflet': {
         umd: 'L',
