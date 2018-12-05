@@ -1,8 +1,10 @@
 # l-grid-layer
 
+ <img src="https://img.shields.io/badge/Version-beta-red.svg" alt="Version">
+
 Creates a map layer where each tile is an instanciated Vue component.
 Each tile component is given `coords` props by `l-grid-layer` to indicate
-the zoom level and position of the tile 
+the zoom level and position of the tile
 (see https://leafletjs.com/examples/extending/extending-2-layers.html#lgridlayer-and-dom-elements).
 
 ## Playground
@@ -15,7 +17,7 @@ Any of the props of `l-grid-layer` or the classes that it extends can be used
 <template>
   <l-map style="height: 100%; width: 100%" :zoom="zoom" :center="center" :options="{zoomControl: false}">
     <l-tile-layer :url="url"></l-tile-layer>
-    <l-grid-layer :tileComponent="tileComponent"></l-grid-layer>
+    <l-grid-layer :tile-component="tileComponent"></l-grid-layer>
   </l-map>
 </template>
 
