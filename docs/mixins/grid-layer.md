@@ -14,6 +14,14 @@
   zIndex: {
     type: Number,
     default: 1
+  },
+  tileSize: {
+    type: Number,
+    default: 256
+  },
+  noWrap: {
+    type: Boolean,
+    default: false
   }
 }
 ```
