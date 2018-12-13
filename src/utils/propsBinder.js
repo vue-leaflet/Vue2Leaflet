@@ -7,7 +7,7 @@ export default (vueElement, leafletElement, props, options) => {
   for (var i = 0; i < keys.length; i++) {
     const key = keys[i];
     const setMethodName = 'set' + capitalizeFirstLetter(key);
-    if (!vueElement[setMethodName] || !leafletElement[setMethodName]) {
+    if (!vueElement[setMethodName] && !leafletElement[setMethodName]) {
       return;
     }
     const deepValue = (props[key].type === Object) ||
