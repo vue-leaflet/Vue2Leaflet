@@ -7,10 +7,7 @@ export default (vueElement, leafletElement, props, options) => {
   for (var i = 0; i < keys.length; i++) {
     const key = keys[i];
     const setMethodName = 'set' + capitalizeFirstLetter(key);
-    if (!vueElement[setMethodName]) {
-      if (props[key].custom) {
-        console.warn('custom prop without matching setter: ', props[key]);
-      }
+    if (!vueElement[setMethodName] || !leafletElement[setMethodName]) {
       return;
     }
     const deepValue = (props[key].type === Object) ||
@@ -29,7 +26,6 @@ export default (vueElement, leafletElement, props, options) => {
         deep: deepValue
       });
     } else {
-      // To Deprecate
       vueElement.$watch(key, (newVal, oldVal) => {
         leafletElement[setMethodName](newVal);
       }, {
