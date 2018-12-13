@@ -73,7 +73,7 @@ export default {
     unbindPopup () {
       const popup = this.mapObject ? this.mapObject.getPopup() : null;
       if (popup) {
-        popup.unbindTooltip();
+        popup.unbindPopup();
       }
     }
   }
