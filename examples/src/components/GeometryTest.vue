@@ -3,7 +3,7 @@
     <div style="height: 10%; overflow: auto;">
       <h3>Geometry</h3>
       <button
-      @click="clickBtn"
+        @click="clickBtn"
       >Change rectange style</button>
     </div>
     <l-map
@@ -69,7 +69,7 @@ export default {
   methods: {
     clickBtn () {
       this.rectangle.style.weight++;
-      this.rectangle.style.color = this.rectangle.style.weight % 2 === 0 ? 'blue' : 'green'
+      this.rectangle.style.color = this.rectangle.style.weight % 2 === 0 ? 'blue' : 'green';
     }
   }
 };

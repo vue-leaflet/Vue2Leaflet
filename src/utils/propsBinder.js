@@ -3,14 +3,12 @@ function capitalizeFirstLetter (string) {
 }
 
 export default (vueElement, leafletElement, props, options) => {
-  const keys = Object.keys(props);
-  for (var i = 0; i < keys.length; i++) {
-    const key = keys[i];
+  for (const key in props) {
     const setMethodName = 'set' + capitalizeFirstLetter(key);
     const deepValue = (props[key].type === Object) ||
       (props[key].type === Array) ||
       (Array.isArray(props[key].type));
-    if (props[key].custom) {
+    if (props[key].custom && vueElement[setMethodName]) {
       vueElement.$watch(key, (newVal, oldVal) => {
         vueElement[setMethodName](newVal, oldVal);
       }, {
@@ -22,7 +20,7 @@ export default (vueElement, leafletElement, props, options) => {
       }, {
         deep: deepValue
       });
-    } else {
+    } else if (leafletElement[setMethodName]) {
       vueElement.$watch(key, (newVal, oldVal) => {
         leafletElement[setMethodName](newVal);
       }, {

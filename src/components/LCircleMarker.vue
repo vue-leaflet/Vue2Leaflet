@@ -1,6 +1,6 @@
 <template>
   <div style="display: none;">
-    <slot v-if="ready"/>
+    <slot v-if="ready" />
   </div>
 </template>
 
@@ -17,6 +17,10 @@ export default {
     latLng: {
       type: [Object, Array],
       default: () => []
+    },
+    pane: {
+      type: String,
+      default: 'markerPane'
     }
   },
   data () {

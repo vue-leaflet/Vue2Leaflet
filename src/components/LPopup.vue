@@ -27,8 +27,8 @@ export default {
     this.parentContainer.mapObject.bindPopup(this.mapObject);
   },
   beforeDestroy () {
-    if (this.parentContainer.mapObject && this.parentContainer.mapObject.getPopup()) {
-      this.parentContainer.mapObject.unbindPopup();
+    if (this.parentContainer) {
+      this.parentContainer.unbindPopup();
     }
   }
 };

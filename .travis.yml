@@ -1,23 +1,16 @@
-sudo:
-  false
-
-language:
-  node_js
-
+sudo: false
+language: node_js
 node_js:
-  - 9.10.0
-
+- 9.10.0
 install:
-  - npm install
-
+- npm install
 script:
-  - npm run build
-
+- npm run build
 deploy:
   provider: npm
   email: mickael.bouchaud@gmail.com
   api_key:
-    secure: AcplfZOpVeCf65qq2ANEHi0iRMbOrToPLqkfHuyBC8ckRFOdSKzyouoJdTPyDM2zYdQ8AsQn/MOxn9Tt+1voGLyqaKQ6Rex2L2x+VwKaqqbjTApUKf96py2xd4w2pDiGJdmi908MTgfYSDP5K34LirJudTt8P/IXg1O3JB5Cgrv/XRWCulcSrZGCjG61ipv4HV4AdAcZ5OjZOECNxHxnQOojA7ZO0/bWYS2Jvl2ZUTgz+xtprusbZjJ49HkiGr79QbF9PLIlRH0Yq3Sm9AJCBimM8KiCF9hm9KujVC0UjSUA2nHozpZpdRJ9RJNtm9GF3ntRTniSnzZBFpbsahHlquDlmIGzbZGaof0iP603Oj63J8Qmp8UuY9HRGvIzrrmNfW8Z8T1K3+/M84ZCpj6zrAD3yptM/fXGN43v/N2rzUrS+U5I9d71drz84hdfvK1MdK//VBVulNH1bvGWsjJ4ktsRi7M7tHpb+qW/ehxFU5/LeebN3TViBXWWEsUhDO+ul1EdJWkDYRpY2XAYoegysx1hnyoeK5cYIM7wOS+b4RXGRSSCTcISWqsgFqYGeHcnvs6nBXf4okVd1PpWId+jsdPl+XEhv5QvAVTpaAEi11qSIqpZymTFawu81zb6CuaTQNmdwZe6pNTYpp2Sf0YsODP/twg8YV+selVVGBxPPGY=
+    secure: DM+zIkucK7dGA7PKAw9M2P0FyjnmMp87wngJ88rzSrh+BECX3vKzx4Cb8n9Eay7oMQfWQD98zESqiCkEkWPIMZGQeRQIIrCRt6dJnVJrH3aeNyDeWOamvylYuNdp1QWjd5Qx/t/gmF4Zh02DPp/4J8DyztDyQU6EHmbv4L3OiXboUAdWYEjWkjwv1Srhh+YlIt358aSydgiQp7MocdJg1scWSoYs98V7VIMITcwpWD8tFowB0DJYvZq3zRRWjykgdO5vD0hEte4Bv5zwDc3YqFp+1X0YzZ9gLYp0+jj8N9Ta69g1bjt82iN1ZiXquqIpDqF3T6FsR+WT+fJE1tQkhV5QnGQBjn746MAV8OSfb/yfoxV6jlGPOOpO/uaN8NziWG0bhLP4jYEB3hfQ8c7y6MPRYIl9UJugqh9AYK4pdZ9qSNg32+FyR0AyIyiZ9AvWb/3sycSimf5K5ixO53SOJA675Chd2xK8kmqGtZlV2+ORMwDdP6nSuBDAq8tOJYkZ4eFE/RCko1gfNmPTGGdN3W8vR1R1W5i6q89MUa6N78Dg9LXf6jg4y+C/wy0dWnPHAqKV5mER9+kS+oLmlS6U0oWUlVzgAy8PoB+CEet3GDnHCYE5hLkewFtTF1bcuKfxMW9mhtH/eWvR94jlbR3/ENBXu34ASBHryjtGl7Sfj9g=
   on:
     tags: true
     repo: KoRiGaN/Vue2Leaflet

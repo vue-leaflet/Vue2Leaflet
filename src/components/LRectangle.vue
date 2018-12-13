@@ -1,6 +1,6 @@
 <template>
   <div style="display: none;">
-    <slot v-if="ready"/>
+    <slot v-if="ready" />
   </div>
 </template>
 
