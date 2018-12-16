@@ -452,24 +452,27 @@ declare module "vue2-leaflet" {
       oldVal?: object | Function | null
     ): void;
   }
+  class LGridLayer extends Mixins(GridLayer, Options) {
+    tileComponent: any;
+  }
   class LIcon extends Mixins(Options) {
-      // props
-      iconUrl: String;
-      iconRetinaUrl: String;
-      iconSize: L.Point;
-      iconAnchor: L.Point;
-      popupAnchor: L.Point;
-      tooltipAnchor: L.Point;
-      shadowUrl: String;
-      shadowRetinaUrl: String;
-      shadowSize: L.Point;
-      shadowAnchor: L.Point;
-      bgPos: L.Point;
-      className: String;
+    // props
+    iconUrl: String;
+    iconRetinaUrl: String;
+    iconSize: L.Point;
+    iconAnchor: L.Point;
+    popupAnchor: L.Point;
+    tooltipAnchor: L.Point;
+    shadowUrl: String;
+    shadowRetinaUrl: String;
+    shadowSize: L.Point;
+    shadowAnchor: L.Point;
+    bgPos: L.Point;
+    className: String;
 
-      // data
-      iconObject: L.Icon;
-      parentContainer: L.Marker;
+    // data
+    iconObject: L.Icon;
+    parentContainer: L.Marker;
   }
 
   class LIconDefault extends Vue {
@@ -705,6 +708,7 @@ declare module "vue2-leaflet" {
   ): void;
 
   export {
+    L,
     findRealParent,
     propsBinder,
     LCircle,
@@ -716,6 +720,7 @@ declare module "vue2-leaflet" {
     LControlZoom,
     LFeatureGroup,
     LGeoJson,
+    LGridLayer,
     LIcon,
     LIconDefault,
     LImageOverlay,
