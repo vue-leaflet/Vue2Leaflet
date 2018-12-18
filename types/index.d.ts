@@ -1,4 +1,4 @@
-// Type definitions for vue2-leaflet v1.1.0
+// Type definitions for vue2-leaflet v1.2.3
 // Project: https://github.com/KoRiGaN/Vue2Leaflet/
 // Definitions by: Matthew Meehan <https://github.com/HIMISOCOOL>
 
@@ -102,13 +102,13 @@ declare module "vue2-leaflet" {
      */
     className: string;
     // methods
-    setOpacity(opacity: number): any;
-    setUrl(url: string): any;
-    setBounds(bounds: any): any;
-    getBounds(): any;
-    getElement(): any;
-    bringToFront(): any;
-    bringToBack(): any;
+    setOpacity(opacity: number): this;
+    setUrl(url: string): this;
+    setBounds(bounds: L.Bounds): this;
+    getBounds(): L.Bounds;
+    getElement(): HTMLElement;
+    bringToFront(): this;
+    bringToBack(): this;
   }
   class InteractiveLayer extends Vue {
     /**
@@ -445,31 +445,34 @@ declare module "vue2-leaflet" {
     // methods
     setGeojson(newVal: any): void;
     getGeoJSONData(): any;
-    getBounds(): any;
+    getBounds(): L.Bounds;
     setOptions(newVal: any, oldVal?: any): void;
     setOptionsStyle(
       newVal: object | Function | null,
       oldVal?: object | Function | null
     ): void;
   }
+  class LGridLayer extends Mixins(GridLayer, Options) {
+    tileComponent: any;
+  }
   class LIcon extends Mixins(Options) {
-      // props
-      iconUrl: String;
-      iconRetinaUrl: String;
-      iconSize: L.Point;
-      iconAnchor: L.Point;
-      popupAnchor: L.Point;
-      tooltipAnchor: L.Point;
-      shadowUrl: String;
-      shadowRetinaUrl: String;
-      shadowSize: L.Point;
-      shadowAnchor: L.Point;
-      bgPos: L.Point;
-      className: String;
+    // props
+    iconUrl: String;
+    iconRetinaUrl: String;
+    iconSize: L.Point;
+    iconAnchor: L.Point;
+    popupAnchor: L.Point;
+    tooltipAnchor: L.Point;
+    shadowUrl: String;
+    shadowRetinaUrl: String;
+    shadowSize: L.Point;
+    shadowAnchor: L.Point;
+    bgPos: L.Point;
+    className: String;
 
-      // data
-      iconObject: L.Icon;
-      parentContainer: L.Marker;
+    // data
+    iconObject: L.Icon;
+    parentContainer: L.Marker;
   }
 
   class LIconDefault extends Vue {
@@ -500,11 +503,11 @@ declare module "vue2-leaflet" {
     /**
      * @default null
      */
-    bounds: any[] | {} | null;
+    bounds: L.BoundsExpression | null;
     /**
      * @default null
      */
-    maxBounds: any[] | {} | null;
+    maxBounds: L.BoundsExpression | null;
     /**
      * @default 0
      */
@@ -520,15 +523,15 @@ declare module "vue2-leaflet" {
     /**
      * @default null
      */
-    paddingBottomRight: any[] | null;
+    paddingBottomRight: L.PointTuple | null;
     /**
      * @default null
      */
-    paddingTopLeft: any[] | null;
+    paddingTopLeft: L.PointTuple | null;
     /**
      * @default null
      */
-    padding: any[] | null;
+    padding: L.PointTuple | null;
     /**
      * @default false
      */
@@ -548,8 +551,8 @@ declare module "vue2-leaflet" {
     // data
     ready: boolean;
     lastSetCenter: L.LatLng | null;
-    lastSetBounds: any | null;
-    lastSetZoom: any | null;
+    lastSetBounds: L.Bounds | null;
+    lastSetZoom: number | null;
     layerControl?: any;
     layersToAdd: any[];
     mapObject: L.Map;
@@ -569,13 +572,13 @@ declare module "vue2-leaflet" {
       oldVal?: L.LatLngBoundsExpression
     ): void;
 
-    setPaddingBottomRight(newVal: any[], oldVal?: any[]): void;
+    setPaddingBottomRight(newVal: L.PointExpression, oldVal?: L.PointExpression): void;
 
-    setPaddingTopLeft(newVal: any[], oldVal?: any[]): void;
+    setPaddingTopLeft(newVal: L.PointExpression, oldVal?: L.PointExpression): void;
 
-    setPadding(newVal: any[], oldVal?: any[]): void;
+    setPadding(newVal: L.PointExpression, oldVal?: L.PointExpression): void;
 
-    fitBounds(bounds: any): void;
+    fitBounds(bounds: L.BoundsExpression): void;
 
     moveEndHandler(): void;
   }
@@ -655,7 +658,7 @@ declare module "vue2-leaflet" {
     /**
      * @default []
      */
-    bounds: any[];
+    bounds: L.BoundsLiteral;
 
     // data
     ready: boolean;
@@ -705,6 +708,7 @@ declare module "vue2-leaflet" {
   ): void;
 
   export {
+    L,
     findRealParent,
     propsBinder,
     LCircle,
@@ -716,6 +720,7 @@ declare module "vue2-leaflet" {
     LControlZoom,
     LFeatureGroup,
     LGeoJson,
+    LGridLayer,
     LIcon,
     LIconDefault,
     LImageOverlay,
