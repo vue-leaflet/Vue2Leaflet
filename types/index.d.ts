@@ -13,6 +13,7 @@
 declare module "vue2-leaflet" {
   import Vue from "vue";
   import { PropsDefinition } from "vue/types/options";
+  import * as L from 'leaflet';
   // borrowed from https://github.com/vuejs/vue-class-component
   type VueClass<V> = {
     new (...args: any[]): V & Vue;
