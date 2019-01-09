@@ -68,6 +68,38 @@ export default {
     maxBoundsViscosity: {
       type: Number,
       default: null
+    },
+    inertia: {
+      type: Boolean,
+      default: true
+    },
+    inertiaDeceleration: {
+      type: Number,
+      default: 3000
+    },
+    inertiaMaxSpeed: {
+      type: Number,
+      default: Infinity
+    },
+    easeLinearity: {
+      type: Number,
+      default: 0.2
+    },
+    zoomAnimation: {
+      type: Boolean,
+      default: true
+    },
+    zoomAnimationThreshold: {
+      type: Number,
+      default: 4
+    },
+    fadeAnimation: {
+      type: Boolean,
+      default: true
+    },
+    markerZoomAnimation: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -89,7 +121,11 @@ export default {
       worldCopyJump: this.worldCopyJump,
       crs: this.crs,
       center: this.center,
-      zoom: this.zoom
+      zoom: this.zoom,
+      zoomAnimation: this.zoomAnimation,
+      zoomAnimationThreshold: this.zoomAnimationThreshold,
+      fadeAnimation: this.fadeAnimation,
+      markerZoomAnimation: this.markerZoomAnimation
     }, this);
     this.mapObject = L.map(this.$el, options);
     this.setBounds(this.bounds);
