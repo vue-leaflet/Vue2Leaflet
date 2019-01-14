@@ -119,6 +119,38 @@ export default {
     maxBoundsViscosity: {
       type: Number,
       default: null
+    },
+    inertia: {
+      type: Boolean,
+      default: null
+    },
+    inertiaDeceleration: {
+      type: Number,
+      default: null
+    },
+    inertiaMaxSpeed: {
+      type: Number,
+      default: null
+    },
+    easeLinearity: {
+      type: Number,
+      default: null
+    },
+    zoomAnimation: {
+      type: Boolean,
+      default: null
+    },
+    zoomAnimationThreshold: {
+      type: Number,
+      default: null
+    },
+    fadeAnimation: {
+      type: Boolean,
+      default: null
+    },
+    markerZoomAnimation: {
+      type: Boolean,
+      default: null
     }
 }
 ```
