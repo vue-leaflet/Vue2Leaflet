@@ -71,35 +71,35 @@ export default {
     },
     inertia: {
       type: Boolean,
-      default: true
+      default: null
     },
     inertiaDeceleration: {
       type: Number,
-      default: 3000
+      default: null
     },
     inertiaMaxSpeed: {
       type: Number,
-      default: Infinity
+      default: null
     },
     easeLinearity: {
       type: Number,
-      default: 0.2
+      default: null
     },
     zoomAnimation: {
       type: Boolean,
-      default: true
+      default: null
     },
     zoomAnimationThreshold: {
       type: Number,
-      default: 4
+      default: null
     },
     fadeAnimation: {
       type: Boolean,
-      default: true
+      default: null
     },
     markerZoomAnimation: {
       type: Boolean,
-      default: true
+      default: null
     }
   },
   data () {
