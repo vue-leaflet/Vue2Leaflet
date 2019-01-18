@@ -1,6 +1,6 @@
 {
   "name": "vue2-leaflet",
-  "version": "1.2.3-beta.9",
+  "version": "2.0.0-beta.0",
   "description": "Vue2 leaflet library",
   "author": "Mickael Bouchaud",
   "license": "MIT",
@@ -24,12 +24,10 @@
     "type": "git",
     "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
   },
-  "dependencies": {
-    "@types/leaflet": "^1.2.11",
-    "leaflet": "1.3.1"
-  },
   "peerDependencies": {
-    "vue": "^2.5.17"
+    "@types/leaflet": "^1.2.11",
+    "vue": "^2.5.17",
+    "leaflet": "^1.3.4"
   },
   "keywords": [
     "vue",
