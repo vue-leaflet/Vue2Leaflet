@@ -71,9 +71,13 @@ export default {
 
 ## Events
 
-* **update:latLng** - emitted when the marker is dragged - `update:latLng` is emitted together with an instance of  `L.LatLng` value representing the  current `latLng` of the marker [L.latLng](https://leafletjs.com/reference-1.3.0.html#latlng)
+* **update:latLng** - emitted when the marker is dragged - `update:latLng` is emitted together with an instance of `L.LatLng` value representing the current `latLng` of the marker [L.latLng](https://leafletjs.com/reference-1.3.0.html#latlng)
 
 !>  **update:latlng** support `sync` modifier
+
+* **moveStart** - emitted once when the marker is about to be dragged or moved. Emits an instance of `L.LatLng` value representing the original `latLng` of the marker [L.latLng](https://leafletjs.com/reference-1.3.0.html#latlng)
+
+* **moveEnd** - emitted once after the marker stops being dragged or moved. Emits an instance of `L.LatLng` value representing the last `latLng` of the marker [L.latLng](https://leafletjs.com/reference-1.3.0.html#latlng)
 
 ## Extends
 

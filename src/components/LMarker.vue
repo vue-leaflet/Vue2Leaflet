@@ -50,6 +50,8 @@ export default {
     this.mapObject = L.marker(this.latLng, options);
     L.DomEvent.on(this.mapObject, this.$listeners);
     this.mapObject.on('move', debounce(this.latLngSync, 100));
+    this.mapObject.on('movestart', e => this.$emit('moveStart', e.sourceTarget._latlng));
+    this.mapObject.on('moveend', e => this.$emit('moveEnd', e.target._latlng));
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
