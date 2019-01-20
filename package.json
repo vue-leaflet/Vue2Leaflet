@@ -52,7 +52,8 @@
       "git add"
     ]
   },
-  "main": "dist/vue2-leaflet.umd.min.js",
+  "main": "dist/vue2-leaflet.umd.js",
+  "unpkg": "dist/vue2-leaflet.umd.min.js",
   "module": "dist/vue2-leaflet.common.js",
   "peerDependencies": {
     "@types/leaflet": "^1.2.11",
