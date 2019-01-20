@@ -64,6 +64,5 @@
     "type": "git",
     "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
   },
-  "typings": "types/index.d.ts",
-  "unpkg": "dist/vue2-leaflet.umd.min.js"
+  "typings": "types/index.d.ts"
 }
