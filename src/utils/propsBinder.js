@@ -1,3 +1,5 @@
+import { setOptions } from 'leaflet';
+
 function capitalizeFirstLetter (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -16,7 +18,7 @@ export default (vueElement, leafletElement, props, options) => {
       });
     } else if (setMethodName === 'setOptions') {
       vueElement.$watch(key, (newVal, oldVal) => {
-        L.setOptions(leafletElement, newVal);
+        setOptions(leafletElement, newVal);
       }, {
         deep: deepValue
       });

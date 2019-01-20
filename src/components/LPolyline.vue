@@ -8,11 +8,12 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
-import Polyline from '../mixins/Polyline.js';
+import PolylineMixin from '../mixins/Polyline.js';
+import { polyline, DomEvent } from 'leaflet';
 
 export default {
   name: 'LPolyline',
-  mixins: [Polyline],
+  mixins: [PolylineMixin],
   props: {
     latLngs: {
       type: Array,
@@ -26,8 +27,8 @@ export default {
   },
   mounted () {
     const options = optionsMerger(this.polyLineOptions, this);
-    this.mapObject = L.polyline(this.latLngs, options);
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    this.mapObject = polyline(this.latLngs, options);
+    DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);

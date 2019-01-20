@@ -4,14 +4,15 @@ import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Popper from '../mixins/Popper.js';
 import Options from '../mixins/Options.js';
+import { tooltip, DomEvent } from 'leaflet';
 
 export default {
   name: 'LTooltip',
   mixins: [Popper, Options],
   mounted () {
     const options = optionsMerger(this.popperOptions, this);
-    this.mapObject = L.tooltip(options);
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    this.mapObject = tooltip(options);
+    DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.setContent(this.content || this.$el);
     this.parentContainer = findRealParent(this.$parent);

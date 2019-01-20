@@ -7,20 +7,21 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
-import LayerGroup from '../mixins/LayerGroup.js';
+import LayerGroupMixin from '../mixins/LayerGroup.js';
+import { layerGroup, DomEvent } from 'leaflet';
 
 export default {
   name: 'LLayerGroup',
-  mixins: [LayerGroup],
+  mixins: [LayerGroupMixin],
   data () {
     return {
       ready: false
     };
   },
   mounted () {
-    this.mapObject = L.layerGroup();
+    this.mapObject = layerGroup();
     propsBinder(this, this.mapObject, this.$options.props);
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    DomEvent.on(this.mapObject, this.$listeners);
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
     if (this.visible) {

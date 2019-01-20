@@ -8,14 +8,15 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
-import Control from '../mixins/Control.js';
+import ControlMixin from '../mixins/Control.js';
 import Options from '../mixins/Options.js';
+import { Control } from 'leaflet';
 
 export default {
   name: 'LControl',
-  mixins: [Control, Options],
+  mixins: [ControlMixin, Options],
   mounted () {
-    const LControl = L.Control.extend({
+    const LControl = Control.extend({
       element: undefined,
       onAdd () {
         return this.element;

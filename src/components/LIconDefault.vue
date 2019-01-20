@@ -1,5 +1,6 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
+import { Icon } from 'leaflet';
 
 export default {
   name: 'LIconDefault',
@@ -11,12 +12,12 @@ export default {
     }
   },
   mounted () {
-    L.Icon.Default.imagePath = this.imagePath;
+    Icon.Default.imagePath = this.imagePath;
     propsBinder(this, this.mapObject, this.$options.props);
   },
   methods: {
     setImagePath (newVal, oldVal) {
-      L.Icon.Default.imagePath = newVal;
+      Icon.Default.imagePath = newVal;
     }
   },
   render () {

@@ -6,33 +6,39 @@
     <l-map
       :zoom="zoom"
       :center="center"
-      style="height: 90%">
+      style="height: 90%"
+    >
       <l-tile-layer
         :url="url"
-        :attribution="attribution"/>
+        :attribution="attribution"
+      />
       <l-geo-json
         :geojson="bus.geojson"
-        :options="bus.options"/>
+        :options="bus.options"
+      />
       <l-geo-json
         :geojson="bicycleAndCampus.geojson"
-        :options="bicycleAndCampus.options"/>
+        :options="bicycleAndCampus.options"
+      />
       <l-geo-json
         :geojson="coors.geojson"
-        :options="coors.options"/>
+        :options="coors.options"
+      />
     </l-map>
-    <div id="bla"/>
+    <div id="bla" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
+import { icon } from 'leaflet';
 import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet';
 
 import PopupContent from './GeoJson2Popup';
 
-import { default as data } from '../assets/geojson/sample-geojson.js';
+import data from '../assets/geojson/sample-geojson.js';
 
-var baseballIcon = L.icon({
+var baseballIcon = icon({
   iconUrl: 'static/images/baseball-marker.png',
   iconSize: [32, 37],
   iconAnchor: [16, 37],
@@ -76,7 +82,7 @@ export default {
         geojson: data.coorsField,
         options: {
           pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, {icon: baseballIcon});
+            return L.marker(latlng, { icon: baseballIcon });
           },
           onEachFeature: onEachFeature
         }

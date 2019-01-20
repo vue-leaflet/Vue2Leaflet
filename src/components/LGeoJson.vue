@@ -2,8 +2,8 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
-import L from 'leaflet';
 import LayerGroup from '../mixins/LayerGroup.js';
+import { geoJSON, DomEvent, setOptions } from 'leaflet';
 
 export default {
   name: 'LGeoJson',
@@ -34,8 +34,8 @@ export default {
     }
   },
   mounted () {
-    this.mapObject = L.geoJSON(this.geojson, this.mergedOptions);
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    this.mapObject = geoJSON(this.geojson, this.mergedOptions);
+    DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent, true);
     this.parentContainer.addLayer(this, !this.visible);
@@ -56,7 +56,7 @@ export default {
     },
     setOptions (newVal, oldVal) {
       this.mapObject.clearLayers();
-      L.setOptions(this.mapObject, this.mergedOptions);
+      setOptions(this.mapObject, this.mergedOptions);
       this.mapObject.addData(this.geojson);
     },
     setOptionsStyle (newVal, oldVal) {

@@ -9,6 +9,7 @@ import propsBinder from '../utils/propsBinder.js';
 import debounce from '../utils/debounce.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Options from '../mixins/Options.js';
+import { CRS, DomEvent, map, LatLngBounds, latLngBounds } from 'leaflet';
 
 export default {
   name: 'LMap',
@@ -63,7 +64,7 @@ export default {
     crs: {
       type: Object,
       custom: true,
-      default: () => L.CRS.EPSG3857
+      default: () => CRS.EPSG3857
     },
     maxBoundsViscosity: {
       type: Number,
@@ -91,10 +92,10 @@ export default {
       center: this.center,
       zoom: this.zoom
     }, this);
-    this.mapObject = L.map(this.$el, options);
+    this.mapObject = map(this.$el, options);
     this.setBounds(this.bounds);
     this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
     this.$emit('leaflet:load');
@@ -162,7 +163,7 @@ export default {
       if (!newVal) {
         return;
       }
-      if (newVal instanceof L.LatLngBounds) {
+      if (newVal instanceof LatLngBounds) {
         if (!newVal.isValid()) {
           return;
         }
@@ -200,7 +201,7 @@ export default {
       let northEastNewLat = 0;
       let northEastNewLng = 0;
       if (Array.isArray(newVal)) {
-        newVal = L.latLngBounds(newVal);
+        newVal = latLngBounds(newVal);
       }
       southWestNewLat = newVal._southWest.lat;
       southWestNewLng = newVal._southWest.lng;
