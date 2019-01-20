@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --entry src/main.js",
+    "prepare": "vue-cli-service build --entry src/main.js --mode production --dest dist --target lib",
     "lint": "vue-cli-service lint",
     "docs:serve": "docsify serve ./docs -p 4000 -o",
     "test:types": "tsc -p ./types/test/tsconfig.json",
