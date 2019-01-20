@@ -7,7 +7,8 @@ module.exports = {
       config.output.umdNamedDefine = true;
       config.output.library = 'Vue2Leaflet';
     }
-    config.externals = [{
+    config.externals = {
+      ...config.externals,
       'leaflet': {
         umd: 'L',
         root: 'L',
@@ -24,6 +25,6 @@ module.exports = {
         commonjs: 'vue',
         amd: 'vue'
       }
-    }];
+    };
   }
 };
