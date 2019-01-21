@@ -22,13 +22,13 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0-0",
+    "eslint": "^5.12.1",
+    "eslint-plugin-vue": "^5.1.0",
     "lint-staged": "^7.2.2",
     "typescript": "^3.1.6",
-    "vue": "^2.5.17",
+    "vue": "^2.5.22",
     "vue-cli-plugin-webpack-bundle-analyzer": "^1.2.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.22"
   },
   "files": [
     "dist/",
@@ -55,6 +55,7 @@
   "main": "dist/vue2-leaflet.umd.js",
   "unpkg": "dist/vue2-leaflet.umd.min.js",
   "module": "dist/vue2-leaflet.common.js",
+  "sideEffects": false,
   "peerDependencies": {
     "@types/leaflet": "^1.2.11",
     "vue": "^2.5.17",
