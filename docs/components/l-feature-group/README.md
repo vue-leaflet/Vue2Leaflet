@@ -63,11 +63,21 @@ export default {
 
 ## Props
 
-`l-feature-group` does not expose any public props on his own, see inherited ones.
+`l-feature-group` does not expose any public props on his own.
+
+[filename](../props-notice.md ':include')
 
 ## Methods
 
-`l-feature-group` does not expose any public method on his own, see inherited ones.
+`l-feature-group` does not expose any public method on his own.
+
+[filename](../methods-notice.md ':include')
+
+## Events
+
+`l-feature-group` does not emit any event on his own.
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 

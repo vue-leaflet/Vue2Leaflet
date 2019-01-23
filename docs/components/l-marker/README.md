@@ -65,15 +65,21 @@ export default {
 }
 ```
 
+[filename](../props-notice.md ':include')
+
 ## Methods
 
-`l-marker` does not expose any public method on his own, see inherited ones.
+`l-marker` does not expose any public method on his own.
+
+[filename](../methods-notice.md ':include')
 
 ## Events
 
 * **update:latLng** - emitted when the marker is dragged - `update:latLng` is emitted together with an instance of  `L.LatLng` value representing the  current `latLng` of the marker [L.latLng](https://leafletjs.com/reference-1.3.0.html#latlng)
 
 !>  **update:latlng** support `sync` modifier
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 

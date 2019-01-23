@@ -66,14 +66,20 @@ export default {
 }
 ```
 
+[filename](../props-notice.md ':include')
+
 ## Methods
 
 * **getGeoJSONData** - call leaflet [toGeoJSON](https://leafletjs.com/reference-1.3.0.html#geojson-togeojson) function
 * **getBounds** - call leaflet [getElement](https://leafletjs.com/reference-1.3.0.html#geojson-getbounds) function
 
+[filename](../methods-notice.md ':include')
+
 ## Events
 
-`l-geo-json` does emit any event
+`l-geo-json` does not emit any event on his own.
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 

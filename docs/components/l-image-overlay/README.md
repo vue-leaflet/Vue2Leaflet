@@ -52,15 +52,21 @@ export default {
 
 ## Props
 
-`l-image-overlay` does not expose any props on his own, see inherited ones.
+`l-image-overlay` does not expose any props on his own.
+
+[filename](../props-notice.md ':include')
 
 ## Methods
 
-`l-image-overlay` does not expose any public method on his own, see inherited ones.
+`l-image-overlay` does not expose any public method on his own.
+
+[filename](../methods-notice.md ':include')
 
 ## Events
 
-`l-image-overlay` does emit any event
+`l-image-overlay` does not emit any event on his own.
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 
