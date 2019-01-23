@@ -41,15 +41,21 @@ export default {
 
 ## Props
 
-`l-tooltip` does not expose any public method on his own, see inherited ones.
+`l-tooltip` does not expose any public method on his own.
+
+[filename](../props-notice.md ':include')
 
 ## Methods
 
-`l-tooltip` does not expose any public method on his own, see inherited ones.
+`l-tooltip` does not expose any public method on his own.
+
+[filename](../methods-notice.md ':include')
 
 ## Events
 
-`l-tooltip` does emit any event
+`l-tooltip` does not emit any event on his own.
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 
