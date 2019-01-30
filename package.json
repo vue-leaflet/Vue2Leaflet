@@ -5,7 +5,7 @@
   "author": "Mickael Bouchaud",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "BUILD=production bili",
+    "build": "bili",
     "prepare": "npm run build",
     "lint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
     "docs:serve": "docsify serve ./docs -p 4000 -o"
@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.3.1",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-eslint": "^8.2.6",
+    "bili": "^4.1.0",
     "eslint": "^5.12.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.16.0",
