@@ -57,7 +57,7 @@
   },
   "main": "dist/vue2-leaflet.js",
   "unpkg": "dist/vue2-leaflet.min.js",
-  "module": "dist/vue2-leaflet.es.js",
+  "module": "dist/vue2-leaflet.esm.mjs",
   "sideEffects": false,
   "peerDependencies": {
     "@types/leaflet": "^1.2.11",

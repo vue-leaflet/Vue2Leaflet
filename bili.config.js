@@ -2,22 +2,22 @@ module.exports = {
   env: {
     NODE_ENV: 'production'
   },
-  format: [
-    'es',
-    'umd',
-    'umd-min'
-  ],
-  global: {
+  output: {
+    extractCSS: false,
+    fileName: 'vue2-leaflet.[format][min][ext]',
+    format: [
+      'esm',
+      'cjs',
+      'umd',
+      'umd-min'
+    ],
+    moduleName: 'Vue2Leaflet'
+  },
+  globals: {
     'vue': 'Vue',
     'leaflet': 'leaflet'
   },
-  jsx: 'vue',
-  moduleName: 'Vue2Leaflet',
-  plugin: [
-    'vue'
-  ],
-  vue: {},
-  postcss: {
-    extract: false
+  plugins: {
+    'vue': {}
   }
 };
