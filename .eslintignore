@@ -1,1 +1,5 @@
-/docs
+.DS_Store
+node_modules
+/dist
+docs/
+examples/
