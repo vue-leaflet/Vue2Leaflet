@@ -9,7 +9,7 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Polygon from '../mixins/Polygon.js';
-import { rectangle, DomEvent } from 'leaflet';
+import { rectangle, DomEvent } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LRectangle',

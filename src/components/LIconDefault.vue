@@ -1,6 +1,6 @@
 <script>
 import propsBinder from '../utils/propsBinder.js';
-import { Icon } from 'leaflet';
+import { Icon } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LIconDefault',

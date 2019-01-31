@@ -1,4 +1,4 @@
-import { setOptions } from 'leaflet';
+import { setOptions } from 'leaflet/src/Leaflet.js';
 
 function capitalizeFirstLetter (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);

@@ -10,7 +10,7 @@ import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import ControlMixin from '../mixins/Control.js';
 import Options from '../mixins/Options.js';
-import { Control } from 'leaflet';
+import { Control } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LControl',

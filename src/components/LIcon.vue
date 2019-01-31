@@ -8,7 +8,7 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
-import { DomEvent, divIcon, icon } from 'leaflet';
+import { DomEvent, divIcon, icon } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LIcon',

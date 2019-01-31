@@ -9,7 +9,7 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import CircleMixin from '../mixins/Circle.js';
-import { circle, DomEvent } from 'leaflet';
+import { circle, DomEvent } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LCircle',

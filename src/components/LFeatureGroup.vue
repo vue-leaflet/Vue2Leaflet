@@ -8,7 +8,7 @@
 import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import LayerGroupMixin from '../mixins/LayerGroup.js';
-import { featureGroup, DomEvent } from 'leaflet';
+import { featureGroup, DomEvent } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LFeatureGroup',

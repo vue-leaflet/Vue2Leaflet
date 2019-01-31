@@ -9,7 +9,7 @@ import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import GridLayerMixin from '../mixins/GridLayer.js';
 import Options from '../mixins/Options.js';
-import { GridLayer, DomEvent, DomUtil } from 'leaflet';
+import { GridLayer, DomEvent, DomUtil } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LGridLayer',

@@ -8,7 +8,7 @@ import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import TileLayerMixin from '../mixins/TileLayer.js';
 import Options from '../mixins/Options.js';
-import { tileLayer, DomEvent } from 'leaflet';
+import { tileLayer, DomEvent } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LTileLayer',

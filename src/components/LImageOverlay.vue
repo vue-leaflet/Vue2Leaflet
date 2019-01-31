@@ -3,7 +3,7 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import ImageOverlayMixin from '../mixins/ImageOverlay.js';
-import { imageOverlay, DomEvent } from 'leaflet';
+import { imageOverlay, DomEvent } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LImageOverlay',

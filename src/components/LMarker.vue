@@ -5,7 +5,7 @@ import debounce from '../utils/debounce.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Layer from '../mixins/Layer.js';
 import Options from '../mixins/Options.js';
-import { marker, DomEvent, Icon } from 'leaflet';
+import { marker, DomEvent, Icon } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LMarker',

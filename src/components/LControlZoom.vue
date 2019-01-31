@@ -3,7 +3,7 @@ import propsBinder from '../utils/propsBinder.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import ControlMixin from '../mixins/Control.js';
 import Options from '../mixins/Options.js';
-import { control } from 'leaflet';
+import { control } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LControlZoom',

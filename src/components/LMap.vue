@@ -9,7 +9,7 @@ import propsBinder from '../utils/propsBinder.js';
 import debounce from '../utils/debounce.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Options from '../mixins/Options.js';
-import { CRS, DomEvent, map, LatLngBounds, latLngBounds } from 'leaflet';
+import { CRS, DomEvent, map, LatLngBounds, latLngBounds } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LMap',

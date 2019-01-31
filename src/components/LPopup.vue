@@ -4,7 +4,7 @@ import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import Popper from '../mixins/Popper.js';
 import Options from '../mixins/Options.js';
-import { popup, DomEvent } from 'leaflet';
+import { popup, DomEvent } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LPopup',

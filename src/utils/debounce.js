@@ -3,7 +3,12 @@ export default (fn, time) => {
 
   return function (...args) {
     const context = this;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => fn.apply(context, args), time);
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
+      fn.apply(context, args);
+      timeout = null;
+    }, time);
   };
 };

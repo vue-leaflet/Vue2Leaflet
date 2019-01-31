@@ -9,7 +9,7 @@ import propsBinder from '../utils/propsBinder.js';
 import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import PolylineMixin from '../mixins/Polyline.js';
-import { polyline, DomEvent } from 'leaflet';
+import { polyline, DomEvent } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LPolyline',

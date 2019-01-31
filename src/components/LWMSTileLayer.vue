@@ -4,7 +4,7 @@ import findRealParent from '../utils/findRealParent.js';
 import { optionsMerger } from '../utils/optionsUtils.js';
 import TileLayerWMS from '../mixins/TileLayerWMS.js';
 import Options from '../mixins/Options.js';
-import { tileLayer, DomEvent } from 'leaflet';
+import { tileLayer, DomEvent } from 'leaflet/src/Leaflet.js';
 
 export default {
   name: 'LWMSTileLayer',
