@@ -5,11 +5,9 @@
 </template>
 
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import debounce from '../utils/debounce.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
+import { optionsMerger, propsBinder, debounce } from '../utils/utils.js';
 import Options from '../mixins/Options.js';
-import { CRS, DomEvent, map, LatLngBounds, latLngBounds } from 'leaflet/src/Leaflet.js';
+import { CRS, DomEvent, map, LatLngBounds, latLngBounds } from 'leaflet';
 
 export default {
   name: 'LMap',

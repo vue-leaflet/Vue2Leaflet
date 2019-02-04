@@ -4,12 +4,10 @@
 
 <script>
 import Vue from 'vue';
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
+import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import GridLayerMixin from '../mixins/GridLayer.js';
 import Options from '../mixins/Options.js';
-import { GridLayer, DomEvent, DomUtil } from 'leaflet/src/Leaflet.js';
+import { GridLayer, DomEvent, DomUtil } from 'leaflet';
 
 export default {
   name: 'LGridLayer',

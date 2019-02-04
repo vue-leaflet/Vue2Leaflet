@@ -1,9 +1,7 @@
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
+import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import LayerGroup from '../mixins/LayerGroup.js';
-import { geoJSON, DomEvent, setOptions } from 'leaflet/src/Leaflet.js';
+import { geoJSON, DomEvent, setOptions } from 'leaflet';
 
 export default {
   name: 'LGeoJson',

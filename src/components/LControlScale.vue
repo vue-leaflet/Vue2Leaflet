@@ -1,9 +1,8 @@
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
+import { optionsMerger, propsBinder } from '../utils/utils.js';
 import ControlMixin from '../mixins/Control.js';
 import Options from '../mixins/Options.js';
-import { control } from 'leaflet/src/Leaflet.js';
+import { control } from 'leaflet';
 
 export default {
   name: 'LControlScale',

@@ -1,11 +1,8 @@
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
-import debounce from '../utils/debounce.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
+import { optionsMerger, propsBinder, findRealParent, debounce } from '../utils/utils.js';
 import Layer from '../mixins/Layer.js';
 import Options from '../mixins/Options.js';
-import { marker, DomEvent, Icon } from 'leaflet/src/Leaflet.js';
+import { marker, DomEvent, Icon } from 'leaflet';
 
 export default {
   name: 'LMarker',

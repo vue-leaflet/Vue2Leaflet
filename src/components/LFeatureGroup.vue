@@ -5,10 +5,9 @@
 </template>
 
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
+import { propsBinder, findRealParent } from '../utils/utils.js';
 import LayerGroupMixin from '../mixins/LayerGroup.js';
-import { featureGroup, DomEvent } from 'leaflet/src/Leaflet.js';
+import { featureGroup, DomEvent } from 'leaflet';
 
 export default {
   name: 'LFeatureGroup',

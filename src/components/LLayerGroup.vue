@@ -5,10 +5,9 @@
 </template>
 
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
+import { propsBinder, findRealParent } from '../utils/utils.js';
 import LayerGroupMixin from '../mixins/LayerGroup.js';
-import { layerGroup, DomEvent } from 'leaflet/src/Leaflet.js';
+import { layerGroup, DomEvent } from 'leaflet';
 
 export default {
   name: 'LLayerGroup',
