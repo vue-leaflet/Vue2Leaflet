@@ -127,7 +127,7 @@ And then in your nuxt.config.js edit the plugin array with:
 
 ```js
 plugins: [
-  {src: '~plugins/leaflet.js' ssr: false}
+  {src: '~plugins/leaflet.js', ssr: false}
 ]
 ```
 
