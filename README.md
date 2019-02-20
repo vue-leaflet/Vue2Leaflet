@@ -1,6 +1,6 @@
 # Vue2Leaflet
 
-<img align="right" height="178" title="Vue2Leaflet Limit logo" src="./logo.png">
+<img align="right" height="178" title="Vue2Leaflet Limit logo" src="docs/logo.png">
 
 <a href="https://travis-ci.org/KoRiGaN/Vue2Leaflet">
   <img src="https://travis-ci.org/KoRiGaN/Vue2Leaflet.svg?branch=master" alt="Downloads">
@@ -20,7 +20,7 @@
 
 Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework that wraps [Leaflet](http://leafletjs.com/) making it easy to create reactive maps.
 
-![Image of Map](./vue2leaflet-example.png)
+![Image of Map](docs/vue2leaflet-example.png)
 
 ## Documentation
 [Go here](https://korigan.github.io/Vue2Leaflet/) to check out live examples and docs.
