@@ -47,11 +47,10 @@ describe('LMap.vue', () => {
     wrapper.vm.mapObject.panTo = mockPanTo;
     wrapper.vm.setCenter(center);
 
-    // expect(wrapper.vm.lastSetCenter.lat).toBe(0);
-    // expect(wrapper.vm.lastSetCenter.lng).toBe(0);
+    expect(wrapper.vm.lastSetCenter.lat).toBe(0);
+    expect(wrapper.vm.lastSetCenter.lng).toBe(0);
     expect(mockPanTo.mock.calls.length).toBe(1);
-    // expect(mockPanTo.mock.calls[0][0]).toEqual(L.latLng([0, 0]));
-    expect(mockPanTo.mock.calls[0][0]).toEqual([0, 0]);
+    expect(mockPanTo.mock.calls[0][0]).toEqual(L.latLng([0, 0]));
   });
 
   // avoid regress this pull https://github.com/KoRiGaN/Vue2Leaflet/pull/264
