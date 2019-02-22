@@ -12,11 +12,6 @@ export default {
       type: Boolean,
       custom: true,
       default: false
-    },
-    fill: {
-      type: Boolean,
-      custom: true,
-      default: false
     }
   },
   data () {
