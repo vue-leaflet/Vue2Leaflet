@@ -155,18 +155,24 @@ export default {
 }
 ```
 
+[filename](../props-notice.md ':include')
+
 ## Methods
 
-`l-map` does not expose any public method on his own, see inherited ones.
+`l-map` does not expose any public method on his own.
+
+[filename](../methods-notice.md ':include')
 
 ## Events
 
 * **leaflet:load** - emitted when the leaflet map instance is ready
 * **update:zoom** - emitted when the zoom of the map changes - `update:zoom` is emitted together with a `Number` value representing the  current `zoom`
 * **update:center** - emitted when the center of the map changes - `update:center` is emitted together with an instance of  `L.LatLng` value representing the  current `center` [L.latLng](https://leafletjs.com/reference-1.3.0.html#latlng)
-* **update:bounds** - emitted when the bounds of the map changes - `update:bounds` is emitted together with an instance of  `L.latLngBounds` value representing the  current `center` [L.latLngBounds](https://leafletjs.com/reference-1.3.0.html#latlngbounds)
+* **update:bounds** - emitted when the bounds of the map changes - `update:bounds` is emitted together with an instance of  `L.latLngBounds` value representing the  current `bound` [L.latLngBounds](https://leafletjs.com/reference-1.3.0.html#latlngbounds)
 
 !>  **update:zoom**, **update:center**, **update:bounds** are all debounced events based on `leaflet` `moveend` event and support `sync` modifier
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 

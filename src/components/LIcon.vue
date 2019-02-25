@@ -90,7 +90,7 @@ export default {
   mounted () {
     this.parentContainer = findRealParent(this.$parent);
 
-    propsBinder(this, null, this.$options.props);
+    propsBinder(this, this.$parent.mapObject, this.$options.props);
 
     this.observer = new MutationObserver(() => {
       this.scheduleHtmlSwap();

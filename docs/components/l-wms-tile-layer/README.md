@@ -71,13 +71,19 @@ export default {
 }
 ```
 
+[filename](../props-notice.md ':include')
+
 ## Methods
 
-`l-wms-tile-layer` does not expose any public method on his own, see inherited ones.
+`l-wms-tile-layer` does not expose any public method on his own.
+
+[filename](../methods-notice.md ':include')
 
 ## Events
 
-`l-wms-tile-layer` does emit any event
+`l-wms-tile-layer` does not emit any event on his own.
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 

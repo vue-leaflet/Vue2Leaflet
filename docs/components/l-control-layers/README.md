@@ -83,13 +83,19 @@ export default {
 }
 ```
 
+[filename](../props-notice.md ':include')
+
 ## Methods
 
-`l-control-layers` does not expose any public method on his own, see inherited ones.
+`l-control-layers` does not expose any public method on his own.
+
+[filename](../methods-notice.md ':include')
 
 ## Events
 
-`l-control-layers` does emit any event
+`l-control-layers` does not emit any event on his own.
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 

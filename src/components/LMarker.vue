@@ -2,7 +2,7 @@
 import { optionsMerger, propsBinder, findRealParent, debounce } from '../utils/utils.js';
 import Layer from '../mixins/Layer.js';
 import Options from '../mixins/Options.js';
-import { marker, DomEvent, Icon } from 'leaflet';
+import { marker, DomEvent, Icon, latLng } from 'leaflet';
 
 export default {
   name: 'LMarker',
@@ -65,11 +65,8 @@ export default {
       }
 
       if (this.mapObject) {
-        let oldLatLng = this.mapObject.getLatLng();
-        let newLatLng = {
-          lat: newVal[0] || newVal.lat,
-          lng: newVal[1] || newVal.lng
-        };
+        const oldLatLng = this.mapObject.getLatLng();
+        const newLatLng = latLng(newVal);
         if (newLatLng.lat !== oldLatLng.lat || newLatLng.lng !== oldLatLng.lng) {
           this.mapObject.setLatLng(newLatLng);
         }

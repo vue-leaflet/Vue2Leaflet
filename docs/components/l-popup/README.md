@@ -50,13 +50,19 @@ export default {
 }
 ```
 
+[filename](../props-notice.md ':include')
+
 ## Methods
 
-`l-popup` does not expose any public method on his own, see inherited ones.
+`l-popup` does not expose any public method on his own.
+
+[filename](../methods-notice.md ':include')
 
 ## Events
 
-`l-popup` does emit any event
+`l-popup` does not emit any event on his own.
+
+[filename](../events-notice.md ':include')
 
 ## Extends
 

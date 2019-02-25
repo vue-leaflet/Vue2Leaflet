@@ -43,3 +43,19 @@ For example if you want to listen to Vue2Leaflet.LMarker move event.
 ``` html
 <l-marker :lat-lng="[47.413220, -1.219482]" @move="doSomething"></l-marker>
 ```
+
+## Why am I getting weird errors for things that work fine in the demos?
+There may be an issue with mismatching Leaflet versions ([see issue #281](https://github.com/KoRiGaN/Vue2Leaflet/issues/281)) that, depending on the setup you have, could be causing problems. If you're using Nuxt.js, modify `nuxt.config.js` to include an alias for Leaflet in the webpack config.
+
+``` javascript
+const path = require('path')
+
+module.exports = {
+  // other config properties go here...
+  build: {
+    extend(config, ctx) {
+      config.resolve.alias['leaflet'] = path.join(__dirname, 'node_modules/leaflet')
+    }
+  }
+}
+```
