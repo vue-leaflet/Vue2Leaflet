@@ -3,15 +3,14 @@
 </template>
 
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
-import TileLayer from '../mixins/TileLayer.js';
+import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
+import TileLayerMixin from '../mixins/TileLayer.js';
 import Options from '../mixins/Options.js';
+import { tileLayer, DomEvent } from 'leaflet';
 
 export default {
   name: 'LTileLayer',
-  mixins: [TileLayer, Options],
+  mixins: [TileLayerMixin, Options],
   props: {
     url: {
       type: String,
@@ -19,13 +18,13 @@ export default {
     },
     tileLayerClass: {
       type: Function,
-      default: L.tileLayer
+      default: tileLayer
     }
   },
   mounted () {
     const options = optionsMerger(this.tileLayerOptions, this);
     this.mapObject = this.tileLayerClass(this.url, options);
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);

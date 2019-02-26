@@ -1,9 +1,8 @@
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
+import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import TileLayerWMS from '../mixins/TileLayerWMS.js';
 import Options from '../mixins/Options.js';
+import { tileLayer, DomEvent } from 'leaflet';
 
 export default {
   name: 'LWMSTileLayer',
@@ -16,8 +15,8 @@ export default {
   },
   mounted () {
     const options = optionsMerger(this.tileLayerWMSOptions, this);
-    this.mapObject = L.tileLayer.wms(this.baseUrl, options);
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    this.mapObject = tileLayer.wms(this.baseUrl, options);
+    DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);

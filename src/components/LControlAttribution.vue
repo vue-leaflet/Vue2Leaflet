@@ -1,12 +1,12 @@
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
-import Control from '../mixins/Control';
+import { optionsMerger, propsBinder } from '../utils/utils.js';
+import ControlMixin from '../mixins/Control';
 import Options from '../mixins/Options.js';
+import { control } from 'leaflet';
 
 export default {
   name: 'LControlAttribution',
-  mixins: [Control, Options],
+  mixins: [ControlMixin, Options],
   props: {
     prefix: {
       type: String,
@@ -18,7 +18,7 @@ export default {
       ...this.controlOptions,
       prefix: this.prefix
     }, this);
-    this.mapObject = L.control.attribution(options);
+    this.mapObject = control.attribution(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
   },

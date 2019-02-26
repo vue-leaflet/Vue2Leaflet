@@ -1,9 +1,8 @@
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
+import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import Popper from '../mixins/Popper.js';
 import Options from '../mixins/Options.js';
+import { popup, DomEvent } from 'leaflet';
 
 export default {
   name: 'LPopup',
@@ -16,11 +15,11 @@ export default {
   },
   mounted () {
     const options = optionsMerger(this.popperOptions, this);
-    this.mapObject = L.popup(options);
+    this.mapObject = popup(options);
     if (this.latLng !== undefined) {
       this.mapObject.setLatLng(this.latLng);
     }
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.setContent(this.content || this.$el);
     this.parentContainer = findRealParent(this.$parent);

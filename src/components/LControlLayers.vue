@@ -1,12 +1,12 @@
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
-import Control from '../mixins/Control.js';
+import { optionsMerger, propsBinder } from '../utils/utils.js';
+import ControlMixin from '../mixins/Control.js';
 import Options from '../mixins/Options.js';
+import { control } from 'leaflet';
 
 export default {
   name: 'LControlLayers',
-  mixins: [Control, Options],
+  mixins: [ControlMixin, Options],
   props: {
     collapsed: {
       type: Boolean,
@@ -38,7 +38,7 @@ export default {
       sortLayers: this.sortLayers,
       sortFunction: this.sortFunction
     }, this);
-    this.mapObject = L.control.layers(null, null, options);
+    this.mapObject = control.layers(null, null, options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.$parent.registerLayerControl(this);
   },

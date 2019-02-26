@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { L } from 'vue2-leaflet';
+import L from 'leaflet';
 import App from './App';
 import 'leaflet.icon.glyph';
 

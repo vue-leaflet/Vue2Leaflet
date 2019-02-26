@@ -5,10 +5,9 @@
 </template>
 
 <script>
-import propsBinder from '../utils/propsBinder.js';
-import findRealParent from '../utils/findRealParent.js';
-import { optionsMerger } from '../utils/optionsUtils.js';
+import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import Polygon from '../mixins/Polygon.js';
+import { rectangle, DomEvent } from 'leaflet';
 
 export default {
   name: 'LRectangle',
@@ -26,8 +25,8 @@ export default {
   },
   mounted () {
     const options = optionsMerger(this.polygonOptions, this);
-    this.mapObject = L.rectangle(this.bounds, options);
-    L.DomEvent.on(this.mapObject, this.$listeners);
+    this.mapObject = rectangle(this.bounds, options);
+    DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
