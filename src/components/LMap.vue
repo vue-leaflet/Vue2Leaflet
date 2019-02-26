@@ -7,7 +7,7 @@
 <script>
 import { optionsMerger, propsBinder, debounce } from '../utils/utils.js';
 import Options from '../mixins/Options.js';
-import { CRS, DomEvent, map, LatLngBounds, latLngBounds, latLng } from 'leaflet';
+import { CRS, DomEvent, map, latLngBounds, latLng } from 'leaflet';
 
 export default {
   name: 'LMap',
@@ -111,6 +111,22 @@ export default {
       layersToAdd: []
     };
   },
+  computed: {
+    fitBoundsOptions () {
+      const options = {};
+      if (this.padding) {
+        options.padding = this.padding;
+      } else {
+        if (this.paddingBottomRight) {
+          options.paddingBottomRight = this.paddingBottomRight;
+        }
+        if (this.paddingTopLeft) {
+          options.paddingTopLeft = this.paddingTopLeft;
+        }
+      }
+      return options;
+    }
+  },
   mounted () {
     const options = optionsMerger({
       minZoom: this.minZoom,
@@ -190,90 +206,15 @@ export default {
       if (!newVal) {
         return;
       }
-      if (newVal instanceof LatLngBounds) {
-        if (!newVal.isValid()) {
-          return;
-        }
-      } else if (!Array.isArray(newVal)) {
+      const newBounds = latLngBounds(newVal);
+      if (!newBounds.isValid()) {
         return;
       }
-      let bounds = this.lastSetBounds == null ? this.mapObject.getBounds() : this.lastSetBounds;
-      let southWestLat = 0;
-      let southWestLng = 0;
-      let northEastLat = 0;
-      let northEastLng = 0;
-      if (Array.isArray(bounds)) {
-        if (Array.isArray(bounds[0])) {
-          southWestLat = bounds[0][0];
-          southWestLng = bounds[0][1];
-        } else {
-          southWestLat = bounds[0].lat;
-          southWestLng = bounds[0].lng;
-        }
-        if (Array.isArray(bounds[1])) {
-          northEastLat = bounds[1][0];
-          northEastLng = bounds[1][1];
-        } else {
-          northEastLat = bounds[1].lat;
-          northEastLng = bounds[1].lng;
-        }
-      } else {
-        southWestLat = bounds._southWest.lat;
-        southWestLng = bounds._southWest.lng;
-        northEastLat = bounds._northEast.lat;
-        northEastLng = bounds._northEast.lng;
-      }
-      let southWestNewLat = 0;
-      let southWestNewLng = 0;
-      let northEastNewLat = 0;
-      let northEastNewLng = 0;
-      if (Array.isArray(newVal)) {
-        newVal = latLngBounds(newVal);
-      }
-      southWestNewLat = newVal._southWest.lat;
-      southWestNewLng = newVal._southWest.lng;
-      northEastNewLat = newVal._northEast.lat;
-      northEastNewLng = newVal._northEast.lng;
-      let boundsChanged =
-        (southWestNewLat !== southWestLat) ||
-        (southWestNewLng !== southWestLng) ||
-        (northEastNewLat !== northEastLat) ||
-        (northEastNewLng !== northEastLng);
+      const oldBounds = this.lastSetBounds || this.mapObject.getBounds();
+      const boundsChanged = !oldBounds.equals(newBounds, 0); // set maxMargin to 0 - check exact equals
       if (boundsChanged) {
-        var options = {};
-        if (this.padding) {
-          options.padding = this.padding;
-        } else {
-          if (this.paddingBottomRight) {
-            options.paddingBottomRight = this.paddingBottomRight;
-          }
-          if (this.paddingTopLeft) {
-            options.paddingTopLeft = this.paddingTopLeft;
-          }
-        }
-        this.lastSetBounds = bounds;
-        if (Array.isArray(bounds)) {
-          if (Array.isArray(bounds[0])) {
-            bounds[0][0] = southWestLat;
-            bounds[0][1] = southWestLng;
-          } else {
-            bounds[0].lat = southWestLat;
-            bounds[0].lng = southWestLng;
-          }
-          if (Array.isArray(bounds[1])) {
-            bounds[1][0] = northEastLat;
-            bounds[1][1] = northEastLng;
-          } else {
-            bounds[1].lat = northEastLat;
-            bounds[1].lng = northEastLng;
-          }
-        } else {
-          bounds._southWest.lat = southWestLat;
-          bounds._southWest.lng = southWestLng;
-          bounds._northEast.lat = northEastLat;
-          bounds._northEast.lng = northEastLng;
-        }
-        this.mapObject.fitBounds(newVal, options);
+        this.lastSetBounds = newBounds;
+        this.mapObject.fitBounds(newBounds, this.fitBoundsOptions);
       }
     },
     setPaddingBottomRight (newVal, oldVal) {
