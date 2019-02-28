@@ -4,7 +4,7 @@
   "description": "Vue2 leaflet library",
   "author": "Mickael Bouchaud",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "npm run build -- -w",
     "build": "rollup -c --environment NODE_ENV:production",
     "prepare": "npm run build",
     "lint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
@@ -64,7 +64,7 @@
     ]
   },
   "main": "dist/vue2-leaflet.cjs.js",
-  "unpkg": "dist/vue2-leaflet.umd.min.js",
+  "unpkg": "dist/vue2-leaflet.min.js",
   "module": "dist/vue2-leaflet.es.js",
   "sideEffects": false,
   "peerDependencies": {

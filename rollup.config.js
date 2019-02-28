@@ -85,10 +85,9 @@ export default [
     output: {
       format: 'umd',
       name: 'Vue2Leaflet',
-      file: 'dist/vue2-leaflet.umd.min.js',
+      file: 'dist/vue2-leaflet.min.js',
       globals: {
         vue: 'Vue',
-        'leaflet/src/Leaflet.js': 'leaflet',
         'leaflet': 'leaflet'
       }
     },
