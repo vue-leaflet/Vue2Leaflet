@@ -5,13 +5,13 @@
 ### Npm
 
 ``` bash
-npm install vue2-leaflet --save
+npm install leaflet vue2-leaflet --save
 ```
 
 ### Yarn
 
 ``` bash
-yarn add vue2-leaflet
+yarn add leaflet vue2-leaflet
 ```
 
 ### CDN
@@ -30,16 +30,17 @@ yarn add vue2-leaflet
 
 ```js
 import Vue from 'vue';
-import { L, LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 Vue.component('l-map', LMap);
 Vue.component('l-tile-layer', LTileLayer);
 Vue.component('l-marker', LMarker);
 
-delete L.Icon.Default.prototype._getIconUrl;
+delete Icon.Default.prototype._getIconUrl;
 
-L.Icon.Default.mergeOptions({
+Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
@@ -67,14 +68,14 @@ export default {
 in your entry point: ie: `main.js`
 
 ```js
-import { L } from 'vue2-leaflet'
+import { Icon }  from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 
 // this part resolve an issue where the markers would not appear
-delete L.Icon.Default.prototype._getIconUrl;
+delete Icon.Default.prototype._getIconUrl;
 
-L.Icon.Default.mergeOptions({
+Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
@@ -109,10 +110,10 @@ But it can be manually done by adding a plugin let's say `leaflet.js` in your `p
 import Vue from 'vue';
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
-import L from 'leaflet';
-delete L.Icon.Default.prototype._getIconUrl;
+import { Icon }from 'leaflet';
+delete Icon.Default.prototype._getIconUrl;
 
-L.Icon.Default.mergeOptions({
+Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')

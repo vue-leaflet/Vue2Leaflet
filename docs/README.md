@@ -20,15 +20,43 @@
 
 Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework that wraps [Leaflet](http://leafletjs.com/) making it easy to create reactive maps.
 
-![Image of Map](./vue2leaflet-example.png)
-
 ## How to install
 
 ``` bash
-$ npm install vue2-leaflet --save
+npm install vue2-leaflet leaflet --save
 ```
+
 For more detailed informations you can follow the [Quick Start Guide](quickstart.md)
 
+## Breaking change from 1.x.x to 2.x.x
+
+A new major release 2.0,0 is available and come with one breaking change:
+
+### Leaflet is not automatically installed anymore
+
+Leaflet is now a peerDependency and need to be installed manually, we updated our docs to reflect this but please pay attention when migrating
+
+### Importing the library in Webpack / Rollup
+
+Now the code of vue2-leaflet is split component by component (while using a bundler like Webpack/Rollup/Parcel) to do so the following syntax is not working anymore:
+
+```javascript
+import Vue2Leaflet from 'vue2-leaflet' // INVALID
+```
+
+And has been replaced by
+
+```javascript
+import * as Vue2Leaflet from 'vue2-leaflet' // VALID
+```
+
+Is highly suggested to import only the needed modules by doing so:
+
+```javascript
+import {LMap, LTileLayer, LMarker} from 'vue2-leaflet'
+```
+
+This will reduce the size of the bundle significantly
 
 ## Breaking changes from v0.x.x to v1.x.x
 
