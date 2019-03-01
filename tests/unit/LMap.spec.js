@@ -155,7 +155,9 @@ describe('LMap.vue', () => {
     wrapper.setProps({ zoom: 5 });
 
     // Finally, mapObject should be on last position
-    expect(wrapper.vm.mapObject.getCenter()).to.deep.equal({ lat: 80, lng: -170 });
-    expect(wrapper.vm.mapObject.getZoom()).to.equal(5);
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.vm.mapObject.getCenter()).toEqual({ lat: 80, lng: -170 });
+      expect(wrapper.vm.mapObject.getZoom()).toEqual(5);
+    })
   });
 });
