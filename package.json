@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "npm run build -- -w",
     "build": "rollup -c --environment NODE_ENV:production",
-    "prepare": "npm run link && npm run test && npm run build",
+    "prepare": "npm run lint && npm run test && npm run build",
     "lint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
     "test": "jest",
     "test:w": "jest --watch",
