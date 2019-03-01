@@ -158,6 +158,6 @@ describe('LMap.vue', () => {
     wrapper.vm.$nextTick(() => {
       expect(wrapper.vm.mapObject.getCenter()).toEqual({ lat: 80, lng: -170 });
       expect(wrapper.vm.mapObject.getZoom()).toEqual(5);
-    })
+    });
   });
 });

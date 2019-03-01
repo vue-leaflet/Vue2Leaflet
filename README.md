@@ -18,6 +18,8 @@
   <img src="https://badges.gitter.im/Vue2Leaflet/Lobby.svg" alt="Gitter">
 </a>
 
+[![Coverage Status](https://coveralls.io/repos/github/KoRiGaN/Vue2Leaflet/badge.svg?branch=master)](https://coveralls.io/github/KoRiGaN/Vue2Leaflet?branch=master)
+
 Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework that wraps [Leaflet](http://leafletjs.com/) making it easy to create reactive maps.
 
 ![Image of Map](docs/vue2leaflet-example.png)
