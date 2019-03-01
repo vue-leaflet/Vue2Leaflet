@@ -19,7 +19,7 @@ yarn add leaflet vue2-leaflet
 ```html
 <link rel="stylesheet" href="//unpkg.com/leaflet/dist/leaflet.css">
 <script src="//unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="//unpkg.com/vue2-leaflet/dist/vue2-leaflet.min.js"></script>
+<script src="//unpkg.com/vue2-leaflet"></script>
 ```
 
 ## Usage
