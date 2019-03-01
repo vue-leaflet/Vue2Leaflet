@@ -138,4 +138,24 @@ describe('LMap.vue', () => {
     expect(mockFitBounds.mock.calls[1][0]).toEqual(L.latLngBounds(bounds2));
     expect(mockFitBounds.mock.calls[1][1]).toEqual(optionsPadding2);
   });
+
+  test('LMap.vue no-blocking-animations options', async () => {
+    const wrapper = getWrapper({
+      noBlockingAnimations: true
+    });
+
+    // Move the map several times in a short timeperiod
+    wrapper.setProps({ center: { lat: -80, lng: 170 } });
+    wrapper.setProps({ zoom: 15 });
+
+    wrapper.setProps({ center: { lat: 0, lng: 0 } });
+    wrapper.setProps({ zoom: 10 });
+
+    wrapper.setProps({ center: { lat: 80, lng: -170 } });
+    wrapper.setProps({ zoom: 5 });
+
+    // Finally, mapObject should be on last position
+    expect(wrapper.vm.mapObject.getCenter()).to.deep.equal({ lat: 80, lng: -170 });
+    expect(wrapper.vm.mapObject.getZoom()).to.equal(5);
+  });
 });
