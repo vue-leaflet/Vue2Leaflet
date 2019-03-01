@@ -99,6 +99,10 @@ export default {
     markerZoomAnimation: {
       type: Boolean,
       default: null
+    },
+    noBlockingAnimations: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -188,7 +192,9 @@ export default {
       }
     },
     setZoom (newVal, oldVal) {
-      this.mapObject.setZoom(newVal);
+      this.mapObject.setZoom(newVal, {
+        animate: !this.noBlockingAnimations ? false : null
+      });
     },
     setCenter (newVal, oldVal) {
       if (newVal == null) {
@@ -199,7 +205,9 @@ export default {
       if (oldCenter.lat !== newCenter.lat ||
         oldCenter.lng !== newCenter.lng) {
         this.lastSetCenter = newCenter;
-        this.mapObject.panTo(newCenter);
+        this.mapObject.panTo(newCenter, {
+          animate: !this.noBlockingAnimations ? false : null
+        });
       }
     },
     setBounds (newVal, oldVal) {
