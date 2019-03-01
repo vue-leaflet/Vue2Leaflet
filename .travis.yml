@@ -5,7 +5,14 @@ node_js:
 install:
 - npm install
 script:
-- npm run build
+- npm run prepare
+
+jobs:
+  include:
+    - stage: Produce Coverage
+      node_js: node
+      script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+
 deploy:
   provider: npm
   email: mickael.bouchaud@gmail.com
