@@ -88,7 +88,7 @@ export default [
       file: 'dist/vue2-leaflet.min.js',
       globals: {
         vue: 'Vue',
-        'leaflet': 'leaflet'
+        'leaflet': 'L'
       }
     },
     plugins: [
