@@ -708,7 +708,6 @@ declare module "vue2-leaflet" {
   ): void;
 
   export {
-    L,
     findRealParent,
     propsBinder,
     LCircle,
