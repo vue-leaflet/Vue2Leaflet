@@ -1,4 +1,4 @@
-// Type definitions for vue2-leaflet v1.2.3
+// Type definitions for vue2-leaflet v2.0.x
 // Project: https://github.com/KoRiGaN/Vue2Leaflet/
 // Definitions by: Matthew Meehan <https://github.com/HIMISOCOOL>
 
