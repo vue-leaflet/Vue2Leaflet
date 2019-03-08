@@ -54,3 +54,7 @@ wrapper for [Leaflet.Path.Transform](https://github.com/w8r/Leaflet.Path.Transfo
 ## [vue2-leaflet-gpx](https://github.com/tdcook/vue2-leaflet-gpx)
 
 wrapper for [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx)
+
+## [vue2-leaflet-locatecontrol](https://github.com/vUdav/vue2-leaflet-locatecontrol)
+
+wrapper for [Leaflet.Locate](https://github.com/domoritz/leaflet-locatecontrol)
