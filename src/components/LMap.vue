@@ -162,7 +162,7 @@ export default {
     registerLayerControl (lControlLayers) {
       this.layerControl = lControlLayers;
       this.mapObject.addControl(lControlLayers.mapObject);
-      for (var layer in this.layersToAdd) {
+      for (var layer of this.layersToAdd) {
         this.layerControl.addLayer(layer);
       }
       this.layersToAdd = [];
