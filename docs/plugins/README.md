@@ -58,3 +58,7 @@ wrapper for [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx)
 ## [vue2-leaflet-locatecontrol](https://github.com/vUdav/vue2-leaflet-locatecontrol)
 
 wrapper for [Leaflet.Locate](https://github.com/domoritz/leaflet-locatecontrol)
+
+## [vue2-leaflet-polygonfillpattern](https://github.com/guillaumejounel/vue2-leaflet-polygonfillpattern)
+
+wrapper for [leaflet-polygon-fillPattern](https://github.com/lwsu/leaflet-polygon-fillPattern)
