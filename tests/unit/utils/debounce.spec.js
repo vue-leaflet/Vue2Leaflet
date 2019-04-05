@@ -1,41 +1,48 @@
 import { debounce } from '@/utils/utils';
 
-const sleep = (time) => new Promise(resolve => setTimeout(resolve, time));
-const debounceTime = 10;
-const sleepTime = 15;
-
 describe('utils: debounce', () => {
-  test('it calls a function only once in a given window', async () => {
+  const debounceTime = 1000;
+  const sleepTime = 1500;
+
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
+  test('it calls a function only once in a given window', () => {
     const fn = jest.fn();
     const debounced = debounce(fn, debounceTime);
 
     debounced();
     debounced();
     debounced();
-    await sleep(sleepTime);
+    jest.advanceTimersByTime(sleepTime);
 
     expect(fn.mock.calls.length).toBe(1);
   });
 
-  test('it allows multiple calls when outside the given window', async () => {
+  test('it allows multiple calls when outside the given window', () => {
     const fn = jest.fn();
     const debounced = debounce(fn, debounceTime);
 
     debounced();
-    await sleep(sleepTime);
+    jest.advanceTimersByTime(sleepTime);
     debounced();
     debounced();
-    await sleep(sleepTime);
+    jest.advanceTimersByTime(sleepTime);
 
     expect(fn.mock.calls.length).toBe(2);
   });
 
-  test('it passes arguments to the debounced function', async () => {
+  test('it passes arguments to the debounced function', () => {
     const fn = jest.fn();
     const debounced = debounce(fn, debounceTime);
 
     debounced(1, 'two', { three: 4 });
-    await sleep(sleepTime);
+    jest.advanceTimersByTime(sleepTime);
 
     expect(fn.mock.calls.length).toBe(1);
 
@@ -44,20 +51,20 @@ describe('utils: debounce', () => {
     expect(fn.mock.calls[0][2]).toEqual({ three: 4 });
   });
 
-  test('it only executes the final call in the time window, even with different arguments', async () => {
+  test('it only executes the final call in the time window, even with different arguments', () => {
     const fn = jest.fn();
     const debounced = debounce(fn, debounceTime);
 
     debounced('a');
     debounced('b');
     debounced('c');
-    await sleep(sleepTime);
+    jest.advanceTimersByTime(sleepTime);
 
     expect(fn.mock.calls.length).toBe(1);
     expect(fn.mock.calls[0][0]).toBe('c');
   });
 
-  test('it keeps the window open on subsequent calls, until it first expires', async () => {
+  test('it keeps the window open on subsequent calls, until it first expires', () => {
     const fn = jest.fn();
     const debounced = debounce(fn, debounceTime);
 
@@ -66,15 +73,15 @@ describe('utils: debounce', () => {
     // window length plus the full sleep time, we expect only the final call to be
     // actually executed.
     debounced(1);
-    await sleep(debounceTime * 0.8);
+    jest.advanceTimersByTime(debounceTime * 0.8);
     debounced(2);
-    await sleep(debounceTime * 0.8);
+    jest.advanceTimersByTime(debounceTime * 0.8);
     debounced(3);
-    await sleep(debounceTime * 0.8);
+    jest.advanceTimersByTime(debounceTime * 0.8);
     debounced(4);
-    await sleep(debounceTime * 0.8);
+    jest.advanceTimersByTime(debounceTime * 0.8);
     debounced(5);
-    await sleep(sleepTime);
+    jest.advanceTimersByTime(sleepTime);
 
     expect(fn.mock.calls.length).toBe(1);
     expect(fn.mock.calls[0][0]).toBe(5);
