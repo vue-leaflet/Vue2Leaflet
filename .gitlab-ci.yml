@@ -3,6 +3,7 @@ image: node:10.15.0
 stages:
   - build
   - test
+  - deploy
 
 cache:
   paths:
