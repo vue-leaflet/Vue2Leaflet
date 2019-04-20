@@ -17,9 +17,21 @@ build site:
 unit test:
   stage: test
   script:
+    - npm run lint
     - npm run test
   artifacts:
     paths:
       - dist/
       - node_modules/
       - package.json
+
+
+publish:
+  stage: deploy
+  only:
+    - tags
+    - triggers
+  script:
+    - npm run build
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+    - npm publish --dry-run
