@@ -52,6 +52,7 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
     this.ready = true;
+    this.$emit('ready', this.mapObject);
   },
   methods: {
     setDraggable (newVal, oldVal) {

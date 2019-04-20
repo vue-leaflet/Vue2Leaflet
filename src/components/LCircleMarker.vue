@@ -35,6 +35,7 @@ export default {
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
+    this.$emit('ready', this.mapObject);
   }
 };
 </script>

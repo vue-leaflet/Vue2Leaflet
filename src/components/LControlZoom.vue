@@ -36,6 +36,7 @@ export default {
     this.mapObject = control.zoom(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
+    this.$emit('ready', this.mapObject);
   },
   render () {
     return null;
