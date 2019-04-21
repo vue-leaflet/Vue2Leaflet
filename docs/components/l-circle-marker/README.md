@@ -69,9 +69,7 @@ export default {
 
 ## Events
 
-`l-circle-marker` does not emit any event on his own.
-
-[filename](../events-notice.md ':include')
+[filename](../shared-events.md ':include')
 
 ## Extends
 
