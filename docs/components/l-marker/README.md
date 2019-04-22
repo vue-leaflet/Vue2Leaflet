@@ -79,7 +79,7 @@ export default {
 
 !>  **update:latlng** support `sync` modifier
 
-[filename](../events-notice.md ':include')
+[filename](../shared-events.md ':include')
 
 ## Extends
 

@@ -156,15 +156,17 @@ export default {
     DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
+    // DEPRECATED leaflet:load
     this.$emit('leaflet:load');
+    this.$emit('ready', this.mapObject);
   },
   methods: {
     registerLayerControl (lControlLayers) {
       this.layerControl = lControlLayers;
       this.mapObject.addControl(lControlLayers.mapObject);
-      for (var layer of this.layersToAdd) {
+      this.layersToAdd.forEach(layer => {
         this.layerControl.addLayer(layer);
-      }
+      });
       this.layersToAdd = [];
     },
     addLayer (layer, alreadyAdded) {

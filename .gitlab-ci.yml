@@ -1,0 +1,27 @@
+image: node:10.15.0
+
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+build site:
+  stage: build
+  script:
+    - npm install --progress=false
+    - npm run build
+
+unit test:
+  stage: test
+  script:
+    - npm run lint
+    - npm run test
+  artifacts:
+    paths:
+      - dist/
+      - node_modules/
+      - package.json

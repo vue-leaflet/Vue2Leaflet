@@ -29,6 +29,7 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.mapObject.setElement(this.$el);
     this.mapObject.addTo(this.parentContainer.mapObject);
+    this.$emit('ready', this.mapObject);
   }
 };
 </script>

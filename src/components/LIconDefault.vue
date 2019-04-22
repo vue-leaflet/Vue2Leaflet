@@ -14,6 +14,7 @@ export default {
   mounted () {
     Icon.Default.imagePath = this.imagePath;
     propsBinder(this, this.mapObject, this.$options.props);
+    this.$emit('ready', this.mapObject);
   },
   methods: {
     setImagePath (newVal, oldVal) {

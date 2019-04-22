@@ -69,9 +69,7 @@ export default {
 
 ## Events
 
-`l-control-zoom` does not emit any event on his own.
-
-[filename](../events-notice.md ':include')
+[filename](../shared-events.md ':include')
 
 ## Extends
 
