@@ -1,29 +1,41 @@
-import { wrapInMap, see } from '../../test-helpers';
+import { getWrapperWithMap, see } from '@/tests/test-helpers';
 import LControlZoom from '@/components/LControlZoom.vue';
 
 describe('component: LControlZoom', () => {
-  test('it includes zoomInText in resulting html', async () => {
-    const wrapper = await wrapInMap(LControlZoom, { zoomInText: 'BIGGER' });
-    see(wrapper, 'BIGGER');
+  test('it has a mapObject', () => {
+    const { wrapper } = getWrapperWithMap(LControlZoom);
+    expect(wrapper.vm.mapObject).toBeDefined();
   });
 
-  test('it includes zoomOutText in resulting html', async () => {
-    const wrapper = await wrapInMap(LControlZoom, { zoomOutText: 'smaller' });
-    see(wrapper, 'smaller');
+  test('it accepts and uses the control position option', () => {
+    const { wrapper } = getWrapperWithMap(LControlZoom, { position: 'bottomleft' });
+    expect(wrapper.vm.mapObject.getPosition()).toBe('bottomleft');
   });
 
-  test('it includes zoomInTitle in resulting html', async () => {
-    const wrapper = await wrapInMap(LControlZoom, { zoomInTitle: 'zoom in more' });
-    see(wrapper, 'zoom in more');
+  test('it updates the mapObject when position prop is changed', async () => {
+    const { wrapper } = getWrapperWithMap(LControlZoom, { position: 'bottomleft' });
+    wrapper.setProps({ position: 'topright' });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.vm.mapObject.getPosition()).toBe('topright');
   });
 
-  test('it includes zoomOutTitle in resulting html', async () => {
-    const wrapper = await wrapInMap(LControlZoom, { zoomOutTitle: 'zoom out a bit' });
-    see(wrapper, 'zoom out a bit');
+  test('it includes zoomInText in rendered html', async () => {
+    const { mapWrapper } = getWrapperWithMap(LControlZoom, { zoomInText: 'BIGGER' });
+    see(mapWrapper, 'BIGGER');
   });
 
-  test('it accepts and uses the control position option', async () => {
-    const wrapper = await wrapInMap(LControlZoom, { position: 'not-the-default' });
-    expect(wrapper.props('position')).toBe('not-the-default');
+  test('it includes zoomOutText in rendered html', () => {
+    const { mapWrapper } = getWrapperWithMap(LControlZoom, { zoomOutText: 'smaller' });
+    see(mapWrapper, 'smaller');
+  });
+
+  test('it includes zoomInTitle in rendered html', () => {
+    const { mapWrapper } = getWrapperWithMap(LControlZoom, { zoomInTitle: 'zoom in more' });
+    see(mapWrapper, 'zoom in more');
+  });
+
+  test('it includes zoomOutTitle in rendered html', () => {
+    const { mapWrapper } = getWrapperWithMap(LControlZoom, { zoomOutTitle: 'zoom out a bit' });
+    see(mapWrapper, 'zoom out a bit');
   });
 });
