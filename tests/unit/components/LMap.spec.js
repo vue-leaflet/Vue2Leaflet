@@ -1,7 +1,7 @@
 import { getMapWrapper } from '@/tests/test-helpers';
 import L from 'leaflet';
 
-describe('LMap.vue', () => {
+describe('component: LMap.vue', () => {
   test('LMap.vue change prop center', async () => {
     const mockPanTo = jest.fn();
     const wrapper = getMapWrapper();
