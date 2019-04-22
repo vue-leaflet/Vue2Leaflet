@@ -3,10 +3,17 @@ import LMap from '@/components/LMap.vue';
 
 const localVue = createLocalVue();
 
-export function getWrapperWithMap (lComponent, propsData, mountOptions) {
-  const mapWrapper = shallowMount(LMap, {
-    localVue
+export function getMapWrapper (propsData) {
+  return shallowMount(LMap, {
+    localVue,
+    propsData,
+    sync: false // avoid warning, see
+    // Removing sync mode #1137 https://github.com/vuejs/vue-test-utils/issues/1137
   });
+}
+
+export function getWrapperWithMap (lComponent, propsData, mountOptions) {
+  const mapWrapper = getMapWrapper();
 
   const componentCreated = lComponent.created;
   const componentToMount = {
