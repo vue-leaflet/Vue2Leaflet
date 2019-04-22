@@ -61,4 +61,32 @@ describe('LMarker.vue', () => {
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toEqual(markerText);
   });
+
+  test('LMarker.vue draggable change', async () => {
+    const wrapperAndMap = getWrapperWithMap(LMarker, {
+      latLng: [0, 0]
+    });
+    const wrapper = wrapperAndMap.wrapper;
+    const markerObject = wrapper.vm.mapObject;
+    expect(markerObject.dragging.enabled()).toBeFalsy();
+    wrapper.setProps({ draggable: true });
+    await wrapper.vm.$nextTick();
+    expect(markerObject.dragging.enabled()).toBeTruthy();
+    wrapper.setProps({ draggable: false });
+    await wrapper.vm.$nextTick();
+    expect(markerObject.dragging.enabled()).toBeFalsy();
+  });
+
+  test('LMarker.vue not change prop latLng to null', async () => {
+    const initLatlng = L.latLng([11, 22]);
+    const wrapperAndMap = getWrapperWithMap(LMarker, {
+      latLng: initLatlng
+    });
+    const wrapper = wrapperAndMap.wrapper;
+    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.vm.mapObject.getLatLng().equals(initLatlng)).toBe(true);
+    wrapper.setProps({ latLng: null });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.vm.mapObject.getLatLng().equals(initLatlng)).toBe(true);
+  });
 });
