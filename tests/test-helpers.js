@@ -3,25 +3,37 @@ import LMap from '@/components/LMap.vue';
 
 const localVue = createLocalVue();
 
-export async function wrapInMap (LeafletComponent, props) {
-  const componentWrapper = {
-    render (h) {
-      return h(LeafletComponent, { props });
+export function getWrapperWithMap (lComponent, propsData, mountOptions) {
+  const mapWrapper = shallowMount(LMap, {
+    localVue
+  });
+
+  const componentCreated = lComponent.created;
+  const componentToMount = {
+    ...lComponent,
+    created () {
+      // Ensure existing created hook still runs, if it exists.
+      if (typeof componentCreated === 'function') {
+        componentCreated.bind(this)();
+      }
+      // trick from here https://github.com/vuejs/vue-test-utils/issues/560#issuecomment-461865315
+      this.$parent = mapWrapper.vm;
     }
   };
-  const wrapper = shallowMount(LMap, {
-    localVue,
-    slots: {
-      default: componentWrapper
-    },
-    sync: false // avoid warning, see
-    // Removing sync mode #1137 https://github.com/vuejs/vue-test-utils/issues/1137
-  });
-  // Allow the props passed to the render function to be employed.
-  await wrapper.vm.$nextTick();
 
-  return wrapper.find(LeafletComponent);
-};
+  const wrapper = shallowMount(componentToMount, {
+    localVue,
+    propsData,
+    sync: false, // avoid warning, see
+    // Removing sync mode #1137 https://github.com/vuejs/vue-test-utils/issues/1137
+    ...mountOptions
+  });
+
+  return {
+    wrapper,
+    mapWrapper
+  };
+}
 
 export function see (component, text) {
   expect(component.html()).toContain(text);
