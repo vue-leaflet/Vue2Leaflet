@@ -89,7 +89,7 @@ Leaflet plugins can easily work with Vue2Leaflet, if you want to use one I would
 * [vue2-leaflet-gpx](https://github.com/tdcook/vue2-leaflet-gpx) wrapper for [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx)
 * [vue2-leaflet-locatecontrol](https://github.com/vUdav/vue2-leaflet-locatecontrol) wrapper for [Leaflet.Locate](https://github.com/domoritz/leaflet-locatecontrol)
 * [vue2-leaflet-polygonfillpattern](https://github.com/guillaumejounel/vue2-leaflet-polygonfillpattern) wrapper for [leaflet-polygon-fillPattern](https://github.com/lwsu/leaflet-polygon-fillPattern)
-* [vue2-leaflet-axesgrid](https://github.com/imudin/vue2-leaflet-axesgrid) wrapper for [AxesGrid](https://github.com/mudin/Leaflet.AxesGrid)
+* [vue2-leaflet-axesgrid](https://github.com/mudin/vue2-leaflet-axesgrid) wrapper for [AxesGrid](https://github.com/mudin/Leaflet.AxesGrid)
 
 If you have created a plugin and want it to be listed here, let me know :-).
 
