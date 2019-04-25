@@ -62,3 +62,7 @@ wrapper for [Leaflet.Locate](https://github.com/domoritz/leaflet-locatecontrol)
 ## [vue2-leaflet-polygonfillpattern](https://github.com/guillaumejounel/vue2-leaflet-polygonfillpattern)
 
 wrapper for [leaflet-polygon-fillPattern](https://github.com/lwsu/leaflet-polygon-fillPattern)
+
+## [vue2-leaflet-axesgrid](https://github.com/mudin/vue2-leaflet-axesgrid)
+
+wrapper for [AxesGrid](https://github.com/mudin/Leaflet.AxesGrid)
