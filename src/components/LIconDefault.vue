@@ -13,11 +13,10 @@ export default {
   },
   mounted () {
     Icon.Default.imagePath = this.imagePath;
-    propsBinder(this, this.mapObject, this.$options.props);
-    this.$emit('ready', this.mapObject);
+    propsBinder(this, {}, this.$options.props);
   },
   methods: {
-    setImagePath (newVal, oldVal) {
+    setImagePath (newVal) {
       Icon.Default.imagePath = newVal;
     }
   },
