@@ -87,6 +87,13 @@ Wrapper for [leaflet-polygon-fillPattern](https://github.com/lwsu/leaflet-polygo
 > Fill polygon SVG path elements with image patterns.
 
 
+## [vue2-leaflet-polyline-measure](https://github.com/mikeu/vue2-leaflet-polyline-measure)
+
+Wrapper for [Leaflet.PolylineMeasure](https://github.com/ppete2/Leaflet.PolylineMeasure).
+
+> Allow the user to interactively measure distances on the map.
+
+
 ## [vue2-leaflet-polylinedecorator](https://github.com/jperelli/vue2-leaflet-polylinedecorator)
 
 Wrapper for [PolylineDecorator](https://github.com/bbecquet/Leaflet.PolylineDecorator).
