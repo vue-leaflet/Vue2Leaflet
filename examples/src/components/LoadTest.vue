@@ -51,7 +51,7 @@ export default {
   computed: {
     markers() {
       const markers = [];
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < 500; i++) {
         markers.push({
           lat: Math.random() * 360 - 180,
           lng: Math.random() * 360 - 180,
