@@ -41,7 +41,9 @@ export default {
     this.mapObject = control.layers(null, null, options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.$parent.registerLayerControl(this);
-    this.$emit('ready', this.mapObject);
+    this.$nextTick(() => {
+      this.$emit('ready', this.mapObject);
+    });
   },
   methods: {
     addLayer (layer) {
