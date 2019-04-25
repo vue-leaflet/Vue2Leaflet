@@ -2,119 +2,92 @@
   <div>
     <ul id="side">
       <li>
-        <a
-          href="#"
-          @click="currentView='simple'">Simple map</a>
+        <a href="#" @click="currentView = 'simple'">Simple map</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='marker-popup-example'">Custom Component</a>
+        <a href="#" @click="currentView = 'marker-popup-example'"
+          >Custom Component</a
+        >
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='multi-map'">Two maps</a>
+        <a href="#" @click="currentView = 'multi-map'">Two maps</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='custom-path'">Custom path</a>
+        <a href="#" @click="currentView = 'custom-path'">Custom path</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='custom-url-params'">Custom Url Params</a>
+        <a href="#" @click="currentView = 'custom-url-params'"
+          >Custom Url Params</a
+        >
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='custom-control'">Custom Leaflet Control</a>
+        <a href="#" @click="currentView = 'custom-control'"
+          >Custom Leaflet Control</a
+        >
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='set-bounds'">Set bounds</a>
+        <a href="#" @click="currentView = 'set-bounds'">Set bounds</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='example'">Some examples</a>
+        <a href="#" @click="currentView = 'example'">Some examples</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='geometry-test'">Geometry</a>
+        <a href="#" @click="currentView = 'geometry-test'">Geometry</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='popup-on-geometry-test'">Popup on Geometry</a>
+        <a href="#" @click="currentView = 'popup-on-geometry-test'"
+          >Popup on Geometry</a
+        >
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='world-copy-jump'">Jump on World Copy</a>
+        <a href="#" @click="currentView = 'world-copy-jump'"
+          >Jump on World Copy</a
+        >
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='geo-json'">GeoJSON</a>
+        <a href="#" @click="currentView = 'geo-json'">GeoJSON</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='geo-json2'">GeoJSON 2</a>
+        <a href="#" @click="currentView = 'geo-json2'">GeoJSON 2</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='wms-layers'">WMS Tile Layers</a>
+        <a href="#" @click="currentView = 'wms-layers'">WMS Tile Layers</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='crs'">CRS and Image Overlay</a>
+        <a href="#" @click="currentView = 'crs'">CRS and Image Overlay</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='stress'">Load Test</a>
+        <a href="#" @click="currentView = 'stress'">Load Test</a>
       </li>
       <li>
-        <a
-          href="#"
-          @click="currentView='icon'">Custom Marker Icons</a>
+        <a href="#" @click="currentView = 'icon'">Custom Marker Icons</a>
       </li>
     </ul>
-    <component
-      id="full_div"
-      :is="currentView"/>
+    <component id="full_div" :is="currentView" />
   </div>
 </template>
 
 <script>
-
-import CRSAndImageOverlay from './components/CRSAndImageOverlay';
-import CustomControl from './components/CustomControl';
-import CustomPath from './components/CustomPath';
-import CustomUrlParams from './components/CustomUrlParams';
-import Example from './components/Example';
-import GeoJSON from './components/GeoJSON';
-import GeoJSON2 from './components/GeoJSON2';
-import GeometryTest from './components/GeometryTest';
-import MarkerPopupExample from './components/MarkerPopupExample';
-import MultiMap from './components/MultiMap';
-import PopupOnGeometryTest from './components/PopupOnGeometryTest';
-import SetBounds from './components/SetBounds';
-import Simple from './components/Simple';
-import WMSLayers from './components/WMSLayers';
-import WorldCopyJump from './components/WorldCopyJump';
-import LoadTest from './components/LoadTest';
-import Icon from './components/Icon';
+import CRSAndImageOverlay from "./components/CRSAndImageOverlay";
+import CustomControl from "./components/CustomControl";
+import CustomPath from "./components/CustomPath";
+import CustomUrlParams from "./components/CustomUrlParams";
+import Example from "./components/Example";
+import GeoJSON from "./components/GeoJSON";
+import GeoJSON2 from "./components/GeoJSON2";
+import GeometryTest from "./components/GeometryTest";
+import MarkerPopupExample from "./components/MarkerPopupExample";
+import MultiMap from "./components/MultiMap";
+import PopupOnGeometryTest from "./components/PopupOnGeometryTest";
+import SetBounds from "./components/SetBounds";
+import Simple from "./components/Simple";
+import WMSLayers from "./components/WMSLayers";
+import WorldCopyJump from "./components/WorldCopyJump";
+import LoadTest from "./components/LoadTest";
+import Icon from "./components/Icon";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     CustomControl,
     CustomPath,
@@ -127,29 +100,30 @@ export default {
     SetBounds,
     Simple,
     WorldCopyJump,
-    'geo-json': GeoJSON,
-    'geo-json2': GeoJSON2,
-    'wms-layers': WMSLayers,
-    'crs': CRSAndImageOverlay,
+    "geo-json": GeoJSON,
+    "geo-json2": GeoJSON2,
+    "wms-layers": WMSLayers,
+    crs: CRSAndImageOverlay,
     stress: LoadTest,
     Icon
   },
-  data () {
+  data() {
     return {
-      currentView: 'simple'
+      currentView: "simple"
     };
   }
 };
 </script>
 
 <style>
+@import "../node_modules/leaflet/dist/leaflet.css";
+
 .leaflet-fake-icon-image-2x {
   background-image: url(../node_modules/leaflet/dist/images/marker-icon-2x.png);
 }
 .leaflet-fake-icon-shadow {
   background-image: url(../node_modules/leaflet/dist/images/marker-shadow.png);
 }
-@import "../node_modules/leaflet/dist/leaflet.css";
 
 body {
   margin: 0px;
@@ -157,8 +131,8 @@ body {
 }
 
 #side {
-  float:left;
-  width:208px;
+  float: left;
+  width: 208px;
 }
 
 #full_div {
