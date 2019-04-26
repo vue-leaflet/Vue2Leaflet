@@ -97,16 +97,10 @@ $ git clone git@github.com:KoRiGaN/Vue2Leaflet.git
 $ cd Vue2Leaflet
 # install dependencies and build vue2-leaflet
 $ npm install
-$ vue-cli-service build --entry src/main.js --mode production --dest dist --target lib --watch
-# Or use vue-cli ui to do so with a graphical interface
-# create a symlink for vue2-leaflet
-$ npm link
+$ npm run serve
 $ cd examples
-$ npm install
-# create a symbolic link for vue2-leaflet in node_modules/
-$ npm link vue2-leaflet
 # serve with hot reload at localhost:8080
-$ npm run dev
+$ npm run serve
 ```
 
 Go to <http://localhost:8080/> to see running examples, updating the lib code will auto-reload the examples as well.
