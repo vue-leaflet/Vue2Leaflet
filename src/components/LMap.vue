@@ -158,7 +158,9 @@ export default {
     this.ready = true;
     // DEPRECATED leaflet:load
     this.$emit('leaflet:load');
-    this.$emit('ready', this.mapObject);
+    this.$nextTick(() => {
+      this.$emit('ready', this.mapObject);
+    });
   },
   methods: {
     registerLayerControl (lControlLayers) {

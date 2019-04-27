@@ -24,7 +24,9 @@ export default {
     this.mapObject.setContent(this.content || this.$el);
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindPopup(this.mapObject);
-    this.$emit('ready', this.mapObject);
+    this.$nextTick(() => {
+      this.$emit('ready', this.mapObject);
+    });
   },
   beforeDestroy () {
     if (this.parentContainer) {

@@ -36,7 +36,9 @@ export default {
     this.mapObject = control.scale(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
-    this.$emit('ready', this.mapObject);
+    this.$nextTick(() => {
+      this.$emit('ready', this.mapObject);
+    });
   },
   render () {
     return null;

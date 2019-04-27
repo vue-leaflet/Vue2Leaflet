@@ -43,7 +43,9 @@ export default {
     this.mapObject.createTile = this.createTile;
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
-    this.$emit('ready', this.mapObject);
+    this.$nextTick(() => {
+      this.$emit('ready', this.mapObject);
+    });
   },
   beforeDestroy () {
     this.parentContainer.removeLayer(this.mapObject);

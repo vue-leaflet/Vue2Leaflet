@@ -99,9 +99,7 @@ export default {
       this.$el,
       { attributes: true, childList: true, characterData: true, subtree: true }
     );
-
     this.scheduleCreateIcon();
-    this.$emit('ready', this.mapObject);
   },
 
   beforeDestroy () {
