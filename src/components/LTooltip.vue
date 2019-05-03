@@ -20,8 +20,8 @@ export default {
     });
   },
   beforeDestroy () {
-    if (this.parentContainer) {
-      this.parentContainer.unbindTooltip();
+    if (this.parentContainer && this.parentContainer.mapObject) {
+      this.parentContainer.mapObject.unbindTooltip();
     }
   }
 };
