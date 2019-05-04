@@ -29,8 +29,8 @@ export default {
     });
   },
   beforeDestroy () {
-    if (this.parentContainer) {
-      this.parentContainer.unbindPopup();
+    if (this.parentContainer && this.parentContainer.mapObject) {
+      this.parentContainer.mapObject.unbindPopup();
     }
   }
 };
