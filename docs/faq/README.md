@@ -67,3 +67,11 @@ module.exports = {
   }
 }
 ```
+
+## How create plugin?
+
+* vue2-leaflet exposes utility that you can leverage findRealParent and propsBinder
+* everything should be initialised in the mounted lifecycle hook
+* remember to set leaflet as a peerDependecy
+* rollup is the best library bundler so you can leverage ESM ( you can check how we do it here in the main repo )
+* check this repo or one of the other plugins for inspiration ( for example leaflet-markercluster )
