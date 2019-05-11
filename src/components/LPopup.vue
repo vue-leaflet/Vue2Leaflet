@@ -32,8 +32,7 @@ export default {
     if (this.parentContainer) {
       if (this.parentContainer.unbindPopup) {
         this.parentContainer.unbindPopup();
-      } else if (this.parentContainer.mapObject
-        && this.parentContainer.mapObject.unbindPopup) {
+      } else if (this.parentContainer.mapObject && this.parentContainer.mapObject.unbindPopup) {
         this.parentContainer.mapObject.unbindPopup();
       }
     }
