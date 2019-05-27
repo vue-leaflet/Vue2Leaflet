@@ -77,6 +77,7 @@ export default {
     },
     latLngSync (event) {
       this.$emit('update:latLng', event.latlng);
+      this.$emit('update:lat-lng', event.latlng);
     }
   },
   render: function (h) {
