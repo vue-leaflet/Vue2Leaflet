@@ -1,4 +1,5 @@
 import { getWrapperWithMap } from '@/tests/test-helpers';
+import { testPathFunctionality } from '@/tests/mixin-tests/path-tests';
 import LCircle from '@/components/LCircle.vue';
 import L from 'leaflet';
 
@@ -63,4 +64,6 @@ describe('component: LCircle.vue', () => {
 
     expect(wrapper.vm.mapObject.getRadius()).toBe(newRadius);
   });
+
+  testPathFunctionality(LCircle, 'LCircle.vue');
 });
