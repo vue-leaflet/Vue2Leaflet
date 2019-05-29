@@ -21,7 +21,11 @@ export default {
   },
   beforeDestroy () {
     if (this.parentContainer) {
-      this.parentContainer.unbindTooltip();
+      if (this.parentContainer.unbindTooltip) {
+        this.parentContainer.unbindTooltip();
+      } else if (this.parentContainer.mapObject && this.parentContainer.mapObject.unbindTooltip) {
+        this.parentContainer.mapObject.unbindTooltip();
+      }
     }
   }
 };

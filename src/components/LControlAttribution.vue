@@ -9,7 +9,7 @@ export default {
   mixins: [ControlMixin, Options],
   props: {
     prefix: {
-      type: String,
+      type: [String, Boolean],
       default: null
     }
   },

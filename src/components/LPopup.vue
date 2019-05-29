@@ -30,7 +30,11 @@ export default {
   },
   beforeDestroy () {
     if (this.parentContainer) {
-      this.parentContainer.unbindPopup();
+      if (this.parentContainer.unbindPopup) {
+        this.parentContainer.unbindPopup();
+      } else if (this.parentContainer.mapObject && this.parentContainer.mapObject.unbindPopup) {
+        this.parentContainer.mapObject.unbindPopup();
+      }
     }
   }
 };
