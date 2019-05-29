@@ -5,13 +5,17 @@ describe('component: LMap.vue', () => {
   test('LMap.vue change prop center', async () => {
     const mockPanTo = jest.fn();
     const wrapper = getMapWrapper();
+
     expect(wrapper.exists()).toBe(true);
+
     wrapper.vm.mapObject.panTo = mockPanTo;
     const newCenter = L.latLng([1, 1]);
     wrapper.setProps({ center: newCenter });
     await wrapper.vm.$nextTick();
+
     const center = wrapper.vm.lastSetCenter;
     const centerLatLng = L.latLng(center);
+
     expect(centerLatLng.equals(newCenter)).toBe(true);
     expect(mockPanTo.mock.calls.length).toBe(1);
     expect(mockPanTo.mock.calls[0][0]).toBe(newCenter);
@@ -21,17 +25,20 @@ describe('component: LMap.vue', () => {
     const mockPanTo = jest.fn();
     const center = L.latLng([0, 0]);
     const wrapper = getMapWrapper({ center: center });
+
     expect(wrapper.exists()).toBe(true);
+
     wrapper.vm.mapObject.panTo = mockPanTo;
     wrapper.vm.setCenter(center);
+
     expect(mockPanTo.mock.calls.length).toBe(0);
   });
 
   test('LMap.vue setCenter should work with [0, 0]', () => {
     const center = [0, 0];
     const mockPanTo = jest.fn();
-
     const wrapper = getMapWrapper({ center: [1, 1] });
+
     wrapper.vm.mapObject.panTo = mockPanTo;
     wrapper.vm.setCenter(center);
 
@@ -47,8 +54,8 @@ describe('component: LMap.vue', () => {
     const center1 = L.latLng([1, 1]);
     const center2 = L.latLng([2, 2]);
     const center3 = L.latLng([3, 3]);
-
     const wrapper = getMapWrapper({ center: initialCenter });
+
     wrapper.vm.setCenter(center1);
     wrapper.vm.setCenter(center2);
     wrapper.vm.setCenter(center3);
@@ -64,6 +71,7 @@ describe('component: LMap.vue', () => {
   test('LMap.vue initial bounds', () => {
     const bounds = L.latLngBounds(L.latLng([1, 1]), L.latLng([2, 2]));
     const wrapper = getMapWrapper({ bounds: bounds });
+
     expect(wrapper.vm.lastSetBounds).toEqual(bounds);
   });
 
@@ -74,10 +82,12 @@ describe('component: LMap.vue', () => {
     const mockFitBounds = jest.fn();
     const wrapper = getMapWrapper({ bounds: bounds });
     wrapper.vm.mapObject.fitBounds = mockFitBounds;
+
     wrapper.setProps({ bounds: newBounds });
     await wrapper.vm.$nextTick();
     wrapper.setProps({ bounds: newBounds2 });
     await wrapper.vm.$nextTick();
+
     expect(mockFitBounds.mock.calls.length).toBe(2);
     expect(mockFitBounds.mock.calls[0][0]).toEqual(L.latLngBounds(newBounds));
     expect(mockFitBounds.mock.calls[0][1]).toEqual({});
@@ -91,8 +101,10 @@ describe('component: LMap.vue', () => {
     const mockFitBounds = jest.fn();
     const wrapper = getMapWrapper({ bounds: bounds });
     wrapper.vm.mapObject.fitBounds = mockFitBounds;
+
     wrapper.setProps({ bounds: sameBounds });
     await wrapper.vm.$nextTick();
+
     expect(mockFitBounds.mock.calls.length).toBe(0);
   });
 
@@ -109,6 +121,7 @@ describe('component: LMap.vue', () => {
     const mockFitBounds = jest.fn();
     const wrapper = getMapWrapper();
     wrapper.vm.mapObject.fitBounds = mockFitBounds;
+
     wrapper.setProps({ padding: optionsPadding.padding });
     wrapper.setProps({ paddingBottomRight: optionsPadding2.paddingBottomRight });
     wrapper.setProps({ paddingTopLeft: optionsPadding2.paddingTopLeft });
@@ -119,6 +132,7 @@ describe('component: LMap.vue', () => {
     await wrapper.vm.$nextTick();
     wrapper.setProps({ bounds: bounds2 });
     await wrapper.vm.$nextTick();
+
     expect(mockFitBounds.mock.calls.length).toBe(2);
     expect(mockFitBounds.mock.calls[0][0]).toEqual(L.latLngBounds(bounds));
     expect(mockFitBounds.mock.calls[0][1]).toEqual(optionsPadding);

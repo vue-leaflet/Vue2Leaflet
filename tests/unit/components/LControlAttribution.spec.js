@@ -4,6 +4,7 @@ import LControlAttribution from '@/components/LControlAttribution.vue';
 describe('component: LControlAttribution.vue', () => {
   test('LControlAttribution.vue has a mapObject', () => {
     const { wrapper } = getWrapperWithMap(LControlAttribution);
+
     expect(wrapper.vm.mapObject).toBeDefined();
   });
 
@@ -11,6 +12,7 @@ describe('component: LControlAttribution.vue', () => {
 
   test('LControlAttribution.vue uses the "position" Leaflet option', () => {
     const { wrapper } = getWrapperWithMap(LControlAttribution, { position: 'bottomleft' });
+
     expect(wrapper.vm.mapObject.getPosition()).toBe('bottomleft');
   });
 
@@ -19,6 +21,7 @@ describe('component: LControlAttribution.vue', () => {
   test('LControlAttribution.vue uses the "prefix" Leaflet option', () => {
     const prefix = 'Custom Vue2Leaflet prefix';
     const { mapWrapper } = getWrapperWithMap(LControlAttribution, { prefix });
+
     see(mapWrapper, prefix);
   });
 
@@ -28,6 +31,7 @@ describe('component: LControlAttribution.vue', () => {
     const { wrapper } = await getWrapperWithMap(LControlAttribution, { position: 'bottomleft' });
     wrapper.setProps({ position: 'topright' });
     await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.mapObject.getPosition()).toBe('topright');
   });
 
@@ -38,6 +42,7 @@ describe('component: LControlAttribution.vue', () => {
     const prefix = 'something new';
     wrapper.setProps({ prefix });
     await wrapper.vm.$nextTick();
+
     see(mapWrapper, prefix);
   });
 });

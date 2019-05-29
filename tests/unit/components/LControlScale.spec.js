@@ -4,6 +4,7 @@ import LControlScale from '@/components/LControlScale.vue';
 describe('component: LControlScale.vue', () => {
   test('LControlScale.vue has a mapObject', () => {
     const { wrapper } = getWrapperWithMap(LControlScale);
+
     expect(wrapper.vm.mapObject).toBeDefined();
   });
 
@@ -11,6 +12,7 @@ describe('component: LControlScale.vue', () => {
 
   test('LControlScale.vue uses the "position" Leaflet option', () => {
     const { wrapper } = getWrapperWithMap(LControlScale, { position: 'bottomleft' });
+
     expect(wrapper.vm.mapObject.getPosition()).toBe('bottomleft');
   });
 
@@ -18,21 +20,25 @@ describe('component: LControlScale.vue', () => {
 
   test('LControlScale.vue uses the "maxWidth" Leaflet option', () => {
     const { wrapper } = getWrapperWithMap(LControlScale, { maxWidth: 37 });
+
     expect(wrapper.vm.mapObject.options.maxWidth).toBe(37);
   });
 
   test('LControlScale.vue uses the "metric" Leaflet option', () => {
     const { wrapper } = getWrapperWithMap(LControlScale, { metric: false });
+
     expect(wrapper.vm.mapObject.options.metric).toBeFalsy();
   });
 
   test('LControlScale.vue uses the "imperial" Leaflet option', () => {
     const { wrapper } = getWrapperWithMap(LControlScale, { imperial: false });
+
     expect(wrapper.vm.mapObject.options.imperial).toBeFalsy();
   });
 
   test('LControlScale.vue uses the "updateWhenIdle" Leaflet option', () => {
     const { wrapper } = getWrapperWithMap(LControlScale, { updateWhenIdle: true });
+
     expect(wrapper.vm.mapObject.options.updateWhenIdle).toBeTruthy();
   });
 
@@ -42,6 +48,7 @@ describe('component: LControlScale.vue', () => {
     const { wrapper } = getWrapperWithMap(LControlScale, { position: 'bottomleft' });
     wrapper.setProps({ position: 'topright' });
     await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.mapObject.getPosition()).toBe('topright');
   });
 });
