@@ -1,5 +1,5 @@
 import { getWrapperWithMap } from '@/tests/test-helpers';
-import { testPathFunctionality } from '@/tests/mixin-tests/path-tests';
+import { testCircleFunctionality } from '@/tests/mixin-tests/circle-tests';
 import LCircle from '@/components/LCircle.vue';
 import L from 'leaflet';
 
@@ -9,6 +9,10 @@ describe('component: LCircle.vue', () => {
 
     expect(wrapper.vm.mapObject).toBeDefined();
   });
+
+  // Circle mixin
+
+  testCircleFunctionality(LCircle, 'LCircle.vue');
 
   // latLng property
 
@@ -45,25 +49,4 @@ describe('component: LCircle.vue', () => {
 
     expect(wrapper.vm.mapObject.getLatLng()).toEqual(newLatLng);
   });
-
-  // radius property
-
-  test('LCircle.vue accepts and uses radius prop', () => {
-    const radius = 42;
-    const { wrapper } = getWrapperWithMap(LCircle, { radius });
-    expect(wrapper.vm.mapObject.getRadius()).toBe(radius);
-  });
-
-  test('LCircle.vue updates the mapObject radius when prop changes', async () => {
-    const radius = 42;
-    const { wrapper } = getWrapperWithMap(LCircle, { radius });
-
-    const newRadius = 137;
-    wrapper.setProps({ radius: newRadius });
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.vm.mapObject.getRadius()).toBe(newRadius);
-  });
-
-  testPathFunctionality(LCircle, 'LCircle.vue');
 });
