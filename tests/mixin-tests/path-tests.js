@@ -16,7 +16,7 @@ export const testPathFunctionality = (component, componentName = 'it') => {
     expect(wrapper.vm.mapObject.options.stroke).toBeFalsy();
   });
 
-  test(`${componentName} updates stroke when prop changes`, async () => {
+  test(`${componentName} updates stroke when prop changes to false`, async () => {
     const { wrapper } = getWrapperWithMap(component, { stroke: true });
 
     wrapper.setProps({ stroke: false });
@@ -25,13 +25,31 @@ export const testPathFunctionality = (component, componentName = 'it') => {
     expect(wrapper.vm.mapObject.options.stroke).toBeFalsy();
   });
 
-  test(`${componentName} updates stroke using setStroke`, async () => {
+  test(`${componentName} updates stroke when prop changes to true`, async () => {
+    const { wrapper } = getWrapperWithMap(component, { stroke: false });
+
+    wrapper.setProps({ stroke: true });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.mapObject.options.stroke).toBeTruthy();
+  });
+
+  test(`${componentName} updates stroke to false using setStroke`, async () => {
     const { wrapper } = getWrapperWithMap(component, { stroke: true });
 
     wrapper.vm.setStroke(false);
     await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.mapObject.options.stroke).toBeFalsy();
+  });
+
+  test(`${componentName} updates stroke to true using setStroke`, async () => {
+    const { wrapper } = getWrapperWithMap(component, { stroke: false });
+
+    wrapper.vm.setStroke(true);
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.mapObject.options.stroke).toBeTruthy();
   });
 
   // Color
@@ -115,6 +133,16 @@ export const testPathFunctionality = (component, componentName = 'it') => {
     const { wrapper } = getWrapperWithMap(component, { opacity: 0.2 });
 
     const newOpacity = 0.4;
+    wrapper.vm.setOpacity(newOpacity);
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.mapObject.options.opacity).toEqual(newOpacity);
+  });
+
+  test(`${componentName} can set opacity to zero`, async () => {
+    const { wrapper } = getWrapperWithMap(component, { opacity: 0.2 });
+
+    const newOpacity = 0;
     wrapper.vm.setOpacity(newOpacity);
     await wrapper.vm.$nextTick();
 
@@ -251,7 +279,7 @@ export const testPathFunctionality = (component, componentName = 'it') => {
     expect(wrapper.vm.mapObject.options.fill).toBeFalsy();
   });
 
-  test(`${componentName} updates fill when prop changes`, async () => {
+  test(`${componentName} updates fill when prop changes to false`, async () => {
     const { wrapper } = getWrapperWithMap(component, { fill: true });
 
     wrapper.setProps({ fill: false });
@@ -260,13 +288,31 @@ export const testPathFunctionality = (component, componentName = 'it') => {
     expect(wrapper.vm.mapObject.options.fill).toBeFalsy();
   });
 
-  test(`${componentName} updates fill using setFill`, async () => {
+  test(`${componentName} updates fill when prop changes to true`, async () => {
+    const { wrapper } = getWrapperWithMap(component, { fill: false });
+
+    wrapper.setProps({ fill: true });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.mapObject.options.fill).toBeTruthy();
+  });
+
+  test(`${componentName} updates fill to false using setFill`, async () => {
     const { wrapper } = getWrapperWithMap(component, { fill: true });
 
     wrapper.vm.setFill(false);
     await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.mapObject.options.fill).toBeFalsy();
+  });
+
+  test(`${componentName} updates fill to true using setFill`, async () => {
+    const { wrapper } = getWrapperWithMap(component, { fill: false });
+
+    wrapper.vm.setFill(true);
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.mapObject.options.fill).toBeTruthy();
   });
 
   // FillColor
@@ -321,6 +367,16 @@ export const testPathFunctionality = (component, componentName = 'it') => {
     const { wrapper } = getWrapperWithMap(component, { fillOpacity: 0.2 });
 
     const newFillOpacity = 0.4;
+    wrapper.vm.setFillOpacity(newFillOpacity);
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.mapObject.options.fillOpacity).toEqual(newFillOpacity);
+  });
+
+  test(`${componentName} can set fillOpacity to zero`, async () => {
+    const { wrapper } = getWrapperWithMap(component, { fillOpacity: 0.2 });
+
+    const newFillOpacity = 0;
     wrapper.vm.setFillOpacity(newFillOpacity);
     await wrapper.vm.$nextTick();
 
