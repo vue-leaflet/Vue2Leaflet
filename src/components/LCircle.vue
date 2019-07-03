@@ -15,7 +15,7 @@ export default {
   props: {
     latLng: {
       type: [Object, Array],
-      default: () => []
+      default: () => [0, 0]
     }
   },
   data () {
