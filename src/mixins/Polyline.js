@@ -27,17 +27,11 @@ export default {
     };
   },
   methods: {
-    setSmoothFactor (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ smoothFactor: newVal });
-      }
+    setSmoothFactor (newVal) {
+      this.mapObject.setStyle({ smoothFactor: newVal });
     },
-    setNoClip (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ noClip: newVal });
-      }
+    setNoClip (newVal) {
+      this.mapObject.setStyle({ noClip: newVal });
     },
     addLatLng (value) {
       this.mapObject.addLatLng(value);
