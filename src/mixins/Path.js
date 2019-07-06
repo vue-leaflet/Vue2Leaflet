@@ -112,79 +112,44 @@ export default {
     setLStyle (newVal) {
       this.mapObject.setStyle(newVal);
     },
-    setStroke (newVal, oldVal) {
-      if (newVal === oldVal) return;
+    setStroke (newVal) {
       this.mapObject.setStyle({ stroke: newVal });
     },
-    setColor (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal !== undefined && newVal !== null) {
-        this.mapObject.setStyle({ color: newVal });
-      }
+    setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
     },
-    setWeight (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ weight: newVal });
-      }
+    setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
     },
-    setOpacity (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal !== undefined && newVal !== null) {
-        this.mapObject.setStyle({ opacity: newVal });
-      }
+    setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
     },
-    setLineCap (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ lineCap: newVal });
-      }
+    setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
     },
-    setLineJoin (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ lineJoin: newVal });
-      }
+    setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
     },
-    setDashArray (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ dashArray: newVal });
-      }
+    setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
     },
-    setDashOffset (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ dashOffset: newVal });
-      }
+    setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
     },
-    setFill (newVal, oldVal) {
-      if (newVal === oldVal) return;
+    setFill (newVal) {
       this.mapObject.setStyle({ fill: newVal });
     },
-    setFillColor (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ fillColor: newVal });
-      }
+    setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
     },
-    setFillOpacity (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ fillOpacity: newVal });
-      }
+    setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
     },
-    setFillRule (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ fillRule: newVal });
-      }
+    setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
     },
-    setClassName (newVal, oldVal) {
-      if (newVal === oldVal) return;
-      if (newVal) {
-        this.mapObject.setStyle({ className: newVal });
-      }
+    setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
     }
   }
 };
