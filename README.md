@@ -96,6 +96,29 @@ If you have created a plugin and want it to be listed here, let me know :-).
 
 Vue2Leaflet is only a wrapper for Leaflet. I want to keep it as simple as possible so I don't want to add any plugin support into this repo.
 
+## Run code locally for contributors
+
+``` bash
+# clone the repository
+git clone https://github.com/KoRiGaN/Vue2Leaflet.git
+cd Vue2Leaflet
+# install dependencies and build vue2-leaflet
+npm install
+# create a symlink for vue2-leaflet
+yarn link
+cd examples
+yarn install
+# create a symbolic link for vue2-leaflet in node_modules/
+yarn link vue2-leaflet
+# serve with hot reload at localhost:8080
+yarn run serve
+```
+
+Go to <http://localhost:8080/> to see running examples
+
+NOTE: If you make changes to the library you should run 'npm run build' again in the root folder.
+The dev server should detect modification and reload the examples
+
 ## Authors
 
 Mickaël Bouchaud
