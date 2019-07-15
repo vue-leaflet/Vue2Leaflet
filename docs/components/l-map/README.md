@@ -155,6 +155,10 @@ export default {
     noBlockingAnimations: {
       type: Boolean,
       default: false
+    },
+    attributionControl: {
+      type: Boolean,
+      default: true
     }
 }
 ```

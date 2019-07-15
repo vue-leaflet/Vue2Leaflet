@@ -103,6 +103,10 @@ export default {
     noBlockingAnimations: {
       type: Boolean,
       default: false
+    },
+    attributionControl: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -148,7 +152,8 @@ export default {
       zoomAnimation: this.zoomAnimation,
       zoomAnimationThreshold: this.zoomAnimationThreshold,
       fadeAnimation: this.fadeAnimation,
-      markerZoomAnimation: this.markerZoomAnimation
+      markerZoomAnimation: this.markerZoomAnimation,
+      attributionControl: this.attributionControl
     }, this);
     this.mapObject = map(this.$el, options);
     this.setBounds(this.bounds);
