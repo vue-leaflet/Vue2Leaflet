@@ -5,8 +5,10 @@
       <p>First marker is placed at {{ withPopup.lat }}, {{ withPopup.lng }}</p>
       <p>Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }}</p>
       <button @click="showLongText">Toggle long popup</button>
+      <button @click="showMap = !showMap">Toggle map</button>
     </div>
     <l-map
+      v-if="showMap"
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
@@ -70,7 +72,8 @@ export default {
       showParagraph: false,
       mapOptions: {
         zoomSnap: 0.5
-      }
+      },
+      showMap: true
     };
   },
   methods: {
