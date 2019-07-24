@@ -131,6 +131,11 @@ export default {
       return options;
     }
   },
+  beforeDestroy () {
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  },
   mounted () {
     const options = optionsMerger({
       minZoom: this.minZoom,
