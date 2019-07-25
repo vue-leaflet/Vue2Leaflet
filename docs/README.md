@@ -76,7 +76,7 @@ For example Marker move event was 'l-move' and became simply 'move'.
 
 v1.0.0 introduces Leaflet Controls you can now use them using LControlAttribution, LControlLayers, LControlScale and LControlZoom.
 
-When adding LControlAttribution or LControlZoom to your template, remember to desactivate the default one by using LMap options:
+When adding LControlAttribution or LControlZoom to your template, remember to deactivate the default one by using LMap options:
 
 ``` js
 {
