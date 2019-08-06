@@ -79,6 +79,17 @@ describe('component: LMap.vue', () => {
     const bounds = L.latLngBounds(L.latLng([1, 1]), L.latLng([2, 2]));
     const newBounds = [[4, 4], [5, 5]];
     const newBounds2 = L.latLngBounds(L.latLng([10, 10]), L.latLng([20, 20]));
+    const defaultOptions = {
+      animate: null,
+      pan: {
+        animate: null,
+        duration: undefined
+      },
+      zoom: {
+        animate: null
+      }
+    };
+
     const mockFitBounds = jest.fn();
     const wrapper = getMapWrapper({ bounds: bounds });
     wrapper.vm.mapObject.fitBounds = mockFitBounds;
@@ -90,9 +101,9 @@ describe('component: LMap.vue', () => {
 
     expect(mockFitBounds.mock.calls.length).toBe(2);
     expect(mockFitBounds.mock.calls[0][0]).toEqual(L.latLngBounds(newBounds));
-    expect(mockFitBounds.mock.calls[0][1]).toEqual({});
+    expect(mockFitBounds.mock.calls[0][1]).toEqual(defaultOptions);
     expect(mockFitBounds.mock.calls[1][0]).toEqual(L.latLngBounds(newBounds2));
-    expect(mockFitBounds.mock.calls[1][1]).toEqual({});
+    expect(mockFitBounds.mock.calls[1][1]).toEqual(defaultOptions);
   });
 
   test('LMap.vue with same bounds', async () => {
@@ -111,6 +122,7 @@ describe('component: LMap.vue', () => {
   test('LMap.vue bounds options', async () => {
     const bounds = L.latLngBounds(L.latLng([1, 1]), L.latLng([2, 2]));
     const bounds2 = L.latLngBounds(L.latLng([11, 11]), L.latLng([2, 2]));
+    const defaultOptions = { animate: null };
     const optionsPadding = {
       padding: [5, 5]
     };
@@ -135,30 +147,119 @@ describe('component: LMap.vue', () => {
 
     expect(mockFitBounds.mock.calls.length).toBe(2);
     expect(mockFitBounds.mock.calls[0][0]).toEqual(L.latLngBounds(bounds));
-    expect(mockFitBounds.mock.calls[0][1]).toEqual(optionsPadding);
+    expect(mockFitBounds.mock.calls[0][1]).toEqual(Object.assign({}, defaultOptions, optionsPadding));
     expect(mockFitBounds.mock.calls[1][0]).toEqual(L.latLngBounds(bounds2));
-    expect(mockFitBounds.mock.calls[1][1]).toEqual(optionsPadding2);
+    expect(mockFitBounds.mock.calls[1][1]).toEqual(Object.assign({}, defaultOptions, optionsPadding2));
   });
 
-  test('LMap.vue no-blocking-animations options', async () => {
+  test('LMap.vue no-blocking-animations real position', async () => {
+    // Most important test for no-blocking-animations, tests the real position
+    // However, I suspect animations are never triggered in unit tests
     const wrapper = getMapWrapper({
+      center: { lat: 80, lng: 170 },
+      zoom: 10,
       noBlockingAnimations: true
     });
 
     // Move the map several times in a short timeperiod
-    wrapper.setProps({ center: { lat: -80, lng: 170 } });
+    wrapper.setProps({ center: { lat: 0, lng: 170 } });
     wrapper.setProps({ zoom: 15 });
 
-    wrapper.setProps({ center: { lat: 0, lng: 0 } });
+    wrapper.setProps({ center: { lat: 80, lng: 0 } });
     wrapper.setProps({ zoom: 10 });
 
-    wrapper.setProps({ center: { lat: 80, lng: -170 } });
+    wrapper.setProps({ center: { lat: -80, lng: -170 } });
     wrapper.setProps({ zoom: 5 });
 
     // Finally, mapObject should be on last position
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.vm.mapObject.getCenter()).toEqual({ lat: 80, lng: -170 });
-      expect(wrapper.vm.mapObject.getZoom()).toEqual(5);
+    await wrapper.vm.$nextTick();
+    expect(wrapper.vm.mapObject.getCenter()).toEqual({ lat: -80, lng: -170 });
+    expect(wrapper.vm.mapObject.getZoom()).toEqual(5);
+  });
+
+  test('LMap.vue no-blocking-animations for center', async () => {
+    const newCenter = { lat: -80, lng: 170 };
+    const newCenter2 = { lat: 0, lng: -170 };
+
+    const mockPanTo = jest.fn();
+    const wrapper = getMapWrapper({
+      center: { lat: 80, lng: 0 },
+      zoom: 5,
+      noBlockingAnimations: true
+    });
+    wrapper.vm.mapObject.panTo = mockPanTo;
+
+    wrapper.setProps({ center: newCenter });
+    await wrapper.vm.$nextTick();
+    wrapper.setProps({ center: newCenter2 });
+    await wrapper.vm.$nextTick();
+
+    expect(mockPanTo.mock.calls.length).toBe(2);
+    expect(mockPanTo.mock.calls[0][0]).toEqual(newCenter);
+    expect(mockPanTo.mock.calls[0][1]).toEqual({ animate: false });
+    expect(mockPanTo.mock.calls[1][0]).toEqual(newCenter2);
+    expect(mockPanTo.mock.calls[1][1]).toEqual({ animate: false });
+  });
+
+  test('LMap.vue no-blocking-animations for zoom', async () => {
+    const newZoom = 10;
+    const newZoom2 = 5;
+
+    const mockSetZoom = jest.fn();
+    const wrapper = getMapWrapper({
+      center: { lat: 0, lng: 0 },
+      zoom: 15,
+      noBlockingAnimations: true
+    });
+    wrapper.vm.mapObject.setZoom = mockSetZoom;
+
+    wrapper.setProps({ zoom: newZoom });
+    await wrapper.vm.$nextTick();
+    wrapper.setProps({ zoom: newZoom2 });
+    await wrapper.vm.$nextTick();
+
+    expect(mockSetZoom.mock.calls.length).toBe(2);
+    expect(mockSetZoom.mock.calls[0][0]).toEqual(newZoom);
+    expect(mockSetZoom.mock.calls[0][1]).toEqual({ animate: false });
+    expect(mockSetZoom.mock.calls[1][0]).toEqual(newZoom2);
+    expect(mockSetZoom.mock.calls[1][1]).toEqual({ animate: false });
+  });
+
+  test('LMap.vue no-blocking-animations for bounds', async () => {
+    const bounds = L.latLngBounds(L.latLng([70, 1]), L.latLng([71, 2]));
+    const newBounds = [[-50, -30], [-120, -80]];
+    const newBounds2 = L.latLngBounds(L.latLng([0, 80]), L.latLng([10, 120]));
+    const mockFitBounds = jest.fn();
+    const wrapper = getMapWrapper({ bounds: bounds, noBlockingAnimations: true });
+    wrapper.vm.mapObject.fitBounds = mockFitBounds;
+
+    wrapper.setProps({ bounds: newBounds });
+    await wrapper.vm.$nextTick();
+    wrapper.setProps({ bounds: newBounds2 });
+    await wrapper.vm.$nextTick();
+
+    expect(mockFitBounds.mock.calls.length).toBe(2);
+    expect(mockFitBounds.mock.calls[0][0]).toEqual(L.latLngBounds(newBounds));
+    expect(mockFitBounds.mock.calls[0][1]).toEqual({
+      animate: false,
+      pan: {
+        animate: false,
+        duration: undefined
+      },
+      zoom: {
+        animate: false
+      }
+    });
+    expect(mockFitBounds.mock.calls[1][0]).toEqual(L.latLngBounds(newBounds2));
+    expect(mockFitBounds.mock.calls[1][1]).toEqual({
+      animate: false,
+      pan: {
+        animate: false,
+        duration: undefined
+      },
+      zoom: {
+        animate: false
+      }
     });
   });
 });
