@@ -117,7 +117,9 @@ export default {
   },
   computed: {
     fitBoundsOptions () {
-      const options = {};
+      const options = {
+        animate: this.noBlockingAnimations ? false : null
+      };
       if (this.padding) {
         options.padding = this.padding;
       } else {
@@ -202,7 +204,7 @@ export default {
     },
     setZoom (newVal, oldVal) {
       this.mapObject.setZoom(newVal, {
-        animate: !this.noBlockingAnimations ? false : null
+        animate: this.noBlockingAnimations ? false : null
       });
     },
     setCenter (newVal, oldVal) {
@@ -215,7 +217,7 @@ export default {
         oldCenter.lng !== newCenter.lng) {
         this.lastSetCenter = newCenter;
         this.mapObject.panTo(newCenter, {
-          animate: !this.noBlockingAnimations ? false : null
+          animate: this.noBlockingAnimations ? false : null
         });
       }
     },
@@ -247,7 +249,9 @@ export default {
       console.log('Changing CRS is not yet supported by Leaflet');
     },
     fitBounds (bounds) {
-      this.mapObject.fitBounds(bounds);
+      this.mapObject.fitBounds(bounds, {
+        animate: this.noBlockingAnimations ? false : null
+      });
     },
     moveEndHandler () {
       this.$emit('update:zoom', this.mapObject.getZoom());
