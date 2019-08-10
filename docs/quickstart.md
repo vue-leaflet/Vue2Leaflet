@@ -110,7 +110,7 @@ But it can be manually done by adding a plugin let's say `leaflet.js` in your `p
 import Vue from 'vue';
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
-import { Icon }from 'leaflet';
+import { Icon } from 'leaflet';
 delete Icon.Default.prototype._getIconUrl;
 
 Icon.Default.mergeOptions({
@@ -120,7 +120,7 @@ Icon.Default.mergeOptions({
 });
 
 Vue.component('l-map', LMap);
-Vue.component('l-tilelayer', LTileLayer);
+Vue.component('l-tile-layer', LTileLayer);
 Vue.component('l-marker', LMarker);
 ```
 
