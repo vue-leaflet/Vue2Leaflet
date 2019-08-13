@@ -37,6 +37,11 @@ export default {
       custom: true,
       default: 1
     },
+    zoomDelta: {
+      type: Number,
+      custom: true,
+      default: 1
+    },
     minZoom: {
       type: Number,
       default: null
@@ -154,6 +159,7 @@ export default {
       center: this.center,
       zoom: this.zoom,
       zoomSnap: this.zoomSnap,
+      zoomDelta: this.zoomDelta,
       inertia: this.inertia,
       inertiaDeceleration: this.inertiaDeceleration,
       inertiaMaxSpeed: this.inertiaMaxSpeed,
