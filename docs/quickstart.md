@@ -132,12 +132,12 @@ plugins: [
 ]
 ```
 
-And then by remembering that `leaflet` cannot be server-side-rendered and so using the `no-ssr` component
+And then by remembering that `leaflet` cannot be server-side-rendered and so using the `client-only` component
 
 ```html
-<no-ssr>
+<client-only>
   <l-map></l-map>
-</no-ssr>
+</client-only>
 ```
 
 ## Accessing `leaflet` api
