@@ -1,5 +1,5 @@
 import { getWrapperWithMap } from '@/tests/test-helpers';
-import LGeoJSON from '@/components/LGeoJSON.vue';
+import LGeoJSON from '@/components/LGeoJson.vue';
 
 const geojsonFeature = {
   type: 'Feature',
