@@ -623,7 +623,7 @@ declare module "vue2-leaflet" {
     /**
      * @default []
      */
-    latLongs: L.LatLngExpression[];
+    latLngs: L.LatLngExpression[];
 
     // data
     ready: boolean;
@@ -635,7 +635,7 @@ declare module "vue2-leaflet" {
     /**
      * @default []
      */
-    latLongs: L.LatLngExpression[];
+    latLngs: L.LatLngExpression[];
 
     // data
     ready: boolean;
