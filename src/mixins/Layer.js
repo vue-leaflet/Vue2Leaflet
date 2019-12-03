@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     setAttribution (val, old) {
-      let attributionControl = this.$parent.mapObject.attributionControl;
+      const attributionControl = this.$parent.mapObject.attributionControl;
       attributionControl.removeAttribution(old).addAttribution(val);
     },
     setName () {

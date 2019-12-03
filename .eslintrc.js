@@ -10,23 +10,18 @@ module.exports = {
     L: true
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: "babel-eslint"
   },
-  extends: [
-    'plugin:vue/recommended',
-    'standard'
-  ],
+  extends: ["plugin:vue/recommended", "standard", "prettier"],
   // required to lint *.vue files
-  plugins: [
-    'vue'
-  ],
+  plugins: ["vue"],
   // add your custom rules here
   rules: {
     camelcase: 0,
-    'indent': ['error', 2],
-    'arrow-parens': 0,
-    'one-var': 0,
-    semi: ['warn', 'always'],
-    'eol-last': ['error', 'always']
+    indent: ["error", 2],
+    "arrow-parens": 0,
+    "one-var": 0,
+    semi: ["warn", "always"],
+    "eol-last": ["error", "always"]
   }
 };

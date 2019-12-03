@@ -55,8 +55,8 @@ export default {
 
   methods: {
     createTile (coords) {
-      let div = DomUtil.create('div');
-      let dummy = DomUtil.create('div');
+      const div = DomUtil.create('div');
+      const dummy = DomUtil.create('div');
       div.appendChild(dummy);
 
       const tileInstance = new this.TileConstructor({

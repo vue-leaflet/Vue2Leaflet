@@ -6,7 +6,9 @@ describe('utils: collectionCleaner', () => {
     const output = collectionCleaner(input);
 
     expect(output).toBeDefined();
-    expect(output.hasOwnProperty('removeMe')).toBeFalsy();
+    expect(
+      Object.prototype.hasOwnProperty.call(output, 'removeMe')
+    ).toBeFalsy();
   });
 
   test('it removes a key with an undefined value', () => {
@@ -14,7 +16,9 @@ describe('utils: collectionCleaner', () => {
     const output = collectionCleaner(input);
 
     expect(output).toBeDefined();
-    expect(output.hasOwnProperty('removeMe')).toBeFalsy();
+    expect(
+      Object.prototype.hasOwnProperty.call(output, 'removeMe')
+    ).toBeFalsy();
   });
 
   test('it retains keys with the value false', () => {
@@ -22,7 +26,7 @@ describe('utils: collectionCleaner', () => {
     const output = collectionCleaner(input);
 
     expect(output).toBeDefined();
-    expect(output.hasOwnProperty('keepMe')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(output, 'keepMe')).toBeTruthy();
   });
 
   test('it retains keys with the value 0', () => {
@@ -30,7 +34,7 @@ describe('utils: collectionCleaner', () => {
     const output = collectionCleaner(input);
 
     expect(output).toBeDefined();
-    expect(output.hasOwnProperty('keepMe')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(output, 'keepMe')).toBeTruthy();
   });
 
   test('it retains keys with the empty string as a value', () => {
@@ -38,7 +42,7 @@ describe('utils: collectionCleaner', () => {
     const output = collectionCleaner(input);
 
     expect(output).toBeDefined();
-    expect(output.hasOwnProperty('keepMe')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(output, 'keepMe')).toBeTruthy();
   });
 
   test('it retains keys with the value NaN', () => {
@@ -46,7 +50,7 @@ describe('utils: collectionCleaner', () => {
     const output = collectionCleaner(input);
 
     expect(output).toBeDefined();
-    expect(output.hasOwnProperty('keepMe')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(output, 'keepMe')).toBeTruthy();
   });
 
   test('it returns an empty object when given an undefined one', () => {
@@ -75,13 +79,13 @@ describe('utils: collectionCleaner', () => {
       c: 'two',
       e: {
         f: undefined,
-        g: 3.14159
-      }
+        g: 3.14159,
+      },
     };
     const input = {
       ...expected,
       b: undefined,
-      d: null
+      d: null,
     };
 
     const output = collectionCleaner(input);

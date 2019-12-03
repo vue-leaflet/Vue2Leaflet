@@ -255,9 +255,9 @@ export default {
     },
     moveEndHandler () {
       this.$emit('update:zoom', this.mapObject.getZoom());
-      let center = this.mapObject.getCenter();
+      const center = this.mapObject.getCenter();
       this.$emit('update:center', center);
-      let bounds = this.mapObject.getBounds();
+      const bounds = this.mapObject.getBounds();
       this.$emit('update:bounds', bounds);
     }
   }
