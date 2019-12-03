@@ -1,13 +1,9 @@
 image: node:12
 
 stages:
-  - build
   - test
+  - build
   - deploy
-
-cache:
-  paths:
-    - node_modules/
 
 build site:
   stage: build
@@ -22,6 +18,6 @@ unit test:
     - npm run test
   artifacts:
     paths:
-      - dist/
       - node_modules/
       - package.json
+      - package-lock.json
