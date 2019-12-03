@@ -2,9 +2,7 @@
 
 <img align="right" height="178" title="Vue2Leaflet Limit logo" src="docs/logo.png">
 
-<a href="https://travis-ci.org/KoRiGaN/Vue2Leaflet">
-  <img src="https://travis-ci.org/KoRiGaN/Vue2Leaflet.svg?branch=master" alt="Downloads">
-</a>
+[![pipeline status](https://gitlab.com/vue-leaflet/Vue2Leaflet/badges/master/pipeline.svg)](https://gitlab.com/vue-leaflet/Vue2Leaflet/commits/master)
 <a href="https://www.npmjs.com/package/vue2-leaflet">
   <img src="https://img.shields.io/npm/dt/vue2-leaflet.svg" alt="Downloads">
 </a>
@@ -14,10 +12,6 @@
 <a href="https://www.npmjs.com/package/vue2-leaflet">
   <img src="https://img.shields.io/npm/l/vue2-leaflet.svg" alt="License">
 </a>
-<a href="https://gitter.im/Vue2Leaflet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
-  <img src="https://badges.gitter.im/Vue2Leaflet/Lobby.svg" alt="Gitter">
-</a>
-
 [![Coverage Status](https://coveralls.io/repos/github/KoRiGaN/Vue2Leaflet/badge.svg?branch=master)](https://coveralls.io/github/KoRiGaN/Vue2Leaflet?branch=master)
 
 Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework that wraps [Leaflet](http://leafletjs.com/) making it easy to create reactive maps.
