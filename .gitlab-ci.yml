@@ -1,23 +1,27 @@
 image: node:12
 
 stages:
+  - prepare
   - test
   - build
-  - deploy
 
-build site:
-  stage: build
+prepare:
+  stage: prepare
   script:
     - npm install --progress=false
-    - npm run build
+  artifacts:
+    paths:
+      - node_modules/
+      - package.json
+      - package-lock.json
 
 unit test:
   stage: test
   script:
     - npm run lint
     - npm run test
-  artifacts:
-    paths:
-      - node_modules/
-      - package.json
-      - package-lock.json
+
+build site:
+  stage: build
+  script:
+    - npm run build
