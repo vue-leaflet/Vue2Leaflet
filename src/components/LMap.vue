@@ -186,7 +186,7 @@ export default {
           this.layerControl.addLayer(layer);
         }
       }
-      if (!alreadyAdded) {
+      if (!alreadyAdded && layer.activated) {
         this.mapObject.addLayer(layer.mapObject);
       }
     },
