@@ -22,7 +22,11 @@ export default {
       type: Boolean,
       custom: true,
       default: true
-    }
+    },
+    activated: {
+      type: Boolean,
+      default: true
+    },
   },
   mounted () {
     this.layerOptions = {
