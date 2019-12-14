@@ -7,27 +7,28 @@
 <script>
 import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import CircleMixin from '../mixins/Circle.js';
+import Options from '../mixins/Options.js';
 import { circleMarker, DomEvent } from 'leaflet';
 
 export default {
   name: 'LCircleMarker',
-  mixins: [CircleMixin],
+  mixins: [CircleMixin, Options],
   props: {
     latLng: {
       type: [Object, Array],
-      default: () => [0, 0]
+      default: () => [0, 0],
     },
     pane: {
       type: String,
-      default: 'markerPane'
-    }
+      default: 'markerPane',
+    },
   },
-  data () {
+  data() {
     return {
-      ready: false
+      ready: false,
     };
   },
-  mounted () {
+  mounted() {
     const options = optionsMerger(this.circleOptions, this);
     this.mapObject = circleMarker(this.latLng, options);
     DomEvent.on(this.mapObject, this.$listeners);
@@ -38,6 +39,6 @@ export default {
     this.$nextTick(() => {
       this.$emit('ready', this.mapObject);
     });
-  }
+  },
 };
 </script>

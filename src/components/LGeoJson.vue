@@ -1,37 +1,41 @@
 <script>
 import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import LayerGroup from '../mixins/LayerGroup.js';
+import Options from '../mixins/Options.js';
 import { geoJSON, DomEvent, setOptions } from 'leaflet';
 
 export default {
   name: 'LGeoJson',
-  mixins: [LayerGroup],
+  mixins: [LayerGroup, Options],
   props: {
     geojson: {
       type: [Object, Array],
       custom: true,
-      default: () => ({})
+      default: () => ({}),
     },
     options: {
       type: Object,
       custom: true,
-      default: () => ({})
+      default: () => ({}),
     },
     optionsStyle: {
       type: [Object, Function],
       custom: true,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
-    mergedOptions () {
-      return optionsMerger({
-        ...this.layerGroupOptions,
-        style: this.optionsStyle
-      }, this);
-    }
+    mergedOptions() {
+      return optionsMerger(
+        {
+          ...this.layerGroupOptions,
+          style: this.optionsStyle,
+        },
+        this
+      );
+    },
   },
-  mounted () {
+  mounted() {
     this.mapObject = geoJSON(this.geojson, this.mergedOptions);
     DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
@@ -41,31 +45,31 @@ export default {
       this.$emit('ready', this.mapObject);
     });
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.parentContainer.mapObject.removeLayer(this.mapObject);
   },
   methods: {
-    setGeojson (newVal) {
+    setGeojson(newVal) {
       this.mapObject.clearLayers();
       this.mapObject.addData(newVal);
     },
-    getGeoJSONData () {
+    getGeoJSONData() {
       return this.mapObject.toGeoJSON();
     },
-    getBounds () {
+    getBounds() {
       return this.mapObject.getBounds();
     },
-    setOptions (newVal, oldVal) {
+    setOptions(newVal, oldVal) {
       this.mapObject.clearLayers();
       setOptions(this.mapObject, this.mergedOptions);
       this.mapObject.addData(this.geojson);
     },
-    setOptionsStyle (newVal, oldVal) {
+    setOptionsStyle(newVal, oldVal) {
       this.mapObject.setStyle(newVal);
-    }
+    },
   },
-  render () {
+  render() {
     return null;
-  }
+  },
 };
 </script>
