@@ -7,23 +7,24 @@
 <script>
 import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import PolylineMixin from '../mixins/Polyline.js';
+import Options from '../mixins/Options.js';
 import { polyline, DomEvent } from 'leaflet';
 
 export default {
   name: 'LPolyline',
-  mixins: [PolylineMixin],
+  mixins: [PolylineMixin, Options],
   props: {
     latLngs: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
-  data () {
+  data() {
     return {
-      ready: false
+      ready: false,
     };
   },
-  mounted () {
+  mounted() {
     const options = optionsMerger(this.polyLineOptions, this);
     this.mapObject = polyline(this.latLngs, options);
     DomEvent.on(this.mapObject, this.$listeners);
@@ -34,6 +35,6 @@ export default {
     this.$nextTick(() => {
       this.$emit('ready', this.mapObject);
     });
-  }
+  },
 };
 </script>

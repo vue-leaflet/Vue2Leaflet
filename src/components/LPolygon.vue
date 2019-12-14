@@ -7,23 +7,24 @@
 <script>
 import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import PolygonMixin from '../mixins/Polygon.js';
+import Options from '../mixins/Options.js';
 import { polygon, DomEvent } from 'leaflet';
 
 export default {
   name: 'LPolygon',
-  mixins: [PolygonMixin],
+  mixins: [PolygonMixin, Options],
   props: {
     latLngs: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
-  data () {
+  data() {
     return {
-      ready: false
+      ready: false,
     };
   },
-  mounted () {
+  mounted() {
     const options = optionsMerger(this.polygonOptions, this);
     this.mapObject = polygon(this.latLngs, options);
     DomEvent.on(this.mapObject, this.$listeners);
@@ -34,6 +35,6 @@ export default {
     this.$nextTick(() => {
       this.$emit('ready', this.mapObject);
     });
-  }
+  },
 };
 </script>
