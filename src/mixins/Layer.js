@@ -2,61 +2,57 @@ export default {
   props: {
     pane: {
       type: String,
-      default: 'overlayPane'
+      default: 'overlayPane',
     },
     attribution: {
       type: String,
-      default: null
+      default: null,
     },
     name: {
       type: String,
       custom: true,
-      default: undefined
+      default: undefined,
     },
     layerType: {
       type: String,
       custom: true,
-      default: undefined
+      default: undefined,
     },
     visible: {
       type: Boolean,
       custom: true,
-      default: true
-    },
-    activated: {
-      type: Boolean,
-      default: true
+      default: true,
     },
   },
-  mounted () {
+  mounted() {
     this.layerOptions = {
       attribution: this.attribution,
-      pane: this.pane
+      pane: this.pane,
     };
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.unbindPopup();
     this.unbindTooltip();
     this.parentContainer.removeLayer(this);
   },
   methods: {
-    setAttribution (val, old) {
+    setAttribution(val, old) {
       const attributionControl = this.$parent.mapObject.attributionControl;
       attributionControl.removeAttribution(old).addAttribution(val);
     },
-    setName () {
+    setName() {
       this.parentContainer.removeLayer(this);
       if (this.visible) {
         this.parentContainer.addLayer(this);
       }
     },
-    setLayerType () {
+    setLayerType() {
       this.parentContainer.removeLayer(this);
       if (this.visible) {
         this.parentContainer.addLayer(this);
       }
     },
-    setVisible (newVal) {
+    setVisible(newVal) {
       if (this.mapObject) {
         if (newVal) {
           this.parentContainer.addLayer(this);
@@ -65,17 +61,17 @@ export default {
         }
       }
     },
-    unbindTooltip () {
+    unbindTooltip() {
       const tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
       if (tooltip) {
         tooltip.unbindTooltip();
       }
     },
-    unbindPopup () {
+    unbindPopup() {
       const popup = this.mapObject ? this.mapObject.getPopup() : null;
       if (popup) {
         popup.unbindPopup();
       }
-    }
-  }
+    },
+  },
 };

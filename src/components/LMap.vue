@@ -16,109 +16,109 @@ export default {
     center: {
       type: [Object, Array],
       custom: true,
-      default: () => [0, 0]
+      default: () => [0, 0],
     },
     bounds: {
       type: [Array, Object],
       custom: true,
-      default: null
+      default: null,
     },
     maxBounds: {
       type: [Array, Object],
-      default: null
+      default: null,
     },
     zoom: {
       type: Number,
       custom: true,
-      default: 0
+      default: 0,
     },
     minZoom: {
       type: Number,
-      default: null
+      default: null,
     },
     maxZoom: {
       type: Number,
-      default: null
+      default: null,
     },
     paddingBottomRight: {
       type: Array,
       custom: true,
-      default: null
+      default: null,
     },
     paddingTopLeft: {
       type: Array,
       custom: true,
-      default: null
+      default: null,
     },
     padding: {
       type: Array,
       custom: true,
-      default: null
+      default: null,
     },
     worldCopyJump: {
       type: Boolean,
-      default: false
+      default: false,
     },
     crs: {
       type: Object,
       custom: true,
-      default: () => CRS.EPSG3857
+      default: () => CRS.EPSG3857,
     },
     maxBoundsViscosity: {
       type: Number,
-      default: null
+      default: null,
     },
     inertia: {
       type: Boolean,
-      default: null
+      default: null,
     },
     inertiaDeceleration: {
       type: Number,
-      default: null
+      default: null,
     },
     inertiaMaxSpeed: {
       type: Number,
-      default: null
+      default: null,
     },
     easeLinearity: {
       type: Number,
-      default: null
+      default: null,
     },
     zoomAnimation: {
       type: Boolean,
-      default: null
+      default: null,
     },
     zoomAnimationThreshold: {
       type: Number,
-      default: null
+      default: null,
     },
     fadeAnimation: {
       type: Boolean,
-      default: null
+      default: null,
     },
     markerZoomAnimation: {
       type: Boolean,
-      default: null
+      default: null,
     },
     noBlockingAnimations: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
       ready: false,
       lastSetCenter: null,
       lastSetBounds: null,
       lastSetZoom: null,
       layerControl: undefined,
-      layersToAdd: []
+      layersToAdd: [],
     };
   },
   computed: {
-    fitBoundsOptions () {
+    fitBoundsOptions() {
       const options = {
-        animate: this.noBlockingAnimations ? false : null
+        animate: this.noBlockingAnimations ? false : null,
       };
       if (this.padding) {
         options.padding = this.padding;
@@ -131,32 +131,35 @@ export default {
         }
       }
       return options;
-    }
+    },
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.mapObject) {
       this.mapObject.remove();
     }
   },
-  mounted () {
-    const options = optionsMerger({
-      minZoom: this.minZoom,
-      maxZoom: this.maxZoom,
-      maxBounds: this.maxBounds,
-      maxBoundsViscosity: this.maxBoundsViscosity,
-      worldCopyJump: this.worldCopyJump,
-      crs: this.crs,
-      center: this.center,
-      zoom: this.zoom,
-      inertia: this.inertia,
-      inertiaDeceleration: this.inertiaDeceleration,
-      inertiaMaxSpeed: this.inertiaMaxSpeed,
-      easeLinearity: this.easeLinearity,
-      zoomAnimation: this.zoomAnimation,
-      zoomAnimationThreshold: this.zoomAnimationThreshold,
-      fadeAnimation: this.fadeAnimation,
-      markerZoomAnimation: this.markerZoomAnimation
-    }, this);
+  mounted() {
+    const options = optionsMerger(
+      {
+        minZoom: this.minZoom,
+        maxZoom: this.maxZoom,
+        maxBounds: this.maxBounds,
+        maxBoundsViscosity: this.maxBoundsViscosity,
+        worldCopyJump: this.worldCopyJump,
+        crs: this.crs,
+        center: this.center,
+        zoom: this.zoom,
+        inertia: this.inertia,
+        inertiaDeceleration: this.inertiaDeceleration,
+        inertiaMaxSpeed: this.inertiaMaxSpeed,
+        easeLinearity: this.easeLinearity,
+        zoomAnimation: this.zoomAnimation,
+        zoomAnimationThreshold: this.zoomAnimationThreshold,
+        fadeAnimation: this.fadeAnimation,
+        markerZoomAnimation: this.markerZoomAnimation,
+      },
+      this
+    );
     this.mapObject = map(this.$el, options);
     this.setBounds(this.bounds);
     this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));
@@ -170,7 +173,7 @@ export default {
     });
   },
   methods: {
-    registerLayerControl (lControlLayers) {
+    registerLayerControl(lControlLayers) {
       this.layerControl = lControlLayers;
       this.mapObject.addControl(lControlLayers.mapObject);
       this.layersToAdd.forEach(layer => {
@@ -178,7 +181,7 @@ export default {
       });
       this.layersToAdd = [];
     },
-    addLayer (layer, alreadyAdded) {
+    addLayer(layer, alreadyAdded) {
       if (layer.layerType !== undefined) {
         if (this.layerControl === undefined) {
           this.layersToAdd.push(layer);
@@ -186,14 +189,16 @@ export default {
           this.layerControl.addLayer(layer);
         }
       }
-      if (!alreadyAdded && layer.activated) {
+      if (!alreadyAdded && layer.visible !== false) {
         this.mapObject.addLayer(layer.mapObject);
       }
     },
-    removeLayer (layer, alreadyRemoved) {
+    removeLayer(layer, alreadyRemoved) {
       if (layer.layerType !== undefined) {
         if (this.layerControl === undefined) {
-          this.layersToAdd = this.layersToAdd.filter((l) => l.name !== layer.name);
+          this.layersToAdd = this.layersToAdd.filter(
+            l => l.name !== layer.name
+          );
         } else {
           this.layerControl.removeLayer(layer);
         }
@@ -202,26 +207,25 @@ export default {
         this.mapObject.removeLayer(layer.mapObject);
       }
     },
-    setZoom (newVal, oldVal) {
+    setZoom(newVal, oldVal) {
       this.mapObject.setZoom(newVal, {
-        animate: this.noBlockingAnimations ? false : null
+        animate: this.noBlockingAnimations ? false : null,
       });
     },
-    setCenter (newVal, oldVal) {
+    setCenter(newVal, oldVal) {
       if (newVal == null) {
         return;
       }
       const newCenter = latLng(newVal);
       const oldCenter = this.lastSetCenter || this.mapObject.getCenter();
-      if (oldCenter.lat !== newCenter.lat ||
-        oldCenter.lng !== newCenter.lng) {
+      if (oldCenter.lat !== newCenter.lat || oldCenter.lng !== newCenter.lng) {
         this.lastSetCenter = newCenter;
         this.mapObject.panTo(newCenter, {
-          animate: this.noBlockingAnimations ? false : null
+          animate: this.noBlockingAnimations ? false : null,
         });
       }
     },
-    setBounds (newVal, oldVal) {
+    setBounds(newVal, oldVal) {
       if (!newVal) {
         return;
       }
@@ -236,37 +240,37 @@ export default {
         this.mapObject.fitBounds(newBounds, this.fitBoundsOptions);
       }
     },
-    setPaddingBottomRight (newVal, oldVal) {
+    setPaddingBottomRight(newVal, oldVal) {
       this.paddingBottomRight = newVal;
     },
-    setPaddingTopLeft (newVal, oldVal) {
+    setPaddingTopLeft(newVal, oldVal) {
       this.paddingTopLeft = newVal;
     },
-    setPadding (newVal, oldVal) {
+    setPadding(newVal, oldVal) {
       this.padding = newVal;
     },
-    setCrs (newVal, oldVal) {
+    setCrs(newVal, oldVal) {
       console.log('Changing CRS is not yet supported by Leaflet');
     },
-    fitBounds (bounds) {
+    fitBounds(bounds) {
       this.mapObject.fitBounds(bounds, {
-        animate: this.noBlockingAnimations ? false : null
+        animate: this.noBlockingAnimations ? false : null,
       });
     },
-    moveEndHandler () {
+    moveEndHandler() {
       this.$emit('update:zoom', this.mapObject.getZoom());
       const center = this.mapObject.getCenter();
       this.$emit('update:center', center);
       const bounds = this.mapObject.getBounds();
       this.$emit('update:bounds', bounds);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style type="text/css">
-  .vue2leaflet-map {
-    height: 100%;
-    width: 100%;
-  }
+.vue2leaflet-map {
+  height: 100%;
+  width: 100%;
+}
 </style>
