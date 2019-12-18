@@ -10,18 +10,32 @@
         min="1"
         max="200"
         value="64"
-      />
+      >
       <label for="customTextInput">Custom text: </label>
-      <input id="customTextInput" v-model="customText" type="text" />
+      <input
+        id="customTextInput"
+        v-model="customText"
+        type="text"
+      >
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 80%">
-      <l-tile-layer :url="url" :attribution="attribution" />
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 80%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
 
       <!-- Use default icon -->
       <l-marker :lat-lng="[47.41322, -1.219482]" />
 
       <!-- Use icon given in icon property -->
-      <l-marker :lat-lng="[47.41322, -1.209482]" :icon="icon" />
+      <l-marker
+        :lat-lng="[47.41322, -1.209482]"
+        :icon="icon"
+      />
 
       <!-- Create image icon (icon) from l-icon tag -->
       <l-marker :lat-lng="[47.41322, -1.199482]">
@@ -34,9 +48,14 @@
 
       <!-- Create HTML icon (divIcon) by providing content inside the l-icon tag -->
       <l-marker :lat-lng="[47.41322, -1.189482]">
-        <l-icon :icon-anchor="staticAnchor" class-name="someExtraClass">
-          <div class="headline">{{ customText }}</div>
-          <img src="static/images/layers.png" />
+        <l-icon
+          :icon-anchor="staticAnchor"
+          class-name="someExtraClass"
+        >
+          <div class="headline">
+            {{ customText }}
+          </div>
+          <img src="static/images/layers.png">
         </l-icon>
       </l-marker>
     </l-map>

@@ -57,7 +57,7 @@ export default {
         if (newVal) {
           this.parentContainer.addLayer(this);
         } else {
-          this.parentContainer.removeLayer(this);
+          this.parentContainer.hideLayer(this);
         }
       }
     },
@@ -72,6 +72,9 @@ export default {
       if (popup) {
         popup.unbindPopup();
       }
+    },
+    updateVisibleProp(value) {
+      this.$emit('update:visible', value);
     },
   },
 };

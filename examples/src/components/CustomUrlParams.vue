@@ -3,10 +3,18 @@
     <div style="height: 10%; overflow: auto;">
       <h3>Custom Url Params</h3>
       Marker is placed at {{ marker.lat }}, {{ marker.lng }}
-      <br />
+      <br>
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 90%">
-      <l-tile-layer :options="options" :url="url" :attribution="attribution" />
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%"
+    >
+      <l-tile-layer
+        :options="options"
+        :url="url"
+        :attribution="attribution"
+      />
       <l-marker :lat-lng="marker" />
     </l-map>
   </div>

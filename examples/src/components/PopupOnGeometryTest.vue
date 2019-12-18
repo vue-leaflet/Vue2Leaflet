@@ -3,18 +3,37 @@
     <div style="height: 10%; overflow: auto;">
       <h3>Geometry with popups</h3>
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 90%">
-      <l-tile-layer :url="url" :attribution="attribution" />
-      <l-circle :lat-lng="circle.center" :radius="circle.radius">
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
+      <l-circle
+        :lat-lng="circle.center"
+        :radius="circle.radius"
+      >
         <l-popup content="Circle" />
       </l-circle>
-      <l-rectangle :bounds="rectangle.bounds" :color="rectangle.color">
+      <l-rectangle
+        :bounds="rectangle.bounds"
+        :color="rectangle.color"
+      >
         <l-popup content="Rectangle" />
       </l-rectangle>
-      <l-polygon :lat-lngs="polygon.latlngs" :color="polygon.color">
+      <l-polygon
+        :lat-lngs="polygon.latlngs"
+        :color="polygon.color"
+      >
         <l-popup content="Polygon" />
       </l-polygon>
-      <l-polyline :lat-lngs="polyline.latlngs" :color="polyline.color">
+      <l-polyline
+        :lat-lngs="polyline.latlngs"
+        :color="polyline.color"
+      >
         <l-popup>
           <popup-content :data="polyline" />
         </l-popup>

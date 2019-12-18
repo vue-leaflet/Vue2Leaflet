@@ -4,7 +4,7 @@
       <h3>Set Bounds</h3>
       Marker is placed at {{ marker.lat }}, {{ marker.lng }}, bounds are
       {{ bounds }}
-      <br />
+      <br>
     </div>
     <l-map
       :zoom="zoom"
@@ -13,7 +13,10 @@
       :max-bounds="maxBounds"
       style="height: 90%"
     >
-      <l-tile-layer :url="url" :attribution="attribution" />
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
       <l-marker :lat-lng="marker" />
     </l-map>
   </div>
