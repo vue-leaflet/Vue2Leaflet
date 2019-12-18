@@ -4,8 +4,15 @@
       <h3>Custom path</h3>
       Marker icon are retrived from {{ path }} custom path
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 90%">
-      <l-tile-layer :url="url" :attribution="attribution" />
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
       <l-marker :lat-lng="marker" />
       <l-icon-default :image-path="path" />
     </l-map>

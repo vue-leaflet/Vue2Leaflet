@@ -4,29 +4,38 @@
       <h3>Some examples</h3>
     </div>
     <div style="height: 47%; overflow: auto;">
-      Zoom: level <input v-model.number="zoom" type="number" />
+      Zoom: level <input
+        v-model.number="zoom"
+        type="number"
+      >
       position:
       <select v-model="zoomPosition">
         <option
           v-for="(position, index) in Positions"
           :key="index"
           :value="position"
-          >{{ position }}</option
         >
+          {{ position }}
+        </option>
       </select>
-      <br />
-      Center : <span> {{ center }} </span><br />
-      Bounds : <span> {{ bounds }} </span><br />
-      <button name="button" @click="fitPolyline">Fit map to polyline</button
-      ><br /><br />
+      <br>
+      Center : <span> {{ center }} </span><br>
+      Bounds : <span> {{ bounds }} </span><br>
+      <button
+        name="button"
+        @click="fitPolyline"
+      >
+        Fit map to polyline
+      </button><br><br>
       Contol Layers position:
       <select v-model="layersPosition">
         <option
           v-for="(position, index) in Positions"
           :key="index"
           :value="position"
-          >{{ position }}</option
         >
+          {{ position }}
+        </option>
       </select>
       Attribution position:
       <select v-model="attributionPosition">
@@ -34,13 +43,19 @@
           v-for="(position, index) in Positions"
           :key="index"
           :value="position"
-          >{{ position }}</option
         >
+          {{ position }}
+        </option>
       </select>
-      <hr />
+      <hr>
       <h3>List of Markers</h3>
-      <button name="button" @click="addMarker">Add a marker</button>
-      <br />
+      <button
+        name="button"
+        @click="addMarker"
+      >
+        Add a marker
+      </button>
+      <br>
       <table>
         <tr>
           <th>Marker</th>
@@ -52,29 +67,57 @@
           <th>Remove</th>
         </tr>
 
-        <tr v-for="(item, index) in markers" :key="index">
-          <td>{{ "Marker " + (index + 1) }}</td>
-          <td><input v-model.number="item.position.lat" type="number" /></td>
+        <tr
+          v-for="(item, index) in markers"
+          :key="index"
+        >
+          <td>{{ 'Marker ' + (index + 1) }}</td>
+          <td>
+            <input
+              v-model.number="item.position.lat"
+              type="number"
+            >
+          </td>
 
-          <td><input v-model.number="item.position.lng" type="number" /></td>
+          <td>
+            <input
+              v-model.number="item.position.lng"
+              type="number"
+            >
+          </td>
 
-          <td><input v-model="item.tooltip" type="text" /></td>
-
-          <td style="text-align: center">
-            <input v-model="item.draggable" type="checkbox" />
+          <td>
+            <input
+              v-model="item.tooltip"
+              type="text"
+            >
           </td>
 
           <td style="text-align: center">
-            <input v-model="item.visible" type="checkbox" />
+            <input
+              v-model="item.draggable"
+              type="checkbox"
+            >
           </td>
 
           <td style="text-align: center">
-            <input type="button" value="X" @click="removeMarker(index)" />
+            <input
+              v-model="item.visible"
+              type="checkbox"
+            >
+          </td>
+
+          <td style="text-align: center">
+            <input
+              type="button"
+              value="X"
+              @click="removeMarker(index)"
+            >
           </td>
         </tr>
       </table>
 
-      <hr />
+      <hr>
       <table>
         <tr>
           <th>Layer</th>
@@ -83,23 +126,35 @@
           <th>Is Polyline visible ?</th>
         </tr>
 
-        <tr v-for="(item, index) in stuff" :key="index">
-          <td>{{ "Layer " + (index + 1) }}</td>
+        <tr
+          v-for="(item, index) in stuff"
+          :key="index"
+        >
+          <td>{{ 'Layer ' + (index + 1) }}</td>
           <td style="text-align: center">
-            <input v-model="item.visible" type="checkbox" />
+            <input
+              v-model="item.visible"
+              type="checkbox"
+            >
           </td>
 
           <td style="text-align: center">
-            <input v-model="item.markersVisible" type="checkbox" />
+            <input
+              v-model="item.markersVisible"
+              type="checkbox"
+            >
           </td>
 
           <td style="text-align: center">
-            <input v-model="item.polyline.visible" type="checkbox" />
+            <input
+              v-model="item.polyline.visible"
+              type="checkbox"
+            >
           </td>
         </tr>
       </table>
 
-      <hr />
+      <hr>
     </div>
     <l-map
       :zoom.sync="zoom"
@@ -143,7 +198,10 @@
         <l-popup :content="marker.tooltip" />
         <l-tooltip :content="marker.tooltip" />
       </l-marker>
-      <l-layer-group layer-type="overlay" name="Layer polyline">
+      <l-layer-group
+        layer-type="overlay"
+        name="Layer polyline"
+      >
         <l-polyline
           v-for="item in polylines"
           :key="item.id"
@@ -155,7 +213,7 @@
       <l-layer-group
         v-for="item in stuff"
         :key="item.id"
-        :visible="item.visible"
+        :visible.sync="item.visible"
         layer-type="overlay"
         name="Layer 1"
       >
@@ -180,7 +238,7 @@
 </template>
 
 <script>
-import { icon, latLngBounds } from "leaflet";
+import { icon, latLngBounds } from 'leaflet';
 import {
   LMap,
   LTileLayer,
@@ -192,14 +250,14 @@ import {
   LControlZoom,
   LControlAttribution,
   LControlScale,
-  LControlLayers
-} from "vue2-leaflet";
+  LControlLayers,
+} from 'vue2-leaflet';
 
 const markers1 = [
   {
     position: { lng: -1.219482, lat: 47.41322 },
     visible: true,
-    draggable: true
+    draggable: true,
   },
   { position: { lng: -1.571045, lat: 47.457809 } },
   { position: { lng: -1.560059, lat: 47.739323 } },
@@ -222,7 +280,7 @@ const markers1 = [
   { position: { lng: -0.615234, lat: 47.680183 } },
   { position: { lng: -0.812988, lat: 47.724545 } },
   { position: { lng: -1.054688, lat: 47.680183 } },
-  { position: { lng: -1.219482, lat: 47.41322 } }
+  { position: { lng: -1.219482, lat: 47.41322 } },
 ];
 
 const poly1 = [
@@ -248,28 +306,28 @@ const poly1 = [
   { lng: -0.615234, lat: 47.680183 },
   { lng: -0.812988, lat: 47.724545 },
   { lng: -1.054688, lat: 47.680183 },
-  { lng: -1.219482, lat: 47.41322 }
+  { lng: -1.219482, lat: 47.41322 },
 ];
 
 const tileProviders = [
   {
-    name: "OpenStreetMap",
+    name: 'OpenStreetMap',
     visible: true,
     attribution:
       '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   },
   {
-    name: "OpenTopoMap",
+    name: 'OpenTopoMap',
     visible: false,
-    url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
     attribution:
-      'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-  }
+      'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+  },
 ];
 
 export default {
-  name: "Example",
+  name: 'Example',
   components: {
     LMap,
     LTileLayer,
@@ -281,103 +339,107 @@ export default {
     LControlZoom,
     LControlAttribution,
     LControlScale,
-    LControlLayers
+    LControlLayers,
   },
   data() {
     return {
       center: [51.505, -0.09],
       opacity: 0.6,
-      token: "your token if using mapbox",
+      token: 'your token if using mapbox',
       mapOptions: {
         zoomControl: false,
         attributionControl: false,
-        zoomSnap: true
+        zoomSnap: true,
       },
-      zoom: 13,
+      zoom: 3,
       minZoom: 1,
       maxZoom: 20,
-      zoomPosition: "topleft",
-      attributionPosition: "bottomright",
-      layersPosition: "topright",
-      attributionPrefix: "Vue2Leaflet",
+      zoomPosition: 'topleft',
+      attributionPosition: 'bottomright',
+      layersPosition: 'topright',
+      attributionPrefix: 'Vue2Leaflet',
       imperial: false,
-      Positions: ["topleft", "topright", "bottomleft", "bottomright"],
+      Positions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
       tileProviders: tileProviders,
       markers: [
         {
-          id: "m1",
+          id: 'm1',
           position: { lat: 51.505, lng: -0.09 },
-          tooltip: "tooltip for marker1",
+          tooltip: 'tooltip for marker1',
           draggable: true,
           visible: true,
           icon: icon.glyph({
-            prefix: "",
-            glyph: "A"
-          })
+            prefix: '',
+            glyph: 'A',
+          }),
         },
         {
-          id: "m2",
+          id: 'm2',
           position: { lat: 51.8905, lng: -0.09 },
-          tooltip: "tooltip for marker2",
+          tooltip: 'tooltip for marker2',
           draggable: true,
-          visible: false
+          visible: false,
         },
         {
-          id: "m3",
+          id: 'm3',
           position: { lat: 51.005, lng: -0.09 },
-          tooltip: "tooltip for marker3",
+          tooltip: 'tooltip for marker3',
           draggable: true,
-          visible: true
+          visible: true,
         },
         {
-          id: "m4",
+          id: 'm4',
           position: { lat: 50.7605, lng: -0.09 },
-          tooltip: "tooltip for marker4",
+          tooltip: 'tooltip for marker4',
           draggable: true,
-          visible: false
-        }
+          visible: false,
+        },
       ],
       polylines: [
         {
-          id: "p1",
+          id: 'p1',
           points: [
             { lat: 37.772, lng: -122.214 },
             { lat: 21.291, lng: -157.821 },
             { lat: -18.142, lng: -181.569 },
-            { lat: -27.467, lng: -206.973 }
+            { lat: -27.467, lng: -206.973 },
           ],
-          visible: true
+          visible: true,
         },
         {
-          id: "p2",
-          points: [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]],
-          visible: true
-        }
+          id: 'p2',
+          points: [
+            [-73.91, 40.78],
+            [-87.62, 41.83],
+            [-96.72, 32.76],
+          ],
+          visible: true,
+        },
       ],
       stuff: [
         {
-          id: "s1",
+          id: 's1',
           markers: markers1,
           polyline: { points: poly1, visible: true },
           visible: true,
-          markersVisible: true
-        }
+          markersVisible: true,
+        },
       ],
       bounds: latLngBounds(
         { lat: 51.476483373501964, lng: -0.14668464136775586 },
         { lat: 51.52948330894063, lng: -0.019140238291583955 }
-      )
+      ),
     };
   },
   methods: {
     alert(item) {
-      alert("this is " + JSON.stringify(item));
+      alert('this is ' + JSON.stringify(item));
     },
     addMarker: function() {
       const newMarker = {
         position: { lat: 50.5505, lng: -0.09 },
         draggable: true,
-        visible: true
+        visible: true,
       };
       this.markers.push(newMarker);
     },
@@ -387,7 +449,7 @@ export default {
     fitPolyline: function() {
       const bounds = latLngBounds(markers1.map(o => o.position));
       this.bounds = bounds;
-    }
-  }
+    },
+  },
 };
 </script>

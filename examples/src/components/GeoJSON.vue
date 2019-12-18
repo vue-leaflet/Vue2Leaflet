@@ -4,14 +4,32 @@
       <h3>GeoJSON</h3>
       <span v-if="loading">Loading...</span>
       <label for="checkbox">GeoJSON Visibility</label>
-      <input id="checkbox" v-model="show" type="checkbox" />
+      <input
+        id="checkbox"
+        v-model="show"
+        type="checkbox"
+      >
       <label for="checkboxTooltip">Enable tooltip</label>
-      <input id="checkboxTooltip" v-model="enableTooltip" type="checkbox" />
-      <input v-model="fillColor" type="color" />
-      <br />
+      <input
+        id="checkboxTooltip"
+        v-model="enableTooltip"
+        type="checkbox"
+      >
+      <input
+        v-model="fillColor"
+        type="color"
+      >
+      <br>
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 90%">
-      <l-tile-layer :url="url" :attribution="attribution" />
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
       <l-geo-json
         v-if="show"
         :geojson="geojson"

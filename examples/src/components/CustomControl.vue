@@ -6,12 +6,24 @@
       that responds to click events, and the other overrides the default
       position to place itself in the opposite corner.
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 90%">
-      <l-tile-layer :url="url" :attribution="attribution" />
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
       <l-control class="example-custom-control">
-        <p @click="showAlert">Click me</p>
+        <p @click="showAlert">
+          Click me
+        </p>
       </l-control>
-      <l-control :position="'bottomleft'" class="custom-control-watermark">
+      <l-control
+        :position="'bottomleft'"
+        class="custom-control-watermark"
+      >
         Vue2Leaflet Watermark Control
       </l-control>
     </l-map>

@@ -4,9 +4,20 @@
       <h3>Simple map with custom component</h3>
       Marker and Popup added using custom component MarkerPopup
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 90%">
-      <l-tile-layer :url="url" :attribution="attribution" />
-      <marker-popup :position="marker" :text="text" :title="title" />
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
+      <marker-popup
+        :position="marker"
+        :text="text"
+        :title="title"
+      />
     </l-map>
   </div>
 </template>

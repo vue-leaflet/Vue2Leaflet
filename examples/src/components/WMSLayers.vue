@@ -6,12 +6,16 @@
         <b>NOTE:</b> Use layer symbol on the top right to select which layer you
         want to display. More information about WMS (Web Map Service) can be
         found on the
-        <a href="http://leafletjs.com/examples/wms/wms.html"
-          >leaflet.js WMS example page</a
-        >.
+        <a
+          href="http://leafletjs.com/examples/wms/wms.html"
+        >leaflet.js WMS example page</a>.
       </p>
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 80%">
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 80%"
+    >
       <l-control-layers />
       <l-wms-tile-layer
         v-for="layer in layers"
