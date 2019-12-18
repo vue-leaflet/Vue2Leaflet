@@ -2,14 +2,35 @@
   <div>
     <div style="height: 10%; overflow: auto;">
       <h3>Geometry</h3>
-      <button @click="clickBtn">Change rectange style</button>
+      <button @click="clickBtn">
+        Change rectange style
+      </button>
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 90%">
-      <l-tile-layer :url="url" :attribution="attribution" />
-      <l-circle :lat-lng="circle.center" :radius="circle.radius" />
-      <l-rectangle :bounds="rectangle.bounds" :l-style="rectangle.style" />
-      <l-polygon :lat-lngs="polygon.latlngs" :color="polygon.color" />
-      <l-polyline :lat-lngs="polyline.latlngs" :color="polyline.color" />
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
+      <l-circle
+        :lat-lng="circle.center"
+        :radius="circle.radius"
+      />
+      <l-rectangle
+        :bounds="rectangle.bounds"
+        :l-style="rectangle.style"
+      />
+      <l-polygon
+        :lat-lngs="polygon.latlngs"
+        :color="polygon.color"
+      />
+      <l-polyline
+        :lat-lngs="polyline.latlngs"
+        :color="polyline.color"
+      />
     </l-map>
   </div>
 </template>

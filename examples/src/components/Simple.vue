@@ -4,8 +4,12 @@
       <h3>Simple map</h3>
       <p>First marker is placed at {{ withPopup.lat }}, {{ withPopup.lng }}</p>
       <p>Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }}</p>
-      <button @click="showLongText">Toggle long popup</button>
-      <button @click="showMap = !showMap">Toggle map</button>
+      <button @click="showLongText">
+        Toggle long popup
+      </button>
+      <button @click="showMap = !showMap">
+        Toggle map
+      </button>
     </div>
     <l-map
       v-if="showMap"
@@ -16,7 +20,10 @@
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >
-      <l-tile-layer :url="url" :attribution="attribution" />
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
       <l-marker :lat-lng="withPopup">
         <l-popup>
           <div @click="innerClick">

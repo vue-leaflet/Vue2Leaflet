@@ -9,8 +9,15 @@
       :crs="crs"
       style="height: 400px; width: 600px;"
     >
-      <l-image-overlay :url="url" :bounds="bounds" />
-      <l-marker v-for="star in stars" :lat-lng="star" :key="star.name">
+      <l-image-overlay
+        :url="url"
+        :bounds="bounds"
+      />
+      <l-marker
+        v-for="star in stars"
+        :key="star.name"
+        :lat-lng="star"
+      >
         <l-popup :content="star.name" />
       </l-marker>
       <l-polyline :lat-lngs="travel" />
