@@ -52,12 +52,16 @@ export default {
         this.parentContainer.addLayer(this);
       }
     },
-    setVisible(newVal) {
+    setVisible(isVisible) {
       if (this.mapObject) {
-        if (newVal) {
+        if (isVisible) {
           this.parentContainer.addLayer(this);
         } else {
-          this.parentContainer.hideLayer(this);
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
         }
       }
     },
