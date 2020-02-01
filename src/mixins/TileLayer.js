@@ -20,6 +20,7 @@ export default {
     this.tileLayerOptions = {
       ...this.gridLayerOptions,
       tms: this.tms,
+      subdomains: this.subdomains,
       detectRetina: this.detectRetina
     };
   },
