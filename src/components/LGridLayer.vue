@@ -17,23 +17,23 @@ export default {
     tileComponent: {
       type: Object,
       custom: true,
-      required: true
-    }
+      required: true,
+    },
   },
 
-  data () {
+  data() {
     return {
-      tileComponents: {}
+      tileComponents: {},
     };
   },
 
   computed: {
-    TileConstructor () {
+    TileConstructor() {
       return Vue.extend(this.tileComponent);
-    }
+    },
   },
 
-  mounted () {
+  mounted() {
     const GLayer = GridLayer.extend({});
     const options = optionsMerger(this.gridLayerOptions, this);
     this.mapObject = new GLayer(options);
@@ -44,17 +44,22 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.parentContainer.removeLayer(this.mapObject);
     this.mapObject.off('tileunload', this.onUnload);
     this.mapObject = null;
   },
 
   methods: {
-    createTile (coords) {
+    createTile(coords) {
       const div = DomUtil.create('div');
       const dummy = DomUtil.create('div');
       div.appendChild(dummy);
@@ -63,8 +68,8 @@ export default {
         el: dummy,
         parent: this,
         propsData: {
-          coords: coords
-        }
+          coords: coords,
+        },
       });
 
       const key = this.mapObject._tileCoordsToKey(coords);
@@ -73,7 +78,7 @@ export default {
       return div;
     },
 
-    onUnload (e) {
+    onUnload(e) {
       const key = this.mapObject._tileCoordsToKey(e.coords);
       if (typeof this.tileComponents[key] !== 'undefined') {
         this.tileComponents[key].$destroy();
@@ -82,9 +87,9 @@ export default {
       }
     },
 
-    setTileComponent (newVal) {
+    setTileComponent(newVal) {
       this.mapObject.redraw();
-    }
-  }
+    },
+  },
 };
 </script>

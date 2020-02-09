@@ -7,7 +7,7 @@ import { tooltip, DomEvent } from 'leaflet';
 export default {
   name: 'LTooltip',
   mixins: [Popper, Options],
-  mounted () {
+  mounted() {
     const options = optionsMerger(this.popperOptions, this);
     this.mapObject = tooltip(options);
     DomEvent.on(this.mapObject, this.$listeners);
@@ -16,17 +16,25 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindTooltip(this.mapObject);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.parentContainer) {
       if (this.parentContainer.unbindTooltip) {
         this.parentContainer.unbindTooltip();
-      } else if (this.parentContainer.mapObject && this.parentContainer.mapObject.unbindTooltip) {
+      } else if (
+        this.parentContainer.mapObject &&
+        this.parentContainer.mapObject.unbindTooltip
+      ) {
         this.parentContainer.mapObject.unbindTooltip();
       }
     }
-  }
+  },
 };
 </script>

@@ -17,18 +17,18 @@ export default {
     disableClickPropagation: {
       type: Boolean,
       custom: true,
-      default: true
-    }
+      default: true,
+    },
   },
-  mounted () {
+  mounted() {
     const LControl = Control.extend({
       element: undefined,
-      onAdd () {
+      onAdd() {
         return this.element;
       },
-      setElement (el) {
+      setElement(el) {
         this.element = el;
-      }
+      },
     });
     const options = optionsMerger(this.controlOptions, this);
     this.mapObject = new LControl(options);
@@ -40,8 +40,13 @@ export default {
     }
     this.mapObject.addTo(this.parentContainer.mapObject);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
-  }
+  },
 };
 </script>

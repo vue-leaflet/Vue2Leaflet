@@ -1,7 +1,7 @@
-# Mixins {docsify-ignore}
+# Mixins
 
 > Vue2Leaflet mirror the class based structure of leaflet with mixins.
-Since we believe in keeping everything as DRY as possible we added few mixins of our own.
+> Since we believe in keeping everything as DRY as possible we added few mixins of our own.
 
 ## Circle
 

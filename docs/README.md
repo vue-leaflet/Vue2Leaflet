@@ -1,4 +1,4 @@
-# Vue2Leaflet {docsify-ignore}
+# Vue2Leaflet
 
 <img align="right" height="178" title="Vue2Leaflet Limit logo" src="./logo.png">
 
@@ -22,7 +22,7 @@ Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework 
 
 ## How to install
 
-``` bash
+```bash
 npm install vue2-leaflet leaflet --save
 ```
 
@@ -41,19 +41,19 @@ Leaflet is now a peerDependency and need to be installed manually, we updated ou
 Now the code of vue2-leaflet is split component by component (while using a bundler like Webpack/Rollup/Parcel) to do so the following syntax is not working anymore:
 
 ```javascript
-import Vue2Leaflet from 'vue2-leaflet' // INVALID
+import Vue2Leaflet from 'vue2-leaflet'; // INVALID
 ```
 
 And has been replaced by
 
 ```javascript
-import * as Vue2Leaflet from 'vue2-leaflet' // VALID
+import * as Vue2Leaflet from 'vue2-leaflet'; // VALID
 ```
 
 Is highly suggested to import only the needed modules by doing so:
 
 ```javascript
-import {LMap, LTileLayer, LMarker} from 'vue2-leaflet'
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 ```
 
 This will reduce the size of the bundle significantly
@@ -78,7 +78,7 @@ v1.0.0 introduces Leaflet Controls you can now use them using LControlAttributio
 
 When adding LControlAttribution or LControlZoom to your template, remember to deactivate the default one by using LMap options:
 
-``` js
+```js
 {
   zoomControl: false,
   attributionControl: false
@@ -91,7 +91,7 @@ Otherwise you will end up with two zoom/attribution control.
 
 Contribution are welcome and we are always happy to review any PR received.
 
-``` bash
+```bash
 # clone the repository
 $ git clone git@github.com:KoRiGaN/Vue2Leaflet.git
 $ cd Vue2Leaflet
@@ -118,4 +118,3 @@ Thanks goes to these [wonderful people](https://github.com/KoRiGaN/Vue2Leaflet/c
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-

@@ -10,38 +10,46 @@ export default {
   props: {
     maxWidth: {
       type: Number,
-      default: 100
+      default: 100,
     },
     metric: {
       type: Boolean,
-      default: true
+      default: true,
     },
     imperial: {
       type: Boolean,
-      default: true
+      default: true,
     },
     updateWhenIdle: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  mounted () {
-    const options = optionsMerger({
-      ...this.controlOptions,
-      maxWidth: this.maxWidth,
-      metric: this.metric,
-      imperial: this.imperial,
-      updateWhenIdle: this.updateWhenIdle
-    }, this);
+  mounted() {
+    const options = optionsMerger(
+      {
+        ...this.controlOptions,
+        maxWidth: this.maxWidth,
+        metric: this.metric,
+        imperial: this.imperial,
+        updateWhenIdle: this.updateWhenIdle,
+      },
+      this
+    );
     this.mapObject = control.scale(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },
-  render () {
+  render() {
     return null;
-  }
+  },
 };
 </script>

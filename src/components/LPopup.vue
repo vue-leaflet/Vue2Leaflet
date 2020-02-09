@@ -10,10 +10,10 @@ export default {
   props: {
     latLng: {
       type: [Object, Array],
-      default: () => []
-    }
+      default: () => [],
+    },
   },
-  mounted () {
+  mounted() {
     const options = optionsMerger(this.popperOptions, this);
     this.mapObject = popup(options);
     if (this.latLng !== undefined) {
@@ -25,17 +25,25 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.mapObject.bindPopup(this.mapObject);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.parentContainer) {
       if (this.parentContainer.unbindPopup) {
         this.parentContainer.unbindPopup();
-      } else if (this.parentContainer.mapObject && this.parentContainer.mapObject.unbindPopup) {
+      } else if (
+        this.parentContainer.mapObject &&
+        this.parentContainer.mapObject.unbindPopup
+      ) {
         this.parentContainer.mapObject.unbindPopup();
       }
     }
-  }
+  },
 };
 </script>

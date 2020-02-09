@@ -28,6 +28,11 @@ export default {
       this.parentContainer.addLayer(this);
     }
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },

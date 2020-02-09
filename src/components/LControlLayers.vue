@@ -45,6 +45,11 @@ export default {
     propsBinder(this, this.mapObject, this.$options.props);
     this.$parent.registerLayerControl(this);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },

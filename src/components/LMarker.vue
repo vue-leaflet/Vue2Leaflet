@@ -1,5 +1,10 @@
 <script>
-import { optionsMerger, propsBinder, findRealParent, debounce } from '../utils/utils.js';
+import {
+  optionsMerger,
+  propsBinder,
+  findRealParent,
+  debounce,
+} from '../utils/utils.js';
 import Layer from '../mixins/Layer.js';
 import Options from '../mixins/Options.js';
 import { marker, DomEvent, Icon, latLng } from 'leaflet';
@@ -10,41 +15,44 @@ export default {
   props: {
     pane: {
       type: String,
-      default: 'markerPane'
+      default: 'markerPane',
     },
     draggable: {
       type: Boolean,
       custom: true,
-      default: false
+      default: false,
     },
     latLng: {
       type: [Object, Array],
       custom: true,
-      default: null
+      default: null,
     },
     icon: {
       type: [Object],
       custom: false,
-      default: () => new Icon.Default()
+      default: () => new Icon.Default(),
     },
     zIndexOffset: {
       type: Number,
       custom: false,
-      default: null
-    }
+      default: null,
+    },
   },
-  data () {
+  data() {
     return {
-      ready: false
+      ready: false,
     };
   },
-  mounted () {
-    const options = optionsMerger({
-      ...this.layerOptions,
-      icon: this.icon,
-      zIndexOffset: this.zIndexOffset,
-      draggable: this.draggable
-    }, this);
+  mounted() {
+    const options = optionsMerger(
+      {
+        ...this.layerOptions,
+        icon: this.icon,
+        zIndexOffset: this.zIndexOffset,
+        draggable: this.draggable,
+      },
+      this
+    );
     this.mapObject = marker(this.latLng, options);
     DomEvent.on(this.mapObject, this.$listeners);
     this.mapObject.on('move', debounce(this.latLngSync, 100));
@@ -53,16 +61,23 @@ export default {
     this.parentContainer.addLayer(this, !this.visible);
     this.ready = true;
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },
   methods: {
-    setDraggable (newVal, oldVal) {
+    setDraggable(newVal, oldVal) {
       if (this.mapObject.dragging) {
-        newVal ? this.mapObject.dragging.enable() : this.mapObject.dragging.disable();
+        newVal
+          ? this.mapObject.dragging.enable()
+          : this.mapObject.dragging.disable();
       }
     },
-    setLatLng (newVal) {
+    setLatLng(newVal) {
       if (newVal == null) {
         return;
       }
@@ -70,21 +85,24 @@ export default {
       if (this.mapObject) {
         const oldLatLng = this.mapObject.getLatLng();
         const newLatLng = latLng(newVal);
-        if (newLatLng.lat !== oldLatLng.lat || newLatLng.lng !== oldLatLng.lng) {
+        if (
+          newLatLng.lat !== oldLatLng.lat ||
+          newLatLng.lng !== oldLatLng.lng
+        ) {
           this.mapObject.setLatLng(newLatLng);
         }
       }
     },
-    latLngSync (event) {
+    latLngSync(event) {
       this.$emit('update:latLng', event.latlng);
       this.$emit('update:lat-lng', event.latlng);
-    }
+    },
   },
-  render: function (h) {
+  render: function(h) {
     if (this.ready && this.$slots.default) {
       return h('div', { style: { display: 'none' } }, this.$slots.default);
     }
     return null;
-  }
+  },
 };
 </script>

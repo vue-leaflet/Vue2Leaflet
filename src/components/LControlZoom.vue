@@ -10,38 +10,46 @@ export default {
   props: {
     zoomInText: {
       type: String,
-      default: '+'
+      default: '+',
     },
     zoomInTitle: {
       type: String,
-      default: 'Zoom in'
+      default: 'Zoom in',
     },
     zoomOutText: {
       type: String,
-      default: '-'
+      default: '-',
     },
     zoomOutTitle: {
       type: String,
-      default: 'Zoom out'
-    }
+      default: 'Zoom out',
+    },
   },
-  mounted () {
-    const options = optionsMerger({
-      ...this.controlOptions,
-      zoomInText: this.zoomInText,
-      zoomInTitle: this.zoomInTitle,
-      zoomOutText: this.zoomOutText,
-      zoomOutTitle: this.zoomOutTitle
-    }, this);
+  mounted() {
+    const options = optionsMerger(
+      {
+        ...this.controlOptions,
+        zoomInText: this.zoomInText,
+        zoomInTitle: this.zoomInTitle,
+        zoomOutText: this.zoomOutText,
+        zoomOutTitle: this.zoomOutTitle,
+      },
+      this
+    );
     this.mapObject = control.zoom(options);
     propsBinder(this, this.mapObject, this.$options.props);
     this.mapObject.addTo(this.$parent.mapObject);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },
-  render () {
+  render() {
     return null;
-  }
+  },
 };
 </script>

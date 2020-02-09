@@ -10,10 +10,10 @@ export default {
   props: {
     baseUrl: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
-  mounted () {
+  mounted() {
     const options = optionsMerger(this.tileLayerWMSOptions, this);
     this.mapObject = tileLayer.wms(this.baseUrl, options);
     DomEvent.on(this.mapObject, this.$listeners);
@@ -21,8 +21,13 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
-  }
+  },
 };
 </script>

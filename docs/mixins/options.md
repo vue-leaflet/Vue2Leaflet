@@ -1,4 +1,4 @@
-### Props
+### Mixin Props
 
 ```js
 {
