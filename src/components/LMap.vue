@@ -203,9 +203,7 @@ export default {
       }
     },
     hideLayer(layer) {
-      if (layer.layerType !== undefined) {
-        this.mapObject.removeLayer(layer.mapObject);
-      }
+      this.mapObject.removeLayer(layer.mapObject);
     },
     removeLayer(layer, alreadyRemoved) {
       if (layer.layerType !== undefined) {
