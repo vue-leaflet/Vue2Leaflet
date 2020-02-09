@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "npm run build -- -w",
     "build": "rollup -c --environment NODE_ENV:production",
-    "prepare": "npm run lint && npm run test && npm run build",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
     "postversion": "git push --follow-tags",
     "lint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
     "test": "jest",
