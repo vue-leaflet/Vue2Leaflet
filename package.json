@@ -1,12 +1,12 @@
 {
   "name": "vue2-leaflet",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "Vue2 leaflet library",
   "author": "Mickael Bouchaud",
   "scripts": {
     "serve": "npm run build -- -w",
     "build": "rollup -c --environment NODE_ENV:production",
-    "prepare": "npm run lint && npm run test && npm run build",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
     "postversion": "git push --follow-tags",
     "lint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
     "test": "jest",
