@@ -12,21 +12,21 @@ In most cases, though, it is Webpack messing with Leaflet marker icons' paths, r
 
 First add a ref to the map
 
-``` html
-  <l-map ref="map" :zoom=13 :center="[47.413220, -1.219482]">
-    ...
-  </l-map>
+```html
+<l-map ref="map" :zoom="13" :center="[47.413220, -1.219482]">
+  ...
+</l-map>
 ```
 
 Then in you JavaScript you can use mapObject which is Leaflet map instance :
 
-``` javascript
+```javascript
 this.$refs.map.mapObject;
 ```
 
 **Note:** `mapObject` is not available directly in vue's `mounted` hook. You need to wrap the call to `this.$refs.map` in a `nextTick` call:
 
-``` javascript
+```javascript
 data: () => ({map: null}),
 mounted () {
   // DON'T
@@ -47,7 +47,7 @@ All event binding can be done to event with the same name as in [leaflet documen
 
 For example if you want to listen to Vue2Leaflet.LMarker move event.
 
-``` html
+```html
 <l-marker :lat-lng="[47.413220, -1.219482]" @move="doSomething"></l-marker>
 ```
 
@@ -55,23 +55,26 @@ For example if you want to listen to Vue2Leaflet.LMarker move event.
 
 There may be an issue with mismatching Leaflet versions ([see issue #281](https://github.com/KoRiGaN/Vue2Leaflet/issues/281)) that, depending on the setup you have, could be causing problems. If you're using Nuxt.js, modify `nuxt.config.js` to include an alias for Leaflet in the webpack config.
 
-``` javascript
-const path = require('path')
+```javascript
+const path = require('path');
 
 module.exports = {
   // other config properties go here...
   build: {
     extend(config, ctx) {
-      config.resolve.alias['leaflet'] = path.join(__dirname, 'node_modules/leaflet')
-    }
-  }
-}
+      config.resolve.alias['leaflet'] = path.join(
+        __dirname,
+        'node_modules/leaflet'
+      );
+    },
+  },
+};
 ```
 
-## How create plugin?
+## How to create a new plugin?
 
-* vue2-leaflet exposes utility that you can leverage findRealParent and propsBinder
-* everything should be initialised in the mounted lifecycle hook
-* remember to set leaflet as a peerDependecy
-* rollup is the best library bundler so you can leverage ESM ( you can check how we do it here in the main repo )
-* check this repo or one of the other plugins for inspiration ( for example leaflet-markercluster )
+- vue2-leaflet exposes utilities that you can leverage findRealParent and propsBinder
+- everything should be initialized in the mounted lifecycle hook
+- remember to set leaflet as a peerDependency
+- rollup is the best library bundler so you can leverage ESM ( you can check how we do it here in the main repo )
+- check this repo or one of the other plugins for inspiration ( for example leaflet-markercluster )

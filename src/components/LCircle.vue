@@ -10,6 +10,9 @@ import CircleMixin from '../mixins/Circle.js';
 import Options from '../mixins/Options.js';
 import { circle, DomEvent } from 'leaflet';
 
+/**
+ * Draw a path in the shape of a circle around a center positioned at `latLng` coordinates
+ */
 export default {
   name: 'LCircle',
   mixins: [CircleMixin, Options],
@@ -70,7 +73,7 @@ export default {
   },
   data () {
     return {
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 8,
       center: [47.313220, -1.319482],
       circle: {

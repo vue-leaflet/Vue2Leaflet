@@ -9,6 +9,9 @@ import Layer from '../mixins/Layer.js';
 import Options from '../mixins/Options.js';
 import { marker, DomEvent, Icon, latLng } from 'leaflet';
 
+/**
+ * Marker component, lets you add and personalize markers on the map
+ */
 export default {
   name: 'LMarker',
   mixins: [Layer, Options],
@@ -106,3 +109,34 @@ export default {
   },
 };
 </script>
+
+<docs>
+::: demo
+<template>
+  <l-map style="height: 350px" :zoom="zoom" :center="center">
+    <l-tile-layer :url="url"></l-tile-layer>
+    <l-marker :lat-lng="markerLatLng" ></l-marker>
+  </l-map>
+</template>
+
+<script>
+import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
+
+export default {
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker
+  },
+  data () {
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      zoom: 3,
+      center: [47.313220, -1.319482],
+      markerLatLng: [47.313220, -1.319482]
+    };
+  }
+}
+</script>
+:::
+</docs>

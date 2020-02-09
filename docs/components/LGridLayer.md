@@ -1,4 +1,54 @@
+---
+title: LGridLayer
+---
+
 # LGridLayer
+
+> Creates a map layer where each tile is an instantiated Vue component.
+> Each tile component is given `coords` props by `l-grid-layer` to indicate
+> the zoom level and position of the tile
+> (see https://leafletjs.com/examples/extending/extending-2-layers.html#lgridlayer-and-dom-elements).
+
+---
+
+::: demo
+<template>
+<l-map style="height: 350px" :zoom="zoom" :center="center">
+<l-tile-layer :url="url"></l-tile-layer>
+<l-grid-layer :tile-component="tileComponent"></l-grid-layer>
+</l-map>
+</template>
+
+<script>
+import {LMap, LTileLayer, LGridLayer} from 'vue2-leaflet';
+
+export default {
+  components: {
+    LMap,
+    LTileLayer,
+    LGridLayer
+  },
+  data () {
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      zoom: 8,
+      center: [47.313220, -1.319482],
+      tileComponent: {
+        name: 'tile-component',
+        props: {
+          coords: {
+            type: Object,
+            required: true
+          }
+        },
+        template: '<div>Coords: {{coords.x}}, {{coords.y}}, {{coords.z}}</div>'
+      },
+    };
+  }
+}
+</script>
+
+:::
 
 ## Props
 

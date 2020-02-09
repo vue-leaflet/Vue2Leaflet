@@ -1,4 +1,12 @@
-# LIconDefault
+---
+title: LIconDefault
+---
+
+# ~~LIconDefault~~
+
+> **Deprecated** since version 2.0
+
+> Set a default icon
 
 ## Props
 

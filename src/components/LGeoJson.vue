@@ -4,6 +4,9 @@ import LayerGroup from '../mixins/LayerGroup.js';
 import Options from '../mixins/Options.js';
 import { geoJSON, DomEvent, setOptions } from 'leaflet';
 
+/**
+ * Easily display a geo-json on the map
+ */
 export default {
   name: 'LGeoJson',
   mixins: [LayerGroup, Options],
@@ -78,3 +81,38 @@ export default {
   },
 };
 </script>
+
+<docs>
+::: demo
+<template>
+  <l-map style="height: 350px" :zoom="zoom" :center="center">
+    <l-tile-layer :url="url"></l-tile-layer>
+    <l-geo-json :geojson="geojson"></l-geo-json>
+  </l-map>
+</template>
+
+<script>
+import {LMap, LTileLayer, LGeoJson} from 'vue2-leaflet';
+
+export default {
+  components: {
+    LMap,
+    LTileLayer,
+    LGeoJson
+  },
+  data () {
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      zoom: 8,
+      center: [47.313220, -1.319482],
+      geojson: null
+    };
+  },
+  async created () {
+    const response = await fetch('https://rawgit.com/gregoiredavid/france-geojson/master/regions/pays-de-la-loire/communes-pays-de-la-loire.geojson');
+    this.geojson = await response.json();
+  }
+}
+</script>
+:::
+</docs>
