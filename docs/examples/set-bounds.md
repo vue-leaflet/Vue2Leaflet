@@ -1,7 +1,10 @@
+# Fixed Bounds
+
+::: demo
 <template>
+
   <div>
-    <div style="height: 10%; overflow: auto;">
-      <h3>Set Bounds</h3>
+    <div>
       Marker is placed at {{ marker.lat }}, {{ marker.lng }}, bounds are
       {{ bounds }}
       <br>
@@ -11,7 +14,7 @@
       :center="center"
       :bounds="bounds"
       :max-bounds="maxBounds"
-      style="height: 90%"
+      style="height: 500px; width: 100%"
     >
       <l-tile-layer
         :url="url"
@@ -24,7 +27,9 @@
 
 <script>
 import { latLngBounds, latLng } from "leaflet";
-import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, fixDefaultIcons } from "vue2-leaflet";
+
+fixDefaultIcons();
 
 export default {
   name: "SetBounds",
@@ -45,7 +50,7 @@ export default {
         [40.70081290280357, -74.26963806152345],
         [40.82991732677597, -74.08716201782228]
       ]),
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       marker: latLng(47.41322, -1.219482)
@@ -53,3 +58,5 @@ export default {
   }
 };
 </script>
+
+:::

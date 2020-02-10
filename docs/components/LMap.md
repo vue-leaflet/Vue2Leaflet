@@ -12,6 +12,8 @@ title: LMap
 If your markup does not have a root `<l-map>` something is wrong.
 :::
 
+## Demo
+
 ::: demo
 <template>
 

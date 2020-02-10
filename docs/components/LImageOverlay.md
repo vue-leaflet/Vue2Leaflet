@@ -8,6 +8,8 @@ title: LImageOverlay
 
 ---
 
+## Demo
+
 ::: demo
 <template>
 <l-map style="height: 350px" :crs="crs" :options="{zoomControl: false}">
@@ -19,7 +21,10 @@ title: LImageOverlay
 </template>
 
 <script>
-import {LMap, LImageOverlay, LMarker, LPopup} from 'vue2-leaflet';
+import {LMap, LImageOverlay, LMarker, LPopup, fixDefaultIcons} from 'vue2-leaflet';
+
+// fixDefaultIcons needs to be called only once in the whole app.
+fixDefaultIcons();
 
 export default {
   components: {

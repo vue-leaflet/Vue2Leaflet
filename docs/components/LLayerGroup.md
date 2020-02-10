@@ -12,6 +12,8 @@ title: LLayerGroup
 This is particularly useful to have a single tooltip / popup that is 'shared' across multiple markers
 :::
 
+## Demo
+
 ::: demo
 <template>
 <l-map style="height: 350px" :zoom="zoom" :center="center">
@@ -30,7 +32,9 @@ This is particularly useful to have a single tooltip / popup that is 'shared' ac
 </template>
 
 <script>
-import {LMap, LTileLayer, LLayerGroup, LPopup, LCircle, LMarker} from 'vue2-leaflet';
+import {LMap, LTileLayer, LLayerGroup, LPopup, LCircle, LMarker, fixDefaultIcons} from 'vue2-leaflet';
+
+fixDefaultIcons();
 
 export default {
   components: {

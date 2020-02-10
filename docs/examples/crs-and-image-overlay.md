@@ -1,8 +1,9 @@
+# Crs and Image overlay
+
+::: demo
 <template>
+
   <div>
-    <div style="height: 10%; overflow: auto;">
-      <h3>CRS and Image Overlay</h3>
-    </div>
     <l-map
       ref="map"
       :min-zoom="minZoom"
@@ -27,10 +28,11 @@
 
 <script>
 import { CRS } from "leaflet";
-import { LMap, LImageOverlay, LMarker, LPopup, LPolyline } from "vue2-leaflet";
+import { LMap, LImageOverlay, LMarker, LPopup, LPolyline, fixDefaultIcons } from "vue2-leaflet";
+
+fixDefaultIcons();
 
 export default {
-  name: "Example",
   components: {
     LMap,
     LImageOverlay,
@@ -58,3 +60,5 @@ export default {
   }
 };
 </script>
+
+:::

@@ -1,8 +1,9 @@
+# Multi Map
+
+::: demo
 <template>
+
   <div>
-    <div style="height: 10%; overflow: auto;">
-      <h3>Two maps</h3>
-    </div>
     <l-map
       :zoom.sync="zoom"
       :center="center"
@@ -10,7 +11,7 @@
       :bounds="bounds"
       :min-zoom="minZoom"
       :max-zoom="maxZoom"
-      style="height: 45%"
+      style="height: 500px; width: 100%"
     >
       <l-tile-layer
         :url="url"
@@ -61,7 +62,7 @@
       :bounds="bounds"
       :min-zoom="minZoom"
       :max-zoom="maxZoom"
-      style="height: 45%"
+      style="height: 500px; width: 100%"
     >
       <l-tile-layer
         :url="url"
@@ -115,8 +116,11 @@ import {
   LTileLayer,
   LMarker,
   LPolyline,
-  LLayerGroup
+  LLayerGroup,
+  fixDefaultIcons
 } from "vue2-leaflet";
+
+fixDefaultIcons()
 
 var markers1 = [
   {
@@ -194,7 +198,7 @@ export default {
       opacity: 0.6,
       option1: { name: "1" },
       option2: { name: "2" },
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       token: "your token if using mapbox",
@@ -258,3 +262,5 @@ export default {
   }
 };
 </script>
+
+:::

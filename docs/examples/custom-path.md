@@ -1,13 +1,16 @@
+# Custom Path
+
+::: demo
 <template>
+
   <div>
-    <div style="height: 10%; overflow: auto;">
-      <h3>Custom path</h3>
+    <div>
       Marker icon are retrived from {{ path }} custom path
     </div>
     <l-map
       :zoom="zoom"
       :center="center"
-      style="height: 90%"
+      style="height: 500px; width: 100%"
     >
       <l-tile-layer
         :url="url"
@@ -21,7 +24,9 @@
 
 <script>
 import { latLng } from "leaflet";
-import { LMap, LTileLayer, LMarker, LIconDefault } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LIconDefault, fixDefaultIcons } from "vue2-leaflet";
+
+fixDefaultIcons()
 
 export default {
   name: "CustomPath",
@@ -36,7 +41,7 @@ export default {
       zoom: 13,
       path: "/images/",
       center: [47.41322, -1.219482],
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       marker: latLng(47.41322, -1.219482)
@@ -44,3 +49,5 @@ export default {
   }
 };
 </script>
+
+:::

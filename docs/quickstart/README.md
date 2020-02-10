@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 # Quick Start
 
 ## Installation
@@ -30,26 +34,19 @@ yarn add leaflet vue2-leaflet
 
 ```js
 import Vue from 'vue';
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
-import { Icon } from 'leaflet';
+import { LMap, LTileLayer, LMarker, fixDefaultIcons } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
+
+fixDefaultIcons();
 
 Vue.component('l-map', LMap);
 Vue.component('l-tile-layer', LTileLayer);
 Vue.component('l-marker', LMarker);
-
-delete Icon.Default.prototype._getIconUrl;
-
-Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
 ```
 
 #### Locally installed components
 
-In your component:
+##### In your component:
 
 ```js
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
@@ -64,20 +61,13 @@ export default {
 };
 ```
 
-in your entry point: ie: `main.js`
+##### In your entry point: ie: `main.js`
 
 ```js
-import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { fixDefaultIcons } from 'vue2-leaflet';
 
-// this part resolve an issue where the markers would not appear
-delete Icon.Default.prototype._getIconUrl;
-
-Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
+fixDefaultIcons();
 ```
 
 ### If Imported by CDN
@@ -106,16 +96,9 @@ But it can be manually done by adding a plugin let's say `leaflet.js` in your `p
 
 ```js
 import Vue from 'vue';
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, fixDefaultIcons } from 'vue2-leaflet';
 
-import { Icon } from 'leaflet';
-delete Icon.Default.prototype._getIconUrl;
-
-Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
+fixDefaultIcons();
 
 Vue.component('l-map', LMap);
 Vue.component('l-tile-layer', LTileLayer);
@@ -156,4 +139,6 @@ Leaflet inner methods and properties can always be accessed by the `mapObject` a
 </script>
 ```
 
-!> `mapObject` is not going to be available immediately that is why `$nextTick` method is used.
+::: tip
+`mapObject` is not going to be available immediately that is why `$nextTick` method is used.
+:::

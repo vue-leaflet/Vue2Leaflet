@@ -1,12 +1,13 @@
+# Popup on geometry
+
+::: demo
 <template>
+
   <div>
-    <div style="height: 10%; overflow: auto;">
-      <h3>Geometry with popups</h3>
-    </div>
     <l-map
       :zoom="zoom"
       :center="center"
-      style="height: 90%"
+      style="height: 500px; width: 100%"
     >
       <l-tile-layer
         :url="url"
@@ -34,12 +35,7 @@
         :lat-lngs="polyline.latlngs"
         :color="polyline.color"
       >
-        <l-popup>
-          <popup-content :data="polyline" />
-        </l-popup>
-        <l-tooltip>
-          <tooltip-content :data="polyline" />
-        </l-tooltip>
+        <l-popup content="polyline" />
       </l-polyline>
     </l-map>
   </div>
@@ -54,12 +50,12 @@ import {
   LPolygon,
   LPolyline,
   LPopup,
-  LTooltip
+  LTooltip,
+  fixDefaultIcons
 } from "vue2-leaflet";
 import { latLng } from "leaflet";
 
-import PopupContent from "./PopupContent";
-import TooltipContent from "./TooltipContent";
+fixDefaultIcons()
 
 export default {
   name: "PopupGeometryTest",
@@ -72,8 +68,6 @@ export default {
     LPolyline,
     LPopup,
     LTooltip,
-    TooltipContent,
-    PopupContent
   },
   data() {
     return {
@@ -122,10 +116,12 @@ export default {
         ],
         color: "green"
       },
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     };
   }
 };
 </script>
+
+:::

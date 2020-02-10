@@ -3,7 +3,6 @@ import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import Popper from '../mixins/Popper.js';
 import Options from '../mixins/Options.js';
 import { tooltip, DomEvent } from 'leaflet';
-
 /**
  * Display a tooltip on the map
  */
@@ -47,6 +46,7 @@ export default {
 Tooltip placed inside a marker will by default appear on marker hover.
 :::
 
+## Demo
 ::: demo
 <template>
   <l-map style="height: 350px" :zoom="zoom" :center="center">
@@ -58,7 +58,10 @@ Tooltip placed inside a marker will by default appear on marker hover.
 </template>
 
 <script>
-import {LMap, LTileLayer, LMarker, LTooltip} from 'vue2-leaflet';
+import {LMap, LTileLayer, LMarker, LTooltip, fixDefaultIcons} from 'vue2-leaflet';
+
+// fixDefaultIcons needs to be called only once in the whole app.
+fixDefaultIcons();
 
 export default {
   components: {

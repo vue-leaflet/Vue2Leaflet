@@ -1,7 +1,10 @@
+# Feature group
+
+::: demo
 <template>
+
   <div>
-    <div style="height: 20%; overflow: auto;">
-      <h3>Simple map</h3>
+    <div>
       <p>First marker is placed at {{ withPopup.lat }}, {{ withPopup.lng }}</p>
       <p>Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }}</p>
       <button @click="showLongText">
@@ -16,7 +19,7 @@
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
-      style="height: 80%"
+      style="height: 500px; width: 100%"
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >
@@ -63,7 +66,10 @@ import {
   LPopup,
   LTooltip,
   LFeatureGroup,
+  fixDefaultIcons
 } from 'vue2-leaflet';
+
+fixDefaultIcons();
 
 export default {
   name: 'Example',
@@ -79,7 +85,7 @@ export default {
     return {
       zoom: 13,
       center: latLng(47.41322, -1.219482),
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       withPopup: latLng(47.41322, -1.219482),
@@ -109,3 +115,5 @@ export default {
   },
 };
 </script>
+
+:::

@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 # FAQ
 
 ## My map and/or markers don't fully render. What gives?

@@ -1,13 +1,12 @@
+# Features showcase
+
+::: demo
 <template>
+
   <div>
     <div>
-      <h3>Some examples</h3>
-    </div>
-    <div style="height: 47%; overflow: auto;">
-      Zoom: level <input
-        v-model.number="zoom"
-        type="number"
-      >
+      Zoom: level
+      <input v-model.number="zoom" type="number">
       position:
       <select v-model="zoomPosition">
         <option
@@ -55,7 +54,6 @@
       >
         Add a marker
       </button>
-      <br>
       <table>
         <tr>
           <th>Marker</th>
@@ -66,7 +64,6 @@
           <th>Is Visible ?</th>
           <th>Remove</th>
         </tr>
-
         <tr
           v-for="(item, index) in markers"
           :key="index"
@@ -78,35 +75,30 @@
               type="number"
             >
           </td>
-
           <td>
             <input
               v-model.number="item.position.lng"
               type="number"
             >
           </td>
-
           <td>
             <input
               v-model="item.tooltip"
               type="text"
             >
           </td>
-
           <td style="text-align: center">
             <input
               v-model="item.draggable"
               type="checkbox"
             >
           </td>
-
           <td style="text-align: center">
             <input
               v-model="item.visible"
               type="checkbox"
             >
           </td>
-
           <td style="text-align: center">
             <input
               type="button"
@@ -116,7 +108,6 @@
           </td>
         </tr>
       </table>
-
       <hr>
       <table>
         <tr>
@@ -125,7 +116,6 @@
           <th>Are Markers visible ?</th>
           <th>Is Polyline visible ?</th>
         </tr>
-
         <tr
           v-for="(item, index) in stuff"
           :key="index"
@@ -137,14 +127,12 @@
               type="checkbox"
             >
           </td>
-
           <td style="text-align: center">
             <input
               v-model="item.markersVisible"
               type="checkbox"
             >
           </td>
-
           <td style="text-align: center">
             <input
               v-model="item.polyline.visible"
@@ -153,8 +141,6 @@
           </td>
         </tr>
       </table>
-
-      <hr>
     </div>
     <l-map
       :zoom.sync="zoom"
@@ -163,7 +149,7 @@
       :bounds="bounds"
       :min-zoom="minZoom"
       :max-zoom="maxZoom"
-      style="height: 45%"
+      style="height: 500px; width: 100%"
     >
       <l-control-layers
         :position="layersPosition"
@@ -234,11 +220,12 @@
         />
       </l-layer-group>
     </l-map>
+
   </div>
 </template>
 
 <script>
-import { icon, latLngBounds } from 'leaflet';
+import { latLngBounds } from 'leaflet';
 import {
   LMap,
   LTileLayer,
@@ -251,7 +238,10 @@ import {
   LControlAttribution,
   LControlScale,
   LControlLayers,
+  fixDefaultIcons
 } from 'vue2-leaflet';
+
+fixDefaultIcons();
 
 const markers1 = [
   {
@@ -368,10 +358,6 @@ export default {
           tooltip: 'tooltip for marker1',
           draggable: true,
           visible: true,
-          icon: icon.glyph({
-            prefix: '',
-            glyph: 'A',
-          }),
         },
         {
           id: 'm2',
@@ -453,3 +439,5 @@ export default {
   },
 };
 </script>
+
+:::

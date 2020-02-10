@@ -1,15 +1,13 @@
+# Custom Leaflet Control
+
+::: demo
 <template>
-  <div>
-    <div style="height: 10%; overflow: auto;">
-      <h3>Custom Leaflet Control</h3>
-      Example of adding two basic controls to the map. One includes an element
-      that responds to click events, and the other overrides the default
-      position to place itself in the opposite corner.
-    </div>
+
+  <div >
     <l-map
       :zoom="zoom"
       :center="center"
-      style="height: 90%"
+      style="height: 500px; width: 100%"
     >
       <l-tile-layer
         :url="url"
@@ -32,7 +30,9 @@
 
 <script>
 import { latLng } from "leaflet";
-import { LMap, LTileLayer, LControl } from "vue2-leaflet";
+import { LMap, LTileLayer, LControl, fixDefaultIcons } from "vue2-leaflet";
+
+fixDefaultIcons()
 
 export default {
   name: "Example",
@@ -45,7 +45,7 @@ export default {
     return {
       zoom: 13,
       center: latLng(47.41322, -1.219482),
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     };
@@ -72,3 +72,5 @@ export default {
   text-shadow: #555;
 }
 </style>
+
+:::

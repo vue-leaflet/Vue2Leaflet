@@ -33,6 +33,7 @@ export default {
 </script>
 
 <docs>
+## Demo
 ::: demo
 <template>
   <l-map style="height: 350px" :crs="crs" :options="{zoomControl: false}">
@@ -44,7 +45,10 @@ export default {
 </template>
 
 <script>
-import {LMap, LImageOverlay, LMarker, LPopup} from 'vue2-leaflet';
+import {LMap, LImageOverlay, LMarker, LPopup, fixDefaultIcons} from 'vue2-leaflet';
+
+// fixDefaultIcons needs to be called only once in the whole app.
+fixDefaultIcons();
 
 export default {
   components: {

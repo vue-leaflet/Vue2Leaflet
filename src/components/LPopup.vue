@@ -56,6 +56,7 @@ export default {
 Popup placed inside a marker will by default appear on marker click.
 :::
 
+## Demo
 ::: demo
 <template>
   <l-map style="height: 350px" :zoom="zoom" :center="center">
@@ -67,7 +68,10 @@ Popup placed inside a marker will by default appear on marker click.
 </template>
 
 <script>
-import {LMap, LTileLayer, LMarker, LPopup} from 'vue2-leaflet';
+import {LMap, LTileLayer, LMarker, LPopup, fixDefaultIcons} from 'vue2-leaflet';
+
+// fixDefaultIcons needs to be called only once in the whole app.
+fixDefaultIcons();
 
 export default {
   components: {

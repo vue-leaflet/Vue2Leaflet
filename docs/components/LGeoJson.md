@@ -8,6 +8,8 @@ title: LGeoJson
 
 ---
 
+## Demo
+
 ::: demo
 <template>
 <l-map style="height: 350px" :zoom="zoom" :center="center">

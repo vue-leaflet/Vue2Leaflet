@@ -1,4 +1,8 @@
+# Custom Icons
+
+::: demo
 <template>
+
   <div>
     <div style="height: 20%; overflow: auto;">
       <h3>Custom Marker Icons</h3>
@@ -21,31 +25,27 @@
     <l-map
       :zoom="zoom"
       :center="center"
-      style="height: 80%"
+      style="height: 500px; width: 100%"
     >
       <l-tile-layer
         :url="url"
         :attribution="attribution"
       />
-
       <!-- Use default icon -->
       <l-marker :lat-lng="[47.41322, -1.219482]" />
-
       <!-- Use icon given in icon property -->
       <l-marker
         :lat-lng="[47.41322, -1.209482]"
         :icon="icon"
       />
-
       <!-- Create image icon (icon) from l-icon tag -->
       <l-marker :lat-lng="[47.41322, -1.199482]">
         <l-icon
           :icon-size="dynamicSize"
           :icon-anchor="dynamicAnchor"
-          icon-url="static/images/baseball-marker.png"
+          icon-url="/images/baseball-marker.png"
         />
       </l-marker>
-
       <!-- Create HTML icon (divIcon) by providing content inside the l-icon tag -->
       <l-marker :lat-lng="[47.41322, -1.189482]">
         <l-icon
@@ -55,7 +55,7 @@
           <div class="headline">
             {{ customText }}
           </div>
-          <img src="static/images/layers.png">
+          <img src="/images/layers.png">
         </l-icon>
       </l-marker>
     </l-map>
@@ -63,8 +63,10 @@
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LIcon, fixDefaultIcons } from "vue2-leaflet";
 import { latLng, icon } from "leaflet";
+
+fixDefaultIcons()
 
 export default {
   name: "Icon",
@@ -78,7 +80,7 @@ export default {
     return {
       zoom: 13,
       center: latLng(47.41322, -1.219482),
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 
@@ -117,3 +119,5 @@ export default {
   margin: 0 !important;
 }
 </style>
+
+:::

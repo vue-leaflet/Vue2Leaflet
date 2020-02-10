@@ -1,7 +1,9 @@
+# Geometry Examples
+
+::: demo
 <template>
+
   <div>
-    <div style="height: 10%; overflow: auto;">
-      <h3>Geometry</h3>
       <button @click="clickBtn">
         Change rectange style
       </button>
@@ -9,7 +11,7 @@
     <l-map
       :zoom="zoom"
       :center="center"
-      style="height: 90%"
+      style="height: 500px; width: 100%"
     >
       <l-tile-layer
         :url="url"
@@ -43,8 +45,11 @@ import {
   LCircle,
   LRectangle,
   LPolygon,
-  LPolyline
+  LPolyline,
+  fixDefaultIcons
 } from "vue2-leaflet";
+
+fixDefaultIcons();
 
 export default {
   name: "GeometryTest",
@@ -102,7 +107,7 @@ export default {
         ],
         color: "green"
       },
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     };
@@ -116,3 +121,5 @@ export default {
   }
 };
 </script>
+
+:::
