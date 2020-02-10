@@ -60,4 +60,43 @@ module.exports = {
       { text: 'Plugins', link: '/plugins/' },
     ],
   },
+  extendCli(cli) {
+    cli
+      .command('buildnossr [targetDir]', 'Build without ssr')
+      .action(async (sourceDir = '.', commandOptions) => {
+        const { path } = require('@vuepress/shared-utils');
+        const CopyPlugin = require('copy-webpack-plugin');
+        const fs = require('fs');
+        const App = require('@vuepress/core/lib/node/App');
+        const DevProcess = require('@vuepress/core/lib/node/dev');
+        const webpack = require('webpack');
+
+        const app = new App({
+          sourceDir: path.resolve(sourceDir),
+          ...{ theme: '@vuepress/default' },
+          ...commandOptions,
+        });
+        await app.process();
+        app.resolveCacheLoaderOptions();
+
+        const devProcess = new DevProcess(app);
+        devProcess.prepareWebpackConfig();
+
+        const publicDir = path.resolve(sourceDir, '.vuepress/public');
+        const { outDir } = app;
+        if (fs.existsSync(publicDir)) {
+          devProcess.webpackConfig.plugins.push(
+            new CopyPlugin([{ from: publicDir, to: outDir }])
+          );
+        }
+        await new Promise((resolve, reject) => {
+          webpack(devProcess.webpackConfig, (err, stats) => {
+            if (err) {
+              return reject(err);
+            }
+            resolve(stats.toJson({ modules: false }));
+          });
+        });
+      });
+  },
 };
