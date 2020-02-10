@@ -55,11 +55,8 @@ import {
   LPolyline,
   LPopup,
   LTooltip,
-  fixDefaultIcons
 } from "vue2-leaflet";
 import { latLng } from "leaflet";
-
-fixDefaultIcons()
 
 export default {
   name: "PopupGeometryTest",

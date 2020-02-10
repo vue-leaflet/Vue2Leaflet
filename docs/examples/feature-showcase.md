@@ -241,11 +241,8 @@ import {
   LControlZoom,
   LControlAttribution,
   LControlScale,
-  LControlLayers,
-  fixDefaultIcons
+  LControlLayers
 } from 'vue2-leaflet';
-
-fixDefaultIcons();
 
 const markers1 = [
   {

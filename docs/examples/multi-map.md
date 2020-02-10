@@ -120,11 +120,8 @@ import {
   LTileLayer,
   LMarker,
   LPolyline,
-  LLayerGroup,
-  fixDefaultIcons
+  LLayerGroup
 } from "vue2-leaflet";
-
-fixDefaultIcons()
 
 var markers1 = [
   {

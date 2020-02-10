@@ -32,10 +32,7 @@ This component is particularly useful to have a single tooltip / popup that is '
 </template>
 
 <script>
-import {LMap, LTileLayer, LFeatureGroup, LPopup, LCircle, LMarker, fixDefaultIcons} from 'vue2-leaflet';
-
-// fixDefaultIcons needs to be called only once in the whole app.
-fixDefaultIcons();
+import {LMap, LTileLayer, LFeatureGroup, LPopup, LCircle, LMarker} from 'vue2-leaflet';
 
 export default {
   components: {

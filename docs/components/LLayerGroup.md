@@ -32,9 +32,7 @@ This is particularly useful to have a single tooltip / popup that is 'shared' ac
 </template>
 
 <script>
-import {LMap, LTileLayer, LLayerGroup, LPopup, LCircle, LMarker, fixDefaultIcons} from 'vue2-leaflet';
-
-fixDefaultIcons();
+import {LMap, LTileLayer, LLayerGroup, LPopup, LCircle, LMarker} from 'vue2-leaflet';
 
 export default {
   components: {

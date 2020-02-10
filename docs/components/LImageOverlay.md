@@ -21,10 +21,7 @@ title: LImageOverlay
 </template>
 
 <script>
-import {LMap, LImageOverlay, LMarker, LPopup, fixDefaultIcons} from 'vue2-leaflet';
-
-// fixDefaultIcons needs to be called only once in the whole app.
-fixDefaultIcons();
+import {LMap, LImageOverlay, LMarker, LPopup} from 'vue2-leaflet';
 
 export default {
   components: {

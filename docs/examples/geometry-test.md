@@ -49,11 +49,8 @@ import {
   LCircle,
   LRectangle,
   LPolygon,
-  LPolyline,
-  fixDefaultIcons
+  LPolyline
 } from "vue2-leaflet";
-
-fixDefaultIcons();
 
 export default {
   name: "GeometryTest",

@@ -34,9 +34,7 @@ pageClass: example-page
 
 <script>
 import { latLng } from "leaflet";
-import { LMap, LTileLayer, LControl, fixDefaultIcons } from "vue2-leaflet";
-
-fixDefaultIcons()
+import { LMap, LTileLayer, LControl } from "vue2-leaflet";
 
 export default {
   name: "Example",

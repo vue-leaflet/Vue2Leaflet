@@ -28,9 +28,7 @@ pageClass: example-page
 
 <script>
 import { latLng } from "leaflet";
-import { LMap, LTileLayer, LMarker, LIconDefault, fixDefaultIcons } from "vue2-leaflet";
-
-fixDefaultIcons()
+import { LMap, LTileLayer, LMarker, LIconDefault } from "vue2-leaflet";
 
 export default {
   name: "CustomPath",

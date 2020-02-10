@@ -34,9 +34,7 @@ found on the [leaflet.js WMS example page](http://leafletjs.com/examples/wms/wms
 </template>
 
 <script>
-import { LMap, LWMSTileLayer, LControlLayers, fixDefaultIcons } from "vue2-leaflet";
-
-fixDefaultIcons();
+import { LMap, LWMSTileLayer, LControlLayers } from "vue2-leaflet";
 
 export default {
   name: "WmsLayers",

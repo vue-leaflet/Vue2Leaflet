@@ -25,10 +25,7 @@ Tooltip placed inside a marker will by default appear on marker hover.
 </template>
 
 <script>
-import {LMap, LTileLayer, LMarker, LTooltip, fixDefaultIcons} from 'vue2-leaflet';
-
-// fixDefaultIcons needs to be called only once in the whole app.
-fixDefaultIcons();
+import {LMap, LTileLayer, LMarker, LTooltip} from 'vue2-leaflet';
 
 export default {
   components: {

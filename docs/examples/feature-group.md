@@ -70,10 +70,7 @@ import {
   LPopup,
   LTooltip,
   LFeatureGroup,
-  fixDefaultIcons
 } from 'vue2-leaflet';
-
-fixDefaultIcons();
 
 export default {
   name: 'Example',

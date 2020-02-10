@@ -121,10 +121,7 @@ export default {
 </template>
 
 <script>
-import {LMap, LTileLayer, LMarker, fixDefaultIcons} from 'vue2-leaflet';
-
-// fixDefaultIcons needs to be called only once in the whole app.
-fixDefaultIcons();
+import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 
 export default {
   components: {

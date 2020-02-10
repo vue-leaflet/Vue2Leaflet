@@ -67,10 +67,8 @@ pageClass: example-page
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LIcon, fixDefaultIcons } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
 import { latLng, icon } from "leaflet";
-
-fixDefaultIcons()
 
 export default {
   name: "Icon",

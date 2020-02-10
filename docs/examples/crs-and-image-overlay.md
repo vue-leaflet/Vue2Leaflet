@@ -32,9 +32,7 @@ pageClass: example-page
 
 <script>
 import { CRS } from "leaflet";
-import { LMap, LImageOverlay, LMarker, LPopup, LPolyline, fixDefaultIcons } from "vue2-leaflet";
-
-fixDefaultIcons();
+import { LMap, LImageOverlay, LMarker, LPopup, LPolyline } from "vue2-leaflet";
 
 export default {
   components: {
