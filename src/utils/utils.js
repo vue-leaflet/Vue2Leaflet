@@ -1,4 +1,4 @@
-import { setOptions, Icon } from 'leaflet';
+import { setOptions } from 'leaflet';
 
 export const debounce = (fn, time) => {
   let timeout;
@@ -112,6 +112,7 @@ export const findRealParent = firstVueParent => {
 };
 
 export const fixDefaultIcons = () => {
+  const { Icon } = require('leaflet');
   delete Icon.Default.prototype._getIconUrl;
   Icon.Default.mergeOptions({
     iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
