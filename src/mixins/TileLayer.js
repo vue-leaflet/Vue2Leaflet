@@ -7,6 +7,10 @@ export default {
       type: Boolean,
       default: false
     },
+    subdomains: {
+      type: String,
+      default: 'abc'
+    },
     detectRetina: {
       type: Boolean,
       default: false
@@ -16,6 +20,7 @@ export default {
     this.tileLayerOptions = {
       ...this.gridLayerOptions,
       tms: this.tms,
+      subdomains: this.subdomains,
       detectRetina: this.detectRetina
     };
   },
