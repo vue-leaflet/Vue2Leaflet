@@ -48,6 +48,7 @@ export default {
 | tileSize       |             | number  | -      | 256        |
 | noWrap         |             | boolean | -      | false      |
 | tms            |             | boolean | -      | false      |
+| subdomains     |             | string  | -      | 'abc'      |
 | detectRetina   |             | boolean | -      | false      |
 | options        |             | object  | -      | {}         |
 | url            |             | string  | -      | null       |
