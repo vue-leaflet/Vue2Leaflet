@@ -22,7 +22,7 @@ Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework 
 npm install vue2-leaflet leaflet --save
 ```
 
-For more detailed information you can follow the [Quick Start Guide](https://vue-leaflet.github.io/Vue2Leaflet/quickstart/)
+For more detailed information you can follow the [Quick Start Guide](https://vue2-leaflet.netlify.com/quickstart/)
 
 ## Breaking change from 1.x.x to 2.x.x
 
@@ -56,11 +56,11 @@ This will reduce the size of the bundle significantly
 
 ## Documentation
 
-[Go here](https://vue-leaflet.github.io/Vue2Leaflet) to check out live examples and docs.
+[Go here](https://vue2-leaflet.netlify.com/) to check out live examples and docs.
 
 ## Leaflet Plugins
 
-Vue2Leaflet has a wide array of plugins written by the community! [Check Here](https://vue-leaflet.github.io/Vue2Leaflet/plugins/)
+Vue2Leaflet has a wide array of plugins written by the community! [Check Here](https://vue2-leaflet.netlify.com/plugins/)
 
 ## Contribute
 
@@ -87,7 +87,7 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
 
 ## Contributors
 
-Thanks goes to these [wonderful people](https://github.com/KoRiGaN/Vue2Leaflet/contributors)
+Thanks goes to these [wonderful people](https://github.com/vue-leaflet/Vue2Leaflet/contributors)
 
 ## License
 

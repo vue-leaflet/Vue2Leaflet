@@ -97,7 +97,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/KoRiGaN/Vue2Leaflet.git"
+    "url": "git@github.com:vue-leaflet/Vue2Leaflet.git"
   },
   "typings": "types/index.d.ts"
 }
