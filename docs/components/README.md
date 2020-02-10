@@ -16,62 +16,62 @@ It's possible to bind to them by simply writing `@leafletEventName`
 
 ## Base
 
-- [l-map](/components/LMap)
+- [l-map](/components/LMap.md)
 
 ## Shapes
 
-- [l-circle](/components/LCircle)
+- [l-circle](/components/LCircle.md)
 
-- [l-polygon](/components/LPolygon)
+- [l-polygon](/components/LPolygon.md)
 
-- [l-polyline](/components/LPolyline)
+- [l-polyline](/components/LPolyline.md)
 
-- [l-rectangle](/components/LRectangle)
+- [l-rectangle](/components/LRectangle.md)
 
 ## Tiles
 
-- [l-grid-layer](/components/LGridLayer)
+- [l-grid-layer](/components/LGridLayer.md)
 
-- [l-tile-layer](/components/LTileLayer)
+- [l-tile-layer](/components/LTileLayer.md)
 
-- [l-wms-tile-layer](/components/LWmsTileLayer)
+- [l-wms-tile-layer](/components/LWmsTileLayer.md)
 
 ## Markers
 
-- [l-circle-marker](/components/LCircleMarker)
+- [l-circle-marker](/components/LCircleMarker.md)
 
-- [l-icon-default](/components/LIconDefault)
+- [l-icon-default](/components/LIconDefault.md)
 
-- [l-icon](/components/LIcon)
+- [l-icon](/components/LIcon.md)
 
-- [l-marker](/components/LMarker)
+- [l-marker](/components/LMarker.md)
 
 ## Controls
 
-- [l-control](/components/LControl)
+- [l-control](/components/LControl.md)
 
-- [l-control-attribution](/components/LControlAttribution)
+- [l-control-attribution](/components/LControlAttribution.md)
 
-- [l-control-layers](/components/LControlLayers)
+- [l-control-layers](/components/LControlLayers.md)
 
-- [l-control-scale](/components/LControlScale)
+- [l-control-scale](/components/LControlScale.md)
 
-- [l-control-zoom](/components/LControlZoom)
+- [l-control-zoom](/components/LControlZoom.md)
 
 ## Info
 
-- [l-popup](/components/LPopup)
+- [l-popup](/components/LPopup.md)
 
-- [l-tooltip](/components/LTooltip)
+- [l-tooltip](/components/LTooltip.md)
 
 ## Grouping
 
-- [l-feature-group](/components/LFeatureGroup)
+- [l-feature-group](/components/LFeatureGroup.md)
 
-- [l-layer-group](/components/LLayerGroup)
+- [l-layer-group](/components/LLayerGroup.md)
 
 ## Other
 
-- [l-geo-json](/components/LGeoJson)
+- [l-geo-json](/components/LGeoJson.md)
 
-- [l-image-overlay](/components/LImageOverlay)
+- [l-image-overlay](/components/LImageOverlay.md)
