@@ -66,24 +66,17 @@ Vue2Leaflet has a wide array of plugins written by the community! [Check Here](h
 
 ```bash
 # clone the repository
-git clone https://github.com/KoRiGaN/Vue2Leaflet.git
+git clone https://github.com/vue-leaflet/Vue2Leaflet.git
 cd Vue2Leaflet
 # install dependencies and build vue2-leaflet
 npm install
-# create a symlink for vue2-leaflet
-yarn link
-cd examples
-yarn install
-# create a symbolic link for vue2-leaflet in node_modules/
-yarn link vue2-leaflet
-# serve with hot reload at localhost:8080
-yarn run serve
+# Compile the source and start the documentation server
+npm run dev
 ```
 
-Go to <http://localhost:8080/> to see running examples
+Go to <http://localhost:8080/Vue2Leaflet> to see the docs and the examples
 
-NOTE: If you make changes to the library you should run 'npm run build' again in the root folder.
-The dev server should detect modification and reload the examples
+Any changes to the source code is reflected in the docs after a handfuls of seconds.
 
 ## Authors
 

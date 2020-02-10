@@ -1,3 +1,7 @@
+---
+pageClass: example-page
+---
+
 # Crs and Image overlay
 
 ::: demo

@@ -1,3 +1,7 @@
+---
+pageClass: example-page
+---
+
 # Popup on geometry
 
 ::: demo

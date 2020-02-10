@@ -4,16 +4,16 @@
   "description": "Vue2 leaflet library",
   "author": "Mickael Bouchaud",
   "scripts": {
+    "dev": "concurrently \"npm run serve\" \"vue-docgen --watch\" \"vuepress dev docs\"",
     "serve": "npm run build -- -w",
-    "build": "rollup -c --environment NODE_ENV:production",
+    "build": "rollup -c --environment NODE_ENV:production && npm run docs:build",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
     "postversion": "git push --follow-tags",
     "lint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
     "test": "jest",
     "test:w": "jest --watch",
     "docs:dev": "concurrently \"vue-docgen --watch\" \"vuepress dev docs\"",
-    "docs:build": "vue-docgen && vuepress build docs",
-    "docs:serve": "docsify serve ./docs_old -p 4000 -o"
+    "docs:build": "vue-docgen && vuepress build docs"
   },
   "dependencies": {},
   "devDependencies": {

@@ -1,3 +1,7 @@
+---
+pageClass: example-page
+---
+
 # WMS Tile Layers
 
 ::: tip

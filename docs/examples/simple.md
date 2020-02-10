@@ -1,3 +1,7 @@
+---
+pageClass: example-page
+---
+
 # Basic example
 
 ::: demo
