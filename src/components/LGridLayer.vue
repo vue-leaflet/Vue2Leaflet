@@ -9,6 +9,12 @@ import GridLayerMixin from '../mixins/GridLayer.js';
 import Options from '../mixins/Options.js';
 import { GridLayer, DomEvent, DomUtil } from 'leaflet';
 
+/**
+ * Creates a map layer where each tile is an instantiated Vue component.
+ * Each tile component is given `coords` props by `l-grid-layer` to indicate
+ * the zoom level and position of the tile
+ * (see https://leafletjs.com/examples/extending/extending-2-layers.html#lgridlayer-and-dom-elements).
+ */
 export default {
   name: 'LGridLayer',
   mixins: [GridLayerMixin, Options],
@@ -17,23 +23,23 @@ export default {
     tileComponent: {
       type: Object,
       custom: true,
-      required: true
-    }
+      required: true,
+    },
   },
 
-  data () {
+  data() {
     return {
-      tileComponents: {}
+      tileComponents: {},
     };
   },
 
   computed: {
-    TileConstructor () {
+    TileConstructor() {
       return Vue.extend(this.tileComponent);
-    }
+    },
   },
 
-  mounted () {
+  mounted() {
     const GLayer = GridLayer.extend({});
     const options = optionsMerger(this.gridLayerOptions, this);
     this.mapObject = new GLayer(options);
@@ -44,17 +50,22 @@ export default {
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.parentContainer.removeLayer(this.mapObject);
     this.mapObject.off('tileunload', this.onUnload);
     this.mapObject = null;
   },
 
   methods: {
-    createTile (coords) {
+    createTile(coords) {
       const div = DomUtil.create('div');
       const dummy = DomUtil.create('div');
       div.appendChild(dummy);
@@ -63,8 +74,8 @@ export default {
         el: dummy,
         parent: this,
         propsData: {
-          coords: coords
-        }
+          coords: coords,
+        },
       });
 
       const key = this.mapObject._tileCoordsToKey(coords);
@@ -73,7 +84,7 @@ export default {
       return div;
     },
 
-    onUnload (e) {
+    onUnload(e) {
       const key = this.mapObject._tileCoordsToKey(e.coords);
       if (typeof this.tileComponents[key] !== 'undefined') {
         this.tileComponents[key].$destroy();
@@ -82,9 +93,50 @@ export default {
       }
     },
 
-    setTileComponent (newVal) {
+    setTileComponent(newVal) {
       this.mapObject.redraw();
-    }
-  }
+    },
+  },
 };
 </script>
+
+<docs>
+## Demo
+::: demo
+<template>
+  <l-map style="height: 350px" :zoom="zoom" :center="center">
+    <l-tile-layer :url="url"></l-tile-layer>
+    <l-grid-layer :tile-component="tileComponent"></l-grid-layer>
+  </l-map>
+</template>
+
+<script>
+import {LMap, LTileLayer, LGridLayer} from 'vue2-leaflet';
+
+export default {
+  components: {
+    LMap,
+    LTileLayer,
+    LGridLayer
+  },
+  data () {
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      zoom: 8,
+      center: [47.313220, -1.319482],
+      tileComponent: {
+        name: 'tile-component',
+        props: {
+          coords: {
+            type: Object,
+            required: true
+          }
+        },
+        template: '<div>Coords: {{coords.x}}, {{coords.y}}, {{coords.z}}</div>'
+      },
+    };
+  }
+}
+</script>
+:::
+</docs>

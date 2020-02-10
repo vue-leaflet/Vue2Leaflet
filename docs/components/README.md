@@ -1,57 +1,77 @@
+---
+sidebarDepth: 2
+---
+
 # Introduction
 
 Vue2Leaflet is a wrapper library for the mapping library [leaflet](https://leafletjs.com)
 
 To easily encapsulate most of the functionality of leaflet a series of composable vue-components are provided.
 
-> The components menu offer a detailed view of each component and a playground to test it.
-
-!> Most of our components do not emit events
+::: tip
+Most of our components do not emit events
 but **all** the components pass down listeners for leaflets events.
 It's possible to bind to them by simply writing `@leafletEventName`
+:::
 
 ## Base
 
-* [l-map](/components/l-map/)
+- [l-map](/components/LMap)
 
 ## Shapes
 
-* [l-circle](/components/l-circle/)
-* [l-polygon](/components/l-polygon/)
-* [l-polyline](/components/l-polyline/)
-* [l-rectangle](/components/l-rectangle/)
+- [l-circle](/components/LCircle)
+
+- [l-polygon](/components/LPolygon)
+
+- [l-polyline](/components/LPolyline)
+
+- [l-rectangle](/components/LRectangle)
 
 ## Tiles
 
-* [l-grid-layer](/components/l-grid-layer/)
-* [l-tile-layer](/components/l-tile-layer/)
-* [l-wms-tile-layer](/components/l-wms-tile-layer/)
+- [l-grid-layer](/components/LGridLayer)
+
+- [l-tile-layer](/components/LTileLayer)
+
+- [l-wms-tile-layer](/components/LWmsTileLayer)
 
 ## Markers
 
-* [l-circle-marker](/components/l-circle-marker/)
-* [l-icon](/components/l-icon/)
-* [l-marker](/components/l-marker/)
+- [l-circle-marker](/components/LCircleMarker)
+
+- [l-icon-default](/components/LIconDefault)
+
+- [l-icon](/components/LIcon)
+
+- [l-marker](/components/LMarker)
 
 ## Controls
 
-* [l-control](/components/l-control/)
-* [l-control-attribution](/components/l-control-attribution/)
-* [l-control-layers](/components/l-control-layers/)
-* [l-control-scale](/components/l-control-scale/)
-* [l-control-zoom](/components/l-control-zoom/)
+- [l-control](/components/LControl)
+
+- [l-control-attribution](/components/LControlAttribution)
+
+- [l-control-layers](/components/LControlLayers)
+
+- [l-control-scale](/components/LControlScale)
+
+- [l-control-zoom](/components/LControlZoom)
 
 ## Info
 
-* [l-popup](/components/l-popup/)
-* [l-tooltip](/components/l-tooltip/)
+- [l-popup](/components/LPopup)
+
+- [l-tooltip](/components/LTooltip)
 
 ## Grouping
 
-* [l-feature-group](/components/l-feature-group/)
-* [l-layer-group](/components/l-layer-group/)
+- [l-feature-group](/components/LFeatureGroup)
+
+- [l-layer-group](/components/LLayerGroup)
 
 ## Other
 
-* [l-geo-json](/components/l-geo-json/)
-* [l-image-overlay](/components/l-image-overlay/)
+- [l-geo-json](/components/LGeoJson)
+
+- [l-image-overlay](/components/LImageOverlay)

@@ -9,56 +9,93 @@ import { optionsMerger, propsBinder, debounce } from '../utils/utils.js';
 import Options from '../mixins/Options.js';
 import { CRS, DomEvent, map, latLngBounds, latLng } from 'leaflet';
 
+/**
+ * Base component, contains and wrap all the other components.
+ */
 export default {
   name: 'LMap',
   mixins: [Options],
   props: {
+    /**
+     * The center of the map, supports .sync modifier
+     */
     center: {
       type: [Object, Array],
       custom: true,
       default: () => [0, 0],
     },
+    /**
+     * The bounds of the map, supports .sync modifier
+     */
     bounds: {
       type: [Array, Object],
       custom: true,
       default: null,
     },
+    /**
+     * The max bounds of the map
+     */
     maxBounds: {
       type: [Array, Object],
       default: null,
     },
+    /**
+     * The zoom of the map, supports .sync modifier
+     */
     zoom: {
       type: Number,
       custom: true,
       default: 0,
     },
+    /**
+     * The minZoom of the map
+     */
     minZoom: {
       type: Number,
       default: null,
     },
+    /**
+     * The maxZoom of the map
+     */
     maxZoom: {
       type: Number,
       default: null,
     },
+    /**
+     * The paddingBottomRight of the map
+     */
     paddingBottomRight: {
       type: Array,
       custom: true,
       default: null,
     },
+    /**
+     * The paddingTopLeft of the map
+     */
     paddingTopLeft: {
       type: Array,
       custom: true,
       default: null,
     },
+    /**
+     * The padding of the map
+     */
     padding: {
       type: Array,
       custom: true,
       default: null,
     },
+    /**
+     * The worldCopyJump option for the map
+     */
     worldCopyJump: {
       type: Boolean,
       default: false,
     },
+    /**
+     * The crs option for the map
+     * @values CRS.EPSG3857
+     */
     crs: {
       type: Object,
       custom: true,
@@ -169,9 +206,17 @@ export default {
     DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
-    // DEPRECATED leaflet:load
+    /**
+     * DEPRECATED event
+     * @deprecated
+     */
     this.$emit('leaflet:load');
     this.$nextTick(() => {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
       this.$emit('ready', this.mapObject);
     });
   },
@@ -273,10 +318,22 @@ export default {
       });
     },
     moveEndHandler() {
+      /**
+       * Triggers when zoom is updated
+       * @type {number,string}
+       */
       this.$emit('update:zoom', this.mapObject.getZoom());
       const center = this.mapObject.getCenter();
+      /**
+       * Triggers when center is updated
+       * @type {object,array}
+       */
       this.$emit('update:center', center);
       const bounds = this.mapObject.getBounds();
+      /**
+       * Triggers when bounds are updated
+       * @type {object}
+       */
       this.$emit('update:bounds', bounds);
     },
     overlayAddHandler(e) {
@@ -301,3 +358,62 @@ export default {
   width: 100%;
 }
 </style>
+
+<docs>
+::: tip
+If your markup does not have a root `<l-map>` something is wrong.
+:::
+
+## Demo
+::: demo
+<template>
+  <div style="height: 350px;">
+    <div class="info" style="height: 15%">
+      <span>Center: {{ center }}</span>
+      <span>Zoom: {{ zoom }}</span>
+      <span>Bounds: {{ bounds }}</span>
+    </div>
+    <l-map
+      style="height: 80%; width: 100%"
+      :zoom="zoom"
+      :center="center"
+      @update:zoom="zoomUpdated"
+      @update:center="centerUpdated"
+      @update:bounds="boundsUpdated"
+    >
+      <l-tile-layer :url="url"></l-tile-layer>
+    </l-map>
+  </div>
+</template>
+
+<script>
+import {LMap, LTileLayer} from 'vue2-leaflet';
+
+export default {
+  components: {
+    LMap,
+    LTileLayer,
+  },
+  data () {
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      zoom: 3,
+      center: [47.413220, -1.219482],
+      bounds: null
+    };
+  },
+  methods: {
+    zoomUpdated (zoom) {
+      this.zoom = zoom;
+    },
+    centerUpdated (center) {
+      this.center = center;
+    },
+    boundsUpdated (bounds) {
+      this.bounds = bounds;
+    }
+  }
+}
+</script>
+:::
+</docs>

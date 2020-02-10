@@ -78,6 +78,11 @@ export default {
       }
     },
     updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
       this.$emit('update:visible', value);
     },
   },
