@@ -13,9 +13,6 @@
 <a href="https://www.npmjs.com/package/vue2-leaflet">
 <img src="https://img.shields.io/npm/l/vue2-leaflet.svg" alt="License">
 </a>
-<a href="https://coveralls.io/github/KoRiGaN/Vue2Leaflet?branch=master">
-<img src="https://coveralls.io/repos/github/KoRiGaN/Vue2Leaflet/badge.svg?branch=master)" alt="License">
-</a>
 
 Vue2Leaflet is a JavaScript library for the [Vue](https://vuejs.org/) framework that wraps [Leaflet](http://leafletjs.com/) making it easy to create reactive maps.
 
