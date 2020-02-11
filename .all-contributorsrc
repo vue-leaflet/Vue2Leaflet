@@ -6,6 +6,17 @@
   "commit": false,
   "contributors": [
     {
+      "login": "DonNicoJs",
+      "name": "Nicolò Maria Mezzopera",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5890166?v=4",
+      "profile": "https://github.com/DonNicoJs",
+      "contributions": [
+        "code",
+        "maintenance",
+        "doc"
+      ]
+    },
+    {
       "login": "KoRiGaN",
       "name": "Mickaël",
       "avatar_url": "https://avatars2.githubusercontent.com/u/924890?v=4",

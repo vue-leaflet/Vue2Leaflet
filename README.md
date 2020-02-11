@@ -97,6 +97,7 @@ Thanks goes to these [wonderful people](https://github.com/vue-leaflet/Vue2Leafl
 <table>
   <tr>
     <td align="center"><a href="https://github.com/KoRiGaN"><img src="https://avatars2.githubusercontent.com/u/924890?v=4" width="100px;" alt=""/><br /><sub><b>Mickaël</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=KoRiGaN" title="Code">💻</a> <a href="#maintenance-KoRiGaN" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/DonNicoJs"><img src="https://avatars3.githubusercontent.com/u/5890166?v=4" width="100px;" alt=""/><br /><sub><b>Nicolò Maria Mezzopera</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=DonNicoJs" title="Code">💻</a> <a href="#maintenance-DonNicoJs" title="Maintenance">🚧</a> <a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=DonNicoJs" title="Documentation">📖</a></td>
   </tr>
 </table>
 
