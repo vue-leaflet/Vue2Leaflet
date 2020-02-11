@@ -52,6 +52,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "zuck",
+      "name": "Emanuele Bertoldi",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1370938?v=4",
+      "profile": "http://zuck.github.io/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

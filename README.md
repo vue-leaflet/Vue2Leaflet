@@ -1,6 +1,6 @@
 # Vue2Leaflet
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/vue-leaflet/Vue2Leaflet/workflows/Test%20Action/badge.svg?branch=master" alt="ci">
@@ -101,6 +101,7 @@ Thanks goes to these [wonderful people](https://github.com/vue-leaflet/Vue2Leafl
     <td align="center"><a href="https://github.com/bezany"><img src="https://avatars2.githubusercontent.com/u/5105017?v=4" width="100px;" alt=""/><br /><sub><b>bezany</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=bezany" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/mikeu"><img src="https://avatars3.githubusercontent.com/u/605493?v=4" width="100px;" alt=""/><br /><sub><b>Michael Underwood</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=mikeu" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/byWulf"><img src="https://avatars1.githubusercontent.com/u/135651?v=4" width="100px;" alt=""/><br /><sub><b>Michael Wolf</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=byWulf" title="Code">💻</a></td>
+    <td align="center"><a href="http://zuck.github.io/"><img src="https://avatars1.githubusercontent.com/u/1370938?v=4" width="100px;" alt=""/><br /><sub><b>Emanuele Bertoldi</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=zuck" title="Code">💻</a></td>
   </tr>
 </table>
 
