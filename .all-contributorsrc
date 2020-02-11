@@ -25,6 +25,15 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "bezany",
+      "name": "bezany",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5105017?v=4",
+      "profile": "https://github.com/bezany",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
