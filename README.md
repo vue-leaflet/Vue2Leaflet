@@ -1,4 +1,7 @@
 # Vue2Leaflet
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/vue-leaflet/Vue2Leaflet/workflows/Test%20Action/badge.svg?branch=master" alt="ci">
 <a href="https://www.npmjs.com/package/vue2-leaflet">
@@ -88,6 +91,18 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
 ## Contributors
 
 Thanks goes to these [wonderful people](https://github.com/vue-leaflet/Vue2Leaflet/contributors)
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/DonNicoJs"><img src="https://avatars3.githubusercontent.com/u/5890166?v=4" width="100px;" alt=""/><br /><sub><b>Nicolò Maria Mezzopera</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=DonNicoJs" title="Code">💻</a> <a href="#maintenance-DonNicoJs" title="Maintenance">🚧</a> <a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=DonNicoJs" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
