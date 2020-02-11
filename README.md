@@ -1,6 +1,6 @@
 # Vue2Leaflet
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/vue-leaflet/Vue2Leaflet/workflows/Test%20Action/badge.svg?branch=master" alt="ci">
@@ -107,6 +107,7 @@ Thanks goes to these [wonderful people](https://github.com/vue-leaflet/Vue2Leafl
   <tr>
     <td align="center"><a href="https://twitter.com/jericopulvera"><img src="https://avatars0.githubusercontent.com/u/23246308?v=4" width="100px;" alt=""/><br /><sub><b>ECO</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=jericopulvera" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/udos"><img src="https://avatars3.githubusercontent.com/u/141107?v=4" width="100px;" alt=""/><br /><sub><b>Udo Schochtert</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/issues?q=author%3Audos" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/maratumba"><img src="https://avatars2.githubusercontent.com/u/2898911?v=4" width="100px;" alt=""/><br /><sub><b>Yaman Ozakin</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/issues?q=author%3Amaratumba" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
