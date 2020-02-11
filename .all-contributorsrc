@@ -79,6 +79,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "udos",
+      "name": "Udo Schochtert",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/141107?v=4",
+      "profile": "https://github.com/udos",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
