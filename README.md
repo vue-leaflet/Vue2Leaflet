@@ -77,7 +77,7 @@ npm install
 npm run dev
 ```
 
-Go to <http://localhost:8080/Vue2Leaflet> to see the docs and the examples
+Go to <http://localhost:8080/> to see the docs and the examples
 
 Any changes to the source code is reflected in the docs after a handfuls of seconds.
 
@@ -89,8 +89,6 @@ Any changes to the source code is reflected in the docs after a handfuls of seco
 Inspired by many map wrapper (google and leaflet) for many framework (React, Angular and Vue 1.0)
 
 ## Contributors
-
-Thanks goes to these [wonderful people](https://github.com/vue-leaflet/Vue2Leaflet/contributors)
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -115,6 +113,11 @@ Thanks goes to these [wonderful people](https://github.com/vue-leaflet/Vue2Leafl
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
+> If you believe you should be on this list please add yourself by typing this on a PR or issue: `@all-contributors please add @yourNickname for X` where X is one of [all-contributors emojoi keys](https://allcontributors.org/docs/en/emoji-key)
+
+And all [the rest who contributed](https://github.com/vue-leaflet/Vue2Leaflet/contributors)
 
 ## License
 
