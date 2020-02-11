@@ -15,6 +15,16 @@
         "maintenance",
         "doc"
       ]
+    },
+    {
+      "login": "KoRiGaN",
+      "name": "Mickaël",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/924890?v=4",
+      "profile": "https://github.com/KoRiGaN",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
