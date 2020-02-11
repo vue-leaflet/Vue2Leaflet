@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "KoRiGaN",
+      "name": "Mickaël",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/924890?v=4",
+      "profile": "https://github.com/KoRiGaN",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Vue2Leaflet",
+  "projectOwner": "vue-leaflet",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
