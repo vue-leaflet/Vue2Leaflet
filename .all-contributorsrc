@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "DonNicoJs",
+      "name": "Nicolò Maria Mezzopera",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5890166?v=4",
+      "profile": "https://github.com/DonNicoJs",
+      "contributions": [
+        "code",
+        "maintenance",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Vue2Leaflet",
+  "projectOwner": "vue-leaflet",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
