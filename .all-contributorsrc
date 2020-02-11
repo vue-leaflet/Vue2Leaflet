@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "mikeu",
+      "name": "Michael Underwood",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/605493?v=4",
+      "profile": "https://github.com/mikeu",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Vue2Leaflet",
+  "projectOwner": "vue-leaflet",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
