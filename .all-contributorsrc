@@ -88,6 +88,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "maratumba",
+      "name": "Yaman Ozakin",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2898911?v=4",
+      "profile": "https://github.com/maratumba",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
