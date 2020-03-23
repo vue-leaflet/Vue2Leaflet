@@ -50,11 +50,12 @@ export default {
 
 ## Props
 
-| Prop name               | Description | Type    | Values | Default    |
-| ----------------------- | ----------- | ------- | ------ | ---------- |
-| position                |             | string  | -      | 'topright' |
-| options                 |             | object  | -      | {}         |
-| disableClickPropagation |             | boolean | -      | true       |
+| Prop name                | Description | Type    | Values | Default    |
+| ------------------------ | ----------- | ------- | ------ | ---------- |
+| position                 |             | string  | -      | 'topright' |
+| options                  |             | object  | -      | {}         |
+| disableClickPropagation  |             | boolean | -      | true       |
+| disableScrollPropagation |             | boolean | -      | false      |
 
 ## Events
 

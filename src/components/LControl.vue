@@ -22,6 +22,11 @@ export default {
       custom: true,
       default: true,
     },
+    disableScrollPropagation: {
+      type: Boolean,
+      custom: true,
+      default: false,
+    }
   },
   mounted() {
     const LControl = Control.extend({
@@ -40,6 +45,9 @@ export default {
     this.mapObject.setElement(this.$el);
     if (this.disableClickPropagation) {
       DomEvent.disableClickPropagation(this.$el);
+    }
+    if (this.disableScrollPropagation) {
+      DomEvent.disableScrollPropagation(this.$el);
     }
     this.mapObject.addTo(this.parentContainer.mapObject);
     this.$nextTick(() => {
