@@ -47,4 +47,26 @@ describe('component: LControl.vue', () => {
     }
     expect(mapWrapper.vm.mapObject.getZoom()).toEqual(initZoom + triggerCount);
   });
+
+  test('LControl.vue enable scroll propagation by default', () => {
+    const triggerCount = 3;
+    const { wrapper, mapWrapper } = getWrapperWithMap(LControl);
+    const initZoom = mapWrapper.vm.mapObject.getZoom();
+    for (let i = 0; i < triggerCount; ++i) {
+      wrapper.trigger('scroll');
+    }
+    expect(mapWrapper.vm.mapObject.getZoom()).toEqual(initZoom);
+  });
+
+  test('LControl.vue disable scroll propagation', () => {
+    const triggerCount = 3;
+    const { wrapper, mapWrapper } = getWrapperWithMap(LControl, {
+      disableScrollPropagation: true
+    });
+    const initZoom = mapWrapper.vm.mapObject.getZoom();
+    for (let i = 0; i < triggerCount; ++i) {
+      wrapper.trigger('scroll');
+    }
+    expect(mapWrapper.vm.mapObject.getZoom()).toEqual(initZoom);
+  });
 });
