@@ -203,6 +203,8 @@ export default {
     this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));
     this.mapObject.on('overlayadd', this.overlayAddHandler);
     this.mapObject.on('overlayremove', this.overlayRemoveHandler);
+    this.mapObject.on('click', this.clickHandler);
+    this.mapObject.on('dblclick', this.dblclickHandler);
     DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
@@ -347,6 +349,20 @@ export default {
       if (layer) {
         layer.updateVisibleProp(false);
       }
+    },
+    clickHandler(mouseEvent) {
+      /**
+       * Triggers when the user clicks (or taps) the map
+       * @type {object}
+       */
+      this.$emit('click', mouseEvent);
+    },
+    dblclickHandler(mouseEvent) {
+      /**
+       * Triggers when the user double-clicks (or double-taps) the map
+       * @type {object}
+       */
+      this.$emit('dblClick', mouseEvent);
     },
   },
 };
