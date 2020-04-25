@@ -87,13 +87,8 @@ export const optionsMerger = (props, instance) => {
     const def = defaultProps[key]
       ? defaultProps[key].default
       : Symbol('unique');
-    if (result[key] && def !== props[key]) {
-      console.warn(
-        `${key} props is overriding the value passed in the options props`
-      );
-      result[key] = props[key];
-    } else if (!result[key]) {
-      result[key] = props[key];
+    if (!result[key]) {
+      result[key] = props[key] || def;
     }
   }
   return result;
