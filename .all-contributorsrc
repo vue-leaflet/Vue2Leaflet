@@ -116,6 +116,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Machine-Maker",
+      "name": "Jake Potrebic",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15055071?v=4",
+      "profile": "https://github.com/Machine-Maker",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
