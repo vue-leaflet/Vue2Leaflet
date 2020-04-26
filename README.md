@@ -112,8 +112,6 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
     <td align="center"><a href="https://github.com/udos"><img src="https://avatars3.githubusercontent.com/u/141107?v=4" width="100px;" alt=""/><br /><sub><b>Udo Schochtert</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/issues?q=author%3Audos" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/maratumba"><img src="https://avatars2.githubusercontent.com/u/2898911?v=4" width="100px;" alt=""/><br /><sub><b>Yaman Ozakin</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/issues?q=author%3Amaratumba" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://terra-azure.org"><img src="https://avatars0.githubusercontent.com/u/682269?v=4" width="100px;" alt=""/><br /><sub><b>Andre-John Mas</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=ajmas" title="Documentation">📖</a> <a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=ajmas" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/geopic"><img src="https://avatars0.githubusercontent.com/u/29524044?v=4" width="100px;" alt=""/><br /><sub><b>George Pickering</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=geopic" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/Machine-Maker"><img src="https://avatars2.githubusercontent.com/u/15055071?v=4" width="100px;" alt="" /><br /><sub><b>Machine Maker</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=Machine-Maker" title="Code">💻</a></td>
   </tr>
 </table>
 
