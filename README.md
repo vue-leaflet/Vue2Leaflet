@@ -1,4 +1,5 @@
 # Vue2Leaflet
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -62,7 +63,6 @@ This will reduce the size of the bundle significantly
 
 Do you have questions? Ideas? do you want to collaborate but you feel lost? Join us on discord [Invite Link](https://discord.gg/uVZAfUf)
 
-
 ## Leaflet Plugins
 
 Vue2Leaflet has a wide array of plugins written by the community! [Check Here](https://vue2-leaflet.netlify.com/plugins/)
@@ -91,6 +91,7 @@ Any changes to the source code is reflected in the docs after a handfuls of seco
 Inspired by many map wrapper (google and leaflet) for many framework (React, Angular and Vue 1.0)
 
 ## Contributors
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -116,8 +117,8 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 > If you believe you should be on this list please add yourself by typing this on a PR or issue: `@all-contributors please add @yourNickname for X` where X is one of [all-contributors emojoi keys](https://allcontributors.org/docs/en/emoji-key)
 
