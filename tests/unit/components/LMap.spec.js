@@ -262,4 +262,38 @@ describe('component: LMap.vue', () => {
       }
     });
   });
+
+  test('LMap.vue options.prop should override default prop value', () => {
+    const options = {
+      center: [100,100],
+      crs: L.CRS.Simple
+    }
+    const wrapper = getMapWrapper(options)
+
+    expect(wrapper.exists()).toBe(true);
+
+    expect(wrapper.vm.center).toBe(options.center)
+    expect(wrapper.vm.crs).toBe(options.crs)
+  })
+
+  test('LMap.vue if prop is not default, it should override options.prop', () => {
+    const options = {
+      center: [100, 100],
+      crs: L.CRS.EPSG3395
+    }
+
+    const props = {
+      center: [-100, -100],
+      crs: L.CRS.Simple
+    }
+
+    const wrapper = getMapWrapper(options)
+
+    wrapper.setProps(props)
+
+    expect(wrapper.exists()).toBe(true)
+
+    expect(wrapper.vm.center).toBe(props.center)
+    expect(wrapper.vm.crs).toBe(props.crs)
+  })
 });
