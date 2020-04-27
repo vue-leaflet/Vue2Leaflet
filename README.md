@@ -1,6 +1,7 @@
 # Vue2Leaflet
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/vue-leaflet/Vue2Leaflet/workflows/Test%20Action/badge.svg?branch=master" alt="ci">
@@ -62,7 +63,6 @@ This will reduce the size of the bundle significantly
 
 Do you have questions? Ideas? do you want to collaborate but you feel lost? Join us on discord [Invite Link](https://discord.gg/uVZAfUf)
 
-
 ## Leaflet Plugins
 
 Vue2Leaflet has a wide array of plugins written by the community! [Check Here](https://vue2-leaflet.netlify.com/plugins/)
@@ -91,6 +91,7 @@ Any changes to the source code is reflected in the docs after a handfuls of seco
 Inspired by many map wrapper (google and leaflet) for many framework (React, Angular and Vue 1.0)
 
 ## Contributors
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -110,13 +111,14 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
     <td align="center"><a href="https://github.com/maratumba"><img src="https://avatars2.githubusercontent.com/u/2898911?v=4" width="100px;" alt=""/><br /><sub><b>Yaman Ozakin</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/issues?q=author%3Amaratumba" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://terra-azure.org"><img src="https://avatars0.githubusercontent.com/u/682269?v=4" width="100px;" alt=""/><br /><sub><b>Andre-John Mas</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=ajmas" title="Documentation">📖</a> <a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=ajmas" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/geopic"><img src="https://avatars0.githubusercontent.com/u/29524044?v=4" width="100px;" alt=""/><br /><sub><b>George Pickering</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=geopic" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Machine-Maker"><img src="https://avatars2.githubusercontent.com/u/15055071?v=4" width="100px;" alt=""/><br /><sub><b>Jake Potrebic</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=Machine-Maker" title="Code">💻</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 > If you believe you should be on this list please add yourself by typing this on a PR or issue: `@all-contributors please add @yourNickname for X` where X is one of [all-contributors emojoi keys](https://allcontributors.org/docs/en/emoji-key)
 
