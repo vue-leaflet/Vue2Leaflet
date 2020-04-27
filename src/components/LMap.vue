@@ -141,6 +141,22 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Zoom step
+     * (see [`zoomDelta`](https://leafletjs.com/reference-1.6.0.html#map-zoomdelta))
+     */
+    zoomDelta: {
+      type: Number,
+      default: 1
+    },
+    /**
+     * Zoom fraction
+     * (see [`zoomSnap`](https://leafletjs.com/reference-1.6.0.html#map-zoomsnap))
+     */
+    zoomSnap: {
+      type: Number,
+      default: 1
+    }
   },
   data() {
     return {
@@ -195,6 +211,8 @@ export default {
         zoomAnimationThreshold: this.zoomAnimationThreshold,
         fadeAnimation: this.fadeAnimation,
         markerZoomAnimation: this.markerZoomAnimation,
+        zoomSnap: this.zoomSnap,
+        zoomDelta: this.zoomDelta
       },
       this
     );
