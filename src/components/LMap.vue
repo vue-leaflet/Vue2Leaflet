@@ -310,7 +310,10 @@ export default {
       this.padding = newVal;
     },
     setCrs(newVal, oldVal) {
-      console.log('Changing CRS is not yet supported by Leaflet');
+      const mapObject = this.mapObject,
+        prevBounds = mapObject.getBounds();
+      mapObject.options.crs = newVal;
+      mapObject.fitBounds(prevBounds, { animate: false, padding: [0, 0] });
     },
     fitBounds(bounds) {
       this.mapObject.fitBounds(bounds, {

@@ -43,6 +43,7 @@
     "lint-staged": "^9.5.0",
     "markdown-it-include": "^1.1.0",
     "prettier": "1.19.1",
+    "proj4leaflet": "^1.0.2",
     "rollup": "^1.27.14",
     "rollup-copy-plugin": "^0.1.0",
     "rollup-plugin-babel": "^4.3.3",
