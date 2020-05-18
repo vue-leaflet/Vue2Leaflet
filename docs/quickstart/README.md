@@ -163,3 +163,17 @@ Leaflet inner methods and properties can always be accessed by the `mapObject` a
 ::: tip
 `mapObject` is not going to be available immediately that is why `$nextTick` method is used.
 :::
+
+
+**Note:** You can also use [l-map](/components/LMap.md) component `ready` event to ensure that you access `mapObject` after it's loaded:
+
+```html
+<l-map ref="myMap" @ready="doSomethingOnReady()"></l-map>
+```
+```javascript
+methods: {
+    doSomethingOnReady() {
+        this.map = this.$refs.myMap.mapObject
+    },
+},
+```
