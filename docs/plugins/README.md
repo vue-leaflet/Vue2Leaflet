@@ -104,6 +104,12 @@ Wrapper for [TrackSymbol](https://github.com/lethexa/leaflet-tracksymbol).
 
 ## [vue2-leaflet-vectorgrid](https://github.com/tesselo/vue2-leaflet-vectorgrid)
 
-Wrapper for [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid.
+Wrapper for [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid).
 
 > Display gridded vector data (sliced GeoJSON or protobuf vector tiles).
+
+## [vue-leaflet-minimap](https://github.com/patrickcate/vue-leaflet-minimap)
+
+Wrapper for [Leaflet-MiniMap](https://github.com/Norkart/Leaflet-MiniMap).
+
+> Show a small overview map in the corner of the main map.
