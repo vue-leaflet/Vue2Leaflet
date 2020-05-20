@@ -45,6 +45,19 @@ mounted () {
 
 This also work for any other component (Marker, Polyline, etc...)
 
+**Note:** If you're having troubles using `mounted` hook, you can use [l-map](/components/LMap.md) component `ready` event to ensure that you access `mapObject` after it's loaded:
+
+```html
+<l-map ref="map" @ready="doSomethingOnReady()"></l-map>
+```
+```javascript
+methods: {
+    doSomethingOnReady() {
+        this.map = this.$refs.map.mapObject
+    },
+},
+```
+
 ## How can I bind events of Vue2Leaflet components?
 
 All event binding can be done to event with the same name as in [leaflet documentation](http://leafletjs.com/reference-1.3.0.html).
