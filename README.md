@@ -1,7 +1,7 @@
 # Vue2Leaflet
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/vue-leaflet/Vue2Leaflet/workflows/Test%20Action/badge.svg?branch=master" alt="ci">
@@ -113,6 +113,9 @@ Inspired by many map wrapper (google and leaflet) for many framework (React, Ang
     <td align="center"><a href="https://github.com/geopic"><img src="https://avatars0.githubusercontent.com/u/29524044?v=4" width="100px;" alt=""/><br /><sub><b>George Pickering</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=geopic" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Machine-Maker"><img src="https://avatars2.githubusercontent.com/u/15055071?v=4" width="100px;" alt=""/><br /><sub><b>Jake Potrebic</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=Machine-Maker" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/itanka9"><img src="https://avatars3.githubusercontent.com/u/17390418?v=4" width="100px;" alt=""/><br /><sub><b>itanka9</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=itanka9" title="Documentation">📖</a> <a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=itanka9" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/bravik"><img src="https://avatars0.githubusercontent.com/u/1075618?v=4" width="100px;" alt=""/><br /><sub><b>bravik</b></sub></a><br /><a href="https://github.com/vue-leaflet/Vue2Leaflet/commits?author=bravik" title="Documentation">📖</a></td>
   </tr>
 </table>
 
