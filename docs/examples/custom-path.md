@@ -9,7 +9,7 @@ pageClass: example-page
 
   <div>
     <div>
-      Marker icon are retrived from {{ path }} custom path
+      Marker icon are retrieved from {{ path }} custom path
     </div>
     <l-map
       :zoom="zoom"
