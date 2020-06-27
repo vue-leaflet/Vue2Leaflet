@@ -540,6 +540,10 @@ declare module "vue2-leaflet" {
      */
     worldCopyJump: boolean;
     /**
+     * @default true
+     */
+    draggable: boolean;
+    /**
      * @default L.CRS.EPSG3857
      */
     crs: L.CRS;

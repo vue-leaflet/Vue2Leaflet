@@ -20,7 +20,7 @@ module.exports = {
         cssLibs: ['https://unpkg.com/leaflet@1.6.0/dist/leaflet.css'],
         onlineBtns: { codesandbox: true, codepen: false, jsfiddle: false },
         codesandbox: {
-          deps: { leaflet: 'latest', 'vue2-leaflet': '2.5.2', vue: '2.6.11' },
+          deps: { leaflet: 'latest', 'vue2-leaflet': '2.5.3', vue: '2.6.11' },
           json: '',
           query: '',
           embed: '',

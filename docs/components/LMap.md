@@ -83,6 +83,7 @@ export default {
 | paddingTopLeft         | The paddingTopLeft of the map                  | array         | -              | null               |
 | padding                | The padding of the map                         | array         | -              | null               |
 | worldCopyJump          | The worldCopyJump option for the map           | boolean       | -              | false              |
+| draggable              | Whether to allow dragging of map               | boolean       | -              | true               |
 | crs                    | The crs option for the map                     | object        | `CRS.EPSG3857` | () => CRS.EPSG3857 |
 | maxBoundsViscosity     |                                                | number        | -              | null               |
 | inertia                |                                                | boolean       | -              | null               |

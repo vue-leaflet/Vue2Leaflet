@@ -93,6 +93,13 @@ export default {
       default: false,
     },
     /**
+     * The draggable option for the map
+     */
+    draggable: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * The crs option for the map
      * @values CRS.EPSG3857
      */
@@ -184,6 +191,7 @@ export default {
         maxBounds: this.maxBounds,
         maxBoundsViscosity: this.maxBoundsViscosity,
         worldCopyJump: this.worldCopyJump,
+        draggable: this.draggable,
         crs: this.crs,
         center: this.center,
         zoom: this.zoom,
