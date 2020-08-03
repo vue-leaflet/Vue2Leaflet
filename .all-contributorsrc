@@ -153,6 +153,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "andi23rosca",
+      "name": "Andrei Rosca",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/7364627?v=4",
+      "profile": "https://github.com/andi23rosca",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
