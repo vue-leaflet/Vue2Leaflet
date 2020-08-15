@@ -24,6 +24,12 @@ Wrapper for [leaflet-editablecirclemarker](https://github.com/cualbondi/leaflet-
 
 > Leaflet layer that contains a marker and a circle together.
 
+## [vue2-leaflet-fullscreen](https://github.com/mikeu/vue2-leaflet-fullscreen)
+
+Wrapper for [Leaflet.fullscreen](https://github.com/Leaflet/Leaflet.fullscreen).
+
+> Add a control to allow the user to switch the map in and out of full-screen mode.
+
 ## [vue2-leaflet-geosearch](https://github.com/fega/vue2-leaflet-geosearch)
 
 Wrapper for [GeoSearch](https://github.com/smeijer/leaflet-geosearch).
