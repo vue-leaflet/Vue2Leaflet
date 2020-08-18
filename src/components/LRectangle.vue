@@ -8,7 +8,7 @@
 import { optionsMerger, propsBinder, findRealParent } from '../utils/utils.js';
 import Polygon from '../mixins/Polygon.js';
 import Options from '../mixins/Options.js';
-import { rectangle, DomEvent } from 'leaflet';
+import { rectangle, latLngBounds, DomEvent } from 'leaflet';
 
 /**
  * Easily draw a rectangle on the map
@@ -18,8 +18,8 @@ export default {
   mixins: [Polygon, Options],
   props: {
     bounds: {
-      type: Array,
-      default: () => [],
+      default: () => [[0,0],[0,0]],
+      validator: value => value && latLngBounds(value).isValid(),
     },
   },
   data() {
