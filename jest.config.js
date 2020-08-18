@@ -8,6 +8,9 @@ module.exports = {
   setupFiles: [
     '<rootDir>/tests/setup.js'
   ],
+  setupFilesAfterEnv: [
+    "jest-mock-console/dist/setupTestFramework.js",
+  ],
   transform: {
     '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':

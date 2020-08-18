@@ -37,6 +37,7 @@
     "eslint-plugin-vue": "^6.1.2",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
+    "jest-mock-console": "^1.0.1",
     "jest-serializer-vue": "^2.0.2",
     "jest-transform-stub": "^2.0.0",
     "leaflet": "^1.6.0",
