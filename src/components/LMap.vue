@@ -145,8 +145,8 @@ export default {
   data() {
     return {
       ready: false,
-      lastSetCenter: null,
-      lastSetBounds: null,
+      lastSetCenter: this.center ? latLng(this.center) : null,
+      lastSetBounds: this.bounds ? latLngBounds(this.bounds) : null,
       lastSetZoom: null,
       layerControl: undefined,
       layersToAdd: [],
