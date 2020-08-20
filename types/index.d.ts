@@ -555,7 +555,6 @@ declare module "vue2-leaflet" {
     ready: boolean;
     lastSetCenter: L.LatLng | null;
     lastSetBounds: L.Bounds | null;
-    lastSetZoom: number | null;
     layerControl?: any;
     layersToAdd: any[];
     mapObject: L.Map;

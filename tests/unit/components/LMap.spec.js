@@ -79,16 +79,6 @@ describe('component: LMap.vue', () => {
     const bounds = L.latLngBounds(L.latLng([1, 1]), L.latLng([2, 2]));
     const newBounds = [[4, 4], [5, 5]];
     const newBounds2 = L.latLngBounds(L.latLng([10, 10]), L.latLng([20, 20]));
-    const defaultOptions = {
-      animate: null,
-      pan: {
-        animate: null,
-        duration: undefined
-      },
-      zoom: {
-        animate: null
-      }
-    };
 
     const mockFitBounds = jest.fn();
     const wrapper = getMapWrapper({ bounds: bounds });
@@ -101,9 +91,7 @@ describe('component: LMap.vue', () => {
 
     expect(mockFitBounds.mock.calls.length).toBe(2);
     expect(mockFitBounds.mock.calls[0][0]).toEqual(L.latLngBounds(newBounds));
-    expect(mockFitBounds.mock.calls[0][1]).toEqual(defaultOptions);
     expect(mockFitBounds.mock.calls[1][0]).toEqual(L.latLngBounds(newBounds2));
-    expect(mockFitBounds.mock.calls[1][1]).toEqual(defaultOptions);
   });
 
   test('LMap.vue with same bounds', async () => {
@@ -240,60 +228,42 @@ describe('component: LMap.vue', () => {
 
     expect(mockFitBounds.mock.calls.length).toBe(2);
     expect(mockFitBounds.mock.calls[0][0]).toEqual(L.latLngBounds(newBounds));
-    expect(mockFitBounds.mock.calls[0][1]).toEqual({
-      animate: false,
-      pan: {
-        animate: false,
-        duration: undefined
-      },
-      zoom: {
-        animate: false
-      }
-    });
+    expect(mockFitBounds.mock.calls[0][1]).toMatchObject({ animate: false });
     expect(mockFitBounds.mock.calls[1][0]).toEqual(L.latLngBounds(newBounds2));
-    expect(mockFitBounds.mock.calls[1][1]).toEqual({
-      animate: false,
-      pan: {
-        animate: false,
-        duration: undefined
-      },
-      zoom: {
-        animate: false
-      }
-    });
+    expect(mockFitBounds.mock.calls[1][1]).toMatchObject({ animate: false });
   });
 
   test('LMap.vue options.prop should override default prop value', () => {
     const options = {
       center: [100,100],
       crs: L.CRS.Simple
-    }
-    const wrapper = getMapWrapper(options)
+    };
+    const wrapper = getMapWrapper(options);
 
     expect(wrapper.exists()).toBe(true);
 
-    expect(wrapper.vm.center).toBe(options.center)
-    expect(wrapper.vm.crs).toBe(options.crs)
-  })
+    expect(wrapper.vm.center).toBe(options.center);
+    expect(wrapper.vm.crs).toBe(options.crs);
+  });
 
   test('LMap.vue if prop is not default, it should override options.prop', () => {
     const options = {
       center: [100, 100],
       crs: L.CRS.EPSG3395
-    }
+    };
 
     const props = {
       center: [-100, -100],
       crs: L.CRS.Simple
-    }
+    };
 
-    const wrapper = getMapWrapper(options)
+    const wrapper = getMapWrapper(options);
 
-    wrapper.setProps(props)
+    wrapper.setProps(props);
 
-    expect(wrapper.exists()).toBe(true)
+    expect(wrapper.exists()).toBe(true);
 
-    expect(wrapper.vm.center).toBe(props.center)
-    expect(wrapper.vm.crs).toBe(props.crs)
-  })
+    expect(wrapper.vm.center).toBe(props.center);
+    expect(wrapper.vm.crs).toBe(props.crs);
+  });
 });

@@ -145,9 +145,8 @@ export default {
   data() {
     return {
       ready: false,
-      lastSetCenter: null,
-      lastSetBounds: null,
-      lastSetZoom: null,
+      lastSetCenter: this.center ? latLng(this.center) : null,
+      lastSetBounds: this.bounds ? latLngBounds(this.bounds) : null,
       layerControl: undefined,
       layersToAdd: [],
       layersInControl: [],
@@ -199,7 +198,6 @@ export default {
       this
     );
     this.mapObject = map(this.$el, options);
-    this.setBounds(this.bounds);
     this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));
     this.mapObject.on('overlayadd', this.overlayAddHandler);
     this.mapObject.on('overlayremove', this.overlayRemoveHandler);
