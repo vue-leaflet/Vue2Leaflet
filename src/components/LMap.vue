@@ -198,6 +198,9 @@ export default {
       this
     );
     this.mapObject = map(this.$el, options);
+    if (this.bounds) {
+      this.mapObject.fitBounds(this.bounds);
+    }
     this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));
     this.mapObject.on('overlayadd', this.overlayAddHandler);
     this.mapObject.on('overlayremove', this.overlayRemoveHandler);
