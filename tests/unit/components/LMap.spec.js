@@ -140,6 +140,55 @@ describe('component: LMap.vue', () => {
     expect(mockFitBounds.mock.calls[1][1]).toEqual(Object.assign({}, defaultOptions, optionsPadding2));
   });
 
+  test('LMap.vue changing center prop caches map view center and bounds', async () => {
+    const oldCenter = [0, 0];
+    const newCenter = [50, 50];
+    const wrapper = getMapWrapper({ center: oldCenter, zoom: 15 });
+
+    wrapper.setProps({ center: newCenter });
+    await wrapper.vm.$nextTick();
+
+    expect(L.latLng(newCenter).equals(wrapper.vm.lastSetCenter)).toBeTruthy();
+    const cachedBounds = wrapper.vm.lastSetBounds;
+    expect(cachedBounds).toBeInstanceOf(L.LatLngBounds);
+    // Because the map isn't actually rendered in a DOM element with physical pixel
+    // extents, many of the more direct approaches to testing that the cached bounds
+    // have changed appropriately don't work here. For instance, the bounds of the
+    // map will have zero area, and so likely don't contain the assigned centre.
+    // However, at zoom level 15 we can be confident that the centre of the new bounds
+    // should be within 100 m of the set centre, and over 100 km from the original.
+    expect(cachedBounds.getCenter().distanceTo(newCenter)).toBeLessThan(100);
+    expect(cachedBounds.getCenter().distanceTo(oldCenter)).toBeGreaterThan(100000);
+  });
+
+  test('LMap.vue changing zoom prop caches map view center and bounds', async () => {
+    const initialArea = L.latLngBounds([-80, -170], [80, 170]);
+    const smallerArea = L.latLngBounds([-40, -85], [40, 85]);
+    const wrapper = getMapWrapper({ bounds: initialArea });
+
+    wrapper.setProps({ zoom: 10 });
+    await wrapper.vm.$nextTick();
+
+    // As above with the center prop test, we can't rely on ending up with a specific
+    // known set of bounds. However, we know that the smaller area does not contain
+    // the initial much larger one, but should contain whatever the calculated and
+    // cached bounds are after zooming in to level 10.
+    expect(smallerArea.contains(initialArea)).toBeFalsy();
+    expect(smallerArea.contains(wrapper.vm.lastSetBounds)).toBeTruthy();
+    expect(wrapper.vm.lastSetCenter).toEqual(L.latLng(0, 0));
+  });
+
+  test('LMap.vue changing bounds prop caches map view center and bounds', async () => {
+    const wrapper = getMapWrapper();
+    const newBounds = [[10, 10], [11, 11]];
+
+    wrapper.setProps({ bounds: newBounds });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.lastSetBounds).toEqual(L.latLngBounds(newBounds));
+    expect(wrapper.vm.lastSetCenter).toEqual(L.latLng([10.5, 10.5]));
+  });
+
   test('LMap.vue no-blocking-animations real position', async () => {
     // Most important test for no-blocking-animations, tests the real position
     // However, I suspect animations are never triggered in unit tests

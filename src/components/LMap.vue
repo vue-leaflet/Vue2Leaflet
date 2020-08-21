@@ -273,6 +273,7 @@ export default {
       this.mapObject.setZoom(newVal, {
         animate: this.noBlockingAnimations ? false : null,
       });
+      this.cacheMapView();
     },
     setCenter(newVal, oldVal) {
       if (newVal == null) {
@@ -285,6 +286,7 @@ export default {
         this.mapObject.panTo(newCenter, {
           animate: this.noBlockingAnimations ? false : null,
         });
+        this.cacheMapView(undefined, newCenter);
       }
     },
     setBounds(newVal, oldVal) {
@@ -298,8 +300,8 @@ export default {
       const oldBounds = this.lastSetBounds || this.mapObject.getBounds();
       const boundsChanged = !oldBounds.equals(newBounds, 0); // set maxMargin to 0 - check exact equals
       if (boundsChanged) {
-        this.lastSetBounds = newBounds;
         this.mapObject.fitBounds(newBounds, this.fitBoundsOptions);
+        this.cacheMapView(newBounds);
       }
     },
     setPaddingBottomRight(newVal, oldVal) {
@@ -352,6 +354,11 @@ export default {
       if (layer) {
         layer.updateVisibleProp(false);
       }
+    },
+    cacheMapView(bounds, center) {
+      // Cache the last values used to define the map view by mutating props.
+      this.lastSetBounds = bounds || this.mapObject.getBounds();
+      this.lastSetCenter = center || this.lastSetBounds.getCenter();
     },
   },
 };
