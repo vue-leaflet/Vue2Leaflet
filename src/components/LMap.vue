@@ -266,6 +266,7 @@ export default {
       }
     },
     setZoom(newVal, oldVal) {
+      if (!newVal) { return; }
       this.mapObject.setZoom(newVal, {
         animate: this.noBlockingAnimations ? false : null,
       });
