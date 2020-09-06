@@ -141,6 +141,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    scrollWheelZoom: {
+      type: [ Boolean, String ],
+      default: true,
+    },
   },
   data() {
     return {
@@ -194,6 +198,7 @@ export default {
         zoomAnimationThreshold: this.zoomAnimationThreshold,
         fadeAnimation: this.fadeAnimation,
         markerZoomAnimation: this.markerZoomAnimation,
+        scrollWheelZoom: this.scrollWheelZoom,
       },
       this
     );
