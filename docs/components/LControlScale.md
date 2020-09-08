@@ -41,14 +41,14 @@ export default {
 
 ## Props
 
-| Prop name      | Description | Type    | Values | Default    |
-| -------------- | ----------- | ------- | ------ | ---------- |
-| position       |             | string  | -      | 'topright' |
-| options        |             | object  | -      | {}         |
-| maxWidth       |             | number  | -      | 100        |
-| metric         |             | boolean | -      | true       |
-| imperial       |             | boolean | -      | true       |
-| updateWhenIdle |             | boolean | -      | false      |
+| Prop name      | Description                                          | Type    | Values | Default    |
+| -------------- | ---------------------------------------------------- | ------- | ------ | ---------- |
+| position       |                                                      | string  | -      | 'topright' |
+| options        | Leaflet options to pass to the component constructor | object  | -      | {}         |
+| maxWidth       |                                                      | number  | -      | 100        |
+| metric         |                                                      | boolean | -      | true       |
+| imperial       |                                                      | boolean | -      | true       |
+| updateWhenIdle |                                                      | boolean | -      | false      |
 
 ## Events
 

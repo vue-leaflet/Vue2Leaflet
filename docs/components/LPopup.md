@@ -49,11 +49,11 @@ export default {
 
 ## Props
 
-| Prop name | Description | Type          | Values | Default  |
-| --------- | ----------- | ------------- | ------ | -------- |
-| content   |             | string        | -      | null     |
-| options   |             | object        | -      | {}       |
-| latLng    |             | object\|array | -      | () => [] |
+| Prop name | Description                                          | Type          | Values | Default  |
+| --------- | ---------------------------------------------------- | ------------- | ------ | -------- |
+| content   |                                                      | string        | -      | null     |
+| options   | Leaflet options to pass to the component constructor | object        | -      | {}       |
+| latLng    |                                                      | object\|array | -      | () => [] |
 
 ## Events
 

@@ -41,11 +41,11 @@ export default {
 
 ## Props
 
-| Prop name | Description | Type            | Values | Default    |
-| --------- | ----------- | --------------- | ------ | ---------- |
-| position  |             | string          | -      | 'topright' |
-| options   |             | object          | -      | {}         |
-| prefix    |             | string\|boolean | -      | null       |
+| Prop name | Description                                          | Type            | Values | Default    |
+| --------- | ---------------------------------------------------- | --------------- | ------ | ---------- |
+| position  |                                                      | string          | -      | 'topright' |
+| options   | Leaflet options to pass to the component constructor | object          | -      | {}         |
+| prefix    |                                                      | string\|boolean | -      | null       |
 
 ## Events
 

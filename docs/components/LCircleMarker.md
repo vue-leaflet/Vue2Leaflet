@@ -50,32 +50,32 @@ export default {
 
 ## Props
 
-| Prop name           | Description | Type          | Values | Default      |
-| ------------------- | ----------- | ------------- | ------ | ------------ |
-| pane                |             | string        | -      | 'markerPane' |
-| attribution         |             | string        | -      | null         |
-| name                |             | string        | -      | undefined    |
-| layerType           |             | string        | -      | undefined    |
-| visible             |             | boolean       | -      | true         |
-| interactive         |             | boolean       | -      | true         |
-| bubblingMouseEvents |             | boolean       | -      | true         |
-| lStyle              |             | object        | -      | null         |
-| stroke              |             | boolean       | -      | true         |
-| color               |             | string        | -      | '#3388ff'    |
-| weight              |             | number        | -      | 3            |
-| opacity             |             | number        | -      | 1.0          |
-| lineCap             |             | string        | -      | 'round'      |
-| lineJoin            |             | string        | -      | 'round'      |
-| dashArray           |             | string        | -      | null         |
-| dashOffset          |             | string        | -      | null         |
-| fill                |             | boolean       | -      | true         |
-| fillColor           |             | string        | -      | '#3388ff'    |
-| fillOpacity         |             | number        | -      | 0.2          |
-| fillRule            |             | string        | -      | 'evenodd'    |
-| className           |             | string        | -      | null         |
-| radius              |             | number        | -      | null         |
-| options             |             | object        | -      | {}           |
-| latLng              |             | object\|array | -      | () => [0, 0] |
+| Prop name           | Description                                          | Type          | Values | Default      |
+| ------------------- | ---------------------------------------------------- | ------------- | ------ | ------------ |
+| pane                |                                                      | string        | -      | 'markerPane' |
+| attribution         |                                                      | string        | -      | null         |
+| name                |                                                      | string        | -      | undefined    |
+| layerType           |                                                      | string        | -      | undefined    |
+| visible             |                                                      | boolean       | -      | true         |
+| interactive         |                                                      | boolean       | -      | true         |
+| bubblingMouseEvents |                                                      | boolean       | -      | true         |
+| lStyle              |                                                      | object        | -      | null         |
+| stroke              |                                                      | boolean       | -      | true         |
+| color               |                                                      | string        | -      | '#3388ff'    |
+| weight              |                                                      | number        | -      | 3            |
+| opacity             |                                                      | number        | -      | 1.0          |
+| lineCap             |                                                      | string        | -      | 'round'      |
+| lineJoin            |                                                      | string        | -      | 'round'      |
+| dashArray           |                                                      | string        | -      | null         |
+| dashOffset          |                                                      | string        | -      | null         |
+| fill                |                                                      | boolean       | -      | true         |
+| fillColor           |                                                      | string        | -      | '#3388ff'    |
+| fillOpacity         |                                                      | number        | -      | 0.2          |
+| fillRule            |                                                      | string        | -      | 'evenodd'    |
+| className           |                                                      | string        | -      | null         |
+| radius              |                                                      | number        | -      | null         |
+| options             | Leaflet options to pass to the component constructor | object        | -      | {}           |
+| latLng              |                                                      | object\|array | -      | () => [0, 0] |
 
 ## Events
 

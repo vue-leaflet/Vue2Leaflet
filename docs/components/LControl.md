@@ -50,12 +50,12 @@ export default {
 
 ## Props
 
-| Prop name                | Description | Type    | Values | Default    |
-| ------------------------ | ----------- | ------- | ------ | ---------- |
-| position                 |             | string  | -      | 'topright' |
-| options                  |             | object  | -      | {}         |
-| disableClickPropagation  |             | boolean | -      | true       |
-| disableScrollPropagation |             | boolean | -      | false      |
+| Prop name                | Description                                          | Type    | Values | Default    |
+| ------------------------ | ---------------------------------------------------- | ------- | ------ | ---------- |
+| position                 |                                                      | string  | -      | 'topright' |
+| options                  | Leaflet options to pass to the component constructor | object  | -      | {}         |
+| disableClickPropagation  |                                                      | boolean | -      | true       |
+| disableScrollPropagation |                                                      | boolean | -      | false      |
 
 ## Events
 
