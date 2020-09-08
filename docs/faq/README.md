@@ -12,6 +12,31 @@ To fix map rendering issues, it may help to [import the Leaflet stylesheet withi
 
 In most cases, though, it is Webpack messing with Leaflet marker icons' paths, resulting in warnings or even errors. You can alleviate that by either [unsetting/replacing the default paths](https://github.com/KoRiGaN/Vue2Leaflet/issues/96#issuecomment-341453050) ([alternate solution](https://github.com/Leaflet/Leaflet/issues/4968#issuecomment-319569682)) or [using Webpack aliases](https://github.com/Leaflet/Leaflet/issues/4849#issuecomment-307436996).
 
+## How can I specify Leaflet options that aren't part of a component's `props`?
+
+Most components have an `options` prop that accepts an object to be passed to the underlying
+Leaflet constructor.
+
+```html
+<l-map :options="leafletMapOptions">
+  ...
+</l-map>
+```
+
+```javascript
+data () {
+  leafletMapOptions: {
+    closePopupOnClick: false,
+    doubleClickZoom: 'center',
+  }
+}
+```
+
+**Note:** Leaflet elements include many options that can only be set when the element
+is created. If Leaflet does not provide a method to change an option on an existing
+element after instantiation, that option most likely does not have a reactive Vue
+`props` entry, and should instead be set through the `options` object.
+
 ## How can I access the Leaflet map object?
 
 First add a ref to the map
