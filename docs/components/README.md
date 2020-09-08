@@ -17,8 +17,12 @@ It's possible to bind to them by simply writing `@leafletEventName`
 ::: tip
 Most components accept an `options` object, which will be passed to
 the constructor of the underlying Leaflet object. Use this to set any
-options that are not explicitly implemented as Vue `props` on the
-component.
+options that are not explicitly implemented as reactive Vue `props` on
+the component.
+
+**Note:** Leaflet often does not provide a mechanism for updating many
+of these options after creating a map element. For this reason, changes
+made to this `options` object are not reactive.
 :::
 
 ## Base
