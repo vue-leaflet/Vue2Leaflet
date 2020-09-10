@@ -41,14 +41,14 @@ export default {
 
 ## Props
 
-| Prop name    | Description | Type   | Values | Default    |
-| ------------ | ----------- | ------ | ------ | ---------- |
-| position     |             | string | -      | 'topright' |
-| options      |             | object | -      | {}         |
-| zoomInText   |             | string | -      | '+'        |
-| zoomInTitle  |             | string | -      | 'Zoom in'  |
-| zoomOutText  |             | string | -      | '-'        |
-| zoomOutTitle |             | string | -      | 'Zoom out' |
+| Prop name    | Description                                          | Type   | Values | Default    |
+| ------------ | ---------------------------------------------------- | ------ | ------ | ---------- |
+| position     |                                                      | string | -      | 'topright' |
+| options      | Leaflet options to pass to the component constructor | object | -      | {}         |
+| zoomInText   |                                                      | string | -      | '+'        |
+| zoomInTitle  |                                                      | string | -      | 'Zoom in'  |
+| zoomOutText  |                                                      | string | -      | '-'        |
+| zoomOutTitle |                                                      | string | -      | 'Zoom out' |
 
 ## Events
 

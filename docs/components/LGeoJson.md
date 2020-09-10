@@ -46,16 +46,16 @@ export default {
 
 ## Props
 
-| Prop name    | Description | Type          | Values | Default       |
-| ------------ | ----------- | ------------- | ------ | ------------- |
-| pane         |             | string        | -      | 'overlayPane' |
-| attribution  |             | string        | -      | null          |
-| name         |             | string        | -      | undefined     |
-| layerType    |             | string        | -      | undefined     |
-| visible      |             | boolean       | -      | true          |
-| options      |             | object        | -      | {}            |
-| geojson      |             | object\|array | -      | {}            |
-| optionsStyle |             | object\|func  | -      | null          |
+| Prop name    | Description                                          | Type          | Values | Default       |
+| ------------ | ---------------------------------------------------- | ------------- | ------ | ------------- |
+| pane         |                                                      | string        | -      | 'overlayPane' |
+| attribution  |                                                      | string        | -      | null          |
+| name         |                                                      | string        | -      | undefined     |
+| layerType    |                                                      | string        | -      | undefined     |
+| visible      |                                                      | boolean       | -      | true          |
+| options      | Leaflet options to pass to the component constructor | object        | -      | {}            |
+| geojson      |                                                      | object\|array | -      | {}            |
+| optionsStyle |                                                      | object\|func  | -      | null          |
 
 ## Events
 

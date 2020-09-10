@@ -4,14 +4,25 @@ sidebarDepth: 2
 
 # Introduction
 
-Vue2Leaflet is a wrapper library for the mapping library [leaflet](https://leafletjs.com)
+Vue2Leaflet is a wrapper library for the mapping library [Leaflet](https://leafletjs.com)
 
-To easily encapsulate most of the functionality of leaflet a series of composable vue-components are provided.
+To easily encapsulate most of the functionality of Leaflet a series of composable vue-components are provided.
 
 ::: tip
 Most of our components do not emit events
-but **all** the components pass down listeners for leaflets events.
+but **all** the components pass down listeners for Leaflet's events.
 It's possible to bind to them by simply writing `@leafletEventName`
+:::
+
+::: tip
+Most components accept an `options` object, which will be passed to
+the constructor of the underlying Leaflet object. Use this to set any
+options that are not explicitly implemented as reactive Vue `props` on
+the component.
+
+**Note:** Leaflet often does not provide a mechanism for updating many
+of these options after creating a map element. For this reason, changes
+made to this `options` object are not reactive.
 :::
 
 ## Base
