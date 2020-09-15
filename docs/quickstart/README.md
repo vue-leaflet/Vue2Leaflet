@@ -134,7 +134,7 @@ For TypeScript, you will need to define `_getIconUrl` by hand as it is a private
 
 ```ts
 type D = Icon.Default & {
-  _getIconUrl: string;
+  _getIconUrl?: string;
 };
 
 delete (Icon.Default.prototype as D)._getIconUrl;
