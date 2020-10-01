@@ -17,6 +17,11 @@ npm install leaflet vue2-leaflet --save
 ```bash
 yarn add leaflet vue2-leaflet
 ```
+### Add leaflet css in your index.html file
+
+```html
+<link rel="stylesheet" href="//unpkg.com/leaflet/dist/leaflet.css" />
+```
 
 ### CDN
 
