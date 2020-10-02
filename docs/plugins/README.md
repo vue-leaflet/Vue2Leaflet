@@ -119,3 +119,9 @@ Wrapper for [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid).
 Wrapper for [Leaflet-MiniMap](https://github.com/Norkart/Leaflet-MiniMap).
 
 > Show a small overview map in the corner of the main map.
+
+## [vue-leaflet-semicircle](https://github.com/OBrown92/vue2-leaflet-semicircle)
+
+Wrapper for [Leaflet-Semicircle](https://github.com/jieter/Leaflet-semicircle).
+
+> Allows drawing semicircles on leaflet maps.
