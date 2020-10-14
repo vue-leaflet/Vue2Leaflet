@@ -46,6 +46,11 @@ export default {
       ready: false,
     };
   },
+  beforeDestroy() {
+    if (this.debouncedLatLngSync) {
+      this.debouncedLatLngSync.cancel();
+    }
+  },
   mounted() {
     const options = optionsMerger(
       {
@@ -58,7 +63,8 @@ export default {
     );
     this.mapObject = marker(this.latLng, options);
     DomEvent.on(this.mapObject, this.$listeners);
-    this.mapObject.on('move', debounce(this.latLngSync, 100));
+    this.debouncedLatLngSync = debounce(this.latLngSync, 100);
+    this.mapObject.on('move', this.debouncedLatLngSync);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);

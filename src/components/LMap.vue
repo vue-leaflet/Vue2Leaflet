@@ -171,6 +171,10 @@ export default {
     },
   },
   beforeDestroy() {
+    if (this.debouncedMoveEndHandler) {
+      this.debouncedMoveEndHandler.cancel();
+    }
+
     if (this.mapObject) {
       this.mapObject.remove();
     }
@@ -201,7 +205,8 @@ export default {
     if (this.bounds) {
       this.mapObject.fitBounds(this.bounds);
     }
-    this.mapObject.on('moveend', debounce(this.moveEndHandler, 100));
+    this.debouncedMoveEndHandler = debounce(this.moveEndHandler, 100);
+    this.mapObject.on('moveend', this.debouncedMoveEndHandler);
     this.mapObject.on('overlayadd', this.overlayAddHandler);
     this.mapObject.on('overlayremove', this.overlayRemoveHandler);
     DomEvent.on(this.mapObject, this.$listeners);
