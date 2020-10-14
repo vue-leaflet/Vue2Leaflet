@@ -3,7 +3,7 @@ import { setOptions } from 'leaflet';
 export const debounce = (fn, time) => {
   let timeout;
 
-  return function(...args) {
+  const debouncedFunction = function(...args) {
     const context = this;
     if (timeout) {
       clearTimeout(timeout);
@@ -13,6 +13,14 @@ export const debounce = (fn, time) => {
       timeout = null;
     }, time);
   };
+
+  debouncedFunction.cancel = function() {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+  };
+
+  return debouncedFunction;
 };
 
 export const capitalizeFirstLetter = string => {
