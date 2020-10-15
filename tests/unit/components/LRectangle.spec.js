@@ -11,7 +11,7 @@ describe('component: LRectangle.vue', () => {
   test('it has a mapObject', () => {
     const { wrapper } = getWrapperWithMap(LRectangle);
 
-    expect(console.error).not.toHaveBeenCalled()
+    expect(console.error).not.toHaveBeenCalled();
     expect(wrapper.vm.mapObject).toBeDefined();
   });
 
@@ -20,7 +20,7 @@ describe('component: LRectangle.vue', () => {
 
     const { wrapper } = getWrapperWithMap(LRectangle, { bounds });
 
-    expect(console.error).not.toHaveBeenCalled()
+    expect(console.error).not.toHaveBeenCalled();
     expect(wrapper.vm.mapObject).toBeInstanceOf(L.Rectangle);
   });
 
@@ -29,7 +29,7 @@ describe('component: LRectangle.vue', () => {
 
     const { wrapper } = getWrapperWithMap(LRectangle, { bounds });
 
-    expect(console.error).not.toHaveBeenCalled()
+    expect(console.error).not.toHaveBeenCalled();
     expect(wrapper.vm.mapObject).toBeInstanceOf(L.Rectangle);
   });
 
