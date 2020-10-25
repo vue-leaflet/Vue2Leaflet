@@ -53,6 +53,7 @@ export default {
 | draggable    |                                                      | boolean       | -      | false                    |
 | latLng       |                                                      | object\|array | -      | null                     |
 | icon         |                                                      | object        | -      | () => new Icon.Default() |
+| opacity      |                                                      | number        | -      | 1.0                      |
 | zIndexOffset |                                                      | number        | -      | null                     |
 
 ## Events

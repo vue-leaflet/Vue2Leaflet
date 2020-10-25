@@ -72,4 +72,18 @@ describe('component: LMarker.vue', () => {
     await wrapper.vm.$nextTick();
     expect(wrapper.vm.mapObject.getLatLng().equals(initLatlng)).toBe(true);
   });
+
+  test('LMarkver.vue "opacity" prop defaults to 1 and updates mapObject opacity option', async () => {
+    const { wrapper } = getWrapperWithMap(LMarker, {
+      latLng: [0, 0]
+    });
+    const markerObject = wrapper.vm.mapObject;
+
+    expect(markerObject.options.opacity).toBe(1);
+
+    wrapper.setProps({ opacity: 0.42 });
+    await wrapper.vm.$nextTick();
+
+    expect(markerObject.options.opacity).toBe(0.42);
+  });
 });

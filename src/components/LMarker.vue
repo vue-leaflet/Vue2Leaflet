@@ -35,6 +35,11 @@ export default {
       custom: false,
       default: () => new Icon.Default(),
     },
+    opacity: {
+      type: Number,
+      custon: false,
+      default: 1.0,
+    },
     zIndexOffset: {
       type: Number,
       custom: false,
@@ -58,6 +63,7 @@ export default {
         icon: this.icon,
         zIndexOffset: this.zIndexOffset,
         draggable: this.draggable,
+        opacity: this.opacity,
       },
       this
     );
