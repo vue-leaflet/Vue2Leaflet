@@ -205,8 +205,6 @@ describe('component: LMap.vue', () => {
 
   // Quarantining this test because it seems it blocks jest execution completely
   test('LMap.vue no-blocking-animations real position', async () => {
-    expect(true).toBeTruthy();
-    /*
     // Most important test for no-blocking-animations, tests the real position
     // However, I suspect animations are never triggered in unit tests
     const wrapper = getMapWrapper({
@@ -215,6 +213,9 @@ describe('component: LMap.vue', () => {
       noBlockingAnimations: true,
     });
 
+    expect(wrapper).toBeDefined();
+
+    /*
     // Move the map several times in a short timeperiod
     wrapper.setProps({ center: { lat: 0, lng: 170 } });
     wrapper.setProps({ zoom: 15 });
