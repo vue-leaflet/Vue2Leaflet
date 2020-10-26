@@ -213,13 +213,12 @@ describe('component: LMap.vue', () => {
       noBlockingAnimations: true,
     });
 
-    expect(wrapper).toBeDefined();
-
-    /*
     // Move the map several times in a short timeperiod
     wrapper.setProps({ center: { lat: 0, lng: 170 } });
     wrapper.setProps({ zoom: 15 });
 
+    expect(wrapper).toBeDefined();
+    /*
     wrapper.setProps({ center: { lat: 80, lng: 0 } });
     wrapper.setProps({ zoom: 10 });
 
