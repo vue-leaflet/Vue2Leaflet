@@ -214,23 +214,13 @@ describe('component: LMap.vue', () => {
     });
 
     // Move the map several times in a short timeperiod
-    // wrapper.setProps({ center: { lat: 0, lng: 170 } });
-    await wrapper.setProps({ zoom: 15 });
+    await wrapper.setProps({ center: { lat: 0, lng: 170 }, zoom: 15 });
+    await wrapper.setProps({ center: { lat: 80, lng: 0 }, zoom: 10 });
+    await wrapper.setProps({ center: { lat: -80, lng: -170 }, zoom: 5 });
 
-    // wrapper.setProps({ center: { lat: 80, lng: 0 } });
-    await wrapper.setProps({ zoom: 10 });
-    expect(wrapper).toBeDefined();
-    /*
-
-    wrapper.setProps({ center: { lat: -80, lng: -170 } });
-    wrapper.setProps({ zoom: 5 });
-
-    /*
     // Finally, mapObject should be on last position
-    await wrapper.vm.$nextTick();
     expect(wrapper.vm.mapObject.getCenter()).toEqual({ lat: -80, lng: -170 });
     expect(wrapper.vm.mapObject.getZoom()).toEqual(5);
-    */
   });
 
   test('LMap.vue no-blocking-animations for center', async () => {
