@@ -214,13 +214,13 @@ describe('component: LMap.vue', () => {
     });
 
     // Move the map several times in a short timeperiod
-    wrapper.setProps({ center: { lat: 0, lng: 170 } });
-    // wrapper.setProps({ zoom: 15 });
+    // wrapper.setProps({ center: { lat: 0, lng: 170 } });
+    wrapper.setProps({ zoom: 15 });
 
-    wrapper.setProps({ center: { lat: 80, lng: 0 } });
+    // wrapper.setProps({ center: { lat: 80, lng: 0 } });
+    wrapper.setProps({ zoom: 10 });
     expect(wrapper).toBeDefined();
     /*
-    wrapper.setProps({ zoom: 10 });
 
     wrapper.setProps({ center: { lat: -80, lng: -170 } });
     wrapper.setProps({ zoom: 5 });
