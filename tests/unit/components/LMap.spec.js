@@ -217,14 +217,14 @@ describe('component: LMap.vue', () => {
     wrapper.setProps({ center: { lat: 0, lng: 170 } });
     wrapper.setProps({ zoom: 15 });
 
-    expect(wrapper).toBeDefined();
-    /*
     wrapper.setProps({ center: { lat: 80, lng: 0 } });
     wrapper.setProps({ zoom: 10 });
 
     wrapper.setProps({ center: { lat: -80, lng: -170 } });
     wrapper.setProps({ zoom: 5 });
 
+    expect(wrapper).toBeDefined();
+    /*
     // Finally, mapObject should be on last position
     await wrapper.vm.$nextTick();
     expect(wrapper.vm.mapObject.getCenter()).toEqual({ lat: -80, lng: -170 });
