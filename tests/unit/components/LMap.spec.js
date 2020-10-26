@@ -210,15 +210,15 @@ describe('component: LMap.vue', () => {
     const wrapper = getMapWrapper({
       center: { lat: 80, lng: 170 },
       zoom: 10,
-      noBlockingAnimations: false,
+      noBlockingAnimations: true,
     });
 
     // Move the map several times in a short timeperiod
     // wrapper.setProps({ center: { lat: 0, lng: 170 } });
-    wrapper.setProps({ zoom: 15 });
+    await wrapper.setProps({ zoom: 15 });
 
     // wrapper.setProps({ center: { lat: 80, lng: 0 } });
-    wrapper.setProps({ zoom: 10 });
+    await wrapper.setProps({ zoom: 10 });
     expect(wrapper).toBeDefined();
     /*
 
