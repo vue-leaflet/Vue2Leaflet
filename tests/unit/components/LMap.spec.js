@@ -203,7 +203,6 @@ describe('component: LMap.vue', () => {
     expect(wrapper.vm.lastSetCenter).toEqual(L.latLng([10.5, 10.5]));
   });
 
-  // Quarantining this test because it seems it blocks jest execution completely
   test('LMap.vue no-blocking-animations real position', async () => {
     // Most important test for no-blocking-animations, tests the real position
     // However, I suspect animations are never triggered in unit tests
