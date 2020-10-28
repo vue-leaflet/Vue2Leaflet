@@ -203,32 +203,6 @@ describe('component: LMap.vue', () => {
     expect(wrapper.vm.lastSetCenter).toEqual(L.latLng([10.5, 10.5]));
   });
 
-  // Quarantining this test because it seems it blocks jest execution completely
-  test.skip('LMap.vue no-blocking-animations real position', async () => {
-    // Most important test for no-blocking-animations, tests the real position
-    // However, I suspect animations are never triggered in unit tests
-    const wrapper = getMapWrapper({
-      center: { lat: 80, lng: 170 },
-      zoom: 10,
-      noBlockingAnimations: true,
-    });
-
-    // Move the map several times in a short timeperiod
-    wrapper.setProps({ center: { lat: 0, lng: 170 } });
-    wrapper.setProps({ zoom: 15 });
-
-    wrapper.setProps({ center: { lat: 80, lng: 0 } });
-    wrapper.setProps({ zoom: 10 });
-
-    wrapper.setProps({ center: { lat: -80, lng: -170 } });
-    wrapper.setProps({ zoom: 5 });
-
-    // Finally, mapObject should be on last position
-    await wrapper.vm.$nextTick();
-    expect(wrapper.vm.mapObject.getCenter()).toEqual({ lat: -80, lng: -170 });
-    expect(wrapper.vm.mapObject.getZoom()).toEqual(5);
-  });
-
   test('LMap.vue no-blocking-animations for center', async () => {
     const newCenter = { lat: -80, lng: 170 };
     const newCenter2 = { lat: 0, lng: -170 };
