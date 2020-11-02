@@ -37,7 +37,7 @@ export default {
     },
     opacity: {
       type: Number,
-      custon: false,
+      custom: false,
       default: 1.0,
     },
     zIndexOffset: {
