@@ -92,8 +92,10 @@ export default {
 
   mounted() {
     this.parentContainer = findRealParent(this.$parent);
-
-    propsBinder(this, this.$parent.mapObject, this.$options.props);
+    if (!this.parentContainer) {
+      throw new Error('No parent container with mapObject found for LIcon');
+    }
+    propsBinder(this, this.parentContainer.mapObject, this.$options.props);
 
     this.observer = new MutationObserver(() => {
       this.scheduleHtmlSwap();
