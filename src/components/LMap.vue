@@ -203,7 +203,7 @@ export default {
     );
     this.mapObject = map(this.$el, options);
     if (this.bounds) {
-      this.mapObject.fitBounds(this.bounds);
+      this.fitBounds(this.bounds);
     }
     this.debouncedMoveEndHandler = debounce(this.moveEndHandler, 100);
     this.mapObject.on('moveend', this.debouncedMoveEndHandler);
@@ -305,7 +305,7 @@ export default {
       const oldBounds = this.lastSetBounds || this.mapObject.getBounds();
       const boundsChanged = !oldBounds.equals(newBounds, 0); // set maxMargin to 0 - check exact equals
       if (boundsChanged) {
-        this.mapObject.fitBounds(newBounds, this.fitBoundsOptions);
+        this.fitBounds(newBounds);
         this.cacheMapView(newBounds);
       }
     },
@@ -322,12 +322,10 @@ export default {
       const mapObject = this.mapObject,
         prevBounds = mapObject.getBounds();
       mapObject.options.crs = newVal;
-      mapObject.fitBounds(prevBounds, { animate: false, padding: [0, 0] });
+      this.fitBounds(prevBounds, { animate: false });
     },
-    fitBounds(bounds) {
-      this.mapObject.fitBounds(bounds, {
-        animate: this.noBlockingAnimations ? false : null,
-      });
+    fitBounds(bounds, overrideOptions) {
+      this.mapObject.fitBounds(bounds, { ...this.fitBoundsOptions, ...overrideOptions });
     },
     moveEndHandler() {
       /**
