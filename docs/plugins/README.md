@@ -125,3 +125,9 @@ Wrapper for [Leaflet-MiniMap](https://github.com/Norkart/Leaflet-MiniMap).
 Wrapper for [Leaflet-Semicircle](https://github.com/jieter/Leaflet-semicircle).
 
 > Allows drawing semicircles on leaflet maps.
+
+## [vue2-leaflet-freedraw](https://github.com/Esurnir/vue2-leaflet-freedraw)
+
+Wrapper for [FreeDraw](https://github.com/Wildhoney/Leaflet.FreeDraw)
+
+> Allows drawing shapes on the map and retrieve those shapes as a list of polygons.
