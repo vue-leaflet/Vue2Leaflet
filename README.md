@@ -79,7 +79,7 @@ npm install
 npm run dev
 ```
 
-Go to <http://localhost:8080/> to see the docs and the examples
+Go to <http://localhost:8081/> to see the docs and the examples
 
 Any changes to the source code is reflected in the docs after a handfuls of seconds.
 
