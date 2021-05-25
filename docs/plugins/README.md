@@ -131,3 +131,9 @@ Wrapper for [Leaflet-Semicircle](https://github.com/jieter/Leaflet-semicircle).
 Wrapper for [FreeDraw](https://github.com/Wildhoney/Leaflet.FreeDraw)
 
 > Allows drawing shapes on the map and retrieve those shapes as a list of polygons.
+
+## [vue2-leaflet-ruler](https://github.com/panbak/vue2-leaflet-ruler)
+
+Wrapper for [Leaflet-Ruler](https://github.com/gokertanrisever/leaflet-ruler)
+
+> Allows measuring distance and angle on the map.
