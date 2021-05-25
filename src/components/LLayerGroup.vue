@@ -27,9 +27,7 @@ export default {
     DomEvent.on(this.mapObject, this.$listeners);
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
-    if (this.visible) {
-      this.parentContainer.addLayer(this);
-    }
+    this.parentContainer.addLayer(this, !this.visible);
     this.$nextTick(() => {
       /**
        * Triggers when the component is ready
