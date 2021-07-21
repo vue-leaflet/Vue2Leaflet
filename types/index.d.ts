@@ -752,6 +752,7 @@ declare module "vue2-leaflet" {
     LRectangle,
     LTileLayer,
     LTooltip,
-    LWMSTileLayer
+    LWMSTileLayer,
+    LSVGOverlay
   };
 }
