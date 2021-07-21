@@ -35,6 +35,7 @@ export { default as LPolygon } from './components/LPolygon';
 export { default as LPolyline } from './components/LPolyline';
 export { default as LPopup } from './components/LPopup';
 export { default as LRectangle } from './components/LRectangle';
+export { default as LSVGOverlay } from './components/LSVGOverlay';
 export { default as LTileLayer } from './components/LTileLayer';
 export { default as LTooltip } from './components/LTooltip';
 export { default as LWMSTileLayer } from './components/LWMSTileLayer';
