@@ -489,7 +489,7 @@ declare module "vue2-leaflet" {
     /**
      * @default null
      */
-     url: string | null;
+    url: string | null;
 
     // data
     mapObject: L.ImageOverlay;
