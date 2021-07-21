@@ -307,6 +307,10 @@ declare module "vue2-leaflet" {
      */
     upperCase: boolean;
   }
+  class SVGOverlay extends Mixins(ImageOverlay) {
+    // methods
+    getElement(): SVGElement;
+  }
 
   // components
   class LCircle extends Mixins(Circle) {
@@ -697,6 +701,17 @@ declare module "vue2-leaflet" {
 
     // data
     mapObject: L.TileLayer.WMS;
+    parentContainer: any;
+  }
+  class LSVGOverlay extends Mixins(SVGOverlay) {
+    // props
+    /**
+     * @default null
+     */
+    svg: string | SVGElement | null;
+
+    // data
+    mapObject: L.SVGOverlay;
     parentContainer: any;
   }
 
