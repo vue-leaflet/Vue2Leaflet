@@ -10,6 +10,13 @@ import { imageOverlay, DomEvent } from 'leaflet';
 export default {
   name: 'LImageOverlay',
   mixins: [ImageOverlayMixin, Options],
+  props: {
+    url: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
   mounted() {
     const options = optionsMerger(this.imageOverlayOptions, this);
     this.mapObject = imageOverlay(this.url, this.bounds, options);

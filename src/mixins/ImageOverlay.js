@@ -4,10 +4,6 @@ import InteractiveLayer from './InteractiveLayer';
 export default {
   mixins: [Layer, InteractiveLayer],
   props: {
-    url: {
-      type: String,
-      custom: true
-    },
     bounds: {
       custom: true
     },
