@@ -3,9 +3,6 @@ import ImageOverlay from './ImageOverlay.js';
 export default {
   mixins: [ImageOverlay],
   props: {
-    url: {
-      type: [String, Array, Object]
-    },
     autoplay: {
       type: Boolean,
       default: true

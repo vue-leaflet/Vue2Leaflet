@@ -10,9 +10,15 @@ import { videoOverlay, DomEvent } from 'leaflet';
 export default {
   name: 'LVideoOverlay',
   mixins: [VideoOverlayMixin, Options],
+  props: {
+    video: {
+      type: [String, Array, HTMLVideoElement],
+      default: null
+    }
+  },
   mounted() {
     const options = optionsMerger(this.videoOverlayOptions, this);
-    this.mapObject = videoOverlay(this.url, this.bounds, options);
+    this.mapObject = videoOverlay(this.video, this.bounds, options);
     DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.parentContainer = findRealParent(this.$parent);
@@ -37,8 +43,8 @@ export default {
 ::: demo
 <template>
   <l-map style="height: 350px" :zoom="zoom" :center="center">
-    <l-tile-layer :url="tilesUrl"></l-tile-layer>
-    <l-video-overlay :url="videoUrl" :bounds="bounds"></l-video-overlay>
+    <l-tile-layer :url="url"></l-tile-layer>
+    <l-video-overlay :video="video" :bounds="bounds"></l-video-overlay>
   </l-map>
 </template>
 
@@ -55,8 +61,8 @@ export default {
     return {
       zoom: 4,
       center: [25, -110],
-      tilesUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      videoUrl: 'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      video: 'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
       bounds: [[ 32, -130], [ 13, -100]]
     };
   }
