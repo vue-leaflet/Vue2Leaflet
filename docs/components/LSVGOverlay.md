@@ -69,7 +69,6 @@ export default {
 | visible             |                                                      | boolean            | -      | true          |
 | interactive         |                                                      | boolean            | -      | false         |
 | bubblingMouseEvents |                                                      | boolean            | -      | true          |
-| url                 |                                                      | string             | -      |               |
 | bounds              |                                                      |                    | -      |               |
 | opacity             |                                                      | number             | -      | 1.0           |
 | alt                 |                                                      | string             | -      | ''            |
