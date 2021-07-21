@@ -92,10 +92,6 @@ declare module "vue2-leaflet" {
   }
   class ImageOverlay extends Mixins(Layer, InteractiveLayer) {
     // props
-    url: string;
-    /**
-     * @default true
-     */
     bounds: boolean;
     /**
      * @default 1.0
@@ -521,6 +517,13 @@ declare module "vue2-leaflet" {
     parentContainer: any;
   }
   class LImageOverlay extends Mixins(ImageOverlay) {
+    // props
+    /**
+     * @default null
+     */
+     url: string | null;
+
+    // data
     mapObject: L.ImageOverlay;
     parentContainer: any;
   }
