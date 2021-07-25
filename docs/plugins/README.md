@@ -96,6 +96,12 @@ Wrapper for [PolylineDecorator](https://github.com/bbecquet/Leaflet.PolylineDeco
 
 > Define patterns such as dashes, arrows, icons, etc. on polylines.
 
+## [vue2-leaflet-polylineoffset](https://github.com/vue-leaflet/vue2-leaflet-polylineoffset)
+
+Wrapper for [PolylineOffset](https://github.com/bbecquet/Leaflet.PolylineOffset)
+
+> Draw polylines with a pixel offset.
+
 ## [vue2-leaflet-rotatedmarker](https://github.com/imudin/vue2-leaflet-rotatedmarker)
 
 Wrapper for [RotatedMarker](https://github.com/bbecquet/Leaflet.RotatedMarker).
