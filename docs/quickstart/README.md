@@ -117,7 +117,7 @@ And then by remembering that `leaflet` cannot be server-side-rendered and so usi
 
 ## Marker Icons are missing
 
-If the maker icons are missing the issue lies in a problem with webpack, a quick fix is to run this snippet:
+If the marker icons are missing the issue lies in a problem with webpack, a quick fix is to run this snippet:
 
 ```javascript
 import { Icon } from 'leaflet';
