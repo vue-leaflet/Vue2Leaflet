@@ -4,7 +4,7 @@ title: LMap
 
 # LMap
 
-> Base component, contains and wrap all the other components.
+> Base component, contains and wraps all the other components.
 
 ---
 

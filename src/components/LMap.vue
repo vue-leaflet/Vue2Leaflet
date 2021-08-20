@@ -10,7 +10,7 @@ import Options from '../mixins/Options.js';
 import { CRS, DomEvent, map, latLngBounds, latLng } from 'leaflet';
 
 /**
- * Base component, contains and wrap all the other components.
+ * Base component, contains and wraps all the other components.
  */
 export default {
   name: 'LMap',
