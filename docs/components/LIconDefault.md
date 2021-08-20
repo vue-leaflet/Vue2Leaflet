@@ -8,6 +8,8 @@ title: LIconDefault
 
 > Set a default icon
 
+---
+
 ## Props
 
 | Prop name | Description | Type   | Values | Default |

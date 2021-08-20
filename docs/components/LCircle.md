@@ -13,7 +13,7 @@ title: LCircle
 ::: demo
 <template>
 <l-map style="height: 350px" :zoom="zoom" :center="center">
-<l-tile-layer :url="url"></l-tile-layer>
+<l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
 <l-circle
       :lat-lng="circle.center"
       :radius="circle.radius"
@@ -35,6 +35,8 @@ export default {
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution:
+        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 8,
       center: [47.313220, -1.319482],
       circle: {
