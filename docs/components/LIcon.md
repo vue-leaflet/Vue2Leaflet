@@ -13,7 +13,7 @@ title: LIcon
 ::: demo
 <template>
 <l-map style="height: 350px" :zoom="zoom" :center="center">
-<l-tile-layer :url="url"></l-tile-layer>
+<l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
 <l-marker :lat-lng="[47.413220, -1.219482]" > </l-marker>
 <l-marker
         :lat-lng="[47.413220, -1.209482]"
@@ -50,6 +50,8 @@ export default {
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution:
+        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 13,
       center: [47.413220, -1.219482],
       icon: L.icon({
