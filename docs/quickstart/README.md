@@ -4,6 +4,51 @@ sidebar: auto
 
 # Quick Start
 
+## Hello, Map!
+Vue2Leaflet provides Vue components for <a href="https://leafletjs.com/">Leaflet</a> mapping components
+to allow simple construction of declarative maps.
+::: demo
+<template>
+  <l-map style="height: 300px" :zoom="zoom" :center="center">
+    <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+    <l-marker :lat-lng="markerLatLng"></l-marker>
+  </l-map>
+</template>
+
+<script>
+import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
+
+export default {
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker
+  },
+  data () {
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution:
+        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      zoom: 15,
+      center: [51.505, -0.159],
+      markerLatLng: [51.504, -0.159]
+    };
+  }
+}
+</script>
+:::
+Here within the Vue template we create an [`<l-map>` component](/components/LMap.html), giving it a
+height and binding the `zoom` and `center` properties to define its initial view. Nested inside the
+map we add an [`<l-tile-layer>` component](/components/LTileLayer.html) to provide the
+[OpenStreetMap](https://www.openstreetmap.org/) base layer and its
+[attribution](https://www.openstreetmap.org/copyright), along with an
+[`<l-marker>` component](/components/LMarker.html) placed at a bound latitude and longitude.
+
+Continue reading below for more about installing and configuring Vue2Leaflet, check out the
+[component documentation](/components) or more detailed [examples](/examples), or view the
+list of [community plugins](/plugins) or [FAQ page](/faq).
+
+
 ## Installation
 
 ### Npm
