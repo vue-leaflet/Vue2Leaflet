@@ -79,7 +79,7 @@ export default {
 ::: demo
 <template>
   <l-map style="height: 350px" :zoom="zoom" :center="center">
-    <l-control-layers position="topright"  ></l-control-layers>
+    <l-control-layers position="topright"></l-control-layers>
     <l-tile-layer
       v-for="tileProvider in tileProviders"
       :key="tileProvider.name"
@@ -102,7 +102,6 @@ export default {
   },
   data () {
     return {
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 8,
       center: [47.313220, -1.319482],
       tileProviders: [

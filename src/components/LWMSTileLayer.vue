@@ -40,43 +40,48 @@ export default {
 ::: demo
 <template>
   <l-map style="height: 350px" :zoom="zoom" :center="center">
-    <l-control-layers > </l-control-layers>
+    <l-tile-layer :url="baseLayer.url" :attribution="baseLayer.attribution"></l-tile-layer>
     <l-wms-tile-layer
-        v-for="layer in layers"
-        :key="layer.name"
-        :base-url="baseUrl"
-        :layers="layer.layers"
-        :visible="layer.visible"
-        :name="layer.name"
-        layer-type="base">
+            :key="wmsLayer.name"
+            :base-url="wmsLayer.url"
+            :layers="wmsLayer.layers"
+            :visible="wmsLayer.visible"
+            :name="wmsLayer.name"
+            :attribution="wmsLayer.attribution"
+            :transparent="true"
+            format="image/png"
+            layer-type="base">
     </l-wms-tile-layer>
   </l-map>
 </template>
 
 <script>
-import {LMap, LWMSTileLayer, LControlLayers } from 'vue2-leaflet';
+import {LMap, LTileLayer, LWMSTileLayer } from 'vue2-leaflet';
 
 export default {
   components: {
     LMap,
-    LControlLayers,
+    LTileLayer,
     'l-wms-tile-layer': LWMSTileLayer
   },
   data () {
     return {
-      zoom: 1,
-      center: [47.313220, -1.319482],
-      baseUrl: 'http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi',
-      layers: [
-        {
-          name: 'Weather Data',
-          visible: true,
-          format: 'image/png',
-          layers: 'nexrad-n0r-900913',
-          transparent: true,
-          attribution: "Weather data © 2012 IEM Nexrad"
-        }
-      ]
+      zoom: 4,
+      center: [39.833333, -98.583333],
+      baseLayer: {
+        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        attribution:
+          '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      },
+      wmsLayer: {
+        url: 'http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi',
+        name: 'Weather Data',
+        visible: true,
+        format: 'image/png',
+        layers: 'nexrad-n0r-900913',
+        transparent: true,
+        attribution: 'Weather data &copy; 2012 <a href="https://mesonet.agron.iastate.edu/docs/nexrad_mosaic/">IEM Nexrad</a>',
+      }
     };
   }
 }

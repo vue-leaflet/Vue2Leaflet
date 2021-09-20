@@ -11,6 +11,6 @@ features:
   - title: Leaflet made reactive
     details: Most of the configuration options of Leaflet are embedded in the reactivity system of Vue
   - title: Rich plugin ecosystem
-    details: 10+ Community contributed plugins to enrich the potential of your map
+    details: 20+ Community contributed plugins to enrich the potential of your map
 footer: MIT Licensed
 ---

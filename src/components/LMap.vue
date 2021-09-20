@@ -10,7 +10,7 @@ import Options from '../mixins/Options.js';
 import { CRS, DomEvent, map, latLngBounds, latLng } from 'leaflet';
 
 /**
- * Base component, contains and wrap all the other components.
+ * Base component, contains and wraps all the other components.
  */
 export default {
   name: 'LMap',
@@ -396,7 +396,7 @@ If your markup does not have a root `<l-map>` something is wrong.
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
     >
-      <l-tile-layer :url="url"></l-tile-layer>
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
     </l-map>
   </div>
 </template>
@@ -412,6 +412,8 @@ export default {
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution:
+        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 3,
       center: [47.413220, -1.219482],
       bounds: null
