@@ -17,7 +17,7 @@ export default {
       default: 1
     },
     tileSize: {
-      type: Number,
+      type: [Number, Object, Array],
       default: 256
     },
     noWrap: {

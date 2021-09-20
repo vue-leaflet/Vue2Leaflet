@@ -38,23 +38,23 @@ export default {
 
 ## Props
 
-| Prop name      | Description                                          | Type          | Values | Default    |
-| -------------- | ---------------------------------------------------- | ------------- | ------ | ---------- |
-| pane           |                                                      | string        | -      | 'tilePane' |
-| attribution    |                                                      | string        | -      | null       |
-| name           |                                                      | string        | -      | undefined  |
-| layerType      |                                                      | string        | -      | undefined  |
-| visible        |                                                      | boolean       | -      | true       |
-| opacity        |                                                      | number        | -      | 1.0        |
-| zIndex         |                                                      | number        | -      | 1          |
-| tileSize       |                                                      | number        | -      | 256        |
-| noWrap         |                                                      | boolean       | -      | false      |
-| tms            |                                                      | boolean       | -      | false      |
-| subdomains     |                                                      | string\|array | -      | 'abc'      |
-| detectRetina   |                                                      | boolean       | -      | false      |
-| options        | Leaflet options to pass to the component constructor | object        | -      | {}         |
-| url            |                                                      | string        | -      | null       |
-| tileLayerClass |                                                      | func          | -      | tileLayer  |
+| Prop name      | Description                                          | Type                  | Values | Default    |
+| -------------- | ---------------------------------------------------- | --------------------- | ------ | ---------- |
+| pane           |                                                      | string                | -      | 'tilePane' |
+| attribution    |                                                      | string                | -      | null       |
+| name           |                                                      | string                | -      | undefined  |
+| layerType      |                                                      | string                | -      | undefined  |
+| visible        |                                                      | boolean               | -      | true       |
+| opacity        |                                                      | number                | -      | 1.0        |
+| zIndex         |                                                      | number                | -      | 1          |
+| tileSize       |                                                      | number\|object\|array | -      | 256        |
+| noWrap         |                                                      | boolean               | -      | false      |
+| tms            |                                                      | boolean               | -      | false      |
+| subdomains     |                                                      | string\|array         | -      | 'abc'      |
+| detectRetina   |                                                      | boolean               | -      | false      |
+| options        | Leaflet options to pass to the component constructor | object                | -      | {}         |
+| url            |                                                      | string                | -      | null       |
+| tileLayerClass |                                                      | func                  | -      | tileLayer  |
 
 ## Events
 
