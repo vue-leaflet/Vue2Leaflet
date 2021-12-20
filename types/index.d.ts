@@ -69,12 +69,29 @@ declare module "vue2-leaflet" {
      */
     zIndex: number;
   }
-  class ImageOverlay extends Mixins(Layer, InteractiveLayer) {
+  class VideoOverlay extends Mixins(ImageOverlay) {
     // props
-    url: string;
     /**
      * @default true
      */
+    autoplay: boolean;
+    /**
+     * @default true
+     */
+    loop: boolean;
+    /**
+     * @default true
+     */
+    keepAspectRatio: boolean;
+    /**
+     * @default false
+     */
+    muted: boolean;
+    // methods
+    getElement(): HTMLVideoElement;
+  }
+  class ImageOverlay extends Mixins(Layer, InteractiveLayer) {
+    // props
     bounds: boolean;
     /**
      * @default 1.0
@@ -488,7 +505,25 @@ declare module "vue2-leaflet" {
     // methods
     setImagePath(newVal: string, oldVal?: string): void;
   }
+  class LVideoOverlay extends Mixins(VideoOverlay) {
+    // props
+    /**
+     * @default null
+     */
+    video: string | Array<string> | HTMLVideoElement | null;
+
+    // data
+    mapObject: L.VideoOverlay;
+    parentContainer: any;
+  }
   class LImageOverlay extends Mixins(ImageOverlay) {
+    // props
+    /**
+     * @default null
+     */
+    url: string | null;
+
+    // data
     mapObject: L.ImageOverlay;
     parentContainer: any;
   }
@@ -724,6 +759,7 @@ declare module "vue2-leaflet" {
     LGridLayer,
     LIcon,
     LIconDefault,
+    LVideoOverlay,
     LImageOverlay,
     LLayerGroup,
     LMap,

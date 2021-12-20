@@ -37,4 +37,5 @@ export { default as LPopup } from './components/LPopup';
 export { default as LRectangle } from './components/LRectangle';
 export { default as LTileLayer } from './components/LTileLayer';
 export { default as LTooltip } from './components/LTooltip';
+export { default as LVideoOverlay } from './components/LVideoOverlay';
 export { default as LWMSTileLayer } from './components/LWMSTileLayer';
