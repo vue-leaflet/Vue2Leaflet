@@ -71,10 +71,6 @@ declare module "vue2-leaflet" {
   }
   class ImageOverlay extends Mixins(Layer, InteractiveLayer) {
     // props
-    url: string;
-    /**
-     * @default true
-     */
     bounds: boolean;
     /**
      * @default 1.0
@@ -307,6 +303,10 @@ declare module "vue2-leaflet" {
      */
     upperCase: boolean;
   }
+  class SVGOverlay extends Mixins(ImageOverlay) {
+    // methods
+    getElement(): SVGElement;
+  }
 
   // components
   class LCircle extends Mixins(Circle) {
@@ -489,6 +489,13 @@ declare module "vue2-leaflet" {
     setImagePath(newVal: string, oldVal?: string): void;
   }
   class LImageOverlay extends Mixins(ImageOverlay) {
+    // props
+    /**
+     * @default null
+     */
+    url: string | null;
+
+    // data
     mapObject: L.ImageOverlay;
     parentContainer: any;
   }
@@ -699,6 +706,17 @@ declare module "vue2-leaflet" {
     mapObject: L.TileLayer.WMS;
     parentContainer: any;
   }
+  class LSVGOverlay extends Mixins(SVGOverlay) {
+    // props
+    /**
+     * @default null
+     */
+    svg: string | SVGElement | null;
+
+    // data
+    mapObject: L.SVGOverlay;
+    parentContainer: any;
+  }
 
   // utils
   function findRealParent(firstVueParent: Vue): any;
@@ -734,6 +752,7 @@ declare module "vue2-leaflet" {
     LRectangle,
     LTileLayer,
     LTooltip,
-    LWMSTileLayer
+    LWMSTileLayer,
+    LSVGOverlay
   };
 }
