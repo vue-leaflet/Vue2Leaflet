@@ -84,7 +84,7 @@ export default {
 | transparent  |                                                      | boolean               | -      |              |
 | version      |                                                      | string                | -      | '1.1.1'      |
 | crs          |                                                      | object                | -      | null         |
-| upperCase    |                                                      | boolean               | -      | false        |
+| uppercase    |                                                      | boolean               | -      | false        |
 | options      | Leaflet options to pass to the component constructor | object                | -      | {}           |
 | baseUrl      |                                                      | string                | -      | null         |
 

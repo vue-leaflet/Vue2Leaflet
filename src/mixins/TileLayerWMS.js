@@ -26,7 +26,7 @@ export default {
     crs: {
       default: null
     },
-    upperCase: {
+    uppercase: {
       type: Boolean,
       default: false
     }
@@ -40,7 +40,7 @@ export default {
       transparent: this.transparent,
       version: this.version,
       crs: this.crs,
-      upperCase: this.upperCase
+      uppercase: this.uppercase
     };
   }
 };
