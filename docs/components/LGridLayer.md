@@ -67,6 +67,8 @@ export default {
 | zIndex        |                                                      | number                | -      | 1          |
 | tileSize      |                                                      | number\|object\|array | -      | 256        |
 | noWrap        |                                                      | boolean               | -      | false      |
+| minNativeZoom |                                                      | number                | -      | undefined  |
+| maxNativeZoom |                                                      | number                | -      | undefined  |
 | options       | Leaflet options to pass to the component constructor | object                | -      | {}         |
 | tileComponent |                                                      | object                | -      |            |
 

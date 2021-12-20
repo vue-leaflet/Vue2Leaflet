@@ -49,6 +49,8 @@ export default {
 | zIndex         |                                                      | number                | -      | 1          |
 | tileSize       |                                                      | number\|object\|array | -      | 256        |
 | noWrap         |                                                      | boolean               | -      | false      |
+| minNativeZoom  |                                                      | number                | -      | undefined  |
+| maxNativeZoom  |                                                      | number                | -      | undefined  |
 | tms            |                                                      | boolean               | -      | false      |
 | subdomains     |                                                      | string\|array         | -      | 'abc'      |
 | detectRetina   |                                                      | boolean               | -      | false      |
