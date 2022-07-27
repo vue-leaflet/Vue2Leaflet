@@ -76,7 +76,7 @@ declare module "vue2-leaflet" {
      * @default null
      */
     bounds: L.LatLngBoundsExpression | null;
-     /**
+    /**
      * @default 1.0
      */
     opacity: number;
