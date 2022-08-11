@@ -9,6 +9,13 @@ import { tooltip, DomEvent } from 'leaflet';
 export default {
   name: 'LTooltip',
   mixins: [Popper, Options],
+  props: {
+    options: {
+      type: Object,
+      custom: true,
+      default: () => ({}),
+    },
+  },
   mounted() {
     const options = optionsMerger(this.popperOptions, this);
     this.mapObject = tooltip(options);
@@ -37,6 +44,13 @@ export default {
         this.parentContainer.mapObject.unbindTooltip();
       }
     }
+  },
+  methods: {
+    setOptions(newVal) {
+      this.parentContainer.mapObject
+        .unbindTooltip()
+        .bindTooltip(this.mapObject, newVal);
+    },
   },
 };
 </script>
