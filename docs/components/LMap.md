@@ -96,6 +96,7 @@ export default {
 | fadeAnimation          |                                                      | boolean       | -              | null               |
 | markerZoomAnimation    |                                                      | boolean       | -              | null               |
 | noBlockingAnimations   |                                                      | boolean       | -              | false              |
+| noMoveStartOnPanning   | The `noMoveStart` option passed to panning methods   | boolean       | -              | false              |
 
 ## Events
 

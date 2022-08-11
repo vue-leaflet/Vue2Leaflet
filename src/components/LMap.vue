@@ -141,6 +141,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    noMoveStartOnPanning: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -156,6 +160,7 @@ export default {
     fitBoundsOptions() {
       const options = {
         animate: this.noBlockingAnimations ? false : null,
+        noMoveStart: this.noMoveStartOnPanning,
       };
       if (this.padding) {
         options.padding = this.padding;
@@ -277,6 +282,7 @@ export default {
       if (newVal === undefined || newVal === null) { return; }
       this.mapObject.setZoom(newVal, {
         animate: this.noBlockingAnimations ? false : null,
+        noMoveStart: this.noMoveStartOnPanning,
       });
       this.cacheMapView();
     },
@@ -290,6 +296,7 @@ export default {
         this.lastSetCenter = newCenter;
         this.mapObject.panTo(newCenter, {
           animate: this.noBlockingAnimations ? false : null,
+          noMoveStart: this.noMoveStartOnPanning,
         });
         this.cacheMapView(undefined, newCenter);
       }
