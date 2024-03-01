@@ -23,6 +23,26 @@ export default {
     noWrap: {
       type: Boolean,
       default: false
+    },
+    minZoom: {
+      type: Number,
+      default: 0
+    },
+    maxZoom: {
+      type: Number,
+      default: undefined
+    },
+    minNativeZoom: {
+      type: Number,
+      default: undefined
+    },
+    maxNativeZoom: {
+      type: Number,
+      default: undefined
+    },
+    keepBuffer: {
+      type: Number,
+      default: 2,
     }
   },
   mounted () {
@@ -32,7 +52,12 @@ export default {
       opacity: this.opacity,
       zIndex: this.zIndex,
       tileSize: this.tileSize,
-      noWrap: this.noWrap
+      noWrap: this.noWrap,
+      minZoom: this.minZoom,
+      maxZoom: this.maxZoom,
+      minNativeZoom: this.minNativeZoom,
+      maxNativeZoom: this.maxNativeZoom,
+      keepBuffer: this.keepBuffer
     };
   }
 };

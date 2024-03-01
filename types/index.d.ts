@@ -68,6 +68,34 @@ declare module "vue2-leaflet" {
      * @default 1
      */
     zIndex: number;
+    /**
+     * @default 256
+     */
+    tileSize: number | L.Point;
+    /**
+     * @default false
+     */
+    noWrap: boolean;
+    /**
+     * @default 0
+     */
+    minZoom: number;
+    /**
+     * @default null
+     */
+    maxZoom: number | null;
+    /**
+     * @default null
+     */
+    minNativeZoom: number | null;
+    /**
+     * @default null
+     */
+    maxNativeZoom: number | null;
+    /**
+     * @default 2
+     */
+    keepBuffer: number;
   }
   class ImageOverlay extends Mixins(Layer, InteractiveLayer) {
     // props
