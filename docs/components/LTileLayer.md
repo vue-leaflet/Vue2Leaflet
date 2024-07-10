@@ -49,6 +49,11 @@ export default {
 | zIndex         |                                                      | number                | -      | 1          |
 | tileSize       |                                                      | number\|object\|array | -      | 256        |
 | noWrap         |                                                      | boolean               | -      | false      |
+| minZoom        |                                                      | number                | -      | 0          |
+| maxZoom        |                                                      | number                | -      | undefined  |
+| minNativeZoom  |                                                      | number                | -      | undefined  |
+| maxNativeZoom  |                                                      | number                | -      | undefined  |
+| keepBuffer     |                                                      | number                | -      | 2          |
 | tms            |                                                      | boolean               | -      | false      |
 | subdomains     |                                                      | string\|array         | -      | 'abc'      |
 | detectRetina   |                                                      | boolean               | -      | false      |
