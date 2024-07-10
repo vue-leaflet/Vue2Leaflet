@@ -73,9 +73,9 @@ declare module "vue2-leaflet" {
     // props
     url: string;
     /**
-     * @default true
+     * @default null
      */
-    bounds: boolean;
+    bounds: L.LatLngBoundsExpression | null;
     /**
      * @default 1.0
      */

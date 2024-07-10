@@ -9,7 +9,9 @@ export default {
       custom: true
     },
     bounds: {
-      custom: true
+      type: [Object, Array],
+      custom: true,
+      default: null,
     },
     opacity: {
       type: Number,
