@@ -16,6 +16,13 @@ export default {
       default: null,
     },
   },
+  watch: {
+    position: {
+      handler() {
+        this.mapObject._attributions = {};
+      }
+    },
+  },
   mounted() {
     const options = optionsMerger(
       {
